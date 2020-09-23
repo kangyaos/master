@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<title>陕西光环网络科技有限公司</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<link
+	href="${base}/assets/global/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" />
+<script src="${base}/assets/web/js/jquery.min.js" type="text/javascript"></script>
+<script src="${base}/assets/appshare/js/jquery-1.8.3.min.js"></script>
+<!-- BEGIN HEAD -->
+<style>
+.box {
+	min-height: 150px;
+	padding: 15px 20px;
+	background-color: white;
+	margin-bottom: 10px;
+	height: auto;
+}
+
+.gray {
+	color: #bbb !important;
+}
+
+.row {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-6, .col-sm-6,
+	.col-md-6, .col-lg-6, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8 {
+	padding: 0px !important;
+}
+
+.red {
+	color: #e55f48 !important;
+}
+
+.biaoqian {
+	float: left;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+	color: white;
+	border-radius: 3px;
+	padding: 1px 2px;
+	background-color: #ccc;
+	margin: 5px 0;
+}
+</style>
+<head>
+</head>
+<body style="background-color: #f2f3f6;">
+
+	<#list list as item>
+	<div class="box">
+		<div class="row">
+			<div class="row col-xs-8 col-sm-8 col-md-8">
+				<div>
+					<img src="http://picture.sxhalo.com/picture/${item.headPortrait!}"
+						onerror="this.src='${base}/assets/image/uu.png'"
+						style="float:left; width:28px;">
+				</div>
+				<span style="float: left; margin:5px 7px;">${item.userRealName!}</span>
+				<#if item.realnameAuthState==0>
+				<div class="biaoqian">未认证</div>
+				<#else>
+				<div class="biaoqian" style="background-color:#e55f48; ">已认证</div></#if>
+				<#if item.haseBond!0==1>
+				<div class="biaoqian"
+					style="margin-left: 5px;background-color: #f7903b;border-radius: 2px 0px 0px 2px;">保证金</div>
+				<div class="biaoqian"
+					style="border-radius: 0px 2px 2px 0px; color: #f7903b;  background-color: rgb(242, 243, 246);">￥${item.bond/100}</div>
+				</#if>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 text-right gray"
+				style=" margin: 5px 0;">${item.receiptAddress!}</div>
+		</div>
+		<hr style=" margin: 10px 0 15px;">
+		<div>
+			<strong>求购基低位发热量${item.calorificValue!}Kcal/kg${item.coalName!}</strong>
+			<a href="tel:${item.userName!}" class="iphone"><img
+				src="${base}/assets/image/phone1.png"
+				style="float:right; width:32px;"></a>
+		</div>
+		<div class="row gray" style="    margin-top: 10px;">
+			<div class="col-xs-6 col-sm-6 col-md-6">煤种:${item.categoryId!}</div>
+			<div class="col-xs-6 col-sm-6 col-md-6">收货地:${item.remark!}</div>
+		</div>
+		<div class="row gray">
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				数量(吨):<span class="red">${item.number!}</span>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 ">
+				限价(元/吨):<span class="red">${item.price!}</span>
+			</div>
+		</div>
+	</div>
+	</#list>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxhalo.lmb.mapper.UserTransportOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.UserTransportOrder" >
+    <id column="transport_order_code" property="transportOrderCode" jdbcType="BIGINT" />
+    <result column="transport_id" property="transportId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="contact_person" property="contactPerson" jdbcType="INTEGER" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="order_state" property="orderState" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="information_charge" property="informationCharge" jdbcType="DECIMAL" />
+    <result column="information_charge_payment_state" property="informationChargePaymentState" jdbcType="INTEGER" />
+    <result column="carry_time" property="carryTime" jdbcType="TIMESTAMP" />
+    <result column="carry_weight_doc_pic_code" property="carryWeightDocPicCode" jdbcType="VARCHAR" />
+    <result column="carry_weight_doc_pic" property="carryWeightDocPic" jdbcType="INTEGER" />
+    <result column="carry_weight" property="carryWeight" jdbcType="DECIMAL" />
+    <result column="arrive_time" property="arriveTime" jdbcType="TIMESTAMP" />
+    <result column="is_balance" property="isBalance" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+    <association property="coalTrans" column="transport_id" select="com.sxhalo.lmb.mapper.CoalTransportMapper.selectByPrimaryKey"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    transport_order_code, transport_id, user_id, create_time, contact_person, contact_phone, 
+    order_type, order_state, remark, information_charge, information_charge_payment_state, 
+    carry_time, carry_weight_doc_pic_code, carry_weight_doc_pic, carry_weight, arrive_time, 
+    is_balance, update_time, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_transport_order
+    where transport_order_code = #{transportOrderCode,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_transport_order
+    where transport_order_code = #{transportOrderCode,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.sxhalo.lmb.domain.UserTransportOrder" >
+    insert into user_transport_order (transport_order_code, transport_id, user_id, 
+      create_time, contact_person, contact_phone, 
+      order_type, order_state, remark, 
+      information_charge, information_charge_payment_state, 
+      carry_time, carry_weight_doc_pic_code, carry_weight_doc_pic, 
+      carry_weight, arrive_time, is_balance, 
+      update_time, delete_flag)
+    values (#{transportOrderCode,jdbcType=BIGINT}, #{transportId,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{contactPerson,jdbcType=INTEGER}, #{contactPhone,jdbcType=VARCHAR}, 
+      #{orderType,jdbcType=INTEGER}, #{orderState,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{informationCharge,jdbcType=DECIMAL}, #{informationChargePaymentState,jdbcType=INTEGER}, 
+      #{carryTime,jdbcType=TIMESTAMP}, #{carryWeightDocPicCode,jdbcType=VARCHAR}, #{carryWeightDocPic,jdbcType=INTEGER}, 
+      #{carryWeight,jdbcType=DECIMAL}, #{arriveTime,jdbcType=TIMESTAMP}, #{isBalance,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.UserTransportOrder" >
+    insert into user_transport_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="transportOrderCode != null" >
+        transport_order_code,
+      </if>
+      <if test="transportId != null" >
+        transport_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="contactPerson != null" >
+        contact_person,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="orderState != null" >
+        order_state,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="informationCharge != null" >
+        information_charge,
+      </if>
+      <if test="informationChargePaymentState != null" >
+        information_charge_payment_state,
+      </if>
+      <if test="carryTime != null" >
+        carry_time,
+      </if>
+      <if test="carryWeightDocPicCode != null" >
+        carry_weight_doc_pic_code,
+      </if>
+      <if test="carryWeightDocPic != null" >
+        carry_weight_doc_pic,
+      </if>
+      <if test="carryWeight != null" >
+        carry_weight,
+      </if>
+      <if test="arriveTime != null" >
+        arrive_time,
+      </if>
+      <if test="isBalance != null" >
+        is_balance,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="transportOrderCode != null" >
+        #{transportOrderCode,jdbcType=BIGINT},
+      </if>
+      <if test="transportId != null" >
+        #{transportId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactPerson != null" >
+        #{contactPerson,jdbcType=INTEGER},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderState != null" >
+        #{orderState,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="informationCharge != null" >
+        #{informationCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="informationChargePaymentState != null" >
+        #{informationChargePaymentState,jdbcType=INTEGER},
+      </if>
+      <if test="carryTime != null" >
+        #{carryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carryWeightDocPicCode != null" >
+        #{carryWeightDocPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carryWeightDocPic != null" >
+        #{carryWeightDocPic,jdbcType=INTEGER},
+      </if>
+      <if test="carryWeight != null" >
+        #{carryWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="arriveTime != null" >
+        #{arriveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isBalance != null" >
+        #{isBalance,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.UserTransportOrder" >
+    update user_transport_order
+    <set >
+      <if test="transportId != null" >
+        transport_id = #{transportId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactPerson != null" >
+        contact_person = #{contactPerson,jdbcType=INTEGER},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderState != null" >
+        order_state = #{orderState,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="informationCharge != null" >
+        information_charge = #{informationCharge,jdbcType=DECIMAL},
+      </if>
+      <if test="informationChargePaymentState != null" >
+        information_charge_payment_state = #{informationChargePaymentState,jdbcType=INTEGER},
+      </if>
+      <if test="carryTime != null" >
+        carry_time = #{carryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carryWeightDocPicCode != null" >
+        carry_weight_doc_pic_code = #{carryWeightDocPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carryWeightDocPic != null" >
+        carry_weight_doc_pic = #{carryWeightDocPic,jdbcType=INTEGER},
+      </if>
+      <if test="carryWeight != null" >
+        carry_weight = #{carryWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="arriveTime != null" >
+        arrive_time = #{arriveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isBalance != null" >
+        is_balance = #{isBalance,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where transport_order_code = #{transportOrderCode,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.UserTransportOrder" >
+    update user_transport_order
+    set transport_id = #{transportId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      contact_person = #{contactPerson,jdbcType=INTEGER},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER},
+      order_state = #{orderState,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      information_charge = #{informationCharge,jdbcType=DECIMAL},
+      information_charge_payment_state = #{informationChargePaymentState,jdbcType=INTEGER},
+      carry_time = #{carryTime,jdbcType=TIMESTAMP},
+      carry_weight_doc_pic_code = #{carryWeightDocPicCode,jdbcType=VARCHAR},
+      carry_weight_doc_pic = #{carryWeightDocPic,jdbcType=INTEGER},
+      carry_weight = #{carryWeight,jdbcType=DECIMAL},
+      arrive_time = #{arriveTime,jdbcType=TIMESTAMP},
+      is_balance = #{isBalance,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
+    where transport_order_code = #{transportOrderCode,jdbcType=BIGINT}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from user_transport_order
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_transport_order
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_transport_order
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>     
+  </select>
+</mapper>

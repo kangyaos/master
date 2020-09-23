@@ -1,0 +1,118 @@
+<style>
+@media screen and (max-width:480px){ 
+	.ft1 {
+		width:100%;
+		font-size:10px;		
+	}
+	.footer2 a {
+		padding:4px 0px;
+		font-size:14px;		
+	}
+	.footer2 p {
+		font-size:10px;		
+	}
+	.ft2{width:100%;}
+	.ft3{text-align:center;}
+}	
+@media screen and (max-width:600px){ 
+    .xcConfirm .popBox {
+        position: fixed!important;
+        left: 10%!important;
+        top: 50%!important;
+        background-color: #ffffff!important;
+        z-index: 2147000001!important;
+        width: 80%!important;
+        height: 225px!important;
+        margin-left: 0px!important;
+        /* margin-top: -150px!important; */
+        border-radius: 5px!important;
+        font-weight: bold!important;
+        color: #535e66!important;
+    }
+    .xcConfirm .popBox .ttBox {
+        height: 40px!important;
+        line-height: 30px!important;
+        padding: 10px 30px!important;
+        rder-bottom: 1px solid #eef0f1!important;
+    }
+    .xcConfirm .popBox .txtBox {
+        margin: 20px 20px!important;
+        height: 100px!important;
+        overflow: hidden!important;
+    }
+    .xcConfirm .popBox .btnGroup .sgBtn {
+        margin-top: 5px!important;
+        margin-right: 10px!important;
+    }
+    .xcConfirm .popBox .sgBtn {
+        width: 75px!important;
+        height: 30px!important;
+    }
+
+}   
+
+@media screen and (max-width:320px){ 
+  .ft1 {width:100%;}  
+  .dhbt1{
+      adding-left:0px;
+      adding-right:15px;
+  }
+  .container{}
+  .footer2 p {
+    margin:0px;   
+  }
+
+} 
+
+@media screen and (mix-width:768px){ 
+	.ft1 {width:60%;}	
+	.ft2 {width:40%;}
+}
+</style>
+<footer id="footera">		
+		<div class="footer2">
+			<div class="container" >				
+					<div class="col-md-7 panel ft1">
+						<div class="panel-body">
+							<p class="simplenav">
+							    <a href="https://www.sxhalo.com" target="view_window">光环科技</a> | 
+								<a href="${base}/articlelist.html">新闻资讯</a> | 
+								<a href="${base}/coallist.html">煤炭信息</a> |
+								<a href="${base}/about.html">企业介绍</a> |
+								<a href="${base}/contactus.html">联系我们</a> 								
+							</p>
+							<p class="simplenav">
+								Copyright&nbsp;©&nbsp;2014-2015&nbsp;陕西光环网络科技有限公司&nbsp;版权所有&nbsp;<a href="http://www.beian.miit.gov.cn" target="_blank" style="color: #666;padding:0px;">陕ICP备14011719号</a>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-5 panel ft2">
+						<div class="panel-body">
+							<p class="text-right ft3">
+								<img src="${base}/assets/web/images/img/gongzh.jpg" style="padding: 10px;width: 30%;margin-top: -10px;"/>
+								<img src="${base}/assets/web/images/img/123.jpg" style="padding: 10px;width: 30%;margin-top: -10px;"/>
+							</p>
+						</div>
+					</div>				
+				<!-- /row of panels -->
+			</div>
+		</div>
+	</footer>
+<link rel="stylesheet" type="text/css" href="${base}/assets/web/css/xcConfirm.css"/>
+<script src="${base}/assets/web/js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
+<script src="${base}/assets/web/js/common.js"></script> 
+<script type="text/javascript">
+   function initial(){
+	     var txt=  "尊敬的用户您好，欢迎来到拉煤宝！请扫描下面的二维码下载手机APP注册新用户，我们将为您提供更好的服务！";		
+		 window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success,{
+			onOk:function(v){
+				 window.location.href="${base}/web/appDownload.html";
+			}
+		});		 
+	  } 
+	  $(function() {
+	   if (!common.checkIE8()) {
+	     $('body').append('<link href="${base}/assets/web/css/css/ie8.css" rel="stylesheet"  type="text/css">')
+       }
+       })   
+</script>

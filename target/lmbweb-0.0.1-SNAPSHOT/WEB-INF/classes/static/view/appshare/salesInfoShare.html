@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<title>${companyName!}</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="image" itemprop="image"
+	content="//www.17lm.com/assets/image/44.png" />
+<meta name="description" content="${companyName!}，地址:${address!}" />
+<link
+	href="${base}/assets/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" />
+<style type="text/css">
+body, div, p ul, li, dl, dt, hr {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.title {
+	margin: 0px 15px;
+}
+
+.title-1 {
+	margin: 0px 15px;
+}
+
+.div {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #F0F0F0;
+}
+
+.div1 {
+	background-color: #FFFFFF;
+}
+
+.saleName {
+	float: left;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.position {
+	margin-top: 8px;
+	/* margin-bottom:5px;  */
+	display: inline-block;
+	float: right;
+}
+
+.saleImg {
+	/*设置相对定位*/
+	position: relative;
+	margin-top: 0px;
+}
+
+.order {
+	padding-right: 10px;
+}
+
+.address {
+	
+}
+
+.div1-font {
+	margin-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+}
+
+.iphone {
+	position: absolute;
+	right: 5px;
+	bottom: 32px;
+}
+
+.div1-iphone {
+	margin-top: 35px;
+}
+
+.black {
+	/**透明度*/
+	/* opacity: 0.5; */
+	height: 30px;
+	width: 100%;
+	background: #333;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+.black-transport {
+	position: absolute;
+	color: #FFFFFF;
+	font-size: 15px;
+	height: 30px;
+	padding: 5px 20px 5px 7px;
+	background-color: #4492d8;
+	border-radius: 0px 30px 0px 0px;
+}
+
+.black-credit {
+	color: #FFFFFF;
+	font-size: 13px;
+	padding-left: 11.5%;
+}
+
+.black-follow {
+	color: #436EEE;
+	font-size: 13px;
+	float: right;
+	padding: 5px 10px;
+	line-height: 22px;
+}
+
+.div-coal {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #fff;
+}
+
+.div-companies {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #fff;
+}
+
+.contact {
+	background-color: #FFFFFF;
+}
+
+.introduce {
+	font-size: 14px;
+	line-height: 20px;
+	padding: 15px;
+}
+
+.download {
+	font-size: 14px;
+	font-family: px;
+	width: 100%;
+	text-align: center;
+	height: 20px;
+	letter-spacing: 1.6pt;
+	padding: 30px 0px 0px;
+	color: #336699;
+}
+
+.login-btn {
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	width: 70%;
+	height: 30px;
+	text-align: center;
+	font-size: 14px"
+}
+
+ul {
+	height: 75px;
+	padding: 10px 20px 0px;
+	border-top: 1px solid #eee;
+}
+.seizeseat {
+	height: 10px;
+	background: #F0F0F0;
+	margin: 0px;
+	width: 100%;
+	border-top: 1px solid #e9e4e4;
+	border-bottom: 1px solid #e9e4e4;
+}
+</style>
+
+<script type="text/javascript">
+	function clearDefault(el) {
+		if (el.defaultValue == el.value)
+			el.value = ""
+	}
+
+	function coalEv() {
+		document.getElementById('div-coal').style.display = "block";
+		document.getElementById('div-companies').style.display = "none";
+	}
+
+	function ferriesEv() {
+		document.getElementById('div-coal').style.display = "none";
+		document.getElementById('div-companies').style.display = "block";
+	}
+
+	function coalEv() {
+		// 设置内容显示隐藏
+		document.getElementById('div-coal').style.display = "block";
+		document.getElementById('div-companies').style.display = "none";
+
+		// 设置选中下边框
+		document.getElementById('coal').style.borderBottom = "2px solid #0081e1";
+		document.getElementById('ferries').style.borderBottom = "none";
+	}
+
+	function ferriesEv() {
+		document.getElementById('div-coal').style.display = "none";
+		document.getElementById('div-companies').style.display = "block";
+		document.getElementById('coal').style.borderBottom = "none";
+		document.getElementById('ferries').style.borderBottom = "2px solid #0081e1";
+	}
+</script>
+</head>
+<body>
+	<div class="title-1">
+		<span>
+			<p class="saleName" style="font-size:17px;color: #666;">
+				${companyName!}
+				<#if operatingStatus?? && operatingStatus==1> <img alt=""
+					src="${base}/assets/image/status.png"
+					style="width: 35px;margin-top:-3px  "></#if>
+			</p>
+		</span> 
+		<span class=position> 
+			<#if mineMouthLongitude?? && share==0>
+			<img height="20px" src="${base}/assets/image/position.png" onclick="companiesPosition();" style="z-index: 100;top:10px">
+			</#if>
+		</span>
+	</div>
+	<div class="div">
+		<div class="div1">
+			<div class="title saleImg">
+				<#if coalSalePicCode??><img
+					src="${coalSalePicCode!}" width="100%;" height="170px;"><#else>
+				<div style="height:30px"></div>
+				</#if>
+				<div class="black">
+					<#if typeId??>
+					<span class="black-transport" style=""> <#if typeId==1>
+						信息部 <#elseif typeId==2> 运输公司 <#elseif typeId==3>
+						综合信息部 <#elseif typeId==4> 物流公司 <#elseif typeId==5>
+						煤炭经纪人 </#if> &nbsp;&nbsp;
+					</span> 
+					</#if>
+					<#if creditRating??>
+					<span class="black-follow">
+						<div style="float: left; color: white;font-size: 14px;">信用等级:</div>
+						<#list 1..(creditRating) as i> 
+						<img alt=""	src="${base}/assets/image/starsy1.jpg" style="width: 12px;    margin-top: -3px; "> 
+						</#list> 
+						<#if creditRating!=5> 
+						<#list 1..(5-creditRating) as i> 
+						<img alt=""	src="${base}/assets/image/starky1.jpg" style="width: 12px;    margin-top: -3px; "> 
+						</#list> 
+						</#if>
+					</span>
+					</#if>
+				</div>
+			</div>
+			<div class="title" style="color: #c2c2c2;">
+				<div class="div1-font">
+					<span class="order" style="font-size:14px">累计订单： <font
+						color="#0081e1">${orderNum!}单</font></span> <span class="transport"
+						style="font-size:14px">累计运单： <font color="#0081e1">${transport!}车</font></span>
+					<p class="address" style="font-size:14px">详细地址：${address!}</p>
+					<a
+						href="tel:<#if phonestate==0>4000912518<#else>${contactPhone!}</#if>"
+						class="iphone"><img src="${base}/assets/image/phone1.png"
+						style="float:right; width:32px;"></a>
+				</div>
+			</div>
+		</div>
+		<div class="divtable">
+			<div style="line-height:40px;background: #fff;margin-top: 10px;">
+				<tab style="width:100%;"> <uib-tab class="coal" id="coal"
+					onclick="coalEv()"
+					style="width:49%;display:inline-block;color: #666;border-bottom: 2px solid #0081e1 ;text-align: center; font-size:16px;">煤炭信息</uib-tab>
+				<uib-tab class="ferries" id="ferries" onclick="ferriesEv()"
+					style="width:49%; color: #666;display:inline-block;text-align: center; font-size:16px;">货运信息</uib-tab>
+				</tab>
+			</div>
+			<#if coalList?exists>
+			<div class="div-coal" id="div-coal" style="padding:0px 0px 0x ">
+				<#list coalList as coal>
+				<ul>
+					<li style="float:left;width:30%;border:0px solid #000;"><img
+						src="${base}/assets/image/coalType1.png" width="100%"
+						height="100%"></li>
+					<li
+						style="border:0px solid #000;float:left;width:70%;line-height:90% ">
+						<div style="margin-top: 5px;">
+							<span style="padding-left: 15px; color: #000000 ;">${coal.coalName!}</span>
+							<span
+								style=" color:#ff5b46 ;float: right;font-weight: bold;font-size: 16px;"><span
+								style="font-size: 11px;">￥</span>${coal.oneQuote!}</span>
+						</div>
+						<div style=" margin-top: 35px;">
+							<span style="color:#999; font-size:12px;padding-left: 15px;"><img
+								src="${base}/assets/image/heat.png" alt="" width="6%"
+								height="6%" style="margin-top: -4px;" />
+								${coal.calorificValue!}kCal/kg</span> <span
+								style="padding-left; color:#999; font-size:12px"><img
+								src="${base}/assets/image/mine.png" alt="" width="6%"
+								height="6%" style="margin-top: -4px;" /> ${coal.mineMouthName!}</span>
+						</div>
+					</li>
+				</ul>
+				<hr width="100%">
+				<div
+					style="padding: 1px 10px 5px 20px;    margin-top: 5px;    border-bottom: 1px solid #eee;">
+					<span style=" color:#48B7FF ;font-size:14px;">免费信息</span> <span
+						style=" color:#999; float: right; font-size:13px;padding-right: 2%;">${coal.reportTime!}</span>
+				</div>
+				<div style="background-color:#F0F0F0; padding:6px 0px 0px 0px "></div>
+				</#list>
+			</div>
+			</#if>
+			<#if transportsList?exists>
+			<div class="div-companies" id="div-companies"
+				style="padding:0px 0px 0x;display:none; ">
+				<#list transportsList as transports>
+				<ul>
+					<li
+						style="float:left;width:80%;border:0px solid #000; line-height:90%;">
+						<p>
+							<span style="padding-left; color: #000000; line-height:1.5;"><b>${transports.fromAddress!}→${transports.toAddress!}</b></span>
+						</p>
+						<p>
+							<span style="color:#808080; font-size:14px">运费：</span> <span
+								style="color:#FF7F00 ;font-size:14px">${transports.cost!}</span>
+							<span style="padding-left; color:#808080; font-size:14px">&nbsp;&nbsp;剩余</span>
+							<span style="color:#FF7F00; font-size:14px; ">${transports.totalNum!-transports.completeNum!}</span>
+							<span style="color:#808080; font-size:14px">车/煤炭</span>
+						</p>
+					</li>
+					<li style="float:right;border:0px solid #000;margin-top:12px; ">
+						<span style="padding-left:;   "> <a
+							href="tel:<#if phonestate == 0>4000912518<#else>${transports.contactPhone!}</#if>"
+							class=""><img src="${base}/assets/image/phone1.png"
+								style="width:30px; height:30px"></a>
+					</span>
+					</li>
+				</ul>
+				<hr width="100%">
+				<div style="padding: 1px 10px 5px 20px;    margin-top: 5px;">
+					<span style=" color:#48B7FF;font-size:14px;">免费信息</span> <span
+						style=" color:#808080; float: right; font-size:13px;padding-right: 2%;">${transports.reportTime}</span>
+				</div>
+				<div style="background-color:#F0F0F0; padding:6px 0px 0px 0px "></div>
+				</#list>
+			</div>
+			</#if>
+			<div class="seizeseat" style="    border-top: 0px;"></div>
+			<#if share==0>
+			<div class="contact">
+				<div class="introduce">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					拉煤宝是一款以煤炭交易为中心的业务拓展和资源整合服务
+					平台，提供多种煤炭交易方式，提供货源及煤炭供应信息、物流价格、货运路线、司机承运信息选择，打造系统化煤炭全产链。</div>
+				<div
+					style="font-size:18px;font-family:px; width: 98%;text-align:center; height: 40px;letter-spacing :1.6pt;padding:6px">下载APP至手机端</div>
+				<div style="width: 100%;">
+					<table style="width: 100%; height: 173px;" align="center">
+						<tr>
+							<td rowspan="2" style="width: 50%;text-align: right;"><a
+								href="#"><img alt="" src="${base}/assets/image/t2.png"
+									style="height: 53%; "></a></td>
+							<td style="width: 199px; height: 50%;text-align: left;"
+								valign="bottom"><a
+								href="https://itunes.apple.com/us/app/la-mei-bao/id1124343272?l=zh&ls=1&mt=8"><img
+									alt="" src="${base}/assets/image/t4.png" style="height: 50%; "></a></td>
+						</tr>
+						<tr>
+							<td style="width: 199px; height: 50%; text-align: left;"
+								valign="top"><a
+								href="https://imtt.dd.qq.com/16891/71F4CDFBC80FBA3CC33B06C76B6C7074.apk?fsname=com.sxhalo.PullCoal_5.0.1_48.apk&csr=1bbd"><img
+									alt="" src="${base}/assets/image/t5.png" style="height: 50%;"></a></td>
+						</tr>
+					</table>
+				</div>
+				<div style="height: 20px; "></div>
+				<form action="" id="addform">
+					<div style=" width: 100%;color: #FF0000 ;text-align: center;">
+						* <i class="fa"></i><input class="form-control username"
+							name="userName" id="username" type="text" autocomplete="off"
+							placeholder="请输入联系方式"
+							style="width: 60%; height: 30px; border-radius: 5px;    display: inline;" />
+					</div>
+					<div style="height: 10px; "></div>
+
+					<div style=" width: 100%;color: #FF0000 ; text-align: center;">
+						* <i class="fa"></i><input class="form-control smsverification"
+							name="smsverification" placeholder="请输入验证码" id="sms" type="text"
+							autocomplete="off"
+							onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="4"
+							style="width: 34%; height: 30px; border-radius: 5px;display: inline;" />
+						<a href="javascript:void(0);" id="user_getcode"
+							class="btn  default " target="_self"
+							style=" border:0px; color: #333333; background-color: #e5e5e5; ">获取验证码
+						</a>
+					</div>
+					<div
+						style="line-height:30px; text-indent:5px;color:#F30;margin-left: 10%;    margin: auto;    width: 62%;"
+						id="loginTips"></div>
+					<div style="height: 10px; "></div>
+					<div style="text-align:center; width: 100%;">
+						<input class="btn blue button-submit" type="button"
+							onclick=" adduser()"
+							style='width: 62%; letter-spacing: 5px;background-color: rgb(124, 181, 236); color: white;'
+							value="联系我" />
+					</div>
+					<div style="height: 20px; "></div>
+				</form>
+			</div>
+			</#if>
+		</div>
+	</div>
+</body>
+<script src="${base}/assets/web/js/jquery.min.js" type="text/javascript"></script>
+<!-- 微信 JS-SDK -->
+<script src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script
+	src="//webapi.amap.com/maps?v=1.4.11&key=121fead7c8124c5197aceceb50ba0441"></script>
+
+<script type="text/javascript">
+  function companiesPosition(){
+    var marker=new AMap.Marker({
+    position: [${mineMouthLongitude!},${mineMouthLatitude!}]});
+    marker.markOnAMAP({position: marker.getPosition(),name:'${companyName!}'});
+  }
+  
+  wx.config({
+    appId: '${appId!}',//必填，公众号的唯一标识
+    timestamp:'${timeStamp!}',//必填，生成签名的时间戳
+    nonceStr:'${nonceStr!}',//必填，生成签名的随机串
+    signature:'${signature!}',//必填，签名
+    jsApiList:['onMenuShareAppMessage','onMenuShareTimeline','onMenuShareQQ','onMenuShareQZone']
+  });
+  
+  wx.error(function(res){
+    //config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+    console.log('weixin验证失败');
+    console.log(res);
+  });
+  
+  wx.ready(function(){
+    //分享给朋友
+    wx.onMenuShareAppMessage({
+      title: '${companyName!}',
+      desc: '${companyName!}地址:${address!}',
+      link: '${url!}',
+      imgUrl: '//www.17lm.com/assets/image/44.png',
+      success: function () {
+        //用户确认分享后执行的回调函数
+      },
+      cancel: function () {
+        //用户取消分享后执行的回调函数
+      }
+    });
+
+    //分享到朋友圈
+    wx.onMenuShareTimeline({
+      title: '${companyName!}',
+      link:'${url!}',
+      imgUrl:'//www.17lm.com/assets/image/44.png',
+      success:function(){
+        //用户确认分享后执行的回调函数
+      },
+      cancel:function(){
+        //用户取消分享后执行的回调函数
+      }
+    });
+    
+    //分享到QQ
+    wx.onMenuShareQQ({
+      title: '${companyName!}',
+      desc:'${companyName!}地址:${address!}',
+      link:'${url!}',
+      imgUrl:'//www.17lm.com/assets/image/44.png',
+      success:function(){
+        //用户确认分享后执行的回调函数
+      },
+      cancel:function(){
+        //用户取消分享后执行的回调函数
+      }
+    });
+    
+    //分享到QQ空间
+    wx.onMenuShareQZone({
+      title: '${companyName!}',
+      desc:'${companyName!}地址:${address!}',
+      link:'${url!}',
+      imgUrl:'//www.17lm.com/assets/image/44.png',
+      success:function(){
+        //用户确认分享后执行的回调函数
+      },
+      cancel:function(){
+      //用户取消分享后执行的回调函数
+      }
+    });
+});
+  
+  
+  
+var code=null;
+  
+//发送验证码
+$("#user_getcode").click(function(){
+	var username=document.getElementById("username").value;
+	if(username==""||!checkTel(username)){
+    	$("#loginTips").html("请输入正确的电话号码!").fadeIn();
+  	}else{
+	    $.ajax({
+	      url: "web/sendSMS.do",
+	      data: { phonenum: username },
+	      success: function (smscode) {
+	        leftSeconds = 60;
+	        msgSendToTip();
+	        code = smscode;
+	        $("#loginTips").fadeOut();
+	      }
+	    });
+  	}
+});
+//倒计时60s
+function msgSendToTip() {
+    $("#user_getcode").unbind('click');
+    timeIntervalId = setInterval(function () {
+        if (leftSeconds <= 1) {
+            // $('#user_getcode').removeAttr('disable');
+            $('#user_getcode').removeClass('countdown');
+            $('#user_getcode').css({
+                "cursor": "pointer"
+            });
+            $("#user_getcode").html("获取验证码");
+            clearInterval(timeIntervalId);
+            $('#user_getcode').bind('click');
+            leftSeconds = 10;
+            head = 2;
+            return;
+        }
+        leftSeconds--;
+        $('#user_getcode').addClass('countdown');
+        $('#user_getcode').css({
+            "cursor": "auto",
+        });
+        head = 1;
+        $("#user_getcode").html(leftSeconds + "秒后重发");
+    }, 1000);
+} 
+//手机号码校验
+function checkTel(tel) {
+  var mobile = /^1[3|5|8]\d{9}$/, phone = /^0\d{2,3}-?\d{7,8}$/;
+  return mobile.test(tel) || phone.test(tel);
+}
+//提交注册
+function adduser() {
+	var username = $("#username").val();
+	var sms = $("#sms").val();
+	if(username==""||!checkTel(username)){
+    	$("#loginTips").html("请输入正确的电话号码!").fadeIn();
+  	}else{
+		$.ajax({
+		 	url:"web/checkSMS.do",
+		 	data:{phonenum:username,code:sms},
+		 	success:function(data){
+		 		if(data){
+		 			register();
+				}else{
+					$("#loginTips").html("亲，您验证码输入有误,请重新输入!").fadeIn();	
+				}
+		 	}
+		});
+	}
+}
+function register() {
+	$.ajax({
+		url : "web/register.do",
+		type : "POST",
+		data : $("#addform").serialize(),
+		success : function(result) {
+			if (result) {
+				$("#loginTips").html("注册成功啦！拉煤宝工作人员会尽快联系您！").fadeIn();
+			}
+		}
+	});
+}
+
+</script>
+</html>

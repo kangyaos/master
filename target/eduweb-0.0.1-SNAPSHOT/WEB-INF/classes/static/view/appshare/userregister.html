@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<title>${companyName!}</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="image" itemprop="image"
+	content="http://www.17lm.com/assets/image/44.png" />
+<meta name="description" content="${companyName!}，地址:${address!}" />
+<link
+	href="${base}/assets/global/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" />
+<style type="text/css">
+body{      margin:0;      padding:0;  width:100%;  
+
+height:100%;  
+
+}  
+
+.title {
+	font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+
+
+
+.contact {
+	background-color: #FFFFFF;
+	min-height: 350px;
+	height:auto;
+	position:absolute;
+    width: 100%;
+top:20%;
+
+}
+
+.introduce {
+	font-size: 16px;
+	line-height: 20px;
+	padding: 20px;
+}
+
+.download {
+	font-size: 14px;
+	font-family: px;
+	width: 100%;
+	text-align: center;
+	height: 20px;
+	letter-spacing: 1.6pt;
+	padding: 30px 0px 0px;
+	color: #336699;
+}
+
+.login-btn {
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	width: 70%;
+	height: 30px;
+	text-align: center;
+	font-size: 14px"
+}
+
+</style>
+</head>
+<body>
+
+	         
+			<div class="contact">
+			   <div class="title">拉煤宝</div>
+				<div class="introduce">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					拉煤宝是一款以煤炭交易为中心的业务拓展和资源整合服务
+					平台，提供多种煤炭交易方式，提供货源及煤炭供应信息、物流价格、货运路线、司机承运信息选择，打造系统化煤炭全产链。
+				</div>
+				<form action="" id="addform">
+					<div style=" width: 100%;color: #FF0000 ;text-align: center;">
+						* <i class="fa"></i><input class="form-control username"
+							name="userName" id="username" type="text" autocomplete="off"
+							placeholder="请输入联系方式"
+							style="width: 60%; border-radius: 5px;    display: inline;" />
+					</div>
+				
+
+					<div style=" width: 100%;color: #FF0000 ; text-align: center;margin:15px 0 0 0">
+						* <i class="fa"></i><input class="form-control smsverification"
+							name="smsverification" placeholder="请输入验证码" id="sms" type="text"
+							autocomplete="off"
+							onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="4"
+							style="width: 34%; border-radius: 5px;display: inline;" />
+						<a href="javascript:void(0);" id="user_getcode"
+							class="btn  default " target="_self"
+							style=" border:0px; color: #333333;line-height: 23px;background-color: #e5e5e5; WIDTH: 25.5%;">获取验证码
+						</a>
+					</div>
+					<div
+						style="line-height:30px; text-indent:5px;color:#F30;margin-left: 10%;    margin: auto;    width: 61%;"
+						id="loginTips"></div>
+					
+					<div style="text-align:center; width: 100%;margin-top:15px">
+						<input class="btn blue button-submit" type="button"
+							onclick=" adduser()"
+							style='width: 61%; letter-spacing: 5px;background-color: rgb(124, 181, 236); color: white;'
+							value="注册" />
+					</div>
+					<div style="height: 20px; "></div>
+				</form>
+			</div>
+
+</body>
+<script src="${base}/assets/web/js/jquery.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  
+var code=null;
+  
+//发送验证码
+$("#user_getcode").click(function(){
+	var username=document.getElementById("username").value;
+	if(username==""||!checkTel(username)){
+    	$("#loginTips").html("请输入正确的电话号码!").fadeIn();
+  	}else{
+	    $.ajax({
+	      url: "${base}/web/sendSMS.do",
+	      data: { phonenum: username },
+	      success: function (smscode) {
+	        leftSeconds = 60;
+	        msgSendToTip();
+	        code = smscode;
+	        $("#loginTips").fadeOut();
+	      }
+	    });
+  	}
+});
+//倒计时60s
+function msgSendToTip() {
+    $("#user_getcode").unbind('click');
+    timeIntervalId = setInterval(function () {
+        if (leftSeconds <= 1) {
+            // $('#user_getcode').removeAttr('disable');
+            $('#user_getcode').removeClass('countdown');
+            $('#user_getcode').css({
+                "cursor": "pointer"
+            });
+            $("#user_getcode").html("获取验证码");
+            clearInterval(timeIntervalId);
+            $('#user_getcode').bind('click');
+            leftSeconds = 10;
+            head = 2;
+            return;
+        }
+        leftSeconds--;
+        $('#user_getcode').addClass('countdown');
+        $('#user_getcode').css({
+            "cursor": "auto",
+        });
+        head = 1;
+        $("#user_getcode").html(leftSeconds + "秒后重发");
+    }, 1000);
+} 
+//手机号码校验
+function checkTel(tel) {
+  var mobile = /^1[3|5|8]\d{9}$/, phone = /^0\d{2,3}-?\d{7,8}$/;
+  return mobile.test(tel) || phone.test(tel);
+}
+//提交注册
+function adduser() {
+  var sms = $("#sms").val();
+ if(username==""||!checkTel(username)){
+    $("#loginTips").html("请输入正确的电话号码!").fadeIn();
+  }else if (code == sms) {
+    $.ajax({
+      url: "${base}/web/register.do",
+      type: "POST",
+      data: $("#addform").serialize(),
+      success: function (result) {
+        console.log(result);
+        if (result) {
+          alert("注册成功啦！拉煤宝工作人员会尽快联系您！");
+        } else {
+          alert("该手机号已经注册，请直接下载APP登录！");
+        }
+        window.location.href="${base}/web/appdownload.html";
+      }
+    });
+  } else {
+    $("#loginTips").html("验证码输入有误,请重新输入!").fadeIn();
+  }
+ 
+}
+
+</script>
+</html>

@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxhalo.lmb.mapper.CoalSalesMapper" >
+  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.CoalSales" >
+    <id column="coal_sales_id" property="coalSalesId" jdbcType="INTEGER" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="enterprise_property" property="enterpriseProperty" jdbcType="VARCHAR" />
+    <result column="region_code" property="regionCode" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DECIMAL" />
+    <result column="latitude" property="latitude" jdbcType="DECIMAL" />
+    <result column="profile" property="profile" jdbcType="VARCHAR" />
+    <result column="coal_sale_pic" property="coalSalePic" jdbcType="INTEGER" />
+    <result column="coal_sale_pic_code" property="coalSalePicCode" jdbcType="VARCHAR" />
+    <result column="coal_sale_pic_code1" property="coalSalePicCode1" jdbcType="VARCHAR" />
+    <result column="coal_sale_pic_code2" property="coalSalePicCode2" jdbcType="VARCHAR" />
+    <result column="coal_sale_pic_code3" property="coalSalePicCode3" jdbcType="VARCHAR" />
+    <result column="corporation" property="corporation" jdbcType="VARCHAR" />
+    <result column="business_license" property="businessLicense" jdbcType="VARCHAR" />
+    <result column="tax_registration" property="taxRegistration" jdbcType="VARCHAR" />
+    <result column="coal_business_license" property="coalBusinessLicense" jdbcType="VARCHAR" />
+    <result column="organization_code" property="organizationCode" jdbcType="VARCHAR" />
+    <result column="contact_person" property="contactPerson" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="fax" property="fax" jdbcType="VARCHAR" />
+    <result column="zip_code" property="zipCode" jdbcType="VARCHAR" />
+    <result column="credit_rating" property="creditRating" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="provide_transport" property="provideTransport" jdbcType="INTEGER" />
+    <result column="operating_status" property="operatingStatus" jdbcType="INTEGER" />
+    <result column="report_end_date" property="reportEndDate" jdbcType="TIMESTAMP" />
+    <result column="operating_summary" property="operatingSummary" jdbcType="VARCHAR" />
+    <result column="operating_status_reporter" property="operatingStatusReporter" jdbcType="INTEGER" />
+    <result column="report_time" property="reportTime" jdbcType="TIMESTAMP" />
+    <result column="consulting_fee_auth" property="consultingFeeAuth" jdbcType="INTEGER" />
+    <result column="max_consulting_fee" property="maxConsultingFee" jdbcType="INTEGER" />
+    <result column="min_consulting_fee" property="minConsultingFee" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+    <result column="sales_state" property="salesState" jdbcType="INTEGER" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_acount" property="bankAcount" jdbcType="VARCHAR" />
+    <result column="bank_account_name" property="bankAccountName" jdbcType="VARCHAR" />
+    <result column="auth_state" property="authState" jdbcType="INTEGER" />
+    <result column="vip_coal_count" property="vipCoalCount" jdbcType="INTEGER" />
+    <result column="vip_transport_count" property="vipTransportCount" jdbcType="INTEGER" />
+    <result column="vip_show_phone" property="vipShowPhone" jdbcType="INTEGER" />
+    <result column="data_source" property="dataSource" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    coal_sales_id, type_id, company_name, enterprise_property, region_code, address, 
+    longitude, latitude, profile, coal_sale_pic, coal_sale_pic_code, coal_sale_pic_code1, 
+    coal_sale_pic_code2, coal_sale_pic_code3, corporation, business_license, tax_registration, 
+    coal_business_license, organization_code, contact_person, contact_phone, fax, zip_code, 
+    credit_rating, remark, provide_transport, operating_status, report_end_date, operating_summary, 
+    operating_status_reporter, report_time, consulting_fee_auth, max_consulting_fee, 
+    min_consulting_fee, create_time, update_time, delete_flag, sales_state, bank_name, 
+    bank_acount, bank_account_name, auth_state, vip_coal_count, vip_transport_count, 
+    vip_show_phone, data_source
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from coal_sales
+    where coal_sales_id = #{coalSalesId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from coal_sales
+    where coal_sales_id = #{coalSalesId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sxhalo.lmb.domain.CoalSales" >
+    insert into coal_sales (coal_sales_id, type_id, company_name, 
+      enterprise_property, region_code, address, 
+      longitude, latitude, profile, 
+      coal_sale_pic, coal_sale_pic_code, coal_sale_pic_code1, 
+      coal_sale_pic_code2, coal_sale_pic_code3, corporation, 
+      business_license, tax_registration, coal_business_license, 
+      organization_code, contact_person, contact_phone, 
+      fax, zip_code, credit_rating, 
+      remark, provide_transport, operating_status, 
+      report_end_date, operating_summary, operating_status_reporter, 
+      report_time, consulting_fee_auth, max_consulting_fee, 
+      min_consulting_fee, create_time, update_time, 
+      delete_flag, sales_state, bank_name, 
+      bank_acount, bank_account_name, auth_state, 
+      vip_coal_count, vip_transport_count, vip_show_phone, 
+      data_source)
+    values (#{coalSalesId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
+      #{enterpriseProperty,jdbcType=VARCHAR}, #{regionCode,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL}, #{profile,jdbcType=VARCHAR}, 
+      #{coalSalePic,jdbcType=INTEGER}, #{coalSalePicCode,jdbcType=VARCHAR}, #{coalSalePicCode1,jdbcType=VARCHAR}, 
+      #{coalSalePicCode2,jdbcType=VARCHAR}, #{coalSalePicCode3,jdbcType=VARCHAR}, #{corporation,jdbcType=VARCHAR}, 
+      #{businessLicense,jdbcType=VARCHAR}, #{taxRegistration,jdbcType=VARCHAR}, #{coalBusinessLicense,jdbcType=VARCHAR}, 
+      #{organizationCode,jdbcType=VARCHAR}, #{contactPerson,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{zipCode,jdbcType=VARCHAR}, #{creditRating,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{provideTransport,jdbcType=INTEGER}, #{operatingStatus,jdbcType=INTEGER}, 
+      #{reportEndDate,jdbcType=TIMESTAMP}, #{operatingSummary,jdbcType=VARCHAR}, #{operatingStatusReporter,jdbcType=INTEGER}, 
+      #{reportTime,jdbcType=TIMESTAMP}, #{consultingFeeAuth,jdbcType=INTEGER}, #{maxConsultingFee,jdbcType=INTEGER}, 
+      #{minConsultingFee,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{deleteFlag,jdbcType=INTEGER}, #{salesState,jdbcType=INTEGER}, #{bankName,jdbcType=VARCHAR}, 
+      #{bankAcount,jdbcType=VARCHAR}, #{bankAccountName,jdbcType=VARCHAR}, #{authState,jdbcType=INTEGER}, 
+      #{vipCoalCount,jdbcType=INTEGER}, #{vipTransportCount,jdbcType=INTEGER}, #{vipShowPhone,jdbcType=INTEGER}, 
+      #{dataSource,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.CoalSales" >
+    insert into coal_sales
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coalSalesId != null" >
+        coal_sales_id,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="enterpriseProperty != null" >
+        enterprise_property,
+      </if>
+      <if test="regionCode != null" >
+        region_code,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="profile != null" >
+        profile,
+      </if>
+      <if test="coalSalePic != null" >
+        coal_sale_pic,
+      </if>
+      <if test="coalSalePicCode != null" >
+        coal_sale_pic_code,
+      </if>
+      <if test="coalSalePicCode1 != null" >
+        coal_sale_pic_code1,
+      </if>
+      <if test="coalSalePicCode2 != null" >
+        coal_sale_pic_code2,
+      </if>
+      <if test="coalSalePicCode3 != null" >
+        coal_sale_pic_code3,
+      </if>
+      <if test="corporation != null" >
+        corporation,
+      </if>
+      <if test="businessLicense != null" >
+        business_license,
+      </if>
+      <if test="taxRegistration != null" >
+        tax_registration,
+      </if>
+      <if test="coalBusinessLicense != null" >
+        coal_business_license,
+      </if>
+      <if test="organizationCode != null" >
+        organization_code,
+      </if>
+      <if test="contactPerson != null" >
+        contact_person,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="fax != null" >
+        fax,
+      </if>
+      <if test="zipCode != null" >
+        zip_code,
+      </if>
+      <if test="creditRating != null" >
+        credit_rating,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="provideTransport != null" >
+        provide_transport,
+      </if>
+      <if test="operatingStatus != null" >
+        operating_status,
+      </if>
+      <if test="reportEndDate != null" >
+        report_end_date,
+      </if>
+      <if test="operatingSummary != null" >
+        operating_summary,
+      </if>
+      <if test="operatingStatusReporter != null" >
+        operating_status_reporter,
+      </if>
+      <if test="reportTime != null" >
+        report_time,
+      </if>
+      <if test="consultingFeeAuth != null" >
+        consulting_fee_auth,
+      </if>
+      <if test="maxConsultingFee != null" >
+        max_consulting_fee,
+      </if>
+      <if test="minConsultingFee != null" >
+        min_consulting_fee,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="salesState != null" >
+        sales_state,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankAcount != null" >
+        bank_acount,
+      </if>
+      <if test="bankAccountName != null" >
+        bank_account_name,
+      </if>
+      <if test="authState != null" >
+        auth_state,
+      </if>
+      <if test="vipCoalCount != null" >
+        vip_coal_count,
+      </if>
+      <if test="vipTransportCount != null" >
+        vip_transport_count,
+      </if>
+      <if test="vipShowPhone != null" >
+        vip_show_phone,
+      </if>
+      <if test="dataSource != null" >
+        data_source,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coalSalesId != null" >
+        #{coalSalesId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseProperty != null" >
+        #{enterpriseProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null" >
+        #{regionCode,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="profile != null" >
+        #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePic != null" >
+        #{coalSalePic,jdbcType=INTEGER},
+      </if>
+      <if test="coalSalePicCode != null" >
+        #{coalSalePicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePicCode1 != null" >
+        #{coalSalePicCode1,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePicCode2 != null" >
+        #{coalSalePicCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePicCode3 != null" >
+        #{coalSalePicCode3,jdbcType=VARCHAR},
+      </if>
+      <if test="corporation != null" >
+        #{corporation,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistration != null" >
+        #{taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="coalBusinessLicense != null" >
+        #{coalBusinessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null" >
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="creditRating != null" >
+        #{creditRating,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="provideTransport != null" >
+        #{provideTransport,jdbcType=INTEGER},
+      </if>
+      <if test="operatingStatus != null" >
+        #{operatingStatus,jdbcType=INTEGER},
+      </if>
+      <if test="reportEndDate != null" >
+        #{reportEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatingSummary != null" >
+        #{operatingSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingStatusReporter != null" >
+        #{operatingStatusReporter,jdbcType=INTEGER},
+      </if>
+      <if test="reportTime != null" >
+        #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consultingFeeAuth != null" >
+        #{consultingFeeAuth,jdbcType=INTEGER},
+      </if>
+      <if test="maxConsultingFee != null" >
+        #{maxConsultingFee,jdbcType=INTEGER},
+      </if>
+      <if test="minConsultingFee != null" >
+        #{minConsultingFee,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="salesState != null" >
+        #{salesState,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcount != null" >
+        #{bankAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null" >
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="authState != null" >
+        #{authState,jdbcType=INTEGER},
+      </if>
+      <if test="vipCoalCount != null" >
+        #{vipCoalCount,jdbcType=INTEGER},
+      </if>
+      <if test="vipTransportCount != null" >
+        #{vipTransportCount,jdbcType=INTEGER},
+      </if>
+      <if test="vipShowPhone != null" >
+        #{vipShowPhone,jdbcType=INTEGER},
+      </if>
+      <if test="dataSource != null" >
+        #{dataSource,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.CoalSales" >
+    update coal_sales
+    <set >
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseProperty != null" >
+        enterprise_property = #{enterpriseProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null" >
+        region_code = #{regionCode,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="profile != null" >
+        profile = #{profile,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePic != null" >
+        coal_sale_pic = #{coalSalePic,jdbcType=INTEGER},
+      </if>
+      <if test="coalSalePicCode != null" >
+        coal_sale_pic_code = #{coalSalePicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePicCode1 != null" >
+        coal_sale_pic_code1 = #{coalSalePicCode1,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePicCode2 != null" >
+        coal_sale_pic_code2 = #{coalSalePicCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalePicCode3 != null" >
+        coal_sale_pic_code3 = #{coalSalePicCode3,jdbcType=VARCHAR},
+      </if>
+      <if test="corporation != null" >
+        corporation = #{corporation,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null" >
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRegistration != null" >
+        tax_registration = #{taxRegistration,jdbcType=VARCHAR},
+      </if>
+      <if test="coalBusinessLicense != null" >
+        coal_business_license = #{coalBusinessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        organization_code = #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPerson != null" >
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        zip_code = #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="creditRating != null" >
+        credit_rating = #{creditRating,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="provideTransport != null" >
+        provide_transport = #{provideTransport,jdbcType=INTEGER},
+      </if>
+      <if test="operatingStatus != null" >
+        operating_status = #{operatingStatus,jdbcType=INTEGER},
+      </if>
+      <if test="reportEndDate != null" >
+        report_end_date = #{reportEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operatingSummary != null" >
+        operating_summary = #{operatingSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingStatusReporter != null" >
+        operating_status_reporter = #{operatingStatusReporter,jdbcType=INTEGER},
+      </if>
+      <if test="reportTime != null" >
+        report_time = #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consultingFeeAuth != null" >
+        consulting_fee_auth = #{consultingFeeAuth,jdbcType=INTEGER},
+      </if>
+      <if test="maxConsultingFee != null" >
+        max_consulting_fee = #{maxConsultingFee,jdbcType=INTEGER},
+      </if>
+      <if test="minConsultingFee != null" >
+        min_consulting_fee = #{minConsultingFee,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="salesState != null" >
+        sales_state = #{salesState,jdbcType=INTEGER},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcount != null" >
+        bank_acount = #{bankAcount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null" >
+        bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="authState != null" >
+        auth_state = #{authState,jdbcType=INTEGER},
+      </if>
+      <if test="vipCoalCount != null" >
+        vip_coal_count = #{vipCoalCount,jdbcType=INTEGER},
+      </if>
+      <if test="vipTransportCount != null" >
+        vip_transport_count = #{vipTransportCount,jdbcType=INTEGER},
+      </if>
+      <if test="vipShowPhone != null" >
+        vip_show_phone = #{vipShowPhone,jdbcType=INTEGER},
+      </if>
+      <if test="dataSource != null" >
+        data_source = #{dataSource,jdbcType=INTEGER},
+      </if>
+    </set>
+    where coal_sales_id = #{coalSalesId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.CoalSales" >
+    update coal_sales
+    set type_id = #{typeId,jdbcType=INTEGER},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      enterprise_property = #{enterpriseProperty,jdbcType=VARCHAR},
+      region_code = #{regionCode,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DECIMAL},
+      latitude = #{latitude,jdbcType=DECIMAL},
+      profile = #{profile,jdbcType=VARCHAR},
+      coal_sale_pic = #{coalSalePic,jdbcType=INTEGER},
+      coal_sale_pic_code = #{coalSalePicCode,jdbcType=VARCHAR},
+      coal_sale_pic_code1 = #{coalSalePicCode1,jdbcType=VARCHAR},
+      coal_sale_pic_code2 = #{coalSalePicCode2,jdbcType=VARCHAR},
+      coal_sale_pic_code3 = #{coalSalePicCode3,jdbcType=VARCHAR},
+      corporation = #{corporation,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      tax_registration = #{taxRegistration,jdbcType=VARCHAR},
+      coal_business_license = #{coalBusinessLicense,jdbcType=VARCHAR},
+      organization_code = #{organizationCode,jdbcType=VARCHAR},
+      contact_person = #{contactPerson,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      zip_code = #{zipCode,jdbcType=VARCHAR},
+      credit_rating = #{creditRating,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      provide_transport = #{provideTransport,jdbcType=INTEGER},
+      operating_status = #{operatingStatus,jdbcType=INTEGER},
+      report_end_date = #{reportEndDate,jdbcType=TIMESTAMP},
+      operating_summary = #{operatingSummary,jdbcType=VARCHAR},
+      operating_status_reporter = #{operatingStatusReporter,jdbcType=INTEGER},
+      report_time = #{reportTime,jdbcType=TIMESTAMP},
+      consulting_fee_auth = #{consultingFeeAuth,jdbcType=INTEGER},
+      max_consulting_fee = #{maxConsultingFee,jdbcType=INTEGER},
+      min_consulting_fee = #{minConsultingFee,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      sales_state = #{salesState,jdbcType=INTEGER},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_acount = #{bankAcount,jdbcType=VARCHAR},
+      bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+      auth_state = #{authState,jdbcType=INTEGER},
+      vip_coal_count = #{vipCoalCount,jdbcType=INTEGER},
+      vip_transport_count = #{vipTransportCount,jdbcType=INTEGER},
+      vip_show_phone = #{vipShowPhone,jdbcType=INTEGER},
+      data_source = #{dataSource,jdbcType=INTEGER}
+    where coal_sales_id = #{coalSalesId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from coal_sales
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from coal_sales sales
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from coal_sales sales
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>     
+  </select>
+</mapper>

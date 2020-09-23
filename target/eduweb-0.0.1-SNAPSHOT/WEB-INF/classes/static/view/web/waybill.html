@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>货运信息-拉煤宝</title>
+ <#include
+"/view/web/include/headerFile.htm" />
+<style type="text/css">
+.caret{
+    float: right;
+    vertical-align: middle;
+    margin-top: 8px;
+}
+.open>.dropdown-menu{ margin-top: -20px;width: 100%;}
+.btn-primary{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    background: white;
+    color: #333;
+    border-color: #ddd;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #333;
+    background-color: #ffffff;
+    border-color: #ddd;
+}
+.abtn{
+    background: #29486a;
+    width: 10%;
+    border: 1px solid #29486a;
+    min-height: 34px;
+    color: #fff;
+}
+.round {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-right: none;
+    display: inline-block;
+    height: 34px;
+    vertical-align: top;
+    width: 90%;
+  
+}
+.round .input_key {
+    -webkit-appearance: none;
+    background: #fff;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font: 14px/22px arial;
+    height: 100%;
+    margin: 0px;
+    outline: 0;
+    padding: 5px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+.s_btn {
+    -webkit-appearance: none;
+    background: #29486a;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    height: 34px;
+    outline: none;
+    padding: 0;
+    padding-top: 4px\9;
+    vertical-align: top;
+    width: 10%;
+}
+@media only screen and (max-width: 600px){
+.round {    
+    width: 83%;
+}
+.s_btn {   
+    width: 17%;
+}
+.tcdPageCode1 a {
+    font-size: 12px;
+    display: inline-block;
+    color: #29486a;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 2px;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+}
+</style>
+</head>
+<body>
+<div id="home" class="banner a-banner">
+<#include "/view/web/include/top.htm" />
+  <div class="bak">
+  <div class="container">
+    <#include "/view/web/include/head.htm" />
+  </div>
+  </div>
+</div>
+<header id="head" class="secondary">
+    <div class="container">       
+    </div>
+</header>
+<div class="specialty" style="background: #ffffff;padding: 0;">
+  <div class="container">       
+	   <h5 class="daohang" style="color: #424242;font-size:16px; padding: 20px 15px 10px 10px;">
+	   <a href="${base}/" style="color: #424242;font-size: 16px;">
+	   <img src="${base}/assets/web/images/img/ptop.png"> 首页</a>  &gt; 货运信息</h5>
+  </div>
+</div>
+<div class="clearfix" style="border: 1px solid #e8e8e8;"></div>          
+<div class="specialty" style="background: #f5f5f5;">
+  <div class="container">
+        <!-- container -->      
+		<div class="col-sm-8 maincontent">
+			<div id="box16" style="border: 0px;">	
+			 <div class="btn-group" style="width: 100%;margin-bottom: 10px;">
+						  <span id="suggest-align" class="round">
+                            <input type="text" id="sousuo" tabindex="1" class="input_key" value=""  placeholder="搜索"  maxlength="100" autocomplete="off">
+                          </span><input type="button"   value="搜索" class="s_btn"  onclick="place();">
+             </div>		
+			<div class="video_list" id="huoyun">
+				   <!-- js赋值绑定数据 -->				   
+				</div>
+			</div>							    	
+		</div>
+		<!-- 货运单记录 -->		
+		<div class="col-sm-4 sidebar sidebar-right" id="gh_zright">			
+			<div id="box12" class="list_lh2" style="background: white;">
+				<h2 class="title_2">货运单记录 </h2>
+				<div id="ee" style="overflow:hidden;height:600px;width:100%;">
+					<ul class="ul_list2" id="Waybill">
+					</ul>
+					<ul class="ul_list2" id="ee2">				  
+					</ul>
+				</div>			
+			</div>			
+		</div>
+         
+    <!-- /container -->
+  </div>
+ </div>  
+<#include "/view/web/include/footer.htm" />	
+<script src="${base}/assets/web/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="${base}/assets/web/js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(document).ready(function() {
+		 initval(0,"null"); 
+         waybillOrder();
+	});	
+
+    function initval(p,where){
+         $.ajax({
+			type : "post",
+			url : "waybill.do",
+			data : {
+				'where' : where,
+				'p': p
+			},		
+			success : function(data) {
+				$("#huoyun").html("");
+	      		var temp="";
+	      		if(data.list.length>0){
+	      		    for(var i = 0; i<data.list.length;i++){ 	      	        
+		      	         var phone = data.list[i].contactPhone;
+		      	         phone =phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+		      	  	     temp+="<div class='vd_li'>"; 
+		      	  	     temp+="<div class='vd_img'>";
+		      	  	     temp+="<ul>";
+		      	  	     temp+="<li>";
+		      	  	     temp+="<h3 class='gh_cl' style='margin-top: 30px;font-weight: bold;font-size: 18px;color: #252525;'>运输费用<span style='color: #e55f48;'>"+data.list[i].cost+"元/吨</span></h3>";
+		      	  	     temp+="<h3 style='margin-top: 20px;font-weight: bold;font-size: 18px;color: #252525;'></h3>";
+		      	  	     temp+="<h3><p class='zl8' style='border-left: 1px solid #999;'>装货费用</br>"+(data.list[i].loadingCharge==null?"--":(data.list[i].loadingCharge+'元'))+"</p>";
+		      	  	     temp+="<p class='zl8'>卸货费用</br>"+(data.list[i].unloadingCharge==null?"--":(data.list[i].unloadingCharge+'元'))+"</p></h3>";
+		      	  	     temp+="</li>";
+		      	  	     temp+="</ul>";
+		      	  	     temp+="</div>";
+		      	  	     temp+="<div class='vd_txt'>";
+		      	  	     temp+="<ul style='margin: 10px;'>";
+		      	  	     temp+="<li>";
+		      	  	     temp+="<div class='skillbar clearfix' data-percent='92%'>";
+		      	  	     temp+=" <div class='skillbar-title'>"+(data.list[i].fromRegion==null?'':formataddress(data.list[i].fromRegion))+"</div>";
+		      	  	     temp+="<div class='skillbar-bar3'><img alt='' src='./assets/web/images/img/jian.png'> </div>";
+		      	  	     temp+="<div class='skillbar-bar2'>"+(data.list[i].goodsName==null?'':data.list[i].goodsName)+"</div>";
+		      	  	     temp+="<div class='skill-bar-percent'>"+(data.list[i].toRegion==null?'':formataddress(data.list[i].toRegion))+"</div>";
+		      	  	     temp+="</div>";
+		      	  	     temp+="</li>";
+		      	  	     temp+="<li class='zl5'>";
+		      	  	     temp+="<h3>发布时间：<span>"+(data.list[i].publishTime==null?'':data.list[i].publishTime)+"</span>  ";
+		      	  	     temp+="<p class='zl6'>联系电话：<span style='color: #fbc000;'>"+phone+"</span></p></h3>";
+		      	  	     temp+="</li>";
+		      	  	     temp+="</ul>";
+		      	  	     temp+="</div>";
+		      	  	     temp+="</div>";
+		      	   }
+	      	       temp +="<div class='tcdPageCode1'>";
+			       temp +="<a href='javascript:page(0,\""+where+"\");' class='prevPage' id='start'>首页</a>";
+	               temp +="<a href='javascript:page("+(data.pageIndex-1)+",\""+where+"\");' class='prevPage' id='up'>上一页</a>";	               
+	               temp +="<a href='javascript:page("+(data.pageIndex+1)+",\""+where+"\");' class='prevPage' id='down'>下一页</a>";
+	               temp +="<a href='javascript:page("+(data.pageCount-1)+",\""+where+"\");' class='prevPage' id='over'>尾页</a>";
+	               temp +="<a class='prevPage'>当前第"+(data.pageIndex+1)+"页/总共"+data.pageCount+"页</a>";                
+                   temp +="</div>"; 
+	      		}else{
+	      		   temp +="<div class='pro_fenlei' id='tishi' style='padding: 30px;text-align: center;'>";
+			       temp +="<img alt='' src='./assets/web/images/img/num.png'>";
+			       temp +="<h3>很抱歉，没有找到你想要 相关信息</h3>";
+			       temp +="</div>";	
+	      		}	      		 	      	    		
+	      	    $("#huoyun").append(temp); 	
+	      	    if(window.screen.width <=600){
+		            $(".vd_txt").find("ul").attr("style","");
+		            $(".skillbar-bar3").find("img").attr("src","./assets/web/images/img/jian2.png");
+		            $(".gh_cl").attr("style","margin-top: 20px;font-weight: bold;font-size: 14px;color: #252525;")
+				}
+			},
+			error:function(ex){
+               	console.log(ex);
+            }
+	    }); 
+    }
+    
+    function page(p,where){
+        initval(p,where);
+    }
+    
+    function place(){             	   
+	   var where=$("#sousuo").val();
+	   if(!where=="" || !where==null){
+	      initval(0,where);
+	   }else{
+	      initval(0,"null");
+	   }		   
+	} 
+   
+   //货运单列表
+   function waybillOrder(){ 
+       $.ajax({
+			type : "post",
+			url : "WebWayWillOrder.do",		
+			success : function(data) {
+	      		var temp="";
+	      	    for(var i = 0; i<data.length;i++){
+	      	         var phone = data[i].contactPhone;
+	      	         phone = phone==null?'':phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+	      	         var trans = data[i].coalTrans;
+	      	  	     temp+="<li style='font-size: 15px;line-height: 22px;padding: 0;border-bottom: 1px solid #ccc;height: 100px'>"; 
+	      	  	     temp+="<span style='color: #52c3f1;'>"+phone+"</span>客户以";					    
+	      	  	     temp+="<span style='color: #e55f48;'>"+(trans.cost==null?'':trans.cost)+"元/吨</span>";
+	      	  	     temp+="接受从"+(trans.fromRegion==null?'':formataddress(trans.fromRegion))+"到"+(trans.toRegion==null?'':formataddress(trans.toRegion))+"的货运单</span></br>";
+	      	  	     temp+="<span style='padding: 10px 10px;float: right;'>"+(data[i].updateTime==null?'':data[i].updateTime)+"</span>";      	  	   
+	      	  	     temp+="</li>";
+	      	   }
+	      	   $("#Waybill").append(temp); 	
+			},
+			error:function(ex){
+               	console.log(ex);
+            }
+	    }); 
+   }
+   
+   function formataddress(region) {
+		var address = region.fullRegionName;
+		if (null == address)
+			return "";
+		if (address.indexOf("省") != -1) {
+			address = address.substring(address.indexOf("省") + 1);
+		}
+		if (address.indexOf("县") != -1) {
+			address = address.substring(0, address.indexOf("县") + 1);
+		}
+		if (address.indexOf("自治区") != -1) {
+			address = address.substring(address.indexOf("自治区") + 3);
+		}
+		if (address.indexOf("区") != -1) {
+			address = address.substring(0, address.indexOf("区") + 1);
+		}
+		return address.replace("-", " ");
+	}
+   
+    var speed=80;
+	var ee=document.getElementById("ee"); 
+	var ee2=document.getElementById("ee2"); 
+	var ee1=document.getElementById("Waybill"); 
+	ee2.innerHTML=ee1.innerHTML; 
+	function Marquee(){ 
+		if(ee2.offsetTop-ee.scrollTop<=0) 
+		  ee.scrollTop-=ee1.offsetHeight; 
+		else{ 
+		  ee.scrollTop++ ;
+		} 
+	} 
+	var MyMar=setInterval(Marquee,speed) ;
+	ee.onmouseover=function() {clearInterval(MyMar);}; 
+	ee.onmouseout=function() {MyMar=setInterval(Marquee,speed);};
+</script>
+</body>
+</html>

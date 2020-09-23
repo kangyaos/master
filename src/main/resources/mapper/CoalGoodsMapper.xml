@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxhalo.lmb.mapper.CoalGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.CoalGoods" >
+    <id column="goods_id" property="goodsId" jdbcType="VARCHAR" />
+    <result column="coal_sales_id" property="coalSalesId" jdbcType="INTEGER" />
+    <result column="mine_mouth_id" property="mineMouthId" jdbcType="INTEGER" />
+    <result column="coal_category_id" property="coalCategoryId" jdbcType="VARCHAR" />
+    <result column="goods_release_num" property="goodsReleaseNum" jdbcType="VARCHAR" />
+    <result column="coal_name" property="coalName" jdbcType="VARCHAR" />
+    <result column="coal_pic_code" property="coalPicCode" jdbcType="VARCHAR" />
+    <result column="coal_pic" property="coalPic" jdbcType="VARCHAR" />
+    <result column="consulting_fee" property="consultingFee" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="DECIMAL" />
+    <result column="quote" property="quote" jdbcType="DECIMAL" />
+    <result column="one_quote" property="oneQuote" jdbcType="DECIMAL" />
+    <result column="is_show_one" property="isShowOne" jdbcType="INTEGER" />
+    <result column="two_quote" property="twoQuote" jdbcType="DECIMAL" />
+    <result column="is_show_two" property="isShowTwo" jdbcType="INTEGER" />
+    <result column="loading_expense" property="loadingExpense" jdbcType="DECIMAL" />
+    <result column="technology" property="technology" jdbcType="VARCHAR" />
+    <result column="calorific_value" property="calorificValue" jdbcType="INTEGER" />
+    <result column="total_moisture" property="totalMoisture" jdbcType="DECIMAL" />
+    <result column="total_sulfur" property="totalSulfur" jdbcType="DECIMAL" />
+    <result column="volatile_value" property="volatileValue" jdbcType="DECIMAL" />
+    <result column="fixed_carbon" property="fixedCarbon" jdbcType="DECIMAL" />
+    <result column="grain_size" property="grainSize" jdbcType="VARCHAR" />
+    <result column="ash_value" property="ashValue" jdbcType="DECIMAL" />
+    <result column="coal_report_pic_code" property="coalReportPicCode" jdbcType="VARCHAR" />
+    <result column="coal_report_pic" property="coalReportPic" jdbcType="VARCHAR" />
+    <result column="coal_report_institution" property="coalReportInstitution" jdbcType="VARCHAR" />
+    <result column="coal_report_time" property="coalReportTime" jdbcType="TIMESTAMP" />
+    <result column="publish_user" property="publishUser" jdbcType="VARCHAR" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="publish_state" property="publishState" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+    <result column="wechat_sync" property="wechatSync" jdbcType="INTEGER" />
+    <result column="lmb_sync" property="lmbSync" jdbcType="INTEGER" />
+    <result column="data_source" property="dataSource" jdbcType="INTEGER" />
+    <association property="companies" column="mine_mouth_id" select="com.sxhalo.lmb.mapper.CoalCompaniesMapper.selectByPrimaryKey"/>
+    <association property="sales" column="coal_sales_id" select="com.sxhalo.lmb.mapper.CoalSalesMapper.selectByPrimaryKey"/>
+    <association property="userInfo" column="publish_user" select="com.sxhalo.lmb.mapper.UserInfoMapper.selectByPrimaryKey"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goods_id, coal_sales_id, mine_mouth_id, coal_category_id, goods_release_num, coal_name, 
+    coal_pic_code, coal_pic, consulting_fee, quantity, quote, one_quote, is_show_one, 
+    two_quote, is_show_two, loading_expense, technology, calorific_value, total_moisture, 
+    total_sulfur, volatile_value, fixed_carbon, grain_size, ash_value, coal_report_pic_code, 
+    coal_report_pic, coal_report_institution, coal_report_time, publish_user, publish_time, 
+    publish_state, remark, create_time, update_time, delete_flag, wechat_sync, lmb_sync, 
+    data_source
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from coal_goods
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from coal_goods
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sxhalo.lmb.domain.CoalGoods" >
+    insert into coal_goods (goods_id, coal_sales_id, mine_mouth_id, 
+      coal_category_id, goods_release_num, coal_name, 
+      coal_pic_code, coal_pic, consulting_fee, 
+      quantity, quote, one_quote, 
+      is_show_one, two_quote, is_show_two, 
+      loading_expense, technology, calorific_value, 
+      total_moisture, total_sulfur, volatile_value, 
+      fixed_carbon, grain_size, ash_value, 
+      coal_report_pic_code, coal_report_pic, coal_report_institution, 
+      coal_report_time, publish_user, publish_time, 
+      publish_state, remark, create_time, 
+      update_time, delete_flag, wechat_sync, 
+      lmb_sync, data_source)
+    values (#{goodsId,jdbcType=VARCHAR}, #{coalSalesId,jdbcType=INTEGER}, #{mineMouthId,jdbcType=INTEGER}, 
+      #{coalCategoryId,jdbcType=VARCHAR}, #{goodsReleaseNum,jdbcType=VARCHAR}, #{coalName,jdbcType=VARCHAR}, 
+      #{coalPicCode,jdbcType=VARCHAR}, #{coalPic,jdbcType=VARCHAR}, #{consultingFee,jdbcType=INTEGER}, 
+      #{quantity,jdbcType=DECIMAL}, #{quote,jdbcType=DECIMAL}, #{oneQuote,jdbcType=DECIMAL}, 
+      #{isShowOne,jdbcType=INTEGER}, #{twoQuote,jdbcType=DECIMAL}, #{isShowTwo,jdbcType=INTEGER}, 
+      #{loadingExpense,jdbcType=DECIMAL}, #{technology,jdbcType=VARCHAR}, #{calorificValue,jdbcType=INTEGER}, 
+      #{totalMoisture,jdbcType=DECIMAL}, #{totalSulfur,jdbcType=DECIMAL}, #{volatileValue,jdbcType=DECIMAL}, 
+      #{fixedCarbon,jdbcType=DECIMAL}, #{grainSize,jdbcType=VARCHAR}, #{ashValue,jdbcType=DECIMAL}, 
+      #{coalReportPicCode,jdbcType=VARCHAR}, #{coalReportPic,jdbcType=VARCHAR}, #{coalReportInstitution,jdbcType=VARCHAR}, 
+      #{coalReportTime,jdbcType=TIMESTAMP}, #{publishUser,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{publishState,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, #{wechatSync,jdbcType=INTEGER}, 
+      #{lmbSync,jdbcType=INTEGER}, #{dataSource,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.CoalGoods" >
+    insert into coal_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="coalSalesId != null" >
+        coal_sales_id,
+      </if>
+      <if test="mineMouthId != null" >
+        mine_mouth_id,
+      </if>
+      <if test="coalCategoryId != null" >
+        coal_category_id,
+      </if>
+      <if test="goodsReleaseNum != null" >
+        goods_release_num,
+      </if>
+      <if test="coalName != null" >
+        coal_name,
+      </if>
+      <if test="coalPicCode != null" >
+        coal_pic_code,
+      </if>
+      <if test="coalPic != null" >
+        coal_pic,
+      </if>
+      <if test="consultingFee != null" >
+        consulting_fee,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="quote != null" >
+        quote,
+      </if>
+      <if test="oneQuote != null" >
+        one_quote,
+      </if>
+      <if test="isShowOne != null" >
+        is_show_one,
+      </if>
+      <if test="twoQuote != null" >
+        two_quote,
+      </if>
+      <if test="isShowTwo != null" >
+        is_show_two,
+      </if>
+      <if test="loadingExpense != null" >
+        loading_expense,
+      </if>
+      <if test="technology != null" >
+        technology,
+      </if>
+      <if test="calorificValue != null" >
+        calorific_value,
+      </if>
+      <if test="totalMoisture != null" >
+        total_moisture,
+      </if>
+      <if test="totalSulfur != null" >
+        total_sulfur,
+      </if>
+      <if test="volatileValue != null" >
+        volatile_value,
+      </if>
+      <if test="fixedCarbon != null" >
+        fixed_carbon,
+      </if>
+      <if test="grainSize != null" >
+        grain_size,
+      </if>
+      <if test="ashValue != null" >
+        ash_value,
+      </if>
+      <if test="coalReportPicCode != null" >
+        coal_report_pic_code,
+      </if>
+      <if test="coalReportPic != null" >
+        coal_report_pic,
+      </if>
+      <if test="coalReportInstitution != null" >
+        coal_report_institution,
+      </if>
+      <if test="coalReportTime != null" >
+        coal_report_time,
+      </if>
+      <if test="publishUser != null" >
+        publish_user,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="publishState != null" >
+        publish_state,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="wechatSync != null" >
+        wechat_sync,
+      </if>
+      <if test="lmbSync != null" >
+        lmb_sync,
+      </if>
+      <if test="dataSource != null" >
+        data_source,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="coalSalesId != null" >
+        #{coalSalesId,jdbcType=INTEGER},
+      </if>
+      <if test="mineMouthId != null" >
+        #{mineMouthId,jdbcType=INTEGER},
+      </if>
+      <if test="coalCategoryId != null" >
+        #{coalCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsReleaseNum != null" >
+        #{goodsReleaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="coalName != null" >
+        #{coalName,jdbcType=VARCHAR},
+      </if>
+      <if test="coalPicCode != null" >
+        #{coalPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coalPic != null" >
+        #{coalPic,jdbcType=VARCHAR},
+      </if>
+      <if test="consultingFee != null" >
+        #{consultingFee,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="quote != null" >
+        #{quote,jdbcType=DECIMAL},
+      </if>
+      <if test="oneQuote != null" >
+        #{oneQuote,jdbcType=DECIMAL},
+      </if>
+      <if test="isShowOne != null" >
+        #{isShowOne,jdbcType=INTEGER},
+      </if>
+      <if test="twoQuote != null" >
+        #{twoQuote,jdbcType=DECIMAL},
+      </if>
+      <if test="isShowTwo != null" >
+        #{isShowTwo,jdbcType=INTEGER},
+      </if>
+      <if test="loadingExpense != null" >
+        #{loadingExpense,jdbcType=DECIMAL},
+      </if>
+      <if test="technology != null" >
+        #{technology,jdbcType=VARCHAR},
+      </if>
+      <if test="calorificValue != null" >
+        #{calorificValue,jdbcType=INTEGER},
+      </if>
+      <if test="totalMoisture != null" >
+        #{totalMoisture,jdbcType=DECIMAL},
+      </if>
+      <if test="totalSulfur != null" >
+        #{totalSulfur,jdbcType=DECIMAL},
+      </if>
+      <if test="volatileValue != null" >
+        #{volatileValue,jdbcType=DECIMAL},
+      </if>
+      <if test="fixedCarbon != null" >
+        #{fixedCarbon,jdbcType=DECIMAL},
+      </if>
+      <if test="grainSize != null" >
+        #{grainSize,jdbcType=VARCHAR},
+      </if>
+      <if test="ashValue != null" >
+        #{ashValue,jdbcType=DECIMAL},
+      </if>
+      <if test="coalReportPicCode != null" >
+        #{coalReportPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coalReportPic != null" >
+        #{coalReportPic,jdbcType=VARCHAR},
+      </if>
+      <if test="coalReportInstitution != null" >
+        #{coalReportInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="coalReportTime != null" >
+        #{coalReportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishUser != null" >
+        #{publishUser,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishState != null" >
+        #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="wechatSync != null" >
+        #{wechatSync,jdbcType=INTEGER},
+      </if>
+      <if test="lmbSync != null" >
+        #{lmbSync,jdbcType=INTEGER},
+      </if>
+      <if test="dataSource != null" >
+        #{dataSource,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.CoalGoods" >
+    update coal_goods
+    <set >
+      <if test="coalSalesId != null" >
+        coal_sales_id = #{coalSalesId,jdbcType=INTEGER},
+      </if>
+      <if test="mineMouthId != null" >
+        mine_mouth_id = #{mineMouthId,jdbcType=INTEGER},
+      </if>
+      <if test="coalCategoryId != null" >
+        coal_category_id = #{coalCategoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsReleaseNum != null" >
+        goods_release_num = #{goodsReleaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="coalName != null" >
+        coal_name = #{coalName,jdbcType=VARCHAR},
+      </if>
+      <if test="coalPicCode != null" >
+        coal_pic_code = #{coalPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coalPic != null" >
+        coal_pic = #{coalPic,jdbcType=VARCHAR},
+      </if>
+      <if test="consultingFee != null" >
+        consulting_fee = #{consultingFee,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=DECIMAL},
+      </if>
+      <if test="quote != null" >
+        quote = #{quote,jdbcType=DECIMAL},
+      </if>
+      <if test="oneQuote != null" >
+        one_quote = #{oneQuote,jdbcType=DECIMAL},
+      </if>
+      <if test="isShowOne != null" >
+        is_show_one = #{isShowOne,jdbcType=INTEGER},
+      </if>
+      <if test="twoQuote != null" >
+        two_quote = #{twoQuote,jdbcType=DECIMAL},
+      </if>
+      <if test="isShowTwo != null" >
+        is_show_two = #{isShowTwo,jdbcType=INTEGER},
+      </if>
+      <if test="loadingExpense != null" >
+        loading_expense = #{loadingExpense,jdbcType=DECIMAL},
+      </if>
+      <if test="technology != null" >
+        technology = #{technology,jdbcType=VARCHAR},
+      </if>
+      <if test="calorificValue != null" >
+        calorific_value = #{calorificValue,jdbcType=INTEGER},
+      </if>
+      <if test="totalMoisture != null" >
+        total_moisture = #{totalMoisture,jdbcType=DECIMAL},
+      </if>
+      <if test="totalSulfur != null" >
+        total_sulfur = #{totalSulfur,jdbcType=DECIMAL},
+      </if>
+      <if test="volatileValue != null" >
+        volatile_value = #{volatileValue,jdbcType=DECIMAL},
+      </if>
+      <if test="fixedCarbon != null" >
+        fixed_carbon = #{fixedCarbon,jdbcType=DECIMAL},
+      </if>
+      <if test="grainSize != null" >
+        grain_size = #{grainSize,jdbcType=VARCHAR},
+      </if>
+      <if test="ashValue != null" >
+        ash_value = #{ashValue,jdbcType=DECIMAL},
+      </if>
+      <if test="coalReportPicCode != null" >
+        coal_report_pic_code = #{coalReportPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coalReportPic != null" >
+        coal_report_pic = #{coalReportPic,jdbcType=VARCHAR},
+      </if>
+      <if test="coalReportInstitution != null" >
+        coal_report_institution = #{coalReportInstitution,jdbcType=VARCHAR},
+      </if>
+      <if test="coalReportTime != null" >
+        coal_report_time = #{coalReportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishUser != null" >
+        publish_user = #{publishUser,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishState != null" >
+        publish_state = #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="wechatSync != null" >
+        wechat_sync = #{wechatSync,jdbcType=INTEGER},
+      </if>
+      <if test="lmbSync != null" >
+        lmb_sync = #{lmbSync,jdbcType=INTEGER},
+      </if>
+      <if test="dataSource != null" >
+        data_source = #{dataSource,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.CoalGoods" >
+    update coal_goods
+    set coal_sales_id = #{coalSalesId,jdbcType=INTEGER},
+      mine_mouth_id = #{mineMouthId,jdbcType=INTEGER},
+      coal_category_id = #{coalCategoryId,jdbcType=VARCHAR},
+      goods_release_num = #{goodsReleaseNum,jdbcType=VARCHAR},
+      coal_name = #{coalName,jdbcType=VARCHAR},
+      coal_pic_code = #{coalPicCode,jdbcType=VARCHAR},
+      coal_pic = #{coalPic,jdbcType=VARCHAR},
+      consulting_fee = #{consultingFee,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=DECIMAL},
+      quote = #{quote,jdbcType=DECIMAL},
+      one_quote = #{oneQuote,jdbcType=DECIMAL},
+      is_show_one = #{isShowOne,jdbcType=INTEGER},
+      two_quote = #{twoQuote,jdbcType=DECIMAL},
+      is_show_two = #{isShowTwo,jdbcType=INTEGER},
+      loading_expense = #{loadingExpense,jdbcType=DECIMAL},
+      technology = #{technology,jdbcType=VARCHAR},
+      calorific_value = #{calorificValue,jdbcType=INTEGER},
+      total_moisture = #{totalMoisture,jdbcType=DECIMAL},
+      total_sulfur = #{totalSulfur,jdbcType=DECIMAL},
+      volatile_value = #{volatileValue,jdbcType=DECIMAL},
+      fixed_carbon = #{fixedCarbon,jdbcType=DECIMAL},
+      grain_size = #{grainSize,jdbcType=VARCHAR},
+      ash_value = #{ashValue,jdbcType=DECIMAL},
+      coal_report_pic_code = #{coalReportPicCode,jdbcType=VARCHAR},
+      coal_report_pic = #{coalReportPic,jdbcType=VARCHAR},
+      coal_report_institution = #{coalReportInstitution,jdbcType=VARCHAR},
+      coal_report_time = #{coalReportTime,jdbcType=TIMESTAMP},
+      publish_user = #{publishUser,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      publish_state = #{publishState,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      wechat_sync = #{wechatSync,jdbcType=INTEGER},
+      lmb_sync = #{lmbSync,jdbcType=INTEGER},
+      data_source = #{dataSource,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from coal_goods
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from coal_goods
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from coal_goods
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>     
+  </select>
+</mapper>

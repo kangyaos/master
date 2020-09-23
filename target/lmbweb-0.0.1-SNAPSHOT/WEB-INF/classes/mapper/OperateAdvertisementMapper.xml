@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxhalo.lmb.mapper.OperateAdvertisementMapper" >
+  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.OperateAdvertisement" >
+    <id column="ad_cotegory_code" property="adCotegoryCode" jdbcType="VARCHAR" />
+    <id column="ad_code" property="adCode" jdbcType="INTEGER" />
+    <result column="order_index" property="orderIndex" jdbcType="INTEGER" />
+    <result column="ad_name" property="adName" jdbcType="VARCHAR" />
+    <result column="ad_pic_code" property="adPicCode" jdbcType="VARCHAR" />
+    <result column="ad_duration_num" property="adDurationNum" jdbcType="INTEGER" />
+    <result column="ad_url" property="adUrl" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="ad_state" property="adState" jdbcType="INTEGER" />
+    <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+    <result column="ad_type" property="adType" jdbcType="VARCHAR" />
+    <result column="target" property="target" jdbcType="VARCHAR" />
+    <result column="app_type" property="appType" jdbcType="INTEGER" />
+    <result column="share_flag" property="shareFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ad_cotegory_code, ad_code, order_index, ad_name, ad_pic_code, ad_duration_num, ad_url, 
+    remark, ad_state, begin_time, end_time, click_num, update_time, delete_flag, ad_type, 
+    target, app_type, share_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.sxhalo.lmb.domain.OperateAdvertisementKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from operate_advertisement
+    where ad_cotegory_code = #{adCotegoryCode,jdbcType=VARCHAR}
+      and ad_code = #{adCode,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sxhalo.lmb.domain.OperateAdvertisementKey" >
+    delete from operate_advertisement
+    where ad_cotegory_code = #{adCotegoryCode,jdbcType=VARCHAR}
+      and ad_code = #{adCode,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sxhalo.lmb.domain.OperateAdvertisement" >
+    insert into operate_advertisement (ad_cotegory_code, ad_code, order_index, 
+      ad_name, ad_pic_code, ad_duration_num, 
+      ad_url, remark, ad_state, 
+      begin_time, end_time, click_num, 
+      update_time, delete_flag, ad_type, 
+      target, app_type, share_flag
+      )
+    values (#{adCotegoryCode,jdbcType=VARCHAR}, #{adCode,jdbcType=INTEGER}, #{orderIndex,jdbcType=INTEGER}, 
+      #{adName,jdbcType=VARCHAR}, #{adPicCode,jdbcType=VARCHAR}, #{adDurationNum,jdbcType=INTEGER}, 
+      #{adUrl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{adState,jdbcType=INTEGER}, 
+      #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{clickNum,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, #{adType,jdbcType=VARCHAR}, 
+      #{target,jdbcType=VARCHAR}, #{appType,jdbcType=INTEGER}, #{shareFlag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.OperateAdvertisement" >
+    insert into operate_advertisement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adCotegoryCode != null" >
+        ad_cotegory_code,
+      </if>
+      <if test="adCode != null" >
+        ad_code,
+      </if>
+      <if test="orderIndex != null" >
+        order_index,
+      </if>
+      <if test="adName != null" >
+        ad_name,
+      </if>
+      <if test="adPicCode != null" >
+        ad_pic_code,
+      </if>
+      <if test="adDurationNum != null" >
+        ad_duration_num,
+      </if>
+      <if test="adUrl != null" >
+        ad_url,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="adState != null" >
+        ad_state,
+      </if>
+      <if test="beginTime != null" >
+        begin_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="adType != null" >
+        ad_type,
+      </if>
+      <if test="target != null" >
+        target,
+      </if>
+      <if test="appType != null" >
+        app_type,
+      </if>
+      <if test="shareFlag != null" >
+        share_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adCotegoryCode != null" >
+        #{adCotegoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adCode != null" >
+        #{adCode,jdbcType=INTEGER},
+      </if>
+      <if test="orderIndex != null" >
+        #{orderIndex,jdbcType=INTEGER},
+      </if>
+      <if test="adName != null" >
+        #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="adPicCode != null" >
+        #{adPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adDurationNum != null" >
+        #{adDurationNum,jdbcType=INTEGER},
+      </if>
+      <if test="adUrl != null" >
+        #{adUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="adState != null" >
+        #{adState,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="adType != null" >
+        #{adType,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="appType != null" >
+        #{appType,jdbcType=INTEGER},
+      </if>
+      <if test="shareFlag != null" >
+        #{shareFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.OperateAdvertisement" >
+    update operate_advertisement
+    <set >
+      <if test="orderIndex != null" >
+        order_index = #{orderIndex,jdbcType=INTEGER},
+      </if>
+      <if test="adName != null" >
+        ad_name = #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="adPicCode != null" >
+        ad_pic_code = #{adPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adDurationNum != null" >
+        ad_duration_num = #{adDurationNum,jdbcType=INTEGER},
+      </if>
+      <if test="adUrl != null" >
+        ad_url = #{adUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="adState != null" >
+        ad_state = #{adState,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="adType != null" >
+        ad_type = #{adType,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null" >
+        target = #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="appType != null" >
+        app_type = #{appType,jdbcType=INTEGER},
+      </if>
+      <if test="shareFlag != null" >
+        share_flag = #{shareFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ad_cotegory_code = #{adCotegoryCode,jdbcType=VARCHAR}
+      and ad_code = #{adCode,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.OperateAdvertisement" >
+    update operate_advertisement
+    set order_index = #{orderIndex,jdbcType=INTEGER},
+      ad_name = #{adName,jdbcType=VARCHAR},
+      ad_pic_code = #{adPicCode,jdbcType=VARCHAR},
+      ad_duration_num = #{adDurationNum,jdbcType=INTEGER},
+      ad_url = #{adUrl,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      ad_state = #{adState,jdbcType=INTEGER},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      ad_type = #{adType,jdbcType=VARCHAR},
+      target = #{target,jdbcType=VARCHAR},
+      app_type = #{appType,jdbcType=INTEGER},
+      share_flag = #{shareFlag,jdbcType=INTEGER}
+    where ad_cotegory_code = #{adCotegoryCode,jdbcType=VARCHAR}
+      and ad_code = #{adCode,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from operate_advertisement
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from operate_advertisement
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from operate_advertisement
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>     
+  </select>
+</mapper>

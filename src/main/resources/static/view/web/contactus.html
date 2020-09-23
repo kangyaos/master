@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>联系我们-拉煤宝</title>
+<meta name="description" content="&lt;!--未找到该标签内容--&gt;">
+<meta name="keywords" content="煤,拉煤,货运,煤矿,咨询,煤炭咨询,煤炭">
+<#include "/view/web/include/headerFile.htm" />
+
+<style type="text/css">
+.caret{
+    float: right;
+    vertical-align: middle;
+    margin-top: 8px;
+}
+.open>.dropdown-menu{ margin-top: -20px;width: 100%;}
+.btn-primary{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    background: white;
+    color: #333;
+    border-color: #ddd;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #333;
+    background-color: #ffffff;
+    border-color: #ddd;
+}
+#box11{margin-bottom: -40px;
+    background: white;}
+    
+@media only screen and (max-width: 600px){
+	.about_main03 .main03lr p {
+	    font-size: 12px;
+	    font-family: "΢���ź�";
+	    color: #303030;
+	    line-height: 37px;
+	}
+	.about_main03 .main03lr .a5 {	   
+	    height: 48px;
+	}
+	.about_main03 .main03lr .a1 {	   
+	    height: 38px;
+	}
+}   
+</style>
+</head>
+<body>
+<div id="home" class="banner a-banner">
+<#include "/view/web/include/top.htm" />
+		<div class="bak">
+			<div class="container"><#include "/view/web/include/head.htm"
+				/></div>
+		</div>
+<header id="head" class="secondary">
+    <div class="container">       
+    </div>
+</header>
+<div class="specialty" style="background: #ffffff;padding: 0;">
+  <div class="container">       
+	   <h5 class="daohang" style="color: #424242;font-size:16px; padding: 20px 15px 10px 10px;">
+	   <a href="${base}/" style="color: #424242;font-size: 16px;">
+	   <img src="${base}/assets/web/images/img/ptop.png"> 首页</a>  &gt; 联系我们</h5>
+  </div>
+</div>
+ <div class="clearfix" style="border: 1px solid #e8e8e8;"></div>         
+<div class="specialty" style="background: #f5f5f5;">
+  <div class="container">
+    <!-- container -->      
+	
+    <iframe src="${base}/assets/web/baidumap.html" id="ifrm" name="ifrm" width="100%" height="540"
+     frameborder="0" scrolling="no" onload="document.all(&#39;ifrm&#39;).style.height=ifrm.document.body.scrollHeight+30;" 
+     style="width: 100%; height: 550px; "></iframe>				
+    <div class="mail-grids">
+		<div class="col-md-6 mail-grid-left about_main03 fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+			<div class="main03lr">
+			<p><span class="a2"></span>咨询热线：029-89395599</p>
+			<p><span class="a2"></span>服务热线：400-091-2518</p>
+			<p><span class="a3"></span>公司邮箱：sxhalo@126.com</p>			
+			<p><span class="a1"></span>地址：西安曲江新区曲江池北路曲江公馆和园第32幢</p>
+			<p><span class="a5"></span>乘车路线：可乘坐801路，22路，609路，601路，抵达曲江公馆和园</p>			
+			</div>
+		</div>			
+		<div class="clearfix"> </div>
+    </div>
+    <!-- /container -->
+  </div>
+ </div>  
+
+
+
+
+<#include "/view/web/include/footer.htm" />
+<script type="text/javascript">
+	if(window.screen.width <=600){
+	   winWidth = window.innerWidth;
+	   $(".container").find("iframe").attr("style","width:100%;height:450px;")
+	}
+</script>
+</body></html>

@@ -1,0 +1,768 @@
+﻿
+<!doctype html>
+<html class="no-js" lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="renderer" content="webkit">
+<title>快煤宝客户端</title>
+<meta name="Keywords" content="快煤宝客户端 煤炭资讯 快捷 手机客户端 煤炭价格 ">
+<meta name="Description" content="好服务，快煤宝">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-title" content="快煤宝">
+<link rel="stylesheet" href="${base}/assets/image/css/bootstrap.min.css" />
+<link
+	href="${base}/assets/global/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="${base}/assets/global/css/components.css" rel="stylesheet" />
+<link rel="stylesheet"
+	href="${base}/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" />
+<style type="text/css">
+._citys {
+	width: 300px;
+	display: inline-block;
+	border: 2px solid #eee;
+	padding: 5px;
+	position: relative;
+	background-color: #fff;
+}
+
+._citys span {
+	color: #56b4f8;
+	height: 15px;
+	width: 15px;
+	line-height: 15px;
+	text-align: center;
+	border-radius: 3px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	border: 1px solid #56b4f8;
+	cursor: pointer;
+}
+
+._citys0 {
+	width: 100%;
+	height: 34px;
+	display: inline-block;
+	border-bottom: 2px solid #56b4f8;
+	padding: 0;
+	margin: 0;
+}
+
+._citys0 li {
+	display: inline-block;
+	line-height: 34px;
+	font-size: 15px;
+	color: #888;
+	width: 80px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.citySel {
+	background-color: #56b4f8;
+	color: #fff !important;
+}
+
+._citys1 {
+	width: 100%;
+	display: inline-block;
+	padding: 10px 0;
+}
+
+._citys1 a {
+	width: 83px;
+	height: 35px;
+	display: inline-block;
+	background-color: #f5f5f5;
+	color: #666;
+	margin-left: 6px;
+	margin-top: 3px;
+	line-height: 35px;
+	text-align: center;
+	cursor: pointer;
+	font-size: 13px;
+	overflow: hidden;
+}
+
+._citys1 a:hover {
+	color: #fff;
+	background-color: #56b4f8;
+}
+
+.AreaS {
+	background-color: #56b4f8 !important;
+	color: #fff !important;
+}
+
+body {
+	background-color: #f0f0f0;
+}
+
+input {
+	border-color: #fff !important;
+	box-shadow: inset 1 0px 0px rgba(0, 0, 0, 0.075) !important;
+}
+
+.map {
+	height: 100%;
+	width: 100%;
+	float: left;
+}
+
+#right {
+	color: #444;
+	background-color: #f8f8f8;
+	width: 100%;
+	float: right;
+}
+
+#start, #stop, #right input {
+	margin: 4px;
+	margin-left: 15px;
+}
+
+.c {
+	font-weight: 600;
+	padding-left: 15px;
+	padding-top: 4px;
+}
+
+#lnglat, #address, #nearestJunction, #nearestRoad, #nearestPOI, .title {
+	padding-left: 15px;
+	padding-top: 20px;
+}
+
+.modal-body {
+	padding: 0 15px;
+}
+
+@media ( min-width : 320px) {
+	.form-horizontal .control-label {
+		padding-top: 7px;
+		margin-bottom: 0;
+		text-align: center;
+	}
+}
+
+.form-horizontal .form-group {
+	margin: 0px;
+	padding-top: 6px;
+	min-height: 50px;
+	height: auto;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.row {
+	margin: 0px;
+}
+
+.address {
+	color: #999;
+	font-size: 13px;
+}
+
+.col-xs-3 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.form-control {
+	border: 0;
+	webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.form-control:focus {
+	border-color: #fff;
+	webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.section {
+	width: 100%;
+	min-height: 150px;
+	height: auto;
+	background-color: #fff;
+	border-top: 1px solid #f0f0f0;
+}
+
+.typebt {
+	text-align: center;
+	margin: 5px 0;
+}
+
+.typebt>.active {
+	opacity: 1;
+	color: white;
+}
+
+.typebt>.uactive {
+	opacity: 0.6;
+	color: white;
+}
+
+.mineitem {
+	margin-top: 15px;
+	border-bottom: 1px solid #ccc;
+}
+
+.coaltypes {
+	margin: 0 15px;
+	height: 80px;
+}
+
+.ltspan {
+	padding-top: 3px;
+	font-size: 13px;
+}
+
+.table-bordered {
+	border: 0px solid #ddd;
+}
+
+th {
+	border-bottom: 0px solid #ddd !important;
+}
+
+td {
+	border: 0px solid #ddd !important;
+}
+
+.table-scrollable {
+	border: 0;
+}
+
+.typebutton {
+	border-radius: 4px !important;
+	padding: 3px 0 !important;
+	width: 75px;
+	text-align: center;
+}
+
+.sale_title {
+	margin: 10px 15px;
+	color: #518efb;
+	font-size: 15px;
+}
+
+.align_right {
+	text-align: right;
+	padding-right: 0px !important;
+}
+
+button {
+	background-color: #518efb;
+	color: white;
+	border-radius: 5px !important;
+	padding: 4px 8px !important;
+}
+
+.del_button {
+	position: absolute;
+	top: -15px;
+	right: 0;
+	width: 35px;
+	height: 35px;
+	padding-left: 10px;
+	line-height: 30px;
+	background-color: #b0aeae;
+	font-size: 22px;
+	color: white;
+	border-radius: 0 0 0 50px !important;
+}
+
+.minename {
+	font-size: 16px;
+}
+
+.custom {
+	background-color: #1a1ae9;
+	padding: 0 !important;
+	width: 75px;
+	height: 25px;
+	color: white;
+}
+div.dataTables_paginate {
+    float: none;
+    margin: 0;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+	<#include "selectmap.html" />
+	<#include "selectcompany.html" />
+	<div>
+		<form action="${base}/savesaleinfo.do" method="post"
+			class="form-horizontal form-row-sepe" id="salesform">
+			<input type="hidden" name="provinceId" data-id="" id="provinceId"
+				value="" /> <input type="hidden" name="cityId" data-id=""
+				id="cityId" value="" /> <input type="hidden" name="countyId"
+				data-id="" id="countyId" value="" /> <input type="hidden"
+				name="coaltypes" data-id="" id="coaltypes" value="" /> <input
+				type="hidden" id="addstate" value="" /> <input type="hidden"
+				id="mineitemId" /> <input type="hidden" id="minedata"
+				name="minedata" />
+			<div class="sale_title">基本信息</div>
+			<div class="section">
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-3">商户名称</label>
+					<div class="col-md-9 col-sm-9 col-xs-9" style="padding-left: 0;">
+						<div class="input-icon right">
+							<input type="text" class="form-control align_right"
+								name="coalSalesName" id="coalSalesName" placeholder="请输入商户名称" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-3  col-xs-3 control-label">商户类型</label>
+					<div class="col-md-9 col-sm-9 col-xs-9" style="padding-left: 0;">
+						<select class="form-control align_right" name="typeId"
+							style="    padding-right: 5px!important;text-align-last: right;"
+							id="vehicleModels">
+							<#list types as type>
+							<option value="${type.dictCode!}" selected="selected">${type.dictValue!}</option>
+							</#list>
+
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-3  col-xs-3  control-label">地
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址<span class="required"></span>
+					</label>
+					<div class="col-md-9 col-sm-9 col-xs-9" style="padding-left: 0;">
+						<div class="input-icon right input-group" style="width: 100%;">
+							<i class="fa" style="right: 0px;">></i> <input type="text"
+								class="form-control align_right" id="saleaddressstr0"
+								name="fulladdress" style="padding-right: 20px!important;"
+								placeholder="请选择地址" />
+
+
+						</div>
+
+						<input type="hidden" id="regionCode0" name="regionCode">
+						<input type="hidden" id="saleaddress0" name="address"> <input
+							type="hidden" id="longitude0" name="longitude" value="">
+						<input type="hidden" id="latitude0" name="latitude" value="">
+					</div>
+
+				</div>
+			</div>
+			<div class="sale_title">代理信息</div>
+			<div class="section">
+				<div class="form-group">
+					<div class="col-md-5 col-sm-5 col-xs-6 pull-right input-group"
+						style="padding: 5px 15px;text-align: right;">
+						<button class="btn btn-blue 	" type="button"
+							onclick="showminelist()" style="margin: 0 10px;">选择矿口</button>
+						<span class="input-group-btn">
+							<button class="btn btn-blue" type="button" id="addmine"
+								onclick="selectaddress(0,1)">新增矿口</button>
+						</span>
+					</div>
+				</div>
+				<div id="mines">
+					<div id="zanwu" style="    text-align: center; margin: 50px;">暂无数据</div>
+				</div>
+
+			</div>
+			<div class="sale_title">负责人信息</div>
+			<div class="section" style="height:190px">
+				<div class="form-group" style="border:0">
+					<label class="control-label col-md-3 col-sm-3 col-xs-3">姓
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
+					<div class="col-md-5 col-sm-5 col-xs-9" style="padding-left: 0;">
+						<div class="input-icon right">
+							<i class="fa"></i> <input type="text" class="form-control"
+								name="realName" id="realName" placeholder="请输入姓名" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group" style="border:0">
+					<label class="control-label col-md-3 col-sm-3 col-xs-3">手&nbsp;&nbsp;机&nbsp;&nbsp;号</label>
+					<div class="col-md-5 col-sm-5 col-xs-9" style="padding-left: 0;">
+						<div class="input-icon right ">
+							<i class="fa"></i> <input type="tel " class="form-control"
+								name="userphone" id="userphone" placeholder="请输入手机号" />
+							<!-- <lable>此手机号为登录拉煤宝账户</lable> -->
+
+						</div>
+
+					</div>
+					<div
+						style="line-height:30px; text-indent:5px;color:#a94442;margin-left: 10%;    margin: auto;    width: 61%;"
+						id="loginTips"></div>
+				</div>
+				<div style="width: 90%;margin: 20px auto 0;">
+					<button class="btn" style="width: 100%;padding: 10px!important; "
+						type="submit" onclick="return submitdata()">提 交</button>
+				</div>
+			</div>
+
+		</form>
+
+		<!-- 自定义煤种模态框 start -->
+		<div class="modal fade bs-modal-lg" id="addcoaltype" tabindex="-1"
+			role="dialog" aria-hidden="true" data-backdrop="static"
+			data-keyboard="false">
+			<div class="modal-dialog modal-lg" style="width: 100%">
+				<div class="modal-content"
+					style="height:200px;    margin-top: 150px; ">
+					<div class="form-group"
+						style="    height: 50px;
+    border-bottom: 0;
+    padding: 10px;
+    margin: 40px 10px;">
+						<label class="control-label col-md-3 col-sm-3 col-xs-3"
+							style="margin-top: 7px;">煤种名称:</label>
+						<div class="col-md-5 col-sm-5 col-xs-9" style="padding-left: 0;">
+							<div class="input-icon right">
+								<i class="fa"></i> <input type="hidden" name="coaltypemineId"
+									id="coaltypemineId"><input type="text"
+									class="form-control" name="coaltypename" id="coaltypename"
+									placeholder="请输入煤种名称" />
+							</div>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn blue" onclick="adddictype()">添加</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- 自定义煤种模态框 end -->
+	</div>
+	<script src="${base}/assets/global/plugins/jquery.min.js"
+		type="text/javascript"></script>
+	<script src="${base}/assets/global/plugins/bootstrap.min.js"
+		type="text/javascript"></script>
+	<script src="${base}/assets/global/plugins/js/Popt.js"></script>
+	<script src="${base}/assets/global/plugins/js/citySet.js"></script>
+	<script
+		src="${base}/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"
+		type="text/javascript"></script>
+	<script
+		src="${base}/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"
+		type="text/javascript"></script>
+	<script type="text/javascript"
+		src="${base}/assets/global/plugins/jquery-validation/js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/global/plugins/jquery-validation/js/additional-methods.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+	<script>
+       var province = ${province!};
+       var mineId=0;
+       var position='';
+       var eposition='';
+       var arr=new Array();
+     
+       var dictypes='${dictypes}';
+       dictypes=   eval("("+dictypes+")");
+       var typelength=dictypes.length;
+      
+       $(document).ready(function() {
+			$("#saleaddressstr0").click(function(e){
+			   $("#minenamediv").hide();
+			   $("#closebutton").hide();
+				$('#selmap').modal('show');
+				$("#mineitemId").val(0);
+			}); 
+			
+			addValidation();
+		    $("#quanguo").click(function(e) {
+				SelCity(this, e);
+			});
+			
+		
+			/*  
+			$("#addmine").click(function(e){
+			    smineId= $("#mines .mineitem").length;
+		    	addmine(smineId);
+				$('#selmap').modal('show');
+				$("#btn").click(function(){
+				alert("99999")
+					selRes(smineId);
+						
+				});
+			
+			});  */
+			
+	$("#submit_city").click(function(){
+        var province = $("#eprovinceName").find("option:selected").text();  
+        var city = $("#ecityName").find("option:selected").text();  
+        $('#cityName').text(city);
+        $('#distpicker').css('display','none');
+    });
+
+    //点击取消选择城市隐藏选择框
+    $('#cancel_city').click(function(){
+        $('#distpicker').css('display','none');
+    })
+
+    //点击切换城市显示城市选择框
+    $('#city_btn').click(function(){
+        $('#distpicker').css('display','block');
+    })
+			
+				
+		});	
+		function changeselect(item,mineid){
+			if( $(item).hasClass("active")){
+			  $(item).removeClass("active");
+			  $(item).addClass("uactive");
+			   $(item).parent().removeClass("active");
+			  $(item).parent().addClass("uactive");
+			}else{
+			    $(item).removeClass("uactive");
+				$(item).addClass("active");
+				$(item).parent().removeClass("uactive");
+				$(item).parent().addClass("active");
+			}
+		
+		  var selectnum=	$("#mineitem"+mineid).children(".coaltypes").children(".active").length;
+		  
+		  
+		  $("#selectnum"+mineid).html(selectnum);
+		
+		}
+		
+		
+		
+		function selectaddmine(mine	){
+		$("#zanwu").hide();
+		var length=dictypes.length+1;
+	    var beishu= length%4==0?length/4:(length/4+1)
+        var typeheight=35*beishu;
+		var index=$("#mines .mineitem").length+1;
+		var mineId=mine.id;
+			if($("#mineitem"+mineId).html()==undefined){
+			
+			var  mineitem='  <div class="mineitem"  id="mineitem' +mineId+'"> <div class="row" style="position: relative;padding: 0 15px;" > '+
+            
+             	' <div><span class="minename">'+mine.name+'</span>(共<span id="coaltypenum'+mineId+'">'+length+'</span>种煤,已选<span id="selectnum'+mineId+'">0</span>种)</div>   '+
+             	' <div class="address">'+mine.address+'</div>'+
+            
+             
+             	'	<div class="del_button"  onclick="deletemine(\'mineitem'+mineId+'\')">×</div>'+
+             
+                ' </div>'+
+           	    ' <div class="coaltypes" style="height:'+typeheight+'px">';
+       		    for(var i=0;i<dictypes.length;i++){
+	                mineitem+=' <div class="col-md-3 col-sm-3 col-xs-3 typebt">'+
+	           		'	<button class="btn typebutton uactive" type="button" onclick="changeselect(this,'+mineId+')"  data-id='+dictypes[i].dictCode+' >'+dictypes[i].dictValue+'</button>'+
+	           		' </div>';
+                }
+                  mineitem+=' <div class="col-md-3 col-sm-3 col-xs-3 typebt">'+
+	                	   '	<button class="btn  typebutton uactive" style="opacity: 0.5;"     id="coaltype'+mineId+'"  onclick="showadddictype('+mineId+')">自定义</button>'+
+		           		'   </div></div></div>';
+           
+			  $("#mines").append(mineitem);
+			}
+		}
+		
+		function addmine(mineId){
+			$("#zanwu").hide();
+			var length=dictypes.length+1;
+		    var beishu= length%4==0?length/4:(length/4+1)
+	        var typeheight=35*beishu;
+			var  mineitem='  <div class="mineitem"  id="mineitem' +mineId+'" > <div class="row"   style="position: relative;padding: 0 15px;"> '+
+             	
+             	' <span id="minename'+mineId+'" class="minename"></span><span class="ltspan">(共<span id="coaltypenum'+mineId+'">'+length+'</span>种煤,已选<span id="selectnum'+mineId+'">0</span>种)   </span>  '+
+                ' <div class="del_button"  onclick="deletemine(\'mineitem'+mineId+'\')">×</div>'+
+                ' </div>'+
+                ' <div class="row">'+
+             	' <div class="address col-md-10 col-sm-10 col-xs-12"  id="saleaddressstr'+mineId+'"  onclick="selectaddress('+mineId+',0)" >'+
+             	'</div><input type="hidden" id="regionCode'+mineId+'" />'+
+				' <input type="hidden" id="saleaddress'+mineId+'"  />'+
+				' <input type="hidden" id="longitude'+mineId+'" />'+
+				' <input type="hidden" id="latitude'+mineId+'"/>'+
+             
+             	' </div>'+
+           		' <div class="coaltypes" style="height:'+typeheight+'px">';
+       		    for(var i=0;i<dictypes.length;i++){
+	                mineitem+=' <div class="col-md-3 col-sm-3 col-xs-3 typebt">'+
+	           		'	<button class="btn  typebutton uactive" type="button"  onclick="changeselect(this,'+mineId+')"  data-id='+dictypes[i].dictCode+' >'+dictypes[i].dictValue+'</button>'+
+	           		' </div>';
+                }
+                mineitem+=' <div class="col-md-3 col-sm-3 col-xs-3 typebt">'+
+		           		'	<button class="btn  typebutton uactive" style="opacity: 0.5;"   id="coaltype'+mineId+'"  onclick="showadddictype('+mineId+')">自定义</button>'+
+		           		'   </div></div></div>';
+          
+			  $("#mines").append(mineitem);
+			
+		}
+    function showadddictype(mmineId){
+        $("#coaltypemineId").val(mmineId);
+    	$('#addcoaltype').modal('show');
+    }
+    
+    var  diccode=typelength;
+	 //添加煤种
+	function  adddictype(mineId){
+	
+	
+	    diccode++;
+	    mineId=$("#coaltypemineId").val();
+		if($("#coaltypename").val()!=''){
+			dictypes.push({"dictCode":diccode,"dictValue":$("#coaltypename").val()});
+		    $('#addcoaltype').modal('hide');
+		    var  html=' <div class="col-md-3 col-sm-3 col-xs-3 typebt active">'+
+		           		'<button class="btn  active typebutton" type="button"    data-id='+diccode+'   onclick="changeselect(this,'+mineId+')"  >'+$("#coaltypename").val()+'</button>'+
+		           		' </div>';
+		   $("#coaltype"+mineId).parent().before(html);
+		   $("#coaltypenum"+mineId).html(dictypes.length);
+		   var length=dictypes.length+1;
+		   var beishu= length%4==0?length/4:(length/4+1)
+	       var typeheight=35*beishu;
+	       if(length%4==1)
+	       $("#mineitem"+mineId).children(".coaltypes").height(typeheight);
+		 
+		}
+
+	}
+		
+	function selectaddress(mmineId,addstate){
+	    $("#minenamediv").show();
+	    $("#closebutton").show();
+
+        $("#addstate").val(addstate);
+	 
+		if(addstate==1){
+		  mmineId= $("#mines .mineitem").length+1;
+		  $("#mineitemId").val(mmineId);
+		  addmine(mmineId);
+		  $('#selmap').modal('show');
+		}else{
+		    $("#mineitemId").val(mmineId);
+			$("#mineitemId").val(mmineId);
+			$('#selmap').modal('show');
+		}
+	}
+	
+	function  showminelist(){
+	  if(table==null)
+	  	selectTable();
+	  	$('#selectuser').modal('show');
+	}
+		
+    //删除矿口
+	function  deletemine(mineId){
+	  if(confirm("确定要删除吗？")){			  
+		$("#"+mineId).remove();		
+	  }else{
+		return false;
+	  }
+	}
+	
+	
+
+  
+
+	
+	
+	var addValidation = function() {
+			var form = $('#salesform');
+            form.validate({
+                errorElement : 'span', //default input error message container
+                errorClass : 'help-block help-block-error', // default input error message class
+                focusInvalid : false, // do not focus the last invalid input
+                ignore : "", // validate all fields including form hidden input
+                rules : {
+                    coalSalesName : {
+                        minlength :2,
+                        maxlength : 50,
+                        required : true,
+                      
+                    },
+                    fulladdress : {
+                        required : true
+                    },
+                  
+                    realName : {
+                        required : true
+                    },
+                    userphone:{
+                        required : true,
+                        isMobile : true,
+                         remote : {
+                            url : '${base}/checkMobile.json',
+                            type : 'post',
+                            data : {
+                                'userMobile' : function() {
+                                return $("#userphone").val();
+                                }
+                            }
+                        }                     
+                 
+                  }
+                
+                    
+                },
+                messages : {
+                 userphone:{
+                    remote: "手机号已注册，请前往拉煤宝商户端登录。"
+                  } 
+                },
+
+				invalidHandler : function(event, validator) { //display error alert on form submit              
+
+				},
+
+				highlight : function(element) { // hightlight error inputs
+					$(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+				},
+
+				unhighlight : function(element) { // revert the change done by hightlight
+					$(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+				},
+
+				success : function(label) {
+					label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+				}
+			});
+		}
+	
+	
+	
+	//提交前组装矿口数据
+	function  submitdata(){
+	   arr=new Array();
+       var mine=$("#mines").children(".mineitem");
+       var minedata=null;
+       var selecttypes=null;
+       for(var i=0;i<mine.length;i++){
+	       var id=$(mine[i]).attr("id").substring(8);
+	       var selectype=	$("#mineitem"+id).children(".coaltypes").children(".active");
+	       selecttypes=new Array();
+	       for(var j=0;j<selectype.length;j++){
+	          type={"id":$(selectype[j]).children().attr("data-id"),"value":$(selectype[j]).children().html()};
+	          selecttypes.push(type);
+	       }
+	       if(id.length==8){
+	          minedata={"id":id,"types":JSON.stringify(selecttypes)}
+	       }else{
+	         minedata={"name":$("#minename"+id).html(),"regionCode":$("#regionCode"+id).val(),"address":$("#saleaddress"+id).val(),"longitude":$("#longitude"+id).val(),"latitude":$("#latitude"+id).val(),"types":JSON.stringify(selecttypes)}
+	       }
+         arr.push(minedata);
+       }
+        $("#minedata").val(JSON.stringify(arr)) ;
+        $("#coaltypes").val(JSON.stringify(dictypes.slice(typelength))) ;
+	}
+	
+	
+	
+	
+    </script>
+
+</body>
+
+</html>

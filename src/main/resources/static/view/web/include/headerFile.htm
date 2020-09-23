@@ -1,0 +1,87 @@
+<meta name="KeyWords" content="首页">
+<meta name="description" content="首页">
+<meta name="author" content="" />
+
+<link rel="shortcut icon" href="${base}/favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="yes">
+<!-- SEO友好提示 -->
+<meta name="applicable-device" content="pc,mobile">
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/js/comm/html5shiv.js"></script>
+<script type="text/javascript" src="/js/comm/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="${base}/assets/web/js/jquery.min.js"></script>
+<script type="text/javascript" src="${base}/assets/web/js/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="${base}/assets/web/js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="${base}/assets/web/js/ubox.js" charset="utf-8"></script>
+<meta id="headScreen" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"><script type="text/javascript" charset="gb2312" src="${base}/assets/web/get"></script><script type="text/javascript" charset="gb2312" src="${base}/assets/web/get"></script></head><body style="width: auto;"><div style="display: none; z-index: 2147483640; top: 0px; left: 0px; position: fixed; height: 100%; width: 100%;"></div><div id="idBox" class="lightbox" style="display: none; z-index: 2147483647;">	<div id="boxMain">		<div id="boxTopTitle">			<span id="boxName">显示框</span>			<span id="boxClose" title="关闭" onclick="box.Close();">×</span>		</div>		<div id="boxContent">			<iframe id="showiframe" src="${base}/assets/web/saved_resource.html" frameborder="0" style="width:100%;" name="bookConfirm"></iframe>		</div>	</div></div>
+<script type="text/javascript" src="${base}/assets/web/js/wow.js" charset="utf-8"></script>
+<script type="text/javascript" src="${base}/assets/web/js/alert.js" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css" href="${base}/assets/web/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="${base}/assets/web/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="${base}/assets/web/css/box.css">
+<link rel="stylesheet" type="text/css" href="${base}/assets/web/css/alert.css">
+
+
+<script>
+	var batchArr = [];
+	var checkLoad = 0;//判断是否是回调完成的
+</script>
+<script>
+    var isOpenMobie = 2;
+    var isOpenPad = 2;
+    if(isOpenMobie == 1){
+        if(isOpenPad == 1){
+            $("body").css("width","auto");
+        }else{
+            //是否手机端判断
+            var ua = navigator.userAgent;
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                isIphone =!ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+                isMobile = isIphone || isAndroid;
+            if(isMobile){
+                $("body").css("width","1280px");
+            }else{
+                $("body").css("width","auto");
+            }
+        }
+    }else{
+        $("body").css("width","auto");
+        $("head").append("<meta id='headScreen' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport' />");
+    }
+    //手机屏幕尺寸兼容 purewinter 2019-03-26
+    $(window).load(function(){
+        bodyScale();
+    });
+    function bodyScale(){
+        var windowWidth = $(window).width();
+        $("#bodyScale").remove();
+        if(windowWidth < 680){
+            var scale = windowWidth / 375;
+            $("#headScreen").remove();
+            $("head").append("<meta id='headScreen' content='width=375, initial-scale="+scale+", maximum-scale="+scale+", user-scalable=no' name='viewport' />");
+        }else if(windowWidth < 960){
+            var scale = windowWidth / 960;
+            $("#headScreen").remove();
+            $("head").append("<meta id='headScreen' content='width=960, initial-scale="+scale+", maximum-scale="+scale+", user-scalable=no' name='viewport' />");
+        }
+    }
+$(window).load(function(){
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		setTimeout(function(){
+			new WOW().init()
+		},150)
+	};
+});
+var DIY_WEBSITE_ID = "125587";
+var DIY_JS_SERVER = "box6js.nicebox.cn";
+</script>
+<script src="${base}/assets/web/login_html_v9_diy.php"></script>
+<script type="text/javascript">var Default_isFT = 0;</script>
+<script type="text/javascript" src="${base}/assets/web/js/transform.js"></script>

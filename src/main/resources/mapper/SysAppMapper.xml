@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxhalo.lmb.mapper.SysAppMapper" >
+  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.SysApp" >
+    <id column="app_name" property="appName" jdbcType="VARCHAR" />
+    <id column="app_type" property="appType" jdbcType="VARCHAR" />
+    <id column="version" property="version" jdbcType="VARCHAR" />
+    <result column="app_path" property="appPath" jdbcType="VARCHAR" />
+    <result column="issuance_time" property="issuanceTime" jdbcType="DATE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+    <result column="verrify_state" property="verrifyState" jdbcType="INTEGER" />
+    <result column="accesskey" property="accesskey" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    app_name, app_type, version, app_path, issuance_time, remark, create_time, update_time, 
+    delete_flag, verrify_state, accesskey
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.sxhalo.lmb.domain.SysAppKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_app
+    where app_name = #{appName,jdbcType=VARCHAR}
+      and app_type = #{appType,jdbcType=VARCHAR}
+      and version = #{version,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sxhalo.lmb.domain.SysAppKey" >
+    delete from sys_app
+    where app_name = #{appName,jdbcType=VARCHAR}
+      and app_type = #{appType,jdbcType=VARCHAR}
+      and version = #{version,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sxhalo.lmb.domain.SysApp" >
+    insert into sys_app (app_name, app_type, version, 
+      app_path, issuance_time, remark, 
+      create_time, update_time, delete_flag, 
+      verrify_state, accesskey)
+    values (#{appName,jdbcType=VARCHAR}, #{appType,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{appPath,jdbcType=VARCHAR}, #{issuanceTime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, 
+      #{verrifyState,jdbcType=INTEGER}, #{accesskey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.SysApp" >
+    insert into sys_app
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="appName != null" >
+        app_name,
+      </if>
+      <if test="appType != null" >
+        app_type,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="appPath != null" >
+        app_path,
+      </if>
+      <if test="issuanceTime != null" >
+        issuance_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="verrifyState != null" >
+        verrify_state,
+      </if>
+      <if test="accesskey != null" >
+        accesskey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="appName != null" >
+        #{appName,jdbcType=VARCHAR},
+      </if>
+      <if test="appType != null" >
+        #{appType,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="appPath != null" >
+        #{appPath,jdbcType=VARCHAR},
+      </if>
+      <if test="issuanceTime != null" >
+        #{issuanceTime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="verrifyState != null" >
+        #{verrifyState,jdbcType=INTEGER},
+      </if>
+      <if test="accesskey != null" >
+        #{accesskey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.SysApp" >
+    update sys_app
+    <set >
+      <if test="appPath != null" >
+        app_path = #{appPath,jdbcType=VARCHAR},
+      </if>
+      <if test="issuanceTime != null" >
+        issuance_time = #{issuanceTime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="verrifyState != null" >
+        verrify_state = #{verrifyState,jdbcType=INTEGER},
+      </if>
+      <if test="accesskey != null" >
+        accesskey = #{accesskey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where app_name = #{appName,jdbcType=VARCHAR}
+      and app_type = #{appType,jdbcType=VARCHAR}
+      and version = #{version,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.SysApp" >
+    update sys_app
+    set app_path = #{appPath,jdbcType=VARCHAR},
+      issuance_time = #{issuanceTime,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      verrify_state = #{verrifyState,jdbcType=INTEGER},
+      accesskey = #{accesskey,jdbcType=VARCHAR}
+    where app_name = #{appName,jdbcType=VARCHAR}
+      and app_type = #{appType,jdbcType=VARCHAR}
+      and version = #{version,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from sys_app
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_app
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_app
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>     
+  </select>
+</mapper>

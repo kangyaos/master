@@ -1,0 +1,136 @@
+
+			<div id="comm_layout_header" class="layout  none scrollToTop_pc scrollToTop_pad scrollToTop_mobile" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" old_top_pc="0" old_left_pc="0" old_width_pc="1519" style="position: fixed; z-index: 9999999; top: 0px; width: 1519px; left: 0px;">
+				<div class="view_contents">
+								<div id="image_logo_1575606105555" class="view logo image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div names="image" class="view_contents">
+					<div class="logoStyle modSet">
+<a href="http://demo.nicebox.cn/c34def71157cf084/index.html" target="_self"><img class="imgSet" src="${base}/assets/web/images/logo.png" title="" alt="" style="width:auto; height:100%; margin-left:0px"></a>
+</div>				</div>
+			</div>
+					<div id="dh_style_28_1578629663716" class="view style_28 dh  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div names="dh" class="view_contents">
+<div id="menu" class="menu menuStyle_28">
+	<div class="menuLayout">
+		<ul class="miniMenu columnSet showmobile">
+			<li class="leftBox">
+				<div class="nav"></div>
+				<div class="sidebar icoMenuSet"><i class="fa fa-navicon" onclick="setDhListen(&#39;style_01&#39;,this)"></i></div>
+				<div class="menuScroll">
+					<ul class="menuUlCopy">
+								<li id="hot" class="rflex" pageid="2801213" showmobile=""><a class="mainMenuSet" href="index.html">
+								首页</a>
+								</li>
+								<li class="rflex" pageid="2801217" showmobile=""><a class="mainMenuSet" href="trainingcourse.html">
+								课程</a>
+								</li>
+								<li class="rflex" pageid="2801223" showmobile=""><a class="mainMenuSet" href="teacher.html">
+								教师</a>
+								</li>
+								<li class="rflex" pageid="2801225" showmobile=""><a class="mainMenuSet" href="http://demo.nicebox.cn/c34def71157cf084/facilities.html">
+								证书</a>
+								</li>
+								<li class="rflex" pageid="2801219" showmobile=""><a class="mainMenuSet" href="news.html">
+								新闻动态</a>
+								</li>
+								<li class="rflex" pageid="2801215" showmobile=""><a class="mainMenuSet" href="http://demo.nicebox.cn/c34def71157cf084/about.html">
+								关于我们</a>
+								</li>
+								<li class="rflex" pageid="2801221" showmobile=""><a class="mainMenuSet" href="contact.html">
+								联系我们</a>
+								</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<div class="menuUl_box columnSet dhAreaSet showpc">
+			<ul class="menuUl dflex maxWidth ">
+						<li id="hot" class="rflex isLi" pageid="2801213" showpc="">
+							<a class="mainMenuSet Nosub" href="index.html">
+								首页
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="2801217" showpc="">
+							<a class="mainMenuSet Nosub" href="trainingcourse.html">
+								课程
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="2801223" showpc="">
+							<a class="mainMenuSet Nosub" href="teacher.html">
+								教师
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="2801225" showpc="">
+							<a class="mainMenuSet Nosub" href="http://demo.nicebox.cn/c34def71157cf084/facilities.html">
+								证书
+							</a>
+						</li>
+						<li class="rflex isLi" pageid="2801219" showpc="">
+							<a class="mainMenuSet Nosub" href="news.html">
+								新闻动态
+							</a>
+						</li>
+						
+						<li class="rflex isLi" pageid="2801221" showpc="">
+							<a class="mainMenuSet Nosub" href="contact.html">
+								联系我们
+							</a>
+						</li>
+			</ul>
+			<div class="subBox" style="top: 44px; height: 607.6px;">
+				<div class="subBoxContent maxWidth">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 导航栏目有下级时禁止跳转 -->
+<!-- 二级菜单宽度自适应 -->
+<script>
+function navSwtich(obj) {
+	$(obj).siblings(".menuUlCopy").slideToggle(200);
+	$(obj).toggleClass('ontoggle');
+	$(obj).parent().siblings().find(".menuUlCopy").slideUp(200);
+	$(obj).parent().siblings().find(".fa-angle-down").removeClass('ontoggle');
+}
+function subLeft_dh_style_28_1578629663716(){
+	$("#dh_style_28_1578629663716 .menuUl>li").each(function(){
+		$(this).find(".menuUl03").css("left",'100%');
+	})
+}
+$(window).resize(function() {
+	subLeft_dh_style_28_1578629663716();
+})
+$(function(){
+	$("#dh_style_28_1578629663716 .fa-navicon").click(function(){
+		$("#dh_style_28_1578629663716 .menuUlCopy").each(function(){
+			$(this).siblings(".fa").show();
+		})
+	})
+	subLeft_dh_style_28_1578629663716();
+		$("#dh_style_28_1578629663716 .subBox").css("top",$("#dh_style_28_1578629663716 .menuUl_box").height());
+	if($("#dh_style_28_1578629663716 .menuUl").hasClass("noHover")){
+		var tabNum = 0;
+		$("#dh_style_28_1578629663716 .menuUl>li").find(".Onsub").each(function(){
+			tabNum += 1;
+			$(this).parent().attr("tabNum",tabNum)
+		})
+		$("#dh_style_28_1578629663716 .menuUl>li .Onsub").mouseover(function(){
+			$("#dh_style_28_1578629663716 .subBox").show();
+			var index = $(this).parent().attr("tabNum");
+			$("#dh_style_28_1578629663716 .subBox .subItems").eq(index-1).fadeIn(100).siblings().hide();
+							$("#dh_style_28_1578629663716 .subBox .subMenuImgArea .subMenuImgCon").eq(0).fadeIn(100).siblings().hide();
+					})
+		$("#dh_style_28_1578629663716 .subBox").mouseleave(function(){
+			$(this).hide();
+		})
+		$("#dh_style_28_1578629663716 .menuUl>li .Nosub").mouseover(function(){
+			$("#dh_style_28_1578629663716 .subBox").hide();
+		})
+		//风格41 42
+	}
+})
+</script>
+				</div>
+			</div>
+						</div>
+			</div>

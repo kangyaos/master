@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxhalo.lmb.mapper.SigninAwardRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.SigninAwardRecord" >
+    <id column="record_id" property="recordId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="task_id" property="taskId" jdbcType="INTEGER" />
+    <result column="cumulative" property="cumulative" jdbcType="INTEGER" />
+    <result column="award_type" property="awardType" jdbcType="INTEGER" />
+    <result column="award_amount" property="awardAmount" jdbcType="INTEGER" />
+    <result column="award_time" property="awardTime" jdbcType="TIMESTAMP" />
+    <result column="validity_time" property="validityTime" jdbcType="TIMESTAMP" />
+    <result column="whether_cash" property="whetherCash" jdbcType="INTEGER" />
+    <result column="prize_time" property="prizeTime" jdbcType="TIMESTAMP" />
+    <association property="user" column="user_id" select="com.sxhalo.lmb.mapper.UserInfoMapper.selectByPrimaryKey"/>
+    <association column="task_id" property="taskName" select="getTaskName"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    record_id, user_id, task_id, cumulative, award_type, award_amount, award_time, validity_time, 
+    whether_cash, prize_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from signin_award_record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from signin_award_record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sxhalo.lmb.domain.SigninAwardRecord" >
+    insert into signin_award_record (record_id, user_id, task_id, 
+      cumulative, award_type, award_amount, 
+      award_time, validity_time, whether_cash, 
+      prize_time)
+    values (#{recordId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER}, 
+      #{cumulative,jdbcType=INTEGER}, #{awardType,jdbcType=INTEGER}, #{awardAmount,jdbcType=INTEGER}, 
+      #{awardTime,jdbcType=TIMESTAMP}, #{validityTime,jdbcType=TIMESTAMP}, #{whetherCash,jdbcType=INTEGER}, 
+      #{prizeTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.SigninAwardRecord" >
+    insert into signin_award_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        record_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="cumulative != null" >
+        cumulative,
+      </if>
+      <if test="awardType != null" >
+        award_type,
+      </if>
+      <if test="awardAmount != null" >
+        award_amount,
+      </if>
+      <if test="awardTime != null" >
+        award_time,
+      </if>
+      <if test="validityTime != null" >
+        validity_time,
+      </if>
+      <if test="whetherCash != null" >
+        whether_cash,
+      </if>
+      <if test="prizeTime != null" >
+        prize_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="cumulative != null" >
+        #{cumulative,jdbcType=INTEGER},
+      </if>
+      <if test="awardType != null" >
+        #{awardType,jdbcType=INTEGER},
+      </if>
+      <if test="awardAmount != null" >
+        #{awardAmount,jdbcType=INTEGER},
+      </if>
+      <if test="awardTime != null" >
+        #{awardTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validityTime != null" >
+        #{validityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="whetherCash != null" >
+        #{whetherCash,jdbcType=INTEGER},
+      </if>
+      <if test="prizeTime != null" >
+        #{prizeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.SigninAwardRecord" >
+    update signin_award_record
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="cumulative != null" >
+        cumulative = #{cumulative,jdbcType=INTEGER},
+      </if>
+      <if test="awardType != null" >
+        award_type = #{awardType,jdbcType=INTEGER},
+      </if>
+      <if test="awardAmount != null" >
+        award_amount = #{awardAmount,jdbcType=INTEGER},
+      </if>
+      <if test="awardTime != null" >
+        award_time = #{awardTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validityTime != null" >
+        validity_time = #{validityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="whetherCash != null" >
+        whether_cash = #{whetherCash,jdbcType=INTEGER},
+      </if>
+      <if test="prizeTime != null" >
+        prize_time = #{prizeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.SigninAwardRecord" >
+    update signin_award_record
+    set user_id = #{userId,jdbcType=INTEGER},
+      task_id = #{taskId,jdbcType=INTEGER},
+      cumulative = #{cumulative,jdbcType=INTEGER},
+      award_type = #{awardType,jdbcType=INTEGER},
+      award_amount = #{awardAmount,jdbcType=INTEGER},
+      award_time = #{awardTime,jdbcType=TIMESTAMP},
+      validity_time = #{validityTime,jdbcType=TIMESTAMP},
+      whether_cash = #{whetherCash,jdbcType=INTEGER},
+      prize_time = #{prizeTime,jdbcType=TIMESTAMP}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getTaskName" resultType="java.lang.String" parameterType="java.lang.Integer">
+  	select task_name from signin_month_task where task_id = #{taskId,jdbcType=INTEGER} limit 1
+  </select>
+  <select id="getMaxId" resultType="java.lang.Integer" >
+	select IFNULL(max(record_id),0) record_id from signin_award_record
+  </select>
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from signin_award_record left join user_copy user on user.user_id=signin_award_record.user_id
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from signin_award_record
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select *
+    from signin_award_record left join user_copy user on user.user_id=signin_award_record.user_id
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>
+  </select>
+</mapper>

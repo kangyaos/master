@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>煤炭详情</title>
+<link rel="stylesheet" href="${base}/assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="${base}/assets/css/components.css"  />
+<style type="text/css">
+.portlet {
+    margin-bottom: 0px;
+}
+.portlet > .portlet-title {
+    border-bottom: 2px solid #1e7aea;
+    padding-top: 20px;
+    margin-bottom: 0px;
+    min-height: 60px;
+}
+.portlet > .portlet-title > .caption {
+    font-size: 20px;
+    padding: 10px 0;
+}
+.portlet > .portlet-title > .tools {
+    padding: 8px 0 0 0; 
+}
+.table {
+	width: 100%;
+}
+.table tr{
+	font-size: 16px;
+	height: 30px;
+	line-height: 30px;
+}
+.table tr:last-child{
+	border-bottom: 1px solid #ddd;
+}
+h4 {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0px;
+}
+.price-table {
+	border-left: 3px solid #F0F4F8;
+	border-right: 3px solid #F0F4F8;
+    border-bottom: 3px solid #F0F4F8;
+}
+.pricename {
+	color: #666;
+	font-size: 18px;
+	font-weight: 900;
+	text-align: center;
+}
+.pricered {
+    color: #e55f48;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+.address {
+	margin: 10px 0 0;
+	font-size: 16px;
+	color: #666;
+}
+.address>tbody>tr>td{
+	padding: 0;
+	border: none;
+}
+.address tr:last-child{
+	border-bottom: none;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 1px;
+    text-align: center;
+    color: #000;
+    background-color: #f1f1f1;
+    border: 1.5px solid #f1f1f1;
+    border-radius: 0;
+}
+.nav-pills>li+li {
+    margin-left: 0px;
+}
+.nav-pills>li {
+    float: left;
+    width: 25%;
+    padding:2px;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #000; 
+    background-color: #fff;
+ 
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<#if goods.sales??>
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<b>${goods.sales.companyName!}</b>
+				</div>
+				<div class="tools">
+					<#if goods.sales.longitude??>
+					<img src="${base}/assets/image/position.png" style="width:20px;height:20px;" onclick="salesPosition();">
+					</#if>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<#if coalSalePicUrl??>
+				<div style="height:150px;text-align:center;">
+					<img src="${coalSalePicUrl!}" style="height:100%;width:100%;" onclick="openSalesPicture();">
+				</div>
+				</#if>
+				<table class="table address">
+					<tbody>
+						<tr>
+							<td style="width: 83px;">联&nbsp;&nbsp;系&nbsp;&nbsp;人：</td>
+							<td>${goods.userInfo.realName!}</td>
+							<td style="float:right;"><a href="tel:${userMobile!}">
+							<img src="${base}/assets/image/phone1.png" style="width:20px;height:20px;"></a></td>
+						</tr>
+						<tr>
+							<td style="width: 83px;">详细地址：</td>
+							<td colspan="2">${salesRegionName!}${goods.sales.address!}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</#if>
+		<div class="clearfix"></div>
+		<div class="portlet">
+			<div class="portlet-body">
+				<#if adver.adCode??>
+					<#if adver.adType=="1">
+					<a href="${adver.adUrl!}"><img src="${adPicUrl!}" style="width:100%;height:95px;margin-top:20px;"></a>
+					<#else>
+					<div data-emmaBanner="${adver.target!}" style="position:relative;width:100%;height:95px;margin-top:20px;"></div>
+					</#if>
+				<#else>
+					<img src="${adPicUrl!}" style="width:100%;height:95px;margin-top:20px;">
+				</#if>
+			</div>
+		</div>
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<b>${goods.coalName!}</b>
+				</div>
+			</div>
+			<div class="portlet-body">
+			<table class="table table-hover">
+				<colgroup>
+					<col style="width: 50%"/>
+					<col style="width: 50%"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<td><h4>基本信息</h4></td>
+					</tr>
+					<tr>
+						<td>发热量</td>
+						<td><#if goods.calorificValue?? && goods.calorificValue!=0>${goods.calorificValue}KCal/kg</#if></td>
+					</tr>
+ 					<!--<tr>
+						<td>粒度</td>
+						<td><#if goods.grainSize?? && goods.grainSize!="">${goods.grainSize}mm</#if></td>
+					</tr> -->
+					<tr>
+						<td>挥发分</td>
+						<td><#if goods.volatileValue?? && goods.volatileValue!=0>${goods.volatileValue}%</#if></td>
+					</tr>
+					<tr>
+						<td>全水分</td>
+						<td><#if goods.totalMoisture?? && goods.totalMoisture!=0>${goods.totalMoisture}%</#if></td>
+					</tr>
+					<tr>
+						<td>全硫分</td>
+						<td><#if goods.totalSulfur?? && goods.totalSulfur!=0>${goods.totalSulfur}%</#if></td>
+					</tr>
+					<tr>
+						<td>固定碳</td>
+						<td><#if goods.fixedCarbon?? && goods.fixedCarbon!=0>${goods.fixedCarbon}%</#if></td>
+					</tr>
+					<tr>
+						<td>灰分</td>
+						<td><#if goods.ashValue?? && goods.ashValue!=0>${goods.ashValue}%</#if></td>
+					</tr>
+					<tr>
+						<td>加工工艺</td>
+						<td><#if goods.technologyName?? && goods.technologyName!="">${goods.technologyName}</#if></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<#if coalReportPicUrl??>
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<b>化验单</b>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<div style="height:150px;text-align:center;">
+					<img src="${coalReportPicUrl!}" style="height:100%;width:100%;" onclick="openPicture();">
+				</div>
+				<table class="table table-hover">
+					<colgroup>
+						<col style="width: 30%"/>
+						<col style="width: 70%"/>
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>化验单位</td>
+							<td class="text-right">${goods.coalReportInstitution!}</td>
+						</tr>
+						<tr>
+							<td>化验时间</td>
+							<td class="text-right"><#if goods.coalReportTime??>${goods.coalReportTime?string("yyyy-MM-dd")}</#if></td>
+						</tr>
+				</table>
+			</div>
+		</div>
+		</#if>
+		<div class="clearfix"></div>
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<b>价格</b>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<table class="table table-hover price-table">
+					<tbody>
+						<tr>
+							<td>
+							<div class="pricename">一票价</div>
+							<div class="pricered">
+								<img src="${base}/assets/image/price.png" 
+								height=12 style="margin-top:-5px"/>${goods.oneQuote!}
+							</div>
+							</td>
+							<#if goods.isShowTwo?? && goods.isShowTwo==1>
+							<#if goods.twoQuote?? && goods.twoQuote!=0>
+							<td style="border-left: 3px dashed #F0F4F8;">
+							<div class="pricename">二票价</div>
+							<div class="pricered">
+								<img src="${base}/assets/image/price.png" 
+								height=12 style="margin-top:-5px"/>${goods.twoQuote!}
+							</div>
+							</td>
+							</#if>
+							</#if>
+						</tr>
+				</table>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row" style="padding-top: 20px;">
+			<div class="col-xs-12">
+			<div class="row" style=" height: 40px;line-height: 40px;">
+			  <div class="col-xs-6" style="font-size: 16px;">历史价位图</div>
+			  <div class="col-xs-6" style="text-align:right;font-weight: bold;">价格(元/吨)</div>
+			</div>
+			<ul id="myTab" class="nav nav-pills" role="tablist">
+			    <li class="active" onclick="inithighcharts(7)"><a href="#" role="tab" data-toggle="pill">7天</a></li>
+			    <li class=""  onclick="inithighcharts(30)"><a href="#" role="tab" data-toggle="pill">1月</a></li>
+			    <li class="" onclick="inithighcharts(180)"><a href="#" role="tab" data-toggle="pill">半年</a></li>
+			    <li class="" onclick="inithighcharts(365)"><a href="#" role="tab" data-toggle="pill">1年</a></li>
+			 </ul>
+				<div id="container"	style="height: 300px;"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<#if goods.companies??>
+		<div class="portlet">
+			<div class="portlet-title">
+				<div class="caption">
+					<b>煤炭产地</b>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<div style="font-size: 16px;margin:10px 0">
+					<b>${goods.companies.mineMouthName!}</b>
+					<#if goods.companies.longitude??>
+					<img src="${base}/assets/image/position.png" style="width:20px;height:20px; float: right;" onclick="companiesPosition();">
+					</#if>
+				</div>
+				<#if mineMouthPicUrl??>
+				<div style="height:150px;text-align:center;">
+					<img src="${mineMouthPicUrl!}" style="height:100%;" onclick="openMineMouthPicture();">
+				</div>
+				</#if>
+				<table class="table address">
+					<tbody>
+						<tr>
+							<td style="width: 83px;">详细地址：</td>
+							<td>${mineRegionName!}${goods.companies.address!}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		</#if>
+		<div style="height: 50px;"></div>
+		<div class="clearfix"></div>
+	</div>
+	<script src="${base}/assets/js/jquery.min.js"
+		type="text/javascript"></script>
+	<script src="${base}/assets/js/highcharts.js"
+		type="text/javascript"></script>
+	<script	src="${base}/assets/js/bootstrap.min.js"
+		type="text/javascript"></script>
+	<script src="https://emma-sdk.huodonghezi.com/dist/js/emma.js"></script>
+	<script type='text/javascript'>
+	  // 配置    
+	  emma.config({
+	       // 活动后台申请的key 
+	       key : '415d11d87bd889b2725675a49aac6e82',
+	       // 是否是测试，默认false
+	       debug:false,
+	       // test:默认为false,表示当前操作为正式发布模式，值为true是表示当前操作为测试模式 
+	       test:false,
+	       //可选参数，是否接入活动盒子的统计分析，默认为true，不接入设置成false
+	       statistics:true,
+	       // 本页面预设用到的活动类型，可不填
+	       eventList : ['iconSmall','iconBig','banner'],
+	  });
+	  // 投放类型(投放活动)
+	  emma.push({     
+	    'type':        'banner',        // 埋点类型，触发或投放(必填)
+	    'position_key': '${adver.target!}',   // 后台生成的位置key(必填)
+	    'username':    '${username!}',    // 用户账号(必填)   
+	    'mobile':      '${mobile!}',   // 手机号码(必填)
+	  });
+	</script>
+	<script>
+		$(document).ready(function() {
+			inithighcharts(7);
+		});
+		
+		function inithighcharts(daynum){
+			$.ajax({
+				type : 'get',
+				url : 'coalpricechart.json',
+				data : {'goodsId':'${goods.goodsId!}','day':daynum},
+				dataType : "json",
+				success : function(data) {
+				console.log(data)
+					$('#container').highcharts({
+						title : {
+							text : '',
+							
+						},
+						xAxis : {
+							categories : data.categories
+						},
+						yAxis : {
+							title : {
+								text : ''
+							}
+						},
+						tooltip : {
+							valueSuffix : '元/吨',
+							style : {
+								fontSize : '16px'
+							}
+						},
+						legend : {
+							align : 'right',
+							verticalAlign : 'right',
+							floating : true,
+							borderWidth : 0,
+							itemStyle : {
+								fontSize : '16px',
+							}
+						},
+						plotOptions : {
+							series : {
+								events : {
+									legendItemClick : function(event) {
+										return false;
+									}
+								}
+							}
+						},
+						series : [ {
+							name : '价格',
+							showInLegend: false,                          
+							data : data.oneQuote
+						} ]
+					});
+			
+				}
+			});
+		}
+	
+		
+		function salesPosition(){
+			document.location = "js://map_information_department";
+		}
+		
+		function companiesPosition(){
+			document.location = "js://map_mine_mouth";
+		}
+		
+		function openPicture(){
+			document.location = "js://open_picture";
+		}
+		
+		function openSalesPicture(){
+			document.location = "js://open_sales_picture";
+		}
+		
+		function openMineMouthPicture(){
+			document.location = "js://open_mineMouth_picture";
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>认证审核问题</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="" name="description">
+<meta content="" name="author">
+<link href="${base}/assets/global/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="${base}/assets/global/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="${base}/assets/global/css/components.css" rel="stylesheet" type="text/css">
+<link href="${base}/assets/global/css/layout.css" rel="stylesheet" type="text/css">
+<link href="${base}/assets/global/css/default.css" rel="stylesheet" type="text/css">
+<body  ondblclick="return false;">
+<div class="page-container">
+	<div class="page-content">
+		<div class="container">
+			<div class="">				
+				<div class="col-md-6 col-sm-6">
+				    <div></div>
+					<div class="portlet light">						
+						<div class="portlet-body">
+							<!--BEGIN TABS-->
+							<div class="tab-content">
+								<div class="tab-pane active" id="tab_1_1">
+									<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;height: auto;">
+										<ul class="feeds">
+											<li>
+												<div class="col1">
+													<div class="cont">														
+														<div class="cont-col2">
+															<div class="desc"><a onclick="doCancel(this,21)">下载快煤宝APP后，如何成为认证用户？</a></div>
+														</div>
+													</div>
+												</div>
+												<div class="col2">
+													<div class="date">
+														 <a onclick="doCancel('i',21)" id="21"><i class="fa fa-angle-right"></i></a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="col1">
+													<div class="cont">														
+														<div class="cont-col2">
+															<div class="desc"><a onclick="doCancel(this,22)">提交认证申请后，大概多长时间能得到结果？</a> </div>
+														</div>
+													</div>
+												</div>
+												<div class="col2">
+													<div class="date">
+														 <a onclick="doCancel('i',22)" id="22"><i class="fa fa-angle-right"></i></a>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="col1">
+													<div class="cont">														
+														<div class="cont-col2">
+															<div class="desc"><a onclick="doCancel(this,23)">快煤宝APP是不是只提供信息部用户进行认证？</a> </div>
+														</div>
+													</div>
+												</div>
+												<div class="col2">
+													<div class="date">
+														 <a onclick="doCancel('i',23)" id="23"><i class="fa fa-angle-right"></i></a>
+													</div>
+												</div>
+											</li>																						
+										</ul>
+							        </div>
+						        </div>
+					        </div>
+					<!-- END PORTLET-->
+				        </div>
+			        </div>
+		        </div>
+	        </div>	
+       </div>
+    </div>
+</div>
+<script src="${base}/assets/js/jquery.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {			
+			
+		});
+		
+		function doCancel(obj,type){
+		  console.log(obj)
+		  if(obj=="i"){
+		      var a = $("#"+type).parent(".date").parent(".col2").siblings(".col1").find("a").text();
+		      window.location.href="detail.html?title="+encodeURI(encodeURI(a))+" &type="+type;
+		  }else{
+		      window.location.href="detail.html?title="+encodeURI(encodeURI(obj.innerHTML))+" &type="+type; 
+		  }
+		}
+</script>
+</body>
+</html>

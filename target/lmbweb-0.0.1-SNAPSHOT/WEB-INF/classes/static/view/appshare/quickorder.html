@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>订单详情</title> 
+<!--[if lt IE 9]>
+   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="${base}/assets/js/jquery.min.js"></script>
+<link rel="stylesheet" href="${base}/assets/css/bootstrap.min.css"/>
+<style type="text/css">
+.order-title{
+    font-size: 18px;
+    font-weight: 600;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0 20px;
+}
+.order-container{
+    padding: 20px 20px 15px;
+    line-height: 25px;
+}
+section{
+background-color: #fff;
+margin-bottom:15px 
+}
+.dashed_hr{
+margin: 5px auto;border: 0; border-top: 1px dashed #f0f0f0;
+}
+.zuofei{
+    font-weight: 600;
+    line-height: 50px;
+    color: #333;
+    font-size: 22px;
+}
+.speak_box {
+    margin-bottom: 70px;
+    padding: 10px;
+}
+.question, .answer {
+    margin-bottom: 1rem;
+}
+.heard_img {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #ddd;
+}
+.heard_img img{
+width:100%;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.question>div {
+    display: inline-block;
+}
+.question_text {
+    padding-right: 20px;
+}
+.question_text, .answer_text {
+    box-sizing: border-box;
+    position: relative;
+    display: table-cell;
+    min-height: 60px;
+}
+.answer_text p {
+    background: #fff;
+        border: 2px solid #f0f0f0;
+}
+.question_text p {
+    background: #1e7aea;
+    color: #fff;
+    text-align: left;
+}
+.question_text i {
+    border-left: 10px solid #1e7aea;
+    right: 11px;
+}
+.question_text i, .answer_text i {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: 25px;
+}
+.answer_text i {
+    border-right: 10px solid #f0f0f0;
+    left: 10px;
+}
+.question_text p, .answer_text p {
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    font-size: 14px;
+    line-height: 28px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    display: table-cell;
+    height: 60px;
+    max-width: 195px;
+    word-wrap: break-word;
+}
+.question_text, .answer_text {
+    box-sizing: border-box;
+    position: relative;
+    display: table-cell;
+    min-height: 60px;
+}
+.answer_text {
+    padding-left: 20px;
+}
+.question {
+    text-align: right;
+}
+.question, .answer {
+    margin-bottom: 1rem;
+    min-height: 80px;
+}
+.gray{
+color: #999;
+}
+.gray1{
+color: #666;
+}
+.answer_img {
+    margin-left: 20px;
+    border-radius: 10px;
+}
+img{
+    width: 100%;
+}
+.zuofeicoverlayer{
+    z-index: 100;
+    opacity: 0.3;
+    filter:alpha(Opacity=80);
+    -moz-opacity:0.3;
+    background-color: #ffffff;
+}
+.biaoqian {
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: white;
+    border-radius: 3px;
+    padding: 2px 5px;
+    background-color: #1e7aea;
+    margin-left: 10px;
+}
+.img-border{
+    border: 2px solid #ccc;
+    height: 45px;
+}
+.qu_title{
+    color: white;
+    background-color: #1e7aea;
+    padding: 15px;
+}
+
+.coalpro{
+    padding: 0 0 0 15px;
+}
+.zanwu{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+<body style="background-color: #f5f5f9;">
+
+<div style="width:100%" >
+<!-- 订单信息 -->
+
+ <section >
+ <#if order.orderState==2>
+	 <div class="qu_title" > 
+	  订单于 ${order.accepTime?datetime} 被受理！<#if order.acceptUserName?? >受理人 ${order.acceptUserName!}。</#if>
+	 </div>
+ <#elseif order.orderState==3>
+     <div class="qu_title" > 
+	   信息部已拒绝。
+	 </div>
+ </#if>
+   <div class="order-title">订单信息</div>
+   <div class="order-container">
+	   <div class="row">
+	   		<div class="col-xs-3 coalpro">信&nbsp; 息&nbsp; 部</div>
+	   		<div class="col-xs-9">${order.sales.companyName!}
+	   		<#if order.sales.mineMouthLongitude ??>
+	   			<img src="${base}/assets/image/position.png" style="width:18px" onclick="companiesPosition(${order.sales.mineMouthLongitude!},${order.sales.mineMouthLatitude!},'${order.sales.companyName!}');">
+	   		</#if>
+	   		</div>
+	   </div>
+	   <div class="row">
+	   		<div class="col-xs-3 coalpro">订&nbsp; 单&nbsp; 号</div>
+	   		<div class="col-xs-9">${order.orderNumber!}</div>
+	   </div>
+	   <div class="row">
+	   		<div class="col-xs-3 coalpro">预&nbsp; 定&nbsp; 量</div>
+	   		<div class="col-xs-9 text-muted">${order.tradingVolume!}吨</div>
+	   </div>
+	   <div class="row">
+	   		<div class="col-xs-3 coalpro">预定价格</div>
+	   		<div class="col-xs-9 text-danger">${order.oneQuote/100!}元/吨</div>
+	   </div>
+	   <#if order.quoteAdjust?? && order.quoteAdjust!=0 >
+	   <div class="row">
+	   		<div class="col-xs-3 coalpro">预订<#if order.quoteAdjust gt 0>加价<#else>优惠</#if></div>
+	   		<div class="col-xs-9">${order.quoteAdjust?abs/100}元</div>
+	   </div>
+	   </#if>
+	    <div class="row">
+	   		<div class="col-xs-3 coalpro">收&nbsp; 货&nbsp; 人</div>
+	   		<div class="col-xs-9 text-muted">${order.contactPerson!}</div>
+	   </div>
+	    <div class="row">
+	   		<div class="col-xs-3 coalpro">预定时间</div>
+	   		<div class="col-xs-9 text-muted">${createTime!}</div>
+	   </div>
+	    <div class="row">
+	   		<div class="col-xs-3 coalpro">矿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;口</div>
+	   		<div class="col-xs-9 text-muted">${order.companies.mineMouthName!}
+	   			<#if order.companies.longitude ??>
+	   			<img src="${base}/assets/image/position.png" style="width:18px" onclick="companiesPosition(${order.companies.longitude!},${order.companies.latitude!},'${order.companies.mineMouthName!}');">
+	            	</#if>
+	   		</div>
+	   </div>
+   </div>
+ </section>
+ <!-- /订单信息 -->
+ 
+ <!-- 煤炭信息 -->
+ <section>
+   <div class="order-title">${order.sales.companyName!}(卖家)</div>
+     <a href="${base}/shareGoods.html?releaseNum=${order.releaseNum!}">  
+        <div class="order-container" style="color:#999">
+          <div class="row">
+	   		<div class="col-xs-3">  <img style="height: 45px;"  src="<#if order.coal.coalPicCode ?? && order.coal.coalPicCode!="">http://picture.sxhalo.com/picture/${order.coal.coalPicCode!}<#else>${base}/assets/image/coalType${order.coal.coalCategoryId!}.png</#if>" onerror="this.src='${base}/assets/image/coalType${order.coal.coalCategoryId!}.png'"></div>
+	   		<div class="col-xs-7 " style="    padding: 0;">
+				<div style="color:#000">煤炭名称：${order.coal.coalName!}</div>
+				<div><img src="${base}/assets/image/heat.png" alt=""  style="margin-top: -3px;    width: 16px;" /> ${order.calorificValue!}K/kg &nbsp;&nbsp;  
+				    <img src="${base}/assets/image/mine.png" alt=""  style="margin-top: -3px;    width: 16px;" /> ${order.companies.mineMouthName!}</div>
+	           </div>
+	   		<div class="col-xs-2" style="height: 50px; padding: 10px 20px;  text-align: right;  font-size: 24px;">
+	            <i class="fa fa-angle-right" aria-hidden="true"></i>
+	           </div>
+	       </div>
+	</div>
+	</a>
+ </section>
+ <!-- /煤炭信息 -->
+ <!-- 运输车辆信息 -->
+
+ <section>
+   <div class="order-title">运输车辆信息</div>
+   <#if order.drivers??  && order.drivers?size gt 0>
+   <#list order.drivers as driver>
+   <div class="order-container <#if driver.deleteFlag==1>zuofeicoverlayer</#if>" style="border-bottom: 1px solid #F0F0F1;">
+   	<div class="row">
+	   	<div class="col-xs-9">
+   		    <div><b>${driver.plateNumber!}</b><span class="biaoqian"><#if driver.creator==order.userId>买<#else>卖</#if>家登记</span></div>
+			<div class="gray1">${driver.driverRealName!} <span class="text-info"><#if driver.driverAuthState??><#if driver.driverAuthState==1> (平台登记司机)<#elseif driver.driverAuthState==2>(平台认证司机)</#if></#if></span>     ${driver.driverPhone!}</div>
+   		</div>
+   		<div class="col-xs-3 zuofei">
+   			<#if driver.deleteFlag==1>
+			   作废
+			</#if>
+           </div>
+       </div>
+       <hr class="dashed_hr">
+       <div class="row gray">	<div class="col-xs-7">登记人:${driver.creatorNmae!} ${driver.creatorPhone!}</div><div class="col-xs-5"  style="padding: 0;">${driver.createTime?datetime}</div></div>
+	</div>
+	</#list>
+	<#else>
+	     <div class="zanwu">
+		   <img src="${base}/assets/image/zanwu.png" style="width:100px"/>
+		   <p>暂无车辆</p>
+	   </div>
+	</#if>
+ </section>
+
+ <!-- /运输车辆信息 -->
+ 
+  <!-- 榜单信息 -->
+
+ <section>
+   <div class="order-title">磅单信息</div>
+    <#if order.transports??  && order.transports?size gt 0>
+   <#list order.transports as driver>
+   <div class="order-container  <#if driver.deleteFlag==1>zuofeicoverlayer</#if>" style="border-bottom: 1px solid #F0F0F1;">
+   	<div class="row">
+   	    <div class="col-xs-3 ">
+			  <img class="img-border"  src="http://picture.sxhalo.com/picture/${driver.carryWeightDocPicCode!}">
+        </div>
+	   	<div class="col-xs-6">
+   		    <div><b>${driver.plateNumber}</b></div>
+			<div  class="gray1">净重： <span class="text-info">${driver.carryWeight!}吨</span></div>
+   		</div>
+   		<div class="col-xs-3 zuofei">
+   			<#if driver.deleteFlag==1>
+			作废
+			</#if>
+        </div>
+       </div>
+       <hr class="dashed_hr">
+       <div class="row gray">	<div class="col-xs-7">登记人:${driver.creatorNmae!} ${driver.creatorPhone!}</div><div class="col-xs-5"  style="padding: 0;">${driver.createTime?datetime}</div></div>
+	</div>
+	</#list>
+    <#else>
+       <div class="zanwu">
+		   <img src="${base}/assets/image/zanwu.png" style="width:100px"/>
+		   <p>暂无磅单</p>
+	   </div>
+	</#if>
+ </section>
+
+ <!-- /榜单信息 -->
+ <!-- 留言信息 -->
+
+ <section>
+   <div class="order-title">交易说明及留言区</div>
+   	<div class="speak_box">
+   	<#if order.guestbooks?? && order.guestbooks?size gt 0>
+   	   <#list order.guestbooks as driver>
+   	      <#if driver.userId!=order.userId>
+	   	      <div class="answer">
+				<div class="heard_img left"><img src="http://picture.sxhalo.com/picture/${driver.headPicCode!}"
+						onerror="this.src='${base}/assets/image/uu.png'" ></div>
+				<p style="margin: 0 15px 0 85px;color: #ccc;">${driver.createTime?datetime}</p>
+				<p style="margin: 0 15px 0 85px;color: #ccc;">卖家 ${driver.userMobile!}</p>
+				  <#if driver.messageType==0>
+					  <div class="answer_text">
+						<p>${driver.message!}</p>
+						<i></i>
+					  </div>
+				  <#else>
+				     <img style=" width:100px; border-radius: 10px; margin-left: 20px;" src="http://picture.sxhalo.com/picture/${driver.message!}"/>
+				  </#if>
+			</div>  
+   	      <#else>
+   	        <div class="question">
+   	        	<div class="heard_img right"><img src="http://picture.sxhalo.com/picture/${driver.headPicCode!}"
+						onerror="this.src='${base}/assets/image/uu.png'" ></div>	
+   	        	<p style="margin: 0 85px 0 15px;color: #ccc;">${driver.createTime?datetime}</p>
+   	        	<p style="margin: 0 85px 0 15px;color: #ccc;">买家  ${driver.userMobile!}</p>
+   	        	 <#if driver.messageType==0>
+   	        	<div class="question_text clear" >
+   	        		<p>${driver.message!}</p>
+   	        		<i></i>
+   	        	</div>
+   	        	  <#else>
+				     <img style="width: 100px; border-radius: 10px; margin-right: 20px;" src="http://picture.sxhalo.com/picture/${driver.message!}" />
+				  </#if>
+   	        </div>
+	
+   	      </#if>
+   	   </#list>
+	<#else>
+	  <div class="zanwu">
+		   <img src="${base}/assets/image/zanwu.png" style="width:100px"/>
+		   <p>暂无信息</p>
+	   </div>
+	</#if>
+</div>
+ </section>
+
+ <!-- /留言信息 -->
+</div>
+	<!-- 微信 JS-SDK -->
+<script	src="${base}/assets/js/bootstrap.min.js"
+		type="text/javascript"></script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script src="//webapi.amap.com/maps?v=1.4.11&key=121fead7c8124c5197aceceb50ba0441" 
+		type="text/javascript"></script>
+<script type="text/javascript">
+function companiesPosition(longitude,latitude,name){
+			var marker = new AMap.Marker({
+			    position: [longitude,latitude]
+			});
+			marker.markOnAMAP({
+			    position: marker.getPosition(),
+			    name:name
+			});
+		}
+</script>
+
+
+</body>
+</html>
+
+

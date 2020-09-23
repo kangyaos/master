@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>确认注册信息</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link type="text/css" href="${base}/assets/web/css/reset1.css" rel="stylesheet">
+	<link type="text/css" href="${base}/assets/web/css/public.css" rel="stylesheet">
+	<link type="text/css" href="${base}/assets/web/css/register.css" rel="stylesheet">
+	<link rel="shortcut icon" href="${base}/favicon.ico" />
+	<link href="${base}/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="${base}/assets/global/css/components.css" rel="stylesheet" />
+	<script src="${base}/assets/web/js/jquery.min.js" type="text/javascript"></script>
+	<script src="${base}/assets/web/js/jquery.form.js" type="text/javascript"></script>
+	<script src="${base}/assets/web/js/json.parse.js" type="text/javascript"></script>
+	
+	
+	<style type="text/css">
+	@media only screen and (max-width: 600px){
+		#nickname,#userPwd{
+			width: 26%;
+		}
+		#sub{
+			width: 30%;
+		}
+		.form .form-actions {
+		    width: 26%;
+		    margin-left:10px;
+		}	
+	}	
+	</style>
+  <body>
+	<div class="portlet-body form">
+		<form method="post" action="register.do" id="addform"
+			class="form-horizontal form-row-sepe">
+			<div class="form-body">
+				<div class="form-group">
+					<div style="display: none">
+						<input type="hidden" name="userName" id="phonenum"
+							value="${phonenum!}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">设置昵称</label>
+					<div class="col-md-4">
+						<div class="input-icon right">
+							<i class="fa"></i> <input type="text" class="form-control"
+								name="nickname" id="nickname" maxlength="10" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">设置密码</label>
+					<div class="col-md-4">
+						<div class="input-icon right">
+							<i class="fa"></i> <input type="password" class="form-control"
+								name="userPwd" id="userPwd"  placeholder="不填写则初始密码为六个数字1！" maxlength="10"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<div class="row" id="sub">
+					<div class="col-md-offset-3 col-md-9">
+						<button type="button" onclick="adduser()" class="btn blue"
+							style="margin-left: 42%;">完成注册</button>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+</body>
+  <script>
+ 	function adduser(){
+ 		$.ajax({
+			 	url:"register.do",
+			 	type: "POST",
+			 	data: $("#addform").serialize(),
+			 	success:function(result){
+			 		 if(result){
+			 		 	alert("注册成功啦！");
+			 		 }else{
+			 		 	alert("该手机号已经注册，请直接登录！");
+			 		 }
+			 		 window.location.href="${base}/";
+			 	}
+		});
+		
+ 	}
+ 	
+  </script>
+</html>

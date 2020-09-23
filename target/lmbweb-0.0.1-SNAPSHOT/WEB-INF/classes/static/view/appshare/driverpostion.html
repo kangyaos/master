@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>${name!}</title>
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <style>
+        .marker {
+            color: #ff6600;
+            padding: 4px 10px;
+            border: 1px solid #fff;
+            white-space: nowrap;
+            font-size: 12px;
+            font-family: "";
+            background-color: #0066ff;
+        }
+    </style>
+    <script src="//webapi.amap.com/maps?v=1.4.2&key=327aa1833e23ec878cc99d3d8374786e"></script>
+
+</head>
+<body>
+<div id="container"></div>
+
+<script>
+    var marker, map = new AMap.Map("container", {
+        resizeEnable: true,
+		icon: "${base}/assets/appshare/img/mark_b.png",
+        center: [${longitude!},${latitude!}],
+        zoom: 13
+     });
+	 addMarker();
+  
+    // 实例化点标记
+   function addMarker() {
+        marker = new AMap.Marker({
+            icon: "${base}/assets/appshare/img/mark_b.png",
+            position: [${longitude!},${latitude!}]
+        });
+        marker.setMap(map);
+    }
+
+
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxhalo.lmb.mapper.OperateArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.OperateArticle" >
+    <id column="article_id" property="articleId" jdbcType="INTEGER" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="publish_url" property="publishUrl" jdbcType="VARCHAR" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="publish_state" property="publishState" jdbcType="INTEGER" />
+    <result column="tumb_pic_code" property="tumbPicCode" jdbcType="VARCHAR" />
+    <result column="tumb_pic_code2" property="tumbPicCode2" jdbcType="VARCHAR" />
+    <result column="tumb_pic_code3" property="tumbPicCode3" jdbcType="VARCHAR" />
+    <result column="tumb" property="tumb" jdbcType="VARCHAR" />
+    <result column="video_address" property="videoAddress" jdbcType="VARCHAR" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="is_special" property="isSpecial" jdbcType="INTEGER" />
+    <result column="is_send" property="isSend" jdbcType="INTEGER" />
+    <result column="is_picture" property="isPicture" jdbcType="INTEGER" />
+    <result column="enclosure" property="enclosure" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.sxhalo.lmb.domain.OperateArticle" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    article_id, category_id, title, summary, source, author, editor, publish_url, publish_time, 
+    publish_state, tumb_pic_code, tumb_pic_code2, tumb_pic_code3, tumb, video_address, 
+    click_num, sort, is_special, is_send, is_picture, enclosure, create_time, update_time, 
+    delete_flag
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from operate_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from operate_article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+    insert into operate_article (article_id, category_id, title, 
+      summary, source, author, 
+      editor, publish_url, publish_time, 
+      publish_state, tumb_pic_code, tumb_pic_code2, 
+      tumb_pic_code3, tumb, video_address, 
+      click_num, sort, is_special, 
+      is_send, is_picture, enclosure, 
+      create_time, update_time, delete_flag, 
+      content)
+    values (#{articleId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{summary,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{editor,jdbcType=VARCHAR}, #{publishUrl,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{publishState,jdbcType=INTEGER}, #{tumbPicCode,jdbcType=VARCHAR}, #{tumbPicCode2,jdbcType=VARCHAR}, 
+      #{tumbPicCode3,jdbcType=VARCHAR}, #{tumb,jdbcType=VARCHAR}, #{videoAddress,jdbcType=VARCHAR}, 
+      #{clickNum,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{isSpecial,jdbcType=INTEGER}, 
+      #{isSend,jdbcType=INTEGER}, #{isPicture,jdbcType=INTEGER}, #{enclosure,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+    insert into operate_article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        article_id,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="editor != null" >
+        editor,
+      </if>
+      <if test="publishUrl != null" >
+        publish_url,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="publishState != null" >
+        publish_state,
+      </if>
+      <if test="tumbPicCode != null" >
+        tumb_pic_code,
+      </if>
+      <if test="tumbPicCode2 != null" >
+        tumb_pic_code2,
+      </if>
+      <if test="tumbPicCode3 != null" >
+        tumb_pic_code3,
+      </if>
+      <if test="tumb != null" >
+        tumb,
+      </if>
+      <if test="videoAddress != null" >
+        video_address,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="isSpecial != null" >
+        is_special,
+      </if>
+      <if test="isSend != null" >
+        is_send,
+      </if>
+      <if test="isPicture != null" >
+        is_picture,
+      </if>
+      <if test="enclosure != null" >
+        enclosure,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null" >
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="publishUrl != null" >
+        #{publishUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishState != null" >
+        #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="tumbPicCode != null" >
+        #{tumbPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tumbPicCode2 != null" >
+        #{tumbPicCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="tumbPicCode3 != null" >
+        #{tumbPicCode3,jdbcType=VARCHAR},
+      </if>
+      <if test="tumb != null" >
+        #{tumb,jdbcType=VARCHAR},
+      </if>
+      <if test="videoAddress != null" >
+        #{videoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isSpecial != null" >
+        #{isSpecial,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null" >
+        #{isSend,jdbcType=INTEGER},
+      </if>
+      <if test="isPicture != null" >
+        #{isPicture,jdbcType=INTEGER},
+      </if>
+      <if test="enclosure != null" >
+        #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+    update operate_article
+    <set >
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="editor != null" >
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="publishUrl != null" >
+        publish_url = #{publishUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishState != null" >
+        publish_state = #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="tumbPicCode != null" >
+        tumb_pic_code = #{tumbPicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tumbPicCode2 != null" >
+        tumb_pic_code2 = #{tumbPicCode2,jdbcType=VARCHAR},
+      </if>
+      <if test="tumbPicCode3 != null" >
+        tumb_pic_code3 = #{tumbPicCode3,jdbcType=VARCHAR},
+      </if>
+      <if test="tumb != null" >
+        tumb = #{tumb,jdbcType=VARCHAR},
+      </if>
+      <if test="videoAddress != null" >
+        video_address = #{videoAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="isSpecial != null" >
+        is_special = #{isSpecial,jdbcType=INTEGER},
+      </if>
+      <if test="isSend != null" >
+        is_send = #{isSend,jdbcType=INTEGER},
+      </if>
+      <if test="isPicture != null" >
+        is_picture = #{isPicture,jdbcType=INTEGER},
+      </if>
+      <if test="enclosure != null" >
+        enclosure = #{enclosure,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+    update operate_article
+    set category_id = #{categoryId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      editor = #{editor,jdbcType=VARCHAR},
+      publish_url = #{publishUrl,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      publish_state = #{publishState,jdbcType=INTEGER},
+      tumb_pic_code = #{tumbPicCode,jdbcType=VARCHAR},
+      tumb_pic_code2 = #{tumbPicCode2,jdbcType=VARCHAR},
+      tumb_pic_code3 = #{tumbPicCode3,jdbcType=VARCHAR},
+      tumb = #{tumb,jdbcType=VARCHAR},
+      video_address = #{videoAddress,jdbcType=VARCHAR},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      is_special = #{isSpecial,jdbcType=INTEGER},
+      is_send = #{isSend,jdbcType=INTEGER},
+      is_picture = #{isPicture,jdbcType=INTEGER},
+      enclosure = #{enclosure,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+    update operate_article
+    set category_id = #{categoryId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      editor = #{editor,jdbcType=VARCHAR},
+      publish_url = #{publishUrl,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      publish_state = #{publishState,jdbcType=INTEGER},
+      tumb_pic_code = #{tumbPicCode,jdbcType=VARCHAR},
+      tumb_pic_code2 = #{tumbPicCode2,jdbcType=VARCHAR},
+      tumb_pic_code3 = #{tumbPicCode3,jdbcType=VARCHAR},
+      tumb = #{tumb,jdbcType=VARCHAR},
+      video_address = #{videoAddress,jdbcType=VARCHAR},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      is_special = #{isSpecial,jdbcType=INTEGER},
+      is_send = #{isSend,jdbcType=INTEGER},
+      is_picture = #{isPicture,jdbcType=INTEGER},
+      enclosure = #{enclosure,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getCount" resultType="java.lang.Integer">
+      select count(*) FROM operate_article a 
+	  where a.delete_flag=0 and a.publish_state=1
+      <if test="where != null and where != ''" >
+        and ${where}
+      </if>      
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+      select a.article_id, a.category_id, a.title, a.summary, a.source, a.author, a.editor, a.publish_url, a.publish_time, 
+      a.publish_state, a.tumb_pic_code, a.tumb_pic_code2, a.tumb_pic_code3, a.tumb, a.video_address, 
+	  a.click_num, a.sort, a.is_special, a.is_send, a.is_picture, a.enclosure, a.create_time, a.update_time, 
+	  a.delete_flag, CONCAT('https://picture.sxhalo.com/',tumb_pic_code) pic_path,c.category_name FROM operate_article a 
+	  left join operate_article_category c on a.category_id=c.category_id
+	  where a.delete_flag=0 and a.publish_state=1
+      <if test="where != null and where != ''" >
+        and ${where}
+      </if> 
+      <if test="order != null and order != ''" >
+        order by ${order}
+      </if>
+      <if test="length != null and length != -1" >
+        limit ${start},${length}
+      </if>
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+      select a.article_id, a.category_id, a.title, a.summary, a.source, a.author, a.editor, a.publish_url, a.publish_time, 
+      a.publish_state, a.tumb_pic_code, a.tumb_pic_code2, a.tumb_pic_code3, a.tumb, a.video_address, 
+	  a.click_num, a.sort, a.is_special, a.is_send, a.is_picture, a.enclosure, a.create_time, a.update_time, 
+	  a.delete_flag, CONCAT('https://picture.sxhalo.com/',tumb_pic_code) pic_path,c.category_name FROM operate_article a 
+	  left join operate_article_category c on a.category_id=c.category_id
+	  where a.delete_flag=0 and a.publish_state=1
+      <if test="where != null and where != ''" >
+        and ${where}
+      </if> 
+      <if test="order != null and order != ''" >
+        order by ${order}
+      </if>
+  </select>
+</mapper>

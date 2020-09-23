@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>信息部-拉煤宝</title>
+<meta name="description" content="{ms:global.descrip/}" />
+<meta name="keywords" content="{ms:global.keyword/}" />
+
+
+<#include "/view/web/include/headerFile.htm" />
+<style type="text/css">
+.title_zl {
+    padding: 15px 15px;
+  }
+#gh-btn-group{
+    width: 90%;
+    padding-left: 5px;
+}
+#gh_cont_right{
+  padding: 5px;
+}
+.round {
+	background: #fff;
+	border: 1px solid #ccc;
+	border-right: none;
+	display: inline-block;
+	height: 34px;
+	vertical-align: top;
+	width: 89%;
+	margin-left: 0.5%;
+}
+
+.round .input_key {
+	-webkit-appearance: none;
+	background: #fff;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	font: 16px/22px arial;
+	height: 100%;
+	margin: 0px;
+	outline: 0;
+	padding: 5px;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+.s_btn {
+	-webkit-appearance: none;
+	background: #29486a;
+	border: none;
+	border-radius: 0;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	height: 34px;
+	outline: none;
+	padding: 0;
+	padding-top: 4px\9;
+	vertical-align: top;
+	width: 10%;
+}
+@media only screen and (max-width: 600px){
+	.searchbutton {
+	    background-color: #29486a;
+	    width: 15%;
+	    float: right;
+	    height: 34px;
+	    border-radius: 3px;
+	    color: white;
+	    text-align: center;
+	    line-height: 34px;
+	    letter-spacing: 2px;
+	    font-size: 14px;
+	    cursor: pointer;
+	    behavior: url(/assets/web/css/PIE.htc);
+	}
+	#gh-btn-group {
+	    width: 83%;
+	    padding-left: 5px;
+	}
+	input[type=text], input[type=password] {
+	    font-size: 13px;	   
+	    padding: 6px 8px;	    
+	}
+	#gh_cont_right{
+	  padding: 5px;
+	  width: 100%;
+	}
+	.round{
+	   width: 82%;
+	   margin-left: 1.5%;
+	   
+	}
+	.s_btn{
+	   width: 15%;
+	}
+}
+
+</style>
+</head>
+<body>
+	<div id="home" class="banner a-banner">
+	<#include "/view/web/include/top.htm" />
+		<div class="bak">
+			<div class="container"><#include "/view/web/include/head.htm"
+				/></div>
+		</div>
+	</div>
+	<header id="head" class="secondary">
+		<div class="container"></div>
+	</header>
+	<div class="specialty" style="background: #ffffff;padding: 0;">
+		<div class="container">
+			<h5  class="daohang">
+				<a href="${base}/"> <img
+					src="${base}/assets/web/images/img/ptop.png"> 首页
+				</a> > 信息部
+			</h5>
+		</div>
+	</div>
+	<div class="clearfix" style="border: 1px solid #e8e8e8;"></div>
+	<div class="specialty" style="background: #fafafa;">
+		<div class="container">
+			<!-- container -->
+			<div class="col-sm-12 maincontent" style="padding: 0px">
+				<div id="box16" style="border: 0px;">				
+						
+					<div class="btn-group" style="width: 100%;">
+						<span id="suggest-align" class="round"> <input type="text"
+							id="quxian" name="q" tabindex="1" class="input_key" value=""
+							placeholder="搜索" maxlength="100" autocomplete="off">
+						</span><input type="button" value="搜索" class="s_btn"
+							onclick="CoalProduct()">
+
+					</div>	
+						
+					<div class="video_list" id="showall">
+						<!--数据通过js  -->
+
+						
+					</div>
+				</div>
+				<div class="pro_fenlei" id="tishi"
+					style="padding: 30px;text-align: center;">
+					<img alt="" src="${base}/assets/web/images/img/num.png">
+					<h3>很抱歉，没有找到你想要 相关信息</h3>
+				</div>
+			</div>
+
+
+
+			<!-- /container -->
+		</div>
+	</div>
+	<link rel="stylesheet" type="text/css"
+		href="${base}/assets/web/css/xcConfirm.css" />
+	<script src="${base}/assets/web/js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="${base}/assets/web/js/xcConfirm.js" type="text/javascript"
+		charset="utf-8"></script>
+	<#include "/view/web/include/footer.htm" />
+	
+    
+	<script>
+    $(document).ready(function() {
+		 CoalProduct();	
+		 $("#tishi").hide();	 	
+	});
+	
+    function CoalProduct(){         
+		var dicregion= $("#quxian").val();
+       
+    	$.ajax({
+			type : "POST",
+			url : "${base}/coalSaleList.json",
+			data :{dicregion:dicregion},
+            success : function(datat) {
+              data(datat);
+            }
+        })
+    }
+     function data(datat){
+          var picPath;
+          var starnum;
+          var starmnum;
+          var tempr = "";	                        
+          for (var i = 0; i < datat.length; i++) {	 
+           picPath="";//datat[i].picPath;
+           starnum=datat[i].creditRating;
+           starmnum=5-starnum;
+         
+            tempr +="  <div class='col-sm-3 cont_right' id='gh_cont_right'>";
+		 tempr +="	<div id='box11'>";
+		 tempr +="		<span title='"+datat[i].companyName+"'>";
+		 tempr +="			<div  id='title' style='cursor: pointer;    width: 100%;overflow: hidden;text-overflow: ellipsis; white-space: nowrap;'><a  href='${base}/coalSaleDetails.html?coalSaleIdStr="+datat[i].coalSalesId+"' class='title_zl'>"+datat[i].companyName+"</a></div>";
+		 tempr +="		</span>";
+		 tempr +="		<div  style='margin-top: -10px;'>";
+		 tempr +="		<span style='  padding: 5px 0px 0 15px;' >"
+		 for (var int = 0; int < starnum; int++) {
+			 tempr +="	    <img src='${base}/assets/web/images/x.png' height=18> ";
+		 }
+		  for (var int = 0; int < starmnum; int++) {
+			 tempr +="	    <img src='${base}/assets/web/images/x1.png' height=18> ";
+		 }
+		 tempr +="	</span>";
+		 tempr +="			<span ><img src='${base}/assets/web/images/call.png' height=15/>"+datat[i].contactPhone+"</span>";
+		 tempr +="		</div>";
+		 tempr +="         <hr style='  width: 90%;margin: 15px auto;'>";
+		 tempr +="		<div style='    height: 50px;line-height: 25px;  padding: 0 10px;margin-bottom: 10px; overflow: hidden;'>通讯地址： "+(picPath.length>25?picPath.substring(0,24)+"...":picPath);
+		 tempr +="		</div>";
+		 tempr +="	</div>";
+		 tempr +="</div>";             
+        }
+            
+       $("#showall").html(tempr);
+    	 if($("#showall").html()==""){
+       $("#tishi").show();
+    }else{
+       $("#tishi").hide();
+    }
+  } 
+
+</script>
+</body>
+</html>
