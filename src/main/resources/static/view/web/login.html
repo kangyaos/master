@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)http://box6js.nicebox.cn/exusers/u8_login.php?idweb=69125&lang=0&qqlogin=&no_jump=0&backurl= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="keywords" content="建站">
+<title>会员登录</title>
+<meta http-equiv="Pragma" content="no-cache">
+<link rel="stylesheet" href="${base}/assets/web/css/login.css">
+    <style>
+        .backIcon{display: none;}
+        @media screen and (max-width:481px){
+            .backIcon{display: block;position: absolute;width: 100%;padding: 10px 10px;top: 0;line-height: 1;}
+            .backIcon img{width: 30px;height: 30px;vertical-align: middle;cursor: pointer;}
+        }
+    </style>
+<script src="${base}/assets/web/js/jquery.min.js"></script>
+<script>
+
+
+
+function clearInput(obj){
+	$(obj).siblings("input").val("");
+	$(obj).hide();
+}
+
+function checkInput(obj){
+	$(obj).siblings(".clearInput").show();
+	$(obj).parents(".pos_r").siblings().children(".clearInput").hide();
+}
+$(function(){
+	setInterval("checkStatus()",5000);
+});
+function checkStatus(){
+	$.ajax({
+	  type : "GET",
+	  dataType : 'jsonp',
+	  jsonp:"jsoncallback",  
+	  async : false,
+	  url : "/exusers/login_status.php?sessionid=0h91f5c76gt85irjkr1gpi2e86",
+	  data : '',
+	  success:function(data){
+		  var resultNum = parseInt(data.result);
+		  if(resultNum>0){
+			$('.qrcodeBox').html("<div class='yzBox'>\
+				<img src='/exusers/images/170317/check.png'>\
+				<p>验证成功，<font>5</font>秒后刷新页面</p>\
+				</div>");
+		    var gourl = $('input[name="gourl"]').val();
+			if(gourl!=""){
+				if(gourl.indexOf('userpanel')!=-1){
+				    if(self!=top) window.open(gourl);
+					else window.location.href = gourl;
+				}else{
+					window.location.href = gourl;
+				}
+			}else{
+				BackJS("setTimeout(function(){top.location.reload();},5000);");
+			}
+		  }
+	  },
+	  error:function(){
+	  }
+	});
+}
+</script>
+
+<script src="${base}/assets/web/js/backscript.js" content="text/html; charset=UTF-8"></script>
+<script>
+function BackJS(runJs){run_backjs("//demo.nicebox.cn//backjs.html", runJs);}
+
+window.vueOrigin = '*';
+window.addEventListener('message', function (event) {
+    if (event.data.hasOwnProperty('msg') && event.data.msg == 'isVue') {
+        window.vueOrigin = event.origin;
+
+    }
+})
+
+function BackUC(){
+	if (window.vueOrigin){
+		try {//放到trycatch里面，解决有些手机卡住报错问题
+            window.top.postMessage({order: 'closeDialog'}, window.vueOrigin);
+        } catch (error) {
+            console.log(error);
+        }
+	} else {
+		window.location.reload();
+	}
+}	
+</script>
+<script>function autoHeight(){BackJS("box.Show({width:'500px',height:'"+getBodyHeight()+"px'});$('#boxName').html('会员登录');");}$(window).load(function(){autoHeight();});</script></head>
+<body>
+<div class="loginBox">
+	<div class="loginContent">
+		
+			<h2 >账号登录</h2>
+			
+        		<div class="warnTips">
+                    </div><!-- 仅文字需要判断隐藏，DIV层不用 在手机端弹出显示1秒左右隐藏-->
+        <div class="backIcon">
+            <img src="${base}/assets/web/images/top_back.png" onclick="history.go(&#39;-1&#39;)">
+        </div>
+		<ul class="loginTabCont">
+			<li class="current">
+				<form target="_blank" method="post" id="UserLogin" action="login_submit.do">
+				
+				<div class="pos_r">
+					<img class="icon" src="${base}/assets/web/images/user.png" alt="">
+					<input class="userName logInput" type="text" placeholder="会员名" name="username" onclick="checkInput(this)"> <!-- 输入错误时添加 warnBorder 类名 -->
+					<span class="clearInput" onclick="clearInput(this)">×</span>
+				</div>
+				<div class="pos_r">
+					<img class="icon" src="${base}/assets/web/images/lock.png" alt="">
+					<input class="userPwd logInput" type="password" name="pwd" placeholder="密　码" onclick="checkInput(this)"> <!-- 选中时添加 curBorder 类名 未选中不添加为灰色-->
+					<span class="clearInput" onclick="clearInput(this)">×</span>
+				</div>
+				
+				<input class="logBtn" type="button" value="登录" onclick="check_login();">
+			
+		
+								</form> 
+			</li>
+			
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+function check_login(){
+	var username = $('input[name="username"]').val();
+	var pwd = $('input[name="pwd"]').val();
+	var gourl = $('input[name="gourl"]').val();
+		var backurl = $('input[name="backurl"]').val();
+	if(!username){
+		$(".loginBox .warnTips").html("会员名字为空！").show();
+		setTimeout(function(){$('.warnTips').html('');},3000);
+		return false;
+	}
+	if(!pwd){
+		$(".loginBox .warnTips").html("登录密码为空！").show();
+		setTimeout(function(){$('.warnTips').html('');},3000);
+		return false;
+	}
+	if(username&&pwd){
+		var getUrl = "/exusers/u8_login.php?id=69125";
+		$.post(getUrl,{action:'checkUser',id:'69125',username:username,pwd:pwd,gourl:gourl,backurl:backurl,isv9:1},function(result){
+			var data = eval("("+result+")");
+			if(data.fail){
+				$(".loginBox .warnTips").html(data.Word).show();
+				setTimeout(function(){$('.warnTips').html('');},3000);
+				return false;
+			}else{
+				if(data.Word.indexOf('userpanel')!=-1 || data.Word.indexOf('/uc/')!=-1){
+					if(self!=top) window.open(data.Word);
+					else window.location.href = data.Word;
+				}else{
+					window.location.href = data.Word;
+				}
+							}
+		});
+	}
+
+}
+function getCookie(name)//取cookies函数
+{
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+    if(arr != null) return unescape(arr[2]); return null;
+}
+function getThisLangId(id){
+    if (id=='0' || id==undefined) {
+        var JF_cn="ft"+self.location.hostname.toString().replace(/\./g,"");
+        if (getCookie(JF_cn) != null) {
+            id = getCookie(JF_cn);
+        }
+
+    } else {
+        id  = 0;
+    }
+    if (id==undefined) {
+        id=0;
+    }
+
+    return id;
+}
+
+
+</script>
+
+
+</body></html>

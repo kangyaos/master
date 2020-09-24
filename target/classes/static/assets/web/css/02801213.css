@@ -596,7 +596,11 @@ body{ background-position:left top; }
                 #banner_style_01_1578626271528 .bannerStyle_1 .ground_glass{display:block; opacity:0; background-color:#000000;}
     
     #banner_style_01_1578626271528 .bannerStyle_1 .main_image .img-item span{background-size:auto 100%!important;}
-    @media screen and (min-width:641px) and (max-width:1200px) {
+    @media screen and (min-width:1000px) and (max-width:1200px) {
+    #banner_style_01_1578626271528 .bannerStyle_1 .main_image .img-item span{background-size:auto 120%!important;}
+    }
+   
+    @media screen and (min-width:641px) and (max-width:1000px) {
     #banner_style_01_1578626271528 .bannerStyle_1 .main_image .img-item span{background-size:auto 100%!important;}
     }
 

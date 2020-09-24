@@ -225,7 +225,7 @@ $(function(){
 			</div>
 					<div id="text_default_1579499908478" class="view default text  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="text" class="view_contents">
-					<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278585389'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278585389' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1278585389"><a href="https://www.cnzz.com/stat/website.php?web_id=1278585389" target="_blank" title="站长统计">站长统计</a></span><script src="${base}/assets/web/images/z_stat.php" type="text/javascript"></script><script src="${base}/assets/web/images/core.php" charset="utf-8" type="text/javascript"></script>				</div>
+					<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278585389'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278585389' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1278585389"><a href="https://www.cnzz.com/stat/website.php?web_id=1278585389" target="_blank" title="站长统计">站长统计</a></span><script src="${base}/assets/web/z_stat.php" type="text/javascript"></script><script src="${base}/assets/web/images/core.php" charset="utf-8" type="text/javascript"></script>				</div>
 			</div>
 						</div>
 			</div>
@@ -250,7 +250,7 @@ $(function(){
 				<div names="image" class="view_contents">
 					<div class="imgStyle CompatibleImg picSet">
 		<a href="javascript:;" target="">
-			<img class="link-type-" src="${base}/assets/web/images/15893625075085159bc7bb0dc342b(1).png" title="" alt="描述" id="imageModeShow">
+			<img class="link-type-" src="${base}/assets/web/images/15893625075085159bc7bb0dc342b.png" title="" alt="描述" id="imageModeShow">
 		</a>
 </div>
 <!-- 新加的js  -->
@@ -725,111 +725,7 @@ Util.prototype.replace = function(s, data) {
         <div><img style="margin-bottom:1px; width:12px" alt="&lt;" src="${base}/assets/web/images/member-1-white.png">在线客服<img style="margin-top:3px; width:12px" alt="&lt;" src="${base}/assets/web/images/links-6-white-rev.png"></div>
     </div>
 </div>
-<script type="application/javascript">
-	function remove_qqol_qqol_style_01_1575620923404(){
-		$('body > .online-service.qqol-qqol_style_01_1575620923404').remove();
-	}
-    // 创建在线客服
-    $(function () {
-        // 清理旧的
-        remove_qqol_qqol_style_01_1575620923404();
-        // 创建边栏
-        var sidebar = new Sidebar({
-            'template': 'online-template',
-            'css': 'qqol-qqol_style_01_1575620923404',
-            'expand': false,
-            'main': {'width':'200px', 'position': 'right'},
-            'border': {'color': '#ff6766', 'width': '3px', 'radius': '10px'},
-            'button': {'color': '#fff', 'background-color': '#ff6766', 'radius': '5px'},
-            'close': {'hide': false}
-        });
-        // 片段模板
-        var qqOnlineStr = '<div class="clearfix">' +
-                '<a class="qq-btn" target="_blank" href="//wpa.qq.com/msgrd?v=3&uin={{qq}}&site=qq&menu=yes">' +
-                '<img border="0" src="//wpa.qq.com/pa?p=2:{{qq}}:{{style}}" alt="{{title}}" title="{{title}}"  ' +
-                'onerror="javascript:this.src=\'//wpa.qq.com/pa?p=2:123456789:{{style}}\';">' +
-                '{{text}}</a></div>';	// 图标不能显示时, 更换QQ号码让其显示
-        // 创建片段
-        Fragment.prototype.prefix = 'ol-';
-        // 创建片段列表
-        var fragmentList = new FragmentList({
-            'prefix':'ol-',
-            'css':{'padding':'0 12px'}
-        });
-                        fragmentList.append(new Fragment({
-                    'name':'qq-online',
-                    'html':qqOnlineStr,
-                    'data':{'qq':'1370224171', 'style':51, 'title':'QQ在线', 'text':'客服一'},
-                    'css':{'margin':'.5em 0'}
-                }));
-                            fragmentList.append(new Fragment({
-                    'name':'qq-online',
-                    'html':qqOnlineStr,
-                    'data':{'qq':'1370224171', 'style':51, 'title':'QQ在线', 'text':'客服二'},
-                    'css':{'margin':'.5em 0'}
-                }));
-                    		fragmentList.append(new Fragment({
-                    'name':'separator',
-                    'css':{'height':'2px', 'background-color':'#a0a0a0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>工作时间</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>周一至周日 ：8:00-18:00</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name':'separator',
-                    'css':{'height':'2px', 'background-color':'#a0a0a0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>联系方式</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>电话1：13573245870</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>电话2： 13573245870</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>微信： 13573245870</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>QQ：1370224171</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>QQ：1370224171</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        		fragmentList.append(new Fragment({
-                    'name': 'text',
-                    'html': '<div>邮箱：1370224171@qq.com</div>',
-                    'css':{'margin':'.5em 0'}
-                }));
-        	        // 添加到边栏
-        var list = fragmentList.get();
-        !list.children().length && list.html('<p>内容列表为空！</p>');
-        sidebar.append(list);
-        if(typeof($("img").lazyload)=="function"){
-            $("img").lazyload({effect: "fadeIn",threshold:0,failure_limit:20,skip_invisible:false});
-        }
-    });
-</script>
+
 <script type="application/javascript">
     // 对输入内容中的尖括号、引号等进行转义
     function html_encode(str) {
@@ -879,7 +775,7 @@ if(typeof showcart !== 'function'){
 			</div>
 					<div id="customForm_form_1579313077263" class="view form customForm  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="customForm" class="view_contents">
-					<form id="form_customForm_form_1579313077263" action="http://demo.nicebox.cn/c34def71157cf084/index.html" onsubmit="return CheckForm(this)" method="POST" target="">
+					<form id="form_customForm_form_1579313077263" action="index.html" onsubmit="return CheckForm(this)" method="POST" target="">
 <!-- <form id="form_customForm_form_1579313077263" action="" onsubmit="return CheckForm(this)" method="POST" target="" > -->
 			<div id="text_style_01_1579313117572" class="view style_01 text  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="text" class="view_contents">
@@ -893,7 +789,7 @@ if(typeof showcart !== 'function'){
 			</div>
 					<div id="customForm_style_input_01_1579313171983" class="view style_input_01 customForm  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="customForm" class="view_contents">
-					<input id="" type="text" name="item[customForm_style_input_01_1579313171983]" value="" check="" maxlength="" class="textInput showvar inputSet" placeholder="请输入内容..." tabindex="4995.999900817871">
+					<input id="" type="text" name="item[customForm_style_input_01_1579313171983]" value="" check="" maxlength="" class="textInput showvar inputSet" placeholder="请输入您的姓名" tabindex="4995.999900817871">
 <script type="text/javascript" src="${base}/assets/web/js/location.js"></script>
 				</div>
 			</div>
@@ -942,7 +838,7 @@ $(function(){
 						</div>
 			</div>
 		<div class="bottomMenu 123"><ul><li style="height:100%;padding-top:20px;">
-							<a href="http://demo.nicebox.cn/c34def71157cf084/course.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">课程</div></div></a>
+							<a href="trainingcourse.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">课程</div></div></a>
 							<div class="submenuItems" style="display:none;"></div>
 						</li><script>
         $(function() {
@@ -967,7 +863,7 @@ $(function(){
            }
         })
         </script><li style="height:100%;padding-top:20px;">
-							<a href="http://demo.nicebox.cn/c34def71157cf084/teacher.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">教师</div></div></a>
+							<a href="teacher.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">教师</div></div></a>
 							<div class="submenuItems" style="display:none;"></div>
 						</li><script>
         $(function() {
@@ -992,7 +888,7 @@ $(function(){
            }
         })
         </script><li style="height:100%;padding-top:20px;">
-							<a href="http://demo.nicebox.cn/c34def71157cf084/about.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">关于</div></div></a>
+							<a href="about.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">关于</div></div></a>
 							<div class="submenuItems" style="display:none;"></div>
 						</li><script>
         $(function() {
@@ -1017,7 +913,7 @@ $(function(){
            }
         })
         </script><li style="height:100%;padding-top:20px;">
-							<a href="http://demo.nicebox.cn/c34def71157cf084/contact.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">联系</div></div></a>
+							<a href="contact.html" class="" style=""><div class="menuItem"><input type="hidden" class="menuIcon" value=""><input type="hidden" class="menuColor" value=""><div class="menuName" style="color:#666666;">联系</div></div></a>
 							<div class="submenuItems" style="display:none;"></div>
 						</li><script>
         $(function() {
@@ -1082,12 +978,5 @@ $(window).resize(function(){
 	});
 </script>
 <script type="text/javascript" src="${base}/assets/web/js/js.js" charset="utf-8"></script>
-<script type="text/javascript" src="${base}/assets/web/images/f.txt"></script>
+<script type="text/javascript" src="${base}/assets/web/f.txt"></script>
 
-<div class="online-service online-service-style01 qqol-qqol_style_01_1575620923404 right" style="display: block; height: auto; position: fixed; z-index: 100000000; top: 181px; width: 200px; right: -200px;">
-    <div class="wrapper" style="border: 3px solid rgb(255, 103, 102); border-radius: 10px;">
-        <div class="close" onselectstart="return false" unselectable="on" style="display: block; position: absolute; top: 0px; right: 0px; height: 25px; line-height: 25px; font-size: 12px; padding: 0px 0.6em 0px 0.3em; cursor: pointer;">×</div>
-    <div class="ol-list" style="padding: 0px 12px;"><div class="clearfix ol-item ol-qq-online" style="margin: 0.5em 0px;"><a class="qq-btn" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1370224171&amp;site=qq&amp;menu=yes"><img border="0" src="${base}/assets/web/images/pa" alt="QQ在线" title="QQ在线" onerror="javascript:this.src=&#39;//wpa.qq.com/pa?p=2:123456789:51&#39;;">客服一</a></div><div class="clearfix ol-item ol-qq-online" style="margin: 0.5em 0px;"><a class="qq-btn" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1370224171&amp;site=qq&amp;menu=yes"><img border="0" src="${base}/assets/web/images/pa" alt="QQ在线" title="QQ在线" onerror="javascript:this.src=&#39;//wpa.qq.com/pa?p=2:123456789:51&#39;;">客服二</a></div><div class="ol-item ol-separator" style="height: 2px; background-color: rgb(160, 160, 160);"></div><div class="ol-item ol-text" style="margin: 0.5em 0px;">工作时间</div><div class="ol-item ol-text" style="margin: 0.5em 0px;">周一至周日 ：8:00-18:00</div><div class="ol-item ol-separator" style="height: 2px; background-color: rgb(160, 160, 160);"></div><div class="ol-item ol-text" style="margin: 0.5em 0px;">联系方式</div><div class="ol-item ol-text" style="margin: 0.5em 0px;">电话1：13573245870</div><div class="ol-item ol-text" style="margin: 0.5em 0px;">电话2： 13573245870</div><div class="ol-item ol-text" style="margin: 0.5em 0px;">微信： 13573245870</div><div class="ol-item ol-text" style="margin: 0.5em 0px;">QQ：1370224171</div><div class="ol-item ol-text" style="margin: 0.5em 0px;">QQ：1370224171</div><div class="ol-item ol-text" style="margin: 0.5em 0px;">邮箱：1370224171@qq.com</div></div></div>
-    <div class="button" onselectstart="return false" unselectable="on" style="position: absolute; top: 0%; width: 26px; line-height: 1.35em; padding: 0.5em 0px; font-size: 12px; color: rgb(255, 255, 255); background-color: rgb(255, 103, 102); cursor: pointer; overflow-wrap: break-word; word-break: break-all; border-top-left-radius: 5px; border-bottom-left-radius: 5px; left: -26px;">
-        <div><img style="margin-bottom:1px; width:12px" alt="&lt;" src="${base}/assets/web/images/member-1-white.png">在线客服<img style="margin-top:3px; width:12px" alt="&lt;" src="${base}/assets/web/images/links-6-white-rev.png"></div>
-    </div>

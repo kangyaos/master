@@ -5,9 +5,9 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
   datasource:
-    url: jdbc:mysql://localhost:3306/lameiv8?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:mysql://172.16.99.199:3306/lameiv8?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
     username: root
-    password: root
+    password: 123.com
     driver-class-name: com.mysql.jdbc.Driver
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource

@@ -102,7 +102,29 @@ public class WebIndexController extends BaseController {
 		public String news(HttpServletRequest request, ModelMap map) throws Exception {
 			
 			return "view/web/news";
-		}	
+		}
+		//证书
+		@RequestMapping(value = "/certificate.html", method = RequestMethod.GET)
+		public String certificate(HttpServletRequest request, ModelMap map) throws Exception {
+			return "view/web/certificate";
+		}
+		
+		//新闻详情
+		@RequestMapping(value = "/newsdetail.html", method = RequestMethod.GET)
+		public String newsdetail(Integer newsid,HttpServletRequest request, ModelMap map) throws Exception {
+			return "view/web/newsdetail";
+		}
+		//课程详情
+		@RequestMapping(value = "/coursedetail.html", method = RequestMethod.GET)
+		public String coursedetail(Integer pid,HttpServletRequest request, ModelMap map) throws Exception {
+			return "view/web/coursedetail";
+		}
+		//课程详情
+		@RequestMapping(value = "/login.html", method = RequestMethod.GET)
+		public String login(HttpServletRequest request, ModelMap map) throws Exception {
+			return "view/web/login";
+		}
+			
 
 	// APP下载页面
 	@RequestMapping(value = "/appDownload.html", method = RequestMethod.GET)

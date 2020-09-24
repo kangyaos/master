@@ -28,5 +28,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse resp, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		req.setAttribute("base", req.getContextPath());
+		System.out.println(req.getServletPath());
+		req.setAttribute("pagepath", req.getServletPath());
 	}
 }

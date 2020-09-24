@@ -1,0 +1,96 @@
+/********* 公共样式 *********/
+*{padding: 0; margin:0; border: 0; }
+.fl_l{float: left;}
+.fl_r{float: right;}
+.pos_r{position: relative; margin-bottom: 10px;}
+.msg{font-size: 12px; line-height: 1; margin-top: 30px;}
+.msg a{color: #333;}
+.warnBorder{border-color:#fc4343 !important;}
+.icon{position: absolute; z-index: 2; left: 13px; top: 14px;}
+input{-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;}
+input{outline: none;}
+input[type="checkbox"]{float: left; margin-right: 5px; -webkit-appearance: none; -moz-appearance: none; appearance: none; border: 1px solid #aaa; width: 12px; height: 12px;}
+input[type="checkbox"]:checked{background: url(check.png) no-repeat center center;}
+input[type="submit"]{border-radius: 2px; cursor: pointer;}
+.content{padding: 0 30px;}
+#sendSMSCodeBtn{height:34px; background:#aaa; color:#fff; padding:0 1em;}
+/********* 会员登录 *********/
+.clearInput{display: none; position: absolute; right: 0; top: 0; color: #666; font-size: 16px; font-family: 黑体; cursor: pointer; width: 40px; height: 40px; text-align: center; line-height: 40px;}
+.loginContent{width: 100%; max-width: 425px; /*height: 465px;要有高度才不会因为CSS3的定位导致内容的模糊*/ box-sizing: border-box; padding: 20px 0; margin:auto;text-align: center;
+}
+body::-webkit-scrollbar {width: 6px; height: 6px; background: rgba(0,0,0,.05);}
+body::-webkit-scrollbar-button{background: #f7f7f7; height: 0;}
+body::-webkit-scrollbar-corner{background: rgba(0,0,0,.05);}
+body::-webkit-scrollbar-thumb{background: rgba(0,0,0,.3);  border-radius: 3px;}
+.loginContent *{font-family: microsoft yahei; box-sizing: border-box;}
+.loginTab{list-style-type: none; width: 100%; overflow: hidden; margin-bottom: 16px; padding: 0 30px;}
+.loginTab>li{float: left; font-size: 18px; text-align: center; cursor: pointer; line-height: 32px; margin-right: 20px; color: #333;}
+.loginTab>li.current,
+.loginTab>li.current:hover{font-size: 20px; color: #3585ff; border-bottom: 2px solid #3585ff;}
+.loginTab>li:hover{border-bottom: 2px solid #ddd;}
+.warnTips{color: #fc4343; font-size: 12px; text-align: left; height: 24px; line-height: 24px; padding: 0 30px;}
+.loginTips{text-align: right; font-size: 12px; margin-bottom: 20px;}
+.loginTips a{color: #3585ff; text-decoration: none;}
+.loginTabCont{position: relative; list-style-type: none; overflow: hidden; height: 150px;} 
+.loginTabCont>li{position: absolute; width: 100%; top: 0; left: 100%; opacity: 0; padding: 0 30px; -webkit-transition: all ease-in-out .5s; -moz-transition: all ease-in-out .5s; -o-transition: all ease-in-out .5s; transition: all ease-in-out .5s;}
+.loginTabCont>li.current{left: 0; opacity: 1;}
+/*输入框图标*/
+.logInput{border: 1px solid #ddd; width: 100%; height: 42px; padding:0 15px 0 40px; font-size: 14px; color: #333;}
+/*.userName{background: url(user.png) no-repeat 12px 50%;}
+.userPwd{background: url(lock.png) no-repeat 12px 50%;}
+.userMobi{background: url(mobi.png) no-repeat 12px 50%;}*/
+
+.logBtn{background:#1cb5a3; color: #fff; width: 100%; height: 40px; font-size: 18px; margin-top: 10px;}
+.forgetPwd,
+.otherlink_mobi{display: none;}
+.otherLogin{font-size: 12px; color: #666; margin-top: 20px;}
+.otherLogin .otherlink{margin-top: 15px;}
+.otherLogin .otherlink a{white-space: nowrap; color: #666; display: inline-block; margin-right: 10px; text-decoration: none;} 
+.otherLogin .otherlink a:last-child{padding-left: 10px; border-left: 1px solid #ddd;}
+.otherLogin .otherlink a img{float: left; margin-right: 5px;}
+.qrcodeBox{position: relative;}
+.qrcodeBox .qrcode,
+.qrcodeBox .mobi{position: absolute; left: 50%; top: 20px; opacity: 0; -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -o-transform: translateX(-50%); transform: translateX(-50%);}
+.qrcodeBox .qrcode{padding: 10px; width: 150px; height: 150px; top: 38px; border: 1px solid #ddd; z-index: 2; background: #fff;}
+.qrcodeBox .qrcode img{width: 100%; height: 100%; background: #fff;}
+.qrcodeBox.on .qrcode{left: 30%; opacity: 1;}
+.qrcodeBox.on .mobi{left: 75%; opacity: 1;}
+.qrcodeBox>*{-webkit-transition: all ease-in-out 1s; -moz-transition: all ease-in-out 1s; -o-transition: all ease-in-out 1s; transition: all ease-in-out 1s;}
+.qrcodeTips{text-align: center; padding-top: 230px; color: #999; font-size: 12px;}
+.qrcodeTips ul{list-style-type: none; width: 80%; margin: 20px auto 0; font-size: 12px;}
+.qrcodeTips ul li{float: left; width: 33.33%; line-height: 22px; text-align: left; white-space: nowrap;}
+.qrcodeTips ul li img{float: left; margin-right: 10px;}
+
+.yzBox{text-align: center; padding-top: 50px;}
+.yzBox img{width: 100px;}
+.yzBox p{margin-top: 20px; font-size: 16px; color: #666; }
+.yzBox p font{color:#f00;padding-right: 3px;}
+
+
+.register{display: none;}
+/********* 会员注册 *********/
+
+/********* 手机屏幕显示 *********/
+@media screen and (max-width: 499px){
+.loginContent{/* position: fixed; */ width: 100%; height: auto; left: 0; top: 0; background: #fff; padding-top: 50px; }
+input[type="submit"]{border-radius: 4px;}
+.warnTips,
+.msg,
+.loginTips,
+.loginTab,
+.otherlink{display: none;}
+.warnTips{position: fixed; z-index: 30; max-width: 80%; height: auto; padding: 5px 10px; background: #333; color: #fff; border-radius: 2px; text-align: center; font-size: 12px; left: 50%; top: 100px; -webkit-transform: translate(-50%,0); -moz-transform: translate(-50%,0); -o-transform: translate(-50%,0); transform: translate(-50%,0);}
+.logInput{border-width: 0 0 1px 0;}
+.register{display: block; background: #fff; color: #333; border-radius: 4px; border:1px solid #eee; width: 100%; height: 40px; font-size: 18px; margin-top: 20px;}
+.forgetPwd{ display: block; color: #3585ff; width: 100%; height: 40px; line-height: 40px; font-size: 18px; margin-top: 20px; font-size: 14px; text-align: center; text-decoration: none;}
+.loginTabCont{height: auto;}
+.loginTabCont>li{position: relative;}
+.loginTabCont>li:last-child{display: none;}
+.otherLogin{margin-top: 40px; width: 100%; text-align: center; font-size: 14px;}
+.otherlink_mobi{display: block; margin-top: 20px;}
+.otherlink_mobi a{display: inline-block; width: 50px; height: 50px; margin: 0 8px;}
+.otherlink_mobi a img{width: 100%; height: 100%;}
+}
+

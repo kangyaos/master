@@ -4,7 +4,7 @@
 								<div id="image_logo_1575606105555" class="view logo image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="image" class="view_contents">
 					<div class="logoStyle modSet">
-<a href="http://demo.nicebox.cn/c34def71157cf084/index.html" target="_self"><img class="imgSet" src="${base}/assets/web/images/logo.png" title="" alt="" style="width:auto; height:100%; margin-left:0px"></a>
+<a href="index.html" target="_self"><img class="imgSet" src="${base}/assets/web/images/logo.png" title="" alt="" style="width:auto; height:100%; margin-left:0px"></a>
 </div>				</div>
 			</div>
 					<div id="dh_style_28_1578629663716" class="view style_28 dh  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
@@ -17,26 +17,23 @@
 				<div class="sidebar icoMenuSet"><i class="fa fa-navicon" onclick="setDhListen(&#39;style_01&#39;,this)"></i></div>
 				<div class="menuScroll">
 					<ul class="menuUlCopy">
-								<li id="hot" class="rflex" pageid="2801213" showmobile=""><a class="mainMenuSet" href="index.html">
+								<li id="<#if pagepath=='/index.html'>hot</#if>" class="rflex" pageid="2801213" showmobile=""><a class="mainMenuSet" href="index.html">
 								首页</a>
 								</li>
-								<li class="rflex" pageid="2801217" showmobile=""><a class="mainMenuSet" href="trainingcourse.html">
+								<li id="<#if pagepath=='/trainingcourse.html' || pagepath=='/coursedetail.html' >hot</#if>" class="rflex" pageid="2801217" showmobile=""><a class="mainMenuSet" href="trainingcourse.html">
 								课程</a>
 								</li>
-								<li class="rflex" pageid="2801223" showmobile=""><a class="mainMenuSet" href="teacher.html">
+								<li  id="<#if pagepath=='/teacher.html'>hot</#if>" class="rflex" pageid="2801223" showmobile=""><a class="mainMenuSet" href="teacher.html">
 								教师</a>
 								</li>
-								<li class="rflex" pageid="2801225" showmobile=""><a class="mainMenuSet" href="http://demo.nicebox.cn/c34def71157cf084/facilities.html">
+								<li  id="<#if pagepath=='/certificate.html'>hot</#if>" class="rflex" pageid="2801225" showmobile=""><a class="mainMenuSet" href="certificate.html">
 								证书</a>
 								</li>
-								<li class="rflex" pageid="2801219" showmobile=""><a class="mainMenuSet" href="news.html">
-								新闻动态</a>
+								<li   id="<#if pagepath=='/news.html' || pagepath=='/newsdetail.html'>hot</#if>" class="rflex" pageid="2801219" showmobile=""><a class="mainMenuSet" href="news.html">
+								新闻</a>
 								</li>
-								<li class="rflex" pageid="2801215" showmobile=""><a class="mainMenuSet" href="http://demo.nicebox.cn/c34def71157cf084/about.html">
-								关于我们</a>
-								</li>
-								<li class="rflex" pageid="2801221" showmobile=""><a class="mainMenuSet" href="contact.html">
-								联系我们</a>
+								<li  id="<#if pagepath=='/contact.html'>hot</#if>"  class="rflex" pageid="2801221" showmobile=""><a class="mainMenuSet" href="contact.html">
+								联系</a>
 								</li>
 					</ul>
 				</div>
@@ -44,35 +41,35 @@
 		</ul>
 		<div class="menuUl_box columnSet dhAreaSet showpc">
 			<ul class="menuUl dflex maxWidth ">
-						<li id="hot" class="rflex isLi" pageid="2801213" showpc="">
+						<li id="<#if pagepath =='/index.html'>hot</#if>" class="rflex isLi" pageid="2801213" showpc="">
 							<a class="mainMenuSet Nosub" href="index.html">
 								首页
 							</a>
 						</li>
-						<li class="rflex isLi" pageid="2801217" showpc="">
+						<li id="<#if pagepath =='/trainingcourse.html'  || pagepath=='/coursedetail.html'>hot</#if>" class="rflex isLi" pageid="2801217" showpc="">
 							<a class="mainMenuSet Nosub" href="trainingcourse.html">
 								课程
 							</a>
 						</li>
-						<li class="rflex isLi" pageid="2801223" showpc="">
+						<li  id="<#if pagepath =='/teacher.html'>hot</#if>" class="rflex isLi" pageid="2801223" showpc="">
 							<a class="mainMenuSet Nosub" href="teacher.html">
 								教师
 							</a>
 						</li>
-						<li class="rflex isLi" pageid="2801225" showpc="">
-							<a class="mainMenuSet Nosub" href="http://demo.nicebox.cn/c34def71157cf084/facilities.html">
+						<li   id="<#if pagepath =='/certificate.html'>hot</#if>" class="rflex isLi" pageid="2801225" showpc="">
+							<a class="mainMenuSet Nosub" href="certificate.html">
 								证书
 							</a>
 						</li>
-						<li class="rflex isLi" pageid="2801219" showpc="">
+						<li  id="<#if pagepath =='/news.html'  || pagepath=='/newsdetail.html'>hot</#if>"  class="rflex isLi" pageid="2801219" showpc="">
 							<a class="mainMenuSet Nosub" href="news.html">
-								新闻动态
+								新闻
 							</a>
 						</li>
 						
-						<li class="rflex isLi" pageid="2801221" showpc="">
+						<li  id="<#if pagepath =='/contact.html'>hot</#if>" class="rflex isLi" pageid="2801221" showpc="">
 							<a class="mainMenuSet Nosub" href="contact.html">
-								联系我们
+								联系
 							</a>
 						</li>
 			</ul>
@@ -81,11 +78,30 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </div>
+
+	<div id="idBox" class="lightbox" style="z-index: 2147483647; max-width: 500px; margin-left: -250px; margin-top: -147.5px">	
+		<div id="boxMain">		
+			<div id="boxTopTitle">			
+				<span id="boxName">用户登录</span>			
+				<span id="boxClose" title="关闭" onclick="Close();">×</span>		
+			</div>		
+			<div id="boxContent">			
+				<iframe id="showiframe" src="login.html" frameborder="0" style="width:100%;" name="bookConfirm" height="250px"></iframe>		
+			</div>	</div></div>
+
 <!-- 导航栏目有下级时禁止跳转 -->
 <!-- 二级菜单宽度自适应 -->
 <script>
+
+function showlogin(){
+  $("#idBox").show();
+}
+function Close(){
+  $("#idBox").hide();
+}
 function navSwtich(obj) {
 	$(obj).siblings(".menuUlCopy").slideToggle(200);
 	$(obj).toggleClass('ontoggle');
@@ -132,5 +148,5 @@ $(function(){
 </script>
 				</div>
 			</div>
-						</div>
+						</div><div style="    position: absolute;top: 38px;  right: 50px;"><a href="javascript:showlogin()">登录</a></div>
 			</div>
