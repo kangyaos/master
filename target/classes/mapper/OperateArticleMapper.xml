@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sxhalo.lmb.mapper.OperateArticleMapper" >
-  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.OperateArticle" >
+<mapper namespace="com.jiaoda.edu.mapper.OperateArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.OperateArticle" >
     <id column="article_id" property="articleId" jdbcType="INTEGER" />
     <result column="category_id" property="categoryId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
@@ -27,7 +27,7 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.sxhalo.lmb.domain.OperateArticle" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.jiaoda.edu.domain.OperateArticle" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -51,7 +51,7 @@
     delete from operate_article
     where article_id = #{articleId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.OperateArticle" >
     insert into operate_article (article_id, category_id, title, 
       summary, source, author, 
       editor, publish_url, publish_time, 
@@ -71,7 +71,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.OperateArticle" >
     insert into operate_article
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="articleId != null" >
@@ -228,7 +228,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.OperateArticle" >
     update operate_article
     <set >
       <if test="categoryId != null" >
@@ -306,7 +306,7 @@
     </set>
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jiaoda.edu.domain.OperateArticle" >
     update operate_article
     set category_id = #{categoryId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
@@ -334,7 +334,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.OperateArticle" >
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.OperateArticle" >
     update operate_article
     set category_id = #{categoryId,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
@@ -361,43 +361,35 @@
       delete_flag = #{deleteFlag,jdbcType=INTEGER}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
-  
   <select id="getCount" resultType="java.lang.Integer">
-      select count(*) FROM operate_article a 
-	  where a.delete_flag=0 and a.publish_state=1
-      <if test="where != null and where != ''" >
-        and ${where}
-      </if>      
-  </select>
-  <select id="findPagerList" resultMap="BaseResultMap">
-      select a.article_id, a.category_id, a.title, a.summary, a.source, a.author, a.editor, a.publish_url, a.publish_time, 
-      a.publish_state, a.tumb_pic_code, a.tumb_pic_code2, a.tumb_pic_code3, a.tumb, a.video_address, 
-	  a.click_num, a.sort, a.is_special, a.is_send, a.is_picture, a.enclosure, a.create_time, a.update_time, 
-	  a.delete_flag, CONCAT('https://picture.sxhalo.com/',tumb_pic_code) pic_path,c.category_name FROM operate_article a 
-	  left join operate_article_category c on a.category_id=c.category_id
-	  where a.delete_flag=0 and a.publish_state=1
-      <if test="where != null and where != ''" >
-        and ${where}
-      </if> 
-      <if test="order != null and order != ''" >
-        order by ${order}
-      </if>
-      <if test="length != null and length != -1" >
-        limit ${start},${length}
-      </if>
+    select count(*) from operate_article
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
   </select>
   <select id="findWhereList" resultMap="BaseResultMap">
-      select a.article_id, a.category_id, a.title, a.summary, a.source, a.author, a.editor, a.publish_url, a.publish_time, 
-      a.publish_state, a.tumb_pic_code, a.tumb_pic_code2, a.tumb_pic_code3, a.tumb, a.video_address, 
-	  a.click_num, a.sort, a.is_special, a.is_send, a.is_picture, a.enclosure, a.create_time, a.update_time, 
-	  a.delete_flag, CONCAT('https://picture.sxhalo.com/',tumb_pic_code) pic_path,c.category_name FROM operate_article a 
-	  left join operate_article_category c on a.category_id=c.category_id
-	  where a.delete_flag=0 and a.publish_state=1
-      <if test="where != null and where != ''" >
-        and ${where}
-      </if> 
-      <if test="order != null and order != ''" >
-        order by ${order}
-      </if>
+    select 
+    <include refid="Base_Column_List" />
+    from operate_article
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from operate_article 
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>
   </select>
 </mapper>

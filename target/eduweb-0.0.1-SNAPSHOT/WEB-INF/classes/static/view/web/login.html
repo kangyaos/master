@@ -7,7 +7,7 @@
 <meta name="keywords" content="建站">
 <title>会员登录</title>
 <meta http-equiv="Pragma" content="no-cache">
-<link rel="stylesheet" href="${base}/assets/web/css/style.css">
+<link rel="stylesheet" href="${base}/assets/web/css/login.css">
     <style>
         .backIcon{display: none;}
         @media screen and (max-width:481px){
@@ -15,7 +15,7 @@
             .backIcon img{width: 30px;height: 30px;vertical-align: middle;cursor: pointer;}
         }
     </style>
-<script src="${base}/assets/web/js/jquery.js"></script>
+<script src="${base}/assets/web/js/jquery.min.js"></script>
 <script>
 
 
@@ -134,12 +134,12 @@ function check_login(){
 		var backurl = $('input[name="backurl"]').val();
 	if(!username){
 		$(".loginBox .warnTips").html("会员名字为空！").show();
-		setTimeout(function(){$('.warnTips').html('').hide();},3000);
+		setTimeout(function(){$('.warnTips').html('');},3000);
 		return false;
 	}
 	if(!pwd){
 		$(".loginBox .warnTips").html("登录密码为空！").show();
-		setTimeout(function(){$('.warnTips').html('').hide();},3000);
+		setTimeout(function(){$('.warnTips').html('');},3000);
 		return false;
 	}
 	if(username&&pwd){
@@ -148,7 +148,7 @@ function check_login(){
 			var data = eval("("+result+")");
 			if(data.fail){
 				$(".loginBox .warnTips").html(data.Word).show();
-				setTimeout(function(){$('.warnTips').html('').hide();},3000);
+				setTimeout(function(){$('.warnTips').html('');},3000);
 				return false;
 			}else{
 				if(data.Word.indexOf('userpanel')!=-1 || data.Word.indexOf('/uc/')!=-1){

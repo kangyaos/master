@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<#include "/include/globalstyle.html" />
+<link rel="stylesheet"
+	href="${base}/assets/admin/plugins/jstree/dist/themes/default/style.min.css" />
+<link rel="stylesheet"
+	href="${base}/assets/admin/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="${base}/assets/laydate/need/xcConfirm.css"/>
+<script src="${base}/assets/admin/plugins/js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="${base}/assets/admin/plugins/js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body
+	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+	<!-- BEGIN HEADER -->
+	<#include "/include/header.html" />
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar-wrapper"><#include
+			"/include/sidebar.html" /></div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					模块管理<small></small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html">首页</a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">系统管理</a><i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">模块管理</a></li>
+					</ul>
+					<div class="page-toolbar"></div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN DASHBOARD STATS -->
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="portlet box grey-gallery" style="margin-left: 3px">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-bar-chart-o"></i>后台模块管理
+								</div>
+								<div class="actions">
+									<a href="addmodule.html?parentId=1" id="addmodule" class="btn btn-default btn-sm"> <i
+										class="fa fa-plus"></i>新增
+									</a>
+								</div>
+								<ul class="nav nav-tabs" style="margin-right: 10px">
+									<li>
+										<a href="#portlet_tab2" data-toggle="tab" id="statistics_amounts_tab">
+										对账系统模块管理 </a>
+									</li>
+									<li class="active">
+										<a href="#portlet_tab1" data-toggle="tab">
+										 后台模块管理</a>
+									</li>
+								</ul>
+							</div>
+							<div class="portlet-body">
+								<div class="tab-content">
+									<div class="tab-pane active" id="portlet_tab1">
+										<!-- BEGIN EXAMPLE TABLE PORTLET-->																					
+										<div class="portlet-body">
+										    <div class="portlet-body form">
+												<div class="form-body">
+													<div class="row">
+														<div class="col-md-3">
+															<div style="overflow-y:auto; overflow-x:auto; height:650px">
+																<div id="tree_2" class="tree-demo" style="margin-top:20px"></div>
+																<div id="tree_3" class="tree-demo" ></div>
+															</div>												
+														</div>
+														<div class="col-md-9">
+															<table class="table table-striped table-bordered table-hover"
+																id="grid">
+																<thead>
+																	<tr>
+																		<th>模块名称</th>
+																		<th>模块编码</th>
+																		<th>链接路径</th>
+																		<th>图标样式</th>
+																		<th>功能描述</th>
+																		<th>禁用</th>
+																		<th></th>
+																	</tr>
+																</thead>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- END EXAMPLE TABLE PORTLET-->
+									</div>
+									<div class="tab-pane" id="portlet_tab2">
+										<!-- BEGIN EXAMPLE TABLE PORTLET-->																					
+										<div class="portlet-body">
+										    <div class="portlet-body form">
+												<div class="form-body">
+													<div class="row">
+														<div class="col-md-3">
+															<div style="overflow-y:auto; overflow-x:auto; height:650px">
+																<div id="tree_4" class="tree-demo" style="margin-top:20px"></div>
+																<div id="tree_5" class="tree-demo" ></div>
+															</div>												
+														</div>
+														<div class="col-md-9">
+															<table class="table table-striped table-bordered table-hover"
+																id="gridFee">
+																<thead>
+																	<tr>
+																		<th>模块名称</th>
+																		<th>模块编码</th>
+																		<th>链接路径</th>
+																		<th>图标样式</th>
+																		<th>功能描述</th>
+																		<th>禁用</th>
+																		<th></th>
+																	</tr>
+																</thead>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- END EXAMPLE TABLE PORTLET-->
+									</div>
+								</div>								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<!-- END DASHBOARD STATS -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<#include "/include/footer.html" />
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->
+	<#include "/include/globalscript.html" />
+	<!-- END CORE PLUGINS -->
+	<script type="text/javascript" src="${base}/assets/admin/plugins/sxhaloJQfn.js"></script>
+	<script type="text/javascript" src="${base}/assets/admin/plugins/jstree/dist/jstree.js"></script>
+	<script src="${base}/assets/admin/plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="${base}/assets/admin/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js" type="text/javascript"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<script>
+		$(document).ready(function() {
+			Metronic.init(); // init metronic core componets
+			Layout.init(); // init layout
+			initTable();
+			initTableFee();
+		});
+		var table;
+		var initTable = function (){
+			table = $('#grid');	
+	        table.dataTable({
+	    		"ajax": {
+	                "type": "post",
+	                "url": "modulelist.json?appId=1",
+	                "error":function(ex){
+	                	console.log(ex);
+	                }
+	            },
+	            "columns" : [{"data" : "moduleName"}, 
+							{"data" : "moduleCode"}, 
+							{"data" : "modulePath"}, 
+							{"data" : "moduleClass"},
+							{"data" : "moduleDescription"},
+							{
+								"data" : "moduleIsdisable",
+								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
+				                	$(nTd).html(sData==1?"是":"否");
+				            	},
+				            	"searchable":false},
+							{	
+								"data" : "moduleId",
+								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
+				                	$(nTd).html("<a href='editmodule.html?moduleId="+sData+"&appId=1' class='btn default btn-xs blue'><i class='fa fa-edit'></i>编辑</a>");
+				            	},
+				            	"searchable":false
+				            }]
+	        });        
+	        
+ 		};
+ 		
+ 		var table2;
+		var initTableFee = function (){
+			table2 = $('#gridFee');	
+	        table2.dataTable({
+	    		"ajax": {
+	                "type": "post",
+	                "url": "modulelist.json?appId=4",
+	                "error":function(ex){
+	                	console.log(ex);
+	                }
+	            },
+	            "columns" : [{"data" : "moduleName"}, 
+							{"data" : "moduleCode"}, 
+							{"data" : "modulePath"}, 
+							{"data" : "moduleClass"},
+							{"data" : "moduleDescription"},
+							{
+								"data" : "moduleIsdisable",
+								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
+				                	$(nTd).html(sData==1?"是":"否");
+				            	},
+				            	"searchable":false},
+							{	
+								"data" : "moduleId",
+								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
+				                	$(nTd).html("<a href='editmodule.html?moduleId="+sData+"&appId=4' class='btn default btn-xs blue'><i class='fa fa-edit'></i>编辑</a>");
+				            	},
+				            	"searchable":false
+				            }]
+	        });
+ 		};
+ 		
+ 		
+ 		$('.nav-tabs li').click(function(){
+ 		    var id =$(this).find("a").attr("id");
+ 		    if(id=="statistics_amounts_tab"){
+ 		        $("#addmodule").attr("href","addmodule.html?parentId=4");
+ 		    }else{
+ 		        $("#addmodule").attr("href","addmodule.html?parentId=1");
+ 		    }
+		});
+ 		
+ 		$("#tree_2").on('move_node.jstree', function(e, data) {
+			$.post("modulelistcha.do", {
+				id : data.node.id,
+				parent : data.parent == '#' ? 0 : data.parent,
+				position : data.position
+			}, function(data, status) {
+			}, 'json');
+		}).jstree({
+			'plugins' : [ "dnd", "types", "wholerow" ],
+			'core' : {
+				"check_callback" : true,
+				'data' : {
+					'url' : 'modules.json?appId=1'
+				}
+			}
+		}).bind("select_node.jstree", function(e, data) {			
+			table.fnReloadAjax("modulelist.json?mId=" + data.node.id);
+		});	
+		
+		$("#tree_4").on('move_node.jstree', function(e, data) {
+			$.post("modulelistcha.do", {
+				id : data.node.id,
+				parent : data.parent == '#' ? 0 : data.parent,
+				position : data.position
+			}, function(data, status) {
+			}, 'json');
+		}).jstree({
+			'plugins' : [ "dnd", "types", "wholerow" ],
+			'core' : {
+				"check_callback" : true,
+				'data' : {
+					'url' : 'modules.json?appId=4'
+				}
+			}
+		}).bind("select_node.jstree", function(e, data) {			
+			table2.fnReloadAjax("modulelist.json?appId=4&mId=" + data.node.id);
+		});		
+		
+		
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

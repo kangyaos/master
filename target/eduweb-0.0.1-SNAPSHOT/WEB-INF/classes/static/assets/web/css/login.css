@@ -18,7 +18,8 @@ input[type="submit"]{border-radius: 2px; cursor: pointer;}
 #sendSMSCodeBtn{height:34px; background:#aaa; color:#fff; padding:0 1em;}
 /********* 会员登录 *********/
 .clearInput{display: none; position: absolute; right: 0; top: 0; color: #666; font-size: 16px; font-family: 黑体; cursor: pointer; width: 40px; height: 40px; text-align: center; line-height: 40px;}
-.loginContent{width: 100%; max-width: 425px; /*height: 465px;要有高度才不会因为CSS3的定位导致内容的模糊*/ box-sizing: border-box; padding: 30px 0; margin:auto;}
+.loginContent{width: 100%; max-width: 425px; /*height: 465px;要有高度才不会因为CSS3的定位导致内容的模糊*/ box-sizing: border-box; padding: 20px 0; margin:auto;text-align: center;
+}
 body::-webkit-scrollbar {width: 6px; height: 6px; background: rgba(0,0,0,.05);}
 body::-webkit-scrollbar-button{background: #f7f7f7; height: 0;}
 body::-webkit-scrollbar-corner{background: rgba(0,0,0,.05);}
@@ -32,7 +33,7 @@ body::-webkit-scrollbar-thumb{background: rgba(0,0,0,.3);  border-radius: 3px;}
 .warnTips{color: #fc4343; font-size: 12px; text-align: left; height: 24px; line-height: 24px; padding: 0 30px;}
 .loginTips{text-align: right; font-size: 12px; margin-bottom: 20px;}
 .loginTips a{color: #3585ff; text-decoration: none;}
-.loginTabCont{position: relative; list-style-type: none; overflow: hidden; height: 340px;} 
+.loginTabCont{position: relative; list-style-type: none; overflow: hidden; height: 150px;} 
 .loginTabCont>li{position: absolute; width: 100%; top: 0; left: 100%; opacity: 0; padding: 0 30px; -webkit-transition: all ease-in-out .5s; -moz-transition: all ease-in-out .5s; -o-transition: all ease-in-out .5s; transition: all ease-in-out .5s;}
 .loginTabCont>li.current{left: 0; opacity: 1;}
 /*输入框图标*/
@@ -41,7 +42,7 @@ body::-webkit-scrollbar-thumb{background: rgba(0,0,0,.3);  border-radius: 3px;}
 .userPwd{background: url(lock.png) no-repeat 12px 50%;}
 .userMobi{background: url(mobi.png) no-repeat 12px 50%;}*/
 
-.logBtn{background: #3585ff; color: #fff; width: 100%; height: 40px; font-size: 18px; margin-top: 10px;}
+.logBtn{background:#1cb5a3; color: #fff; width: 100%; height: 40px; font-size: 18px; margin-top: 10px;}
 .forgetPwd,
 .otherlink_mobi{display: none;}
 .otherLogin{font-size: 12px; color: #666; margin-top: 20px;}

@@ -9,8 +9,7 @@
 <#include "/view/web/include/headerFile.htm" />
 <#include "/view/web/include/head.htm" />
 
-<script type="text/javascript" src="${base}/assets/web/js/02801213.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="${base}/assets/web/css/02801213.css">
+
 					<div id="layout_1578626271523" class="layout  none" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="margin-top: 110px;">
 				<div class="view_contents">
 								<div id="banner_style_01_1578626271528" class="view style_01 banner  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
@@ -21,7 +20,7 @@
 		<div class="flicking_con">
 				<a href="index.html#" class=""></a>
 				<a href="index.html#" class=""></a>
-				<a href="index.html#" class="on"></a>
+				<!-- <a href="index.html#" class="on"></a> -->
 		</div>
 		<div class="ground_glass"></div>
 		<div class="main_image">
@@ -29,7 +28,7 @@
 			<div class="img-list">
 					<div class="img-item" style="left: -100%;"><a href="javascript:;" class="picSet"><span class="img_0"></span></a></div>
 					<div class="img-item" style="left: -100%;"><a href="javascript:;" class="picSet"><span class="img_1"></span></a></div>
-					<div class="img-item" style="left: 0%;"><a href="javascript:;" class="picSet"><span class="img_2"></span></a></div>
+					<!-- <div class="img-item" style="left: 0%;"><a href="javascript:;" class="picSet"><span class="img_2"></span></a></div> -->
 			</div>
 			<a href="javascript:;" class="btn_prev" style="display: inline; opacity: 0.00744534;"></a>
 			<a href="javascript:;" class="btn_next" style="display: inline; opacity: 0.00744534;"></a>
@@ -75,10 +74,10 @@
     //图片链接
     $url_html = new Array();
     $i = 0;
-    $url_len = 3;
+    $url_len = 2;
             $url_html[0] = "";
             $url_html[1] = "";
-            $url_html[2] = "";
+         /*    $url_html[2] = ""; */
     $('#banner_style_01_1578626271528 a.img_url').attr('href',$url_html[$i]);
     // 跳到指定图片
     Banner.prototype.animateIndex = function(index) {
@@ -242,7 +241,7 @@
      */
     // 图片数据
     var list_banner_style_01_1578626271528 = [];
-    list_banner_style_01_1578626271528.push('https://cdn.yun.sooce.cn/2/125373/jpg/1589063354371c565fc717a48364d.jpg?version=0');list_banner_style_01_1578626271528.push('https://cdn.yun.sooce.cn/2/125373/jpg/15890633543745d752d98a3efc995.jpg?version=0');list_banner_style_01_1578626271528.push('https://cdn.yun.sooce.cn/2/125373/jpg/15890633543755bb4a910f29a535d.jpg?version=0');
+    list_banner_style_01_1578626271528.push('${base}/assets/web/images/mmexport1601018912249.jpg?version=0');list_banner_style_01_1578626271528.push('${base}/assets/web/images/mmexport1601018916904.jpg?version=0');
     var banner_banner_style_01_1578626271528;        // 轮播图对象
     $(function(){
         // 创建轮播图
@@ -401,7 +400,7 @@ if(typeof showcart !== 'function'){
 			</div>
 					<div id="text_style_01_1579162373891" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
 				<div names="text" class="view_contents">
-					课程中心
+					教师团队
 				</div>
 			</div>
 						</div>
@@ -748,7 +747,7 @@ if(typeof showcart !== 'function'){
 			</div>
 					<div id="text_style_01_1589113028969" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
 				<div names="text" class="view_contents">
-					教师团队
+					课程中心
 				</div>
 			</div>
 						</div>

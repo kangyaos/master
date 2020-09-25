@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<#include "/include/globalstyle.html" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body
+	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+	<!-- BEGIN HEADER -->
+	<#include "/include/header.html" />
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar-wrapper"><#include
+			"/include/sidebar.html" /></div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					角色管理<small></small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html">首页</a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">系统管理</a><i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">角色管理</a></li>
+					</ul>
+					<div class="page-toolbar"></div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN DASHBOARD STATS -->
+				<div class="row">
+					<div class="col-md-12">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box grey-gallery">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-edit"></i>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form action="saverole.do" method="post" id="roleform"
+									class="form-horizontal">
+									<div style="display: none">
+										<input type="hidden" name="edit" id="edit"
+											value="${edit!}" />
+									</div>
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label col-md-3">角色编码 <span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<#if edit??>
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="number" class="form-control" readonly="readonly"
+														name="roleId" id="roleId" value="${role.roleId!}" />
+												</div>
+												<#else>
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="number" class="form-control"
+														name="roleId" id="roleId" value="${role.roleId!}" />
+												</div>
+												</#if>	
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3">角色名 <span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="text" class="form-control"
+														name="roleName" id="roleName" value="${role.roleName!}" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3">角色描述 </label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<textarea class="form-control" rows="3" name="roleDescription" id="roleDescription">${role.roleDescription!""}</textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">禁用</label>
+										<div class="col-md-7">
+											<div class="radio-list">
+												<#if (role.roleIsdisable!0)==1 > <label class="radio-inline">
+													<input type="radio" name="roleIsdisable" value=1 checked>是
+												</label> <label class="radio-inline" style="margin-left: 23px;">
+													<input type="radio" name="roleIsdisable" value=0>否
+												</label> <#else> <label class="radio-inline"> <input
+													type="radio" name="roleIsdisable" value=1>是
+												</label> <label class="radio-inline" style="margin-left: 23px;">
+													<input type="radio" name="roleIsdisable" value=0 checked>否
+												</label> </#if>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">级别 <span
+											class="required"> * </span>
+										</label>
+										<div class="col-md-4">
+											<div class="input-icon right">
+												<i class="fa"></i> <input type="number" class="form-control" min="0"
+													name="roleLevel" id="roleLevel" value="${role.roleLevel!}" />
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<button type="submit" class="btn blue">保存</button>
+												<button type="button" class="btn default">取消</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!-- END FORM-->
+							</div>
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
+				<!-- END DASHBOARD STATS -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<#include "/include/footer.html" />
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->
+	<#include "/include/globalscript.html" />
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/additional-methods.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<script>
+		$(document).ready(function() {
+			Metronic.init(); // init metronic core componets
+			Layout.init(); // init layout
+			addValidation();
+			$(".btn.default").click(function(){
+				history.back();
+			});
+		});
+		var addValidation = function() {
+			var form1 = $('#roleform');
+
+			form1.validate({
+				errorElement : 'span', //default input error message container
+				errorClass : 'help-block help-block-error', // default input error message class
+				focusInvalid : false, // do not focus the last invalid input
+				ignore : "", // validate all fields including form hidden input
+				rules : {
+					roleId : {
+							minlength :1,
+							maxlength : 3,
+							required : true,
+							remote : {
+								url : 'validRoleName.json',
+								type : 'post',
+								data : {
+									'roleId' : function() {
+										return $("#roleId").val();
+									},
+									'edit' : function() {
+										return $("#edit").val();
+									}
+								}
+							}
+						},					
+					roleName : {
+						minlength :2,
+						maxlength : 50,
+						required : true,
+						remote : {
+							url : 'validRoleName.json',
+							type : 'post',
+							data : {
+								'roleId' : function() {
+									return $("#roleId").val();
+								},
+								'roleName' : function() {
+									return $("#roleName").val();									
+								},
+								'edit' : function() {
+									return $("#edit").val();
+								}
+							}
+						}
+					},
+					roleDescription : {
+						maxlength : 150
+					}
+				},
+				messages : {
+					roleId : {
+						remote : "角色编码已存在，请重新输入！"
+					},	
+					roleName : {
+						remote : "角色名已存在，请重新输入！"
+					}				
+				},
+
+				invalidHandler : function(event, validator) { //display error alert on form submit              
+
+				},
+
+				highlight : function(element) { // hightlight error inputs
+					$(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+				},
+
+				unhighlight : function(element) { // revert the change done by hightlight
+					$(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+				},
+
+				success : function(label) {
+					label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+				}
+			});
+
+		};
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

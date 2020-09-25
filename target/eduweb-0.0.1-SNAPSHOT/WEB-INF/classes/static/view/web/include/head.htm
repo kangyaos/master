@@ -82,11 +82,11 @@
 	</div>
 </div>
 
-	<div id="idBox" class="lightbox" style="z-index: 2147483647; max-width: 500px; margin-left: -250px; margin-top: -147.5px;">	
+	<div id="idBox" class="lightbox" style="z-index: 2147483647; max-width: 500px; margin-left: -250px; margin-top: -147.5px;    display: none;">	
 		<div id="boxMain">		
 			<div id="boxTopTitle">			
 				<span id="boxName">用户登录</span>			
-				<span id="boxClose" title="关闭" onclick="box.Close();">×</span>		
+				<span id="boxClose" title="关闭" onclick="close();">×</span>		
 			</div>		
 			<div id="boxContent">			
 				<iframe id="showiframe" src="login.html" frameborder="0" style="width:100%;" name="bookConfirm" height="250px"></iframe>		
@@ -95,6 +95,13 @@
 <!-- 导航栏目有下级时禁止跳转 -->
 <!-- 二级菜单宽度自适应 -->
 <script>
+
+function showlogin(){
+  $("#idBox").show();
+}
+function close(){
+  $("#idBox").hide();
+}
 function navSwtich(obj) {
 	$(obj).siblings(".menuUlCopy").slideToggle(200);
 	$(obj).toggleClass('ontoggle');
@@ -141,5 +148,5 @@ $(function(){
 </script>
 				</div>
 			</div>
-						</div><div style="    position: absolute;top: 38px;  right: 50px;"><a>登录</a></div>
+						</div><div style="    position: absolute;top: 38px;  right: 50px;"><a href="javascript:showlogin()">登录</a></div>
 			</div>

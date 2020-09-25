@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sxhalo.lmb.mapper.OperateArticleCategoryMapper" >
-  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.OperateArticleCategory" >
+<mapper namespace="com.jiaoda.edu.mapper.OperateArticleCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.OperateArticleCategory" >
     <id column="category_id" property="categoryId" jdbcType="INTEGER" />
     <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
     <result column="category_pic_code" property="categoryPicCode" jdbcType="VARCHAR" />
@@ -28,7 +28,7 @@
     delete from operate_article_category
     where category_id = #{categoryId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
     insert into operate_article_category (category_id, category_name, category_pic_code, 
       image, sort, category_level, 
       parent_category, show_special, use_status, 
@@ -38,7 +38,7 @@
       #{parentCategory,jdbcType=INTEGER}, #{showSpecial,jdbcType=INTEGER}, #{useStatus,jdbcType=INTEGER}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
     insert into operate_article_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="categoryId != null" >
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
     update operate_article_category
     <set >
       <if test="categoryName != null" >
@@ -147,7 +147,7 @@
     </set>
     where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
     update operate_article_category
     set category_name = #{categoryName,jdbcType=VARCHAR},
       category_pic_code = #{categoryPicCode,jdbcType=VARCHAR},
@@ -161,7 +161,6 @@
       delete_flag = #{deleteFlag,jdbcType=INTEGER}
     where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
-  
   <select id="getCount" resultType="java.lang.Integer">
     select count(*) from operate_article_category
     <if test="where != null and where != ''" >
@@ -182,7 +181,7 @@
   <select id="findPagerList" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from operate_article_category
+    from operate_article_category 
     <if test="where != null and where != ''" >
       where ${where}
     </if> 
@@ -191,6 +190,6 @@
     </if>
     <if test="length != null and length != -1" >
       limit ${start},${length}
-    </if>     
+    </if>
   </select>
 </mapper>
