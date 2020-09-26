@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sxhalo.lmb.mapper.OperateArticleCategoryMapper" >
-  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.OperateArticleCategory" >
+<mapper namespace="com.jiaoda.edu.mapper.OperateArticleCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.OperateArticleCategory" >
     <id column="category_id" property="categoryId" jdbcType="INTEGER" />
     <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
-    <result column="category_pic_code" property="categoryPicCode" jdbcType="VARCHAR" />
-    <result column="image" property="image" jdbcType="INTEGER" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
-    <result column="category_level" property="categoryLevel" jdbcType="INTEGER" />
-    <result column="parent_category" property="parentCategory" jdbcType="INTEGER" />
-    <result column="show_special" property="showSpecial" jdbcType="INTEGER" />
     <result column="use_status" property="useStatus" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    category_id, category_name, category_pic_code, image, sort, category_level, parent_category, 
-    show_special, use_status, update_time, delete_flag
+    category_id, category_name, sort, use_status, update_time, delete_flag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,17 +22,13 @@
     delete from operate_article_category
     where category_id = #{categoryId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
-    insert into operate_article_category (category_id, category_name, category_pic_code, 
-      image, sort, category_level, 
-      parent_category, show_special, use_status, 
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
+    insert into operate_article_category (category_id, category_name,  sort,  use_status, 
       update_time, delete_flag)
-    values (#{categoryId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR}, #{categoryPicCode,jdbcType=VARCHAR}, 
-      #{image,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{categoryLevel,jdbcType=INTEGER}, 
-      #{parentCategory,jdbcType=INTEGER}, #{showSpecial,jdbcType=INTEGER}, #{useStatus,jdbcType=INTEGER}, 
+    values (#{categoryId,jdbcType=INTEGER}, #{categoryName,jdbcType=VARCHAR},  #{sort,jdbcType=INTEGER},  #{useStatus,jdbcType=INTEGER}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
     insert into operate_article_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="categoryId != null" >
@@ -47,23 +37,8 @@
       <if test="categoryName != null" >
         category_name,
       </if>
-      <if test="categoryPicCode != null" >
-        category_pic_code,
-      </if>
-      <if test="image != null" >
-        image,
-      </if>
       <if test="sort != null" >
         sort,
-      </if>
-      <if test="categoryLevel != null" >
-        category_level,
-      </if>
-      <if test="parentCategory != null" >
-        parent_category,
-      </if>
-      <if test="showSpecial != null" >
-        show_special,
       </if>
       <if test="useStatus != null" >
         use_status,
@@ -82,23 +57,9 @@
       <if test="categoryName != null" >
         #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="categoryPicCode != null" >
-        #{categoryPicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null" >
-        #{image,jdbcType=INTEGER},
-      </if>
+     
       <if test="sort != null" >
         #{sort,jdbcType=INTEGER},
-      </if>
-      <if test="categoryLevel != null" >
-        #{categoryLevel,jdbcType=INTEGER},
-      </if>
-      <if test="parentCategory != null" >
-        #{parentCategory,jdbcType=INTEGER},
-      </if>
-      <if test="showSpecial != null" >
-        #{showSpecial,jdbcType=INTEGER},
       </if>
       <if test="useStatus != null" >
         #{useStatus,jdbcType=INTEGER},
@@ -111,29 +72,14 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
     update operate_article_category
     <set >
       <if test="categoryName != null" >
         category_name = #{categoryName,jdbcType=VARCHAR},
       </if>
-      <if test="categoryPicCode != null" >
-        category_pic_code = #{categoryPicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null" >
-        image = #{image,jdbcType=INTEGER},
-      </if>
       <if test="sort != null" >
         sort = #{sort,jdbcType=INTEGER},
-      </if>
-      <if test="categoryLevel != null" >
-        category_level = #{categoryLevel,jdbcType=INTEGER},
-      </if>
-      <if test="parentCategory != null" >
-        parent_category = #{parentCategory,jdbcType=INTEGER},
-      </if>
-      <if test="showSpecial != null" >
-        show_special = #{showSpecial,jdbcType=INTEGER},
       </if>
       <if test="useStatus != null" >
         use_status = #{useStatus,jdbcType=INTEGER},
@@ -147,21 +93,15 @@
     </set>
     where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.OperateArticleCategory" >
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.OperateArticleCategory" >
     update operate_article_category
     set category_name = #{categoryName,jdbcType=VARCHAR},
-      category_pic_code = #{categoryPicCode,jdbcType=VARCHAR},
-      image = #{image,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER},
-      category_level = #{categoryLevel,jdbcType=INTEGER},
-      parent_category = #{parentCategory,jdbcType=INTEGER},
-      show_special = #{showSpecial,jdbcType=INTEGER},
       use_status = #{useStatus,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       delete_flag = #{deleteFlag,jdbcType=INTEGER}
     where category_id = #{categoryId,jdbcType=INTEGER}
   </update>
-  
   <select id="getCount" resultType="java.lang.Integer">
     select count(*) from operate_article_category
     <if test="where != null and where != ''" >
@@ -182,7 +122,7 @@
   <select id="findPagerList" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from operate_article_category
+    from operate_article_category 
     <if test="where != null and where != ''" >
       where ${where}
     </if> 
@@ -191,6 +131,6 @@
     </if>
     <if test="length != null and length != -1" >
       limit ${start},${length}
-    </if>     
+    </if>
   </select>
 </mapper>

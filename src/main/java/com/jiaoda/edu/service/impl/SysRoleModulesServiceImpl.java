@@ -5,58 +5,58 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jiaoda.edu.domain.LogException;
-import com.jiaoda.edu.mapper.LogExceptionMapper;
-import com.jiaoda.edu.service.ILogExceptionService;
-
+import com.jiaoda.edu.domain.SysRoleModules;
+import com.jiaoda.edu.domain.SysRoleModulesKey;
+import com.jiaoda.edu.mapper.SysRoleModulesMapper;
+import com.jiaoda.edu.service.ISysRoleModulesService;
 
 @Service
-public class SysRoleModulesServiceImpl implements ILogExceptionService {
+public class SysRoleModulesServiceImpl implements ISysRoleModulesService {
 
 	@Autowired
-	private LogExceptionMapper selfDAO;
+	private SysRoleModulesMapper selfDAO;
 
 	@Override
-	public Integer insertSelective(LogException record) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer insertSelective(SysRoleModules record) {
+		return selfDAO.insertSelective(record);
 	}
 
 	@Override
-	public Integer updateByPrimaryKeySelective(LogException record) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer updateByPrimaryKeySelective(SysRoleModules record) {
+		return selfDAO.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.deleteByPrimaryKey((SysRoleModulesKey)key);
 	}
 
 	@Override
-	public LogException selectByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+	public SysRoleModules selectByPrimaryKey(Object key) {
+		return selfDAO.selectByPrimaryKey((SysRoleModulesKey)key);
 	}
 
 	@Override
-	public List<LogException> findWhereList(String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SysRoleModules> findWhereList(String where, String order) {
+		return selfDAO.findWhereList(where, order);
 	}
 
 	@Override
 	public Integer getCount(String where) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.getCount(where);
 	}
 
 	@Override
-	public List<LogException> findPagerList(Integer start, Integer length, String where,
+	public List<SysRoleModules> findPagerList(Integer start, Integer length, String where,
 			String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.findPagerList(start, length, where, order);
+	}
+
+	@Override
+	public SysRoleModules findWhere(String where, String order) {
+		List<SysRoleModules> list = selfDAO.findWhereList(where, order);
+		return list.size() > 0 ? list.get(0) : null;
+		
 	}
 
 

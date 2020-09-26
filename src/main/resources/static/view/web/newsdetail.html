@@ -120,35 +120,36 @@
 	<div class="arrow" style="position:relative;">
 		
 		
-		<label class="newsInfoSet">时间 ：2020-05-22</label>
+		<label class="newsInfoSet">时间 ：${article.publishTime?string('yyyy-MM-dd')!}</label>
 		
 		
-		<label class="newsInfoSet">作者 ：</label>
+		<label class="newsInfoSet">作者 ：${article.author!}</label>
 		
 		
-		<label class="newsInfoSet" style="cursor: pointer;">来源：</label>
+		<label class="newsInfoSet" style="cursor: pointer;">来源：${article.source!}</label>
 		
 		
 		
 		
-		<label class="pd newsInfoSet">浏览 ：76</label>
+		<label class="pd newsInfoSet">浏览 ：${article.clickNum!}</label>
 		
 		
 		
 	</div>
-   
+   <#if article.summary??>
    <div class="abstract songti detailSet">
-		刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取得重大进展。生态环境部副部长庄国泰日前表示，“十三五”规划纲要确定的生态环境保护主要指标均达到年度目标和序时进度要求。
-   </div>
+   ${article.summary!}
    
+
+   </div>
+   </#if>
    
    
    
    
    <div id="newsInfo" class="newsText songti contSet" style="overflow:hidden;" data-dvused="0" data-dvflag="1" data-dvsize="0" data-dvstyle="0">
 	   
-	   		<p style="line-height: 2em;"><span style="font-size: 15px;"><span style="font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;"></span>城市环保产业是当今世界的朝阳产业，20世纪90年代以来，世界各国越来越重视环境问题，大力推广清洁生产技术，环保产品和服务的市场规模越来越大。截至2011年底，在全球环保市场份额中，美国占据36%，位居第一;欧洲排名第二;日本排名第三。</span></p><p style="line-height: 2em;"><span style="font-size: 15px;">自20世纪70年代开始，经过几十年的发展，中国的环保产业已初具规模。工业化与城市化率快速发展的同时促进了中国居民环保意识的增强以及环保产业的发展。特别是“十五”以来，国家加大了对电力、水泥、钢铁、化工、轻工等重污染行业的治理力度，加强了对城镇污水、垃圾和危险废物集中处置等环境保护基础设施的建设投资，有力地拉动了环保产业的市场需求，产业总体规模迅速扩大，领域不断拓展，结构逐步调整，整体水平有较大提升，运行质量和效益进一步提高，已经从初期的以“三废治理”为主，发展为包括环保产品、环境服务、洁净产品、废物循环利用，跨行业、跨地区，产业门类基本齐全的产业体系。</span></p><p style="line-height: 2em;"><span style="font-size: 15px;">我国“十一五”期间环保投资约占同期国内生产总值(GDP)的1.35%，其中2010年财政环保支出2426亿元，同比增长25.4%。在“十二五”期间我国环保投资将达3.1万亿，较“十一五”期间的投资额增长121%，未来5年行业复合增长率为15%-20%，到2015年将达到GDP的7%-8%，到2020年环保将成为国民经济的支柱产业。</span></p><p style="line-height: 2em;"><span style="font-size: 15px;">未来中国环保产业结构将进一步调整，资源节约型产品、洁净产品的生产和资源综合利用技术将继续迅速发展;环境服务业的规模将逐步扩大。城市污水处理、污泥处理、脱硫脱硝等重点领域环保投资将达到1.2万亿元，拉动环保产业产值1.32万亿元。</span></p><p style="line-height: 2em;"><span style="font-size: 15px;">2015年10月15日，国务院发布的《关于推进价格机制改革的若干意见》提出，完善环境服务价格政策。统筹运用环保税收、收费及相关服务价格政策，加大经济杠杆调节力度，逐步使企业排放各类污染物承担的支出高于主动治理成本，提高企业主动治污减排的积极性。在环保投资方面，环保部法规司司长李庆瑞公开表示,“十三五”期间,我国环保市场的总投资额有望达到17万亿元。这将给环保市场带来巨大的投资机会，为环保产业注入了强大的发展动力，成为新一轮经济发展的增长点。</span></p>
-	   
+	 	${article.content!}	   
    </div>
    
 	

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sxhalo.lmb.mapper.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.sxhalo.lmb.domain.UserInfo" >
+<mapper namespace="com.jiaoda.edu.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.UserInfo" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
     <result column="signature" property="signature" jdbcType="VARCHAR" />
     <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
     <result column="head_pic_code" property="headPicCode" jdbcType="VARCHAR" />
@@ -13,80 +13,10 @@
     <result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
     <result column="machine_code" property="machineCode" jdbcType="VARCHAR" />
     <result column="region_code" property="regionCode" jdbcType="INTEGER" />
-    <result column="money" property="money" jdbcType="INTEGER" />
-    <result column="money_lmb" property="moneyLmb" jdbcType="INTEGER" />
-    <result column="total_points" property="totalPoints" jdbcType="INTEGER" />
-    <result column="remaining_points" property="remainingPoints" jdbcType="INTEGER" />
-    <result column="level" property="level" jdbcType="INTEGER" />
-    <result column="credit_rating" property="creditRating" jdbcType="INTEGER" />
-    <result column="coal_sales_auth_state" property="coalSalesAuthState" jdbcType="INTEGER" />
-    <result column="coal_sales_auth_pass_time" property="coalSalesAuthPassTime" jdbcType="TIMESTAMP" />
-    <result column="coal_sales_id" property="coalSalesId" jdbcType="INTEGER" />
-    <result column="realname_auth_state" property="realnameAuthState" jdbcType="INTEGER" />
-    <result column="realname_auth_pass_time" property="realnameAuthPassTime" jdbcType="TIMESTAMP" />
-    <result column="identitycard_id" property="identitycardId" jdbcType="VARCHAR" />
-    <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="user_birth" property="userBirth" jdbcType="DATE" />
-    <result column="identitycard_front_pic_code" property="identitycardFrontPicCode" jdbcType="VARCHAR" />
-    <result column="identitycard_front" property="identitycardFront" jdbcType="INTEGER" />
-    <result column="identitycard_back_pic_code" property="identitycardBackPicCode" jdbcType="VARCHAR" />
-    <result column="identitycard_back" property="identitycardBack" jdbcType="INTEGER" />
-    <result column="driver_auth_state" property="driverAuthState" jdbcType="INTEGER" />
-    <result column="driver_auth_regist_time" property="driverAuthRegistTime" jdbcType="TIMESTAMP" />
-    <result column="driver_auth_pass_time" property="driverAuthPassTime" jdbcType="TIMESTAMP" />
-    <result column="driver_register_name" property="driverRegisterName" jdbcType="VARCHAR" />
-    <result column="driver_license_id" property="driverLicenseId" jdbcType="VARCHAR" />
-    <result column="driver_license_pic_code" property="driverLicensePicCode" jdbcType="VARCHAR" />
-    <result column="driver_license_pic" property="driverLicensePic" jdbcType="INTEGER" />
-    <result column="driver_license_initial_time" property="driverLicenseInitialTime" jdbcType="TIMESTAMP" />
-    <result column="driver_license_issue_date" property="driverLicenseIssueDate" jdbcType="TIMESTAMP" />
-    <result column="driver_license_type" property="driverLicenseType" jdbcType="VARCHAR" />
-    <result column="special_line" property="specialLine" jdbcType="INTEGER" />
-    <result column="start_region" property="startRegion" jdbcType="INTEGER" />
-    <result column="end_region" property="endRegion" jdbcType="INTEGER" />
-    <result column="is_show" property="isShow" jdbcType="INTEGER" />
-    <result column="driver_state_update_time" property="driverStateUpdateTime" jdbcType="TIMESTAMP" />
-    <result column="driver_state" property="driverState" jdbcType="INTEGER" />
-    <result column="longitude" property="longitude" jdbcType="DECIMAL" />
-    <result column="latitude" property="latitude" jdbcType="DECIMAL" />
-    <result column="recommend" property="recommend" jdbcType="VARCHAR" />
-    <result column="latest_use_time" property="latestUseTime" jdbcType="TIMESTAMP" />
-    <result column="user_state" property="userState" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
-    <result column="message_push" property="messagePush" jdbcType="INTEGER" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="user_qq" property="userQq" jdbcType="VARCHAR" />
-    <result column="qq_credential" property="qqCredential" jdbcType="VARCHAR" />
-    <result column="weibo" property="weibo" jdbcType="VARCHAR" />
-    <result column="weibo_credential" property="weiboCredential" jdbcType="VARCHAR" />
-    <result column="user_weChat" property="userWechat" jdbcType="VARCHAR" />
-    <result column="wx_openid" property="wxOpenid" jdbcType="VARCHAR" />
-    <result column="wx_nickname_kmb" property="wxNicknameKmb" jdbcType="VARCHAR" />
-    <result column="wx_openid_lmb" property="wxOpenidLmb" jdbcType="VARCHAR" />
-    <result column="weChat_credential" property="wechatCredential" jdbcType="VARCHAR" />
-    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
-    <result column="obtain_approach" property="obtainApproach" jdbcType="VARCHAR" />
-    <result column="wechat_sync" property="wechatSync" jdbcType="INTEGER" />
-    <result column="lmb_sync" property="lmbSync" jdbcType="INTEGER" />
-    <result column="identity_flag" property="identityFlag" jdbcType="INTEGER" />
-    <result column="data_source" property="dataSource" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, role_id, user_name, nickname, signature, user_pwd, head_pic_code, head_portrait, 
-    user_mobile, machine_code, region_code, money, money_lmb, total_points, remaining_points, 
-    level, credit_rating, coal_sales_auth_state, coal_sales_auth_pass_time, coal_sales_id, 
-    realname_auth_state, realname_auth_pass_time, identitycard_id, real_name, user_birth, 
-    identitycard_front_pic_code, identitycard_front, identitycard_back_pic_code, identitycard_back, 
-    driver_auth_state, driver_auth_regist_time, driver_auth_pass_time, driver_register_name, 
-    driver_license_id, driver_license_pic_code, driver_license_pic, driver_license_initial_time, 
-    driver_license_issue_date, driver_license_type, special_line, start_region, end_region, 
-    is_show, driver_state_update_time, driver_state, longitude, latitude, recommend, 
-    latest_use_time, user_state, create_time, update_time, delete_flag, message_push, 
-    remark, user_qq, qq_credential, weibo, weibo_credential, user_weChat, wx_openid, 
-    wx_nickname_kmb, wx_openid_lmb, weChat_credential, user_email, obtain_approach, wechat_sync, 
-    lmb_sync, identity_flag, data_source
+    user_id, role_id, user_name, real_name, signature, user_pwd, head_pic_code, head_portrait, 
+    user_mobile, machine_code, region_code
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -98,61 +28,17 @@
     delete from user_info
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.sxhalo.lmb.domain.UserInfo" >
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.UserInfo" >
     insert into user_info (user_id, role_id, user_name, 
-      nickname, signature, user_pwd, 
+      real_name, signature, user_pwd, 
       head_pic_code, head_portrait, user_mobile, 
-      machine_code, region_code, money, 
-      money_lmb, total_points, remaining_points, 
-      level, credit_rating, coal_sales_auth_state, 
-      coal_sales_auth_pass_time, coal_sales_id, realname_auth_state, 
-      realname_auth_pass_time, identitycard_id, 
-      real_name, user_birth, identitycard_front_pic_code, 
-      identitycard_front, identitycard_back_pic_code, 
-      identitycard_back, driver_auth_state, driver_auth_regist_time, 
-      driver_auth_pass_time, driver_register_name, 
-      driver_license_id, driver_license_pic_code, 
-      driver_license_pic, driver_license_initial_time, 
-      driver_license_issue_date, driver_license_type, 
-      special_line, start_region, end_region, 
-      is_show, driver_state_update_time, driver_state, 
-      longitude, latitude, recommend, 
-      latest_use_time, user_state, create_time, 
-      update_time, delete_flag, message_push, 
-      remark, user_qq, qq_credential, 
-      weibo, weibo_credential, user_weChat, 
-      wx_openid, wx_nickname_kmb, wx_openid_lmb, 
-      weChat_credential, user_email, obtain_approach, 
-      wechat_sync, lmb_sync, identity_flag, 
-      data_source)
+      machine_code, region_code)
     values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
-      #{nickname,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
       #{headPicCode,jdbcType=VARCHAR}, #{headPortrait,jdbcType=INTEGER}, #{userMobile,jdbcType=VARCHAR}, 
-      #{machineCode,jdbcType=VARCHAR}, #{regionCode,jdbcType=INTEGER}, #{money,jdbcType=INTEGER}, 
-      #{moneyLmb,jdbcType=INTEGER}, #{totalPoints,jdbcType=INTEGER}, #{remainingPoints,jdbcType=INTEGER}, 
-      #{level,jdbcType=INTEGER}, #{creditRating,jdbcType=INTEGER}, #{coalSalesAuthState,jdbcType=INTEGER}, 
-      #{coalSalesAuthPassTime,jdbcType=TIMESTAMP}, #{coalSalesId,jdbcType=INTEGER}, #{realnameAuthState,jdbcType=INTEGER}, 
-      #{realnameAuthPassTime,jdbcType=TIMESTAMP}, #{identitycardId,jdbcType=VARCHAR}, 
-      #{realName,jdbcType=VARCHAR}, #{userBirth,jdbcType=DATE}, #{identitycardFrontPicCode,jdbcType=VARCHAR}, 
-      #{identitycardFront,jdbcType=INTEGER}, #{identitycardBackPicCode,jdbcType=VARCHAR}, 
-      #{identitycardBack,jdbcType=INTEGER}, #{driverAuthState,jdbcType=INTEGER}, #{driverAuthRegistTime,jdbcType=TIMESTAMP}, 
-      #{driverAuthPassTime,jdbcType=TIMESTAMP}, #{driverRegisterName,jdbcType=VARCHAR}, 
-      #{driverLicenseId,jdbcType=VARCHAR}, #{driverLicensePicCode,jdbcType=VARCHAR}, 
-      #{driverLicensePic,jdbcType=INTEGER}, #{driverLicenseInitialTime,jdbcType=TIMESTAMP}, 
-      #{driverLicenseIssueDate,jdbcType=TIMESTAMP}, #{driverLicenseType,jdbcType=VARCHAR}, 
-      #{specialLine,jdbcType=INTEGER}, #{startRegion,jdbcType=INTEGER}, #{endRegion,jdbcType=INTEGER}, 
-      #{isShow,jdbcType=INTEGER}, #{driverStateUpdateTime,jdbcType=TIMESTAMP}, #{driverState,jdbcType=INTEGER}, 
-      #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL}, #{recommend,jdbcType=VARCHAR}, 
-      #{latestUseTime,jdbcType=TIMESTAMP}, #{userState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, #{messagePush,jdbcType=INTEGER}, 
-      #{remark,jdbcType=VARCHAR}, #{userQq,jdbcType=VARCHAR}, #{qqCredential,jdbcType=VARCHAR}, 
-      #{weibo,jdbcType=VARCHAR}, #{weiboCredential,jdbcType=VARCHAR}, #{userWechat,jdbcType=VARCHAR}, 
-      #{wxOpenid,jdbcType=VARCHAR}, #{wxNicknameKmb,jdbcType=VARCHAR}, #{wxOpenidLmb,jdbcType=VARCHAR}, 
-      #{wechatCredential,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{obtainApproach,jdbcType=VARCHAR}, 
-      #{wechatSync,jdbcType=INTEGER}, #{lmbSync,jdbcType=INTEGER}, #{identityFlag,jdbcType=INTEGER}, 
-      #{dataSource,jdbcType=INTEGER})
+      #{machineCode,jdbcType=VARCHAR}, #{regionCode,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.sxhalo.lmb.domain.UserInfo" >
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.UserInfo" >
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -164,8 +50,8 @@
       <if test="userName != null" >
         user_name,
       </if>
-      <if test="nickname != null" >
-        nickname,
+      <if test="realName != null" >
+        real_name,
       </if>
       <if test="signature != null" >
         signature,
@@ -188,183 +74,6 @@
       <if test="regionCode != null" >
         region_code,
       </if>
-      <if test="money != null" >
-        money,
-      </if>
-      <if test="moneyLmb != null" >
-        money_lmb,
-      </if>
-      <if test="totalPoints != null" >
-        total_points,
-      </if>
-      <if test="remainingPoints != null" >
-        remaining_points,
-      </if>
-      <if test="level != null" >
-        level,
-      </if>
-      <if test="creditRating != null" >
-        credit_rating,
-      </if>
-      <if test="coalSalesAuthState != null" >
-        coal_sales_auth_state,
-      </if>
-      <if test="coalSalesAuthPassTime != null" >
-        coal_sales_auth_pass_time,
-      </if>
-      <if test="coalSalesId != null" >
-        coal_sales_id,
-      </if>
-      <if test="realnameAuthState != null" >
-        realname_auth_state,
-      </if>
-      <if test="realnameAuthPassTime != null" >
-        realname_auth_pass_time,
-      </if>
-      <if test="identitycardId != null" >
-        identitycard_id,
-      </if>
-      <if test="realName != null" >
-        real_name,
-      </if>
-      <if test="userBirth != null" >
-        user_birth,
-      </if>
-      <if test="identitycardFrontPicCode != null" >
-        identitycard_front_pic_code,
-      </if>
-      <if test="identitycardFront != null" >
-        identitycard_front,
-      </if>
-      <if test="identitycardBackPicCode != null" >
-        identitycard_back_pic_code,
-      </if>
-      <if test="identitycardBack != null" >
-        identitycard_back,
-      </if>
-      <if test="driverAuthState != null" >
-        driver_auth_state,
-      </if>
-      <if test="driverAuthRegistTime != null" >
-        driver_auth_regist_time,
-      </if>
-      <if test="driverAuthPassTime != null" >
-        driver_auth_pass_time,
-      </if>
-      <if test="driverRegisterName != null" >
-        driver_register_name,
-      </if>
-      <if test="driverLicenseId != null" >
-        driver_license_id,
-      </if>
-      <if test="driverLicensePicCode != null" >
-        driver_license_pic_code,
-      </if>
-      <if test="driverLicensePic != null" >
-        driver_license_pic,
-      </if>
-      <if test="driverLicenseInitialTime != null" >
-        driver_license_initial_time,
-      </if>
-      <if test="driverLicenseIssueDate != null" >
-        driver_license_issue_date,
-      </if>
-      <if test="driverLicenseType != null" >
-        driver_license_type,
-      </if>
-      <if test="specialLine != null" >
-        special_line,
-      </if>
-      <if test="startRegion != null" >
-        start_region,
-      </if>
-      <if test="endRegion != null" >
-        end_region,
-      </if>
-      <if test="isShow != null" >
-        is_show,
-      </if>
-      <if test="driverStateUpdateTime != null" >
-        driver_state_update_time,
-      </if>
-      <if test="driverState != null" >
-        driver_state,
-      </if>
-      <if test="longitude != null" >
-        longitude,
-      </if>
-      <if test="latitude != null" >
-        latitude,
-      </if>
-      <if test="recommend != null" >
-        recommend,
-      </if>
-      <if test="latestUseTime != null" >
-        latest_use_time,
-      </if>
-      <if test="userState != null" >
-        user_state,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="deleteFlag != null" >
-        delete_flag,
-      </if>
-      <if test="messagePush != null" >
-        message_push,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-      <if test="userQq != null" >
-        user_qq,
-      </if>
-      <if test="qqCredential != null" >
-        qq_credential,
-      </if>
-      <if test="weibo != null" >
-        weibo,
-      </if>
-      <if test="weiboCredential != null" >
-        weibo_credential,
-      </if>
-      <if test="userWechat != null" >
-        user_weChat,
-      </if>
-      <if test="wxOpenid != null" >
-        wx_openid,
-      </if>
-      <if test="wxNicknameKmb != null" >
-        wx_nickname_kmb,
-      </if>
-      <if test="wxOpenidLmb != null" >
-        wx_openid_lmb,
-      </if>
-      <if test="wechatCredential != null" >
-        weChat_credential,
-      </if>
-      <if test="userEmail != null" >
-        user_email,
-      </if>
-      <if test="obtainApproach != null" >
-        obtain_approach,
-      </if>
-      <if test="wechatSync != null" >
-        wechat_sync,
-      </if>
-      <if test="lmbSync != null" >
-        lmb_sync,
-      </if>
-      <if test="identityFlag != null" >
-        identity_flag,
-      </if>
-      <if test="dataSource != null" >
-        data_source,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -376,8 +85,8 @@
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="nickname != null" >
-        #{nickname,jdbcType=VARCHAR},
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
       </if>
       <if test="signature != null" >
         #{signature,jdbcType=VARCHAR},
@@ -400,186 +109,9 @@
       <if test="regionCode != null" >
         #{regionCode,jdbcType=INTEGER},
       </if>
-      <if test="money != null" >
-        #{money,jdbcType=INTEGER},
-      </if>
-      <if test="moneyLmb != null" >
-        #{moneyLmb,jdbcType=INTEGER},
-      </if>
-      <if test="totalPoints != null" >
-        #{totalPoints,jdbcType=INTEGER},
-      </if>
-      <if test="remainingPoints != null" >
-        #{remainingPoints,jdbcType=INTEGER},
-      </if>
-      <if test="level != null" >
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="creditRating != null" >
-        #{creditRating,jdbcType=INTEGER},
-      </if>
-      <if test="coalSalesAuthState != null" >
-        #{coalSalesAuthState,jdbcType=INTEGER},
-      </if>
-      <if test="coalSalesAuthPassTime != null" >
-        #{coalSalesAuthPassTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="coalSalesId != null" >
-        #{coalSalesId,jdbcType=INTEGER},
-      </if>
-      <if test="realnameAuthState != null" >
-        #{realnameAuthState,jdbcType=INTEGER},
-      </if>
-      <if test="realnameAuthPassTime != null" >
-        #{realnameAuthPassTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="identitycardId != null" >
-        #{identitycardId,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null" >
-        #{realName,jdbcType=VARCHAR},
-      </if>
-      <if test="userBirth != null" >
-        #{userBirth,jdbcType=DATE},
-      </if>
-      <if test="identitycardFrontPicCode != null" >
-        #{identitycardFrontPicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="identitycardFront != null" >
-        #{identitycardFront,jdbcType=INTEGER},
-      </if>
-      <if test="identitycardBackPicCode != null" >
-        #{identitycardBackPicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="identitycardBack != null" >
-        #{identitycardBack,jdbcType=INTEGER},
-      </if>
-      <if test="driverAuthState != null" >
-        #{driverAuthState,jdbcType=INTEGER},
-      </if>
-      <if test="driverAuthRegistTime != null" >
-        #{driverAuthRegistTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverAuthPassTime != null" >
-        #{driverAuthPassTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverRegisterName != null" >
-        #{driverRegisterName,jdbcType=VARCHAR},
-      </if>
-      <if test="driverLicenseId != null" >
-        #{driverLicenseId,jdbcType=VARCHAR},
-      </if>
-      <if test="driverLicensePicCode != null" >
-        #{driverLicensePicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="driverLicensePic != null" >
-        #{driverLicensePic,jdbcType=INTEGER},
-      </if>
-      <if test="driverLicenseInitialTime != null" >
-        #{driverLicenseInitialTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverLicenseIssueDate != null" >
-        #{driverLicenseIssueDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverLicenseType != null" >
-        #{driverLicenseType,jdbcType=VARCHAR},
-      </if>
-      <if test="specialLine != null" >
-        #{specialLine,jdbcType=INTEGER},
-      </if>
-      <if test="startRegion != null" >
-        #{startRegion,jdbcType=INTEGER},
-      </if>
-      <if test="endRegion != null" >
-        #{endRegion,jdbcType=INTEGER},
-      </if>
-      <if test="isShow != null" >
-        #{isShow,jdbcType=INTEGER},
-      </if>
-      <if test="driverStateUpdateTime != null" >
-        #{driverStateUpdateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverState != null" >
-        #{driverState,jdbcType=INTEGER},
-      </if>
-      <if test="longitude != null" >
-        #{longitude,jdbcType=DECIMAL},
-      </if>
-      <if test="latitude != null" >
-        #{latitude,jdbcType=DECIMAL},
-      </if>
-      <if test="recommend != null" >
-        #{recommend,jdbcType=VARCHAR},
-      </if>
-      <if test="latestUseTime != null" >
-        #{latestUseTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userState != null" >
-        #{userState,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteFlag != null" >
-        #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="messagePush != null" >
-        #{messagePush,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="userQq != null" >
-        #{userQq,jdbcType=VARCHAR},
-      </if>
-      <if test="qqCredential != null" >
-        #{qqCredential,jdbcType=VARCHAR},
-      </if>
-      <if test="weibo != null" >
-        #{weibo,jdbcType=VARCHAR},
-      </if>
-      <if test="weiboCredential != null" >
-        #{weiboCredential,jdbcType=VARCHAR},
-      </if>
-      <if test="userWechat != null" >
-        #{userWechat,jdbcType=VARCHAR},
-      </if>
-      <if test="wxOpenid != null" >
-        #{wxOpenid,jdbcType=VARCHAR},
-      </if>
-      <if test="wxNicknameKmb != null" >
-        #{wxNicknameKmb,jdbcType=VARCHAR},
-      </if>
-      <if test="wxOpenidLmb != null" >
-        #{wxOpenidLmb,jdbcType=VARCHAR},
-      </if>
-      <if test="wechatCredential != null" >
-        #{wechatCredential,jdbcType=VARCHAR},
-      </if>
-      <if test="userEmail != null" >
-        #{userEmail,jdbcType=VARCHAR},
-      </if>
-      <if test="obtainApproach != null" >
-        #{obtainApproach,jdbcType=VARCHAR},
-      </if>
-      <if test="wechatSync != null" >
-        #{wechatSync,jdbcType=INTEGER},
-      </if>
-      <if test="lmbSync != null" >
-        #{lmbSync,jdbcType=INTEGER},
-      </if>
-      <if test="identityFlag != null" >
-        #{identityFlag,jdbcType=INTEGER},
-      </if>
-      <if test="dataSource != null" >
-        #{dataSource,jdbcType=INTEGER},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sxhalo.lmb.domain.UserInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.UserInfo" >
     update user_info
     <set >
       <if test="roleId != null" >
@@ -588,8 +120,8 @@
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="nickname != null" >
-        nickname = #{nickname,jdbcType=VARCHAR},
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
       </if>
       <if test="signature != null" >
         signature = #{signature,jdbcType=VARCHAR},
@@ -612,264 +144,23 @@
       <if test="regionCode != null" >
         region_code = #{regionCode,jdbcType=INTEGER},
       </if>
-      <if test="money != null" >
-        money = #{money,jdbcType=INTEGER},
-      </if>
-      <if test="moneyLmb != null" >
-        money_lmb = #{moneyLmb,jdbcType=INTEGER},
-      </if>
-      <if test="totalPoints != null" >
-        total_points = #{totalPoints,jdbcType=INTEGER},
-      </if>
-      <if test="remainingPoints != null" >
-        remaining_points = #{remainingPoints,jdbcType=INTEGER},
-      </if>
-      <if test="level != null" >
-        level = #{level,jdbcType=INTEGER},
-      </if>
-      <if test="creditRating != null" >
-        credit_rating = #{creditRating,jdbcType=INTEGER},
-      </if>
-      <if test="coalSalesAuthState != null" >
-        coal_sales_auth_state = #{coalSalesAuthState,jdbcType=INTEGER},
-      </if>
-      <if test="coalSalesAuthPassTime != null" >
-        coal_sales_auth_pass_time = #{coalSalesAuthPassTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="coalSalesId != null" >
-        coal_sales_id = #{coalSalesId,jdbcType=INTEGER},
-      </if>
-      <if test="realnameAuthState != null" >
-        realname_auth_state = #{realnameAuthState,jdbcType=INTEGER},
-      </if>
-      <if test="realnameAuthPassTime != null" >
-        realname_auth_pass_time = #{realnameAuthPassTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="identitycardId != null" >
-        identitycard_id = #{identitycardId,jdbcType=VARCHAR},
-      </if>
-      <if test="realName != null" >
-        real_name = #{realName,jdbcType=VARCHAR},
-      </if>
-      <if test="userBirth != null" >
-        user_birth = #{userBirth,jdbcType=DATE},
-      </if>
-      <if test="identitycardFrontPicCode != null" >
-        identitycard_front_pic_code = #{identitycardFrontPicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="identitycardFront != null" >
-        identitycard_front = #{identitycardFront,jdbcType=INTEGER},
-      </if>
-      <if test="identitycardBackPicCode != null" >
-        identitycard_back_pic_code = #{identitycardBackPicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="identitycardBack != null" >
-        identitycard_back = #{identitycardBack,jdbcType=INTEGER},
-      </if>
-      <if test="driverAuthState != null" >
-        driver_auth_state = #{driverAuthState,jdbcType=INTEGER},
-      </if>
-      <if test="driverAuthRegistTime != null" >
-        driver_auth_regist_time = #{driverAuthRegistTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverAuthPassTime != null" >
-        driver_auth_pass_time = #{driverAuthPassTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverRegisterName != null" >
-        driver_register_name = #{driverRegisterName,jdbcType=VARCHAR},
-      </if>
-      <if test="driverLicenseId != null" >
-        driver_license_id = #{driverLicenseId,jdbcType=VARCHAR},
-      </if>
-      <if test="driverLicensePicCode != null" >
-        driver_license_pic_code = #{driverLicensePicCode,jdbcType=VARCHAR},
-      </if>
-      <if test="driverLicensePic != null" >
-        driver_license_pic = #{driverLicensePic,jdbcType=INTEGER},
-      </if>
-      <if test="driverLicenseInitialTime != null" >
-        driver_license_initial_time = #{driverLicenseInitialTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverLicenseIssueDate != null" >
-        driver_license_issue_date = #{driverLicenseIssueDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverLicenseType != null" >
-        driver_license_type = #{driverLicenseType,jdbcType=VARCHAR},
-      </if>
-      <if test="specialLine != null" >
-        special_line = #{specialLine,jdbcType=INTEGER},
-      </if>
-      <if test="startRegion != null" >
-        start_region = #{startRegion,jdbcType=INTEGER},
-      </if>
-      <if test="endRegion != null" >
-        end_region = #{endRegion,jdbcType=INTEGER},
-      </if>
-      <if test="isShow != null" >
-        is_show = #{isShow,jdbcType=INTEGER},
-      </if>
-      <if test="driverStateUpdateTime != null" >
-        driver_state_update_time = #{driverStateUpdateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="driverState != null" >
-        driver_state = #{driverState,jdbcType=INTEGER},
-      </if>
-      <if test="longitude != null" >
-        longitude = #{longitude,jdbcType=DECIMAL},
-      </if>
-      <if test="latitude != null" >
-        latitude = #{latitude,jdbcType=DECIMAL},
-      </if>
-      <if test="recommend != null" >
-        recommend = #{recommend,jdbcType=VARCHAR},
-      </if>
-      <if test="latestUseTime != null" >
-        latest_use_time = #{latestUseTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userState != null" >
-        user_state = #{userState,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteFlag != null" >
-        delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      </if>
-      <if test="messagePush != null" >
-        message_push = #{messagePush,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-      <if test="userQq != null" >
-        user_qq = #{userQq,jdbcType=VARCHAR},
-      </if>
-      <if test="qqCredential != null" >
-        qq_credential = #{qqCredential,jdbcType=VARCHAR},
-      </if>
-      <if test="weibo != null" >
-        weibo = #{weibo,jdbcType=VARCHAR},
-      </if>
-      <if test="weiboCredential != null" >
-        weibo_credential = #{weiboCredential,jdbcType=VARCHAR},
-      </if>
-      <if test="userWechat != null" >
-        user_weChat = #{userWechat,jdbcType=VARCHAR},
-      </if>
-      <if test="wxOpenid != null" >
-        wx_openid = #{wxOpenid,jdbcType=VARCHAR},
-      </if>
-      <if test="wxNicknameKmb != null" >
-        wx_nickname_kmb = #{wxNicknameKmb,jdbcType=VARCHAR},
-      </if>
-      <if test="wxOpenidLmb != null" >
-        wx_openid_lmb = #{wxOpenidLmb,jdbcType=VARCHAR},
-      </if>
-      <if test="wechatCredential != null" >
-        weChat_credential = #{wechatCredential,jdbcType=VARCHAR},
-      </if>
-      <if test="userEmail != null" >
-        user_email = #{userEmail,jdbcType=VARCHAR},
-      </if>
-      <if test="obtainApproach != null" >
-        obtain_approach = #{obtainApproach,jdbcType=VARCHAR},
-      </if>
-      <if test="wechatSync != null" >
-        wechat_sync = #{wechatSync,jdbcType=INTEGER},
-      </if>
-      <if test="lmbSync != null" >
-        lmb_sync = #{lmbSync,jdbcType=INTEGER},
-      </if>
-      <if test="identityFlag != null" >
-        identity_flag = #{identityFlag,jdbcType=INTEGER},
-      </if>
-      <if test="dataSource != null" >
-        data_source = #{dataSource,jdbcType=INTEGER},
-      </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sxhalo.lmb.domain.UserInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.UserInfo" >
     update user_info
     set role_id = #{roleId,jdbcType=INTEGER},
       user_name = #{userName,jdbcType=VARCHAR},
-      nickname = #{nickname,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
       signature = #{signature,jdbcType=VARCHAR},
       user_pwd = #{userPwd,jdbcType=VARCHAR},
       head_pic_code = #{headPicCode,jdbcType=VARCHAR},
       head_portrait = #{headPortrait,jdbcType=INTEGER},
       user_mobile = #{userMobile,jdbcType=VARCHAR},
       machine_code = #{machineCode,jdbcType=VARCHAR},
-      region_code = #{regionCode,jdbcType=INTEGER},
-      money = #{money,jdbcType=INTEGER},
-      money_lmb = #{moneyLmb,jdbcType=INTEGER},
-      total_points = #{totalPoints,jdbcType=INTEGER},
-      remaining_points = #{remainingPoints,jdbcType=INTEGER},
-      level = #{level,jdbcType=INTEGER},
-      credit_rating = #{creditRating,jdbcType=INTEGER},
-      coal_sales_auth_state = #{coalSalesAuthState,jdbcType=INTEGER},
-      coal_sales_auth_pass_time = #{coalSalesAuthPassTime,jdbcType=TIMESTAMP},
-      coal_sales_id = #{coalSalesId,jdbcType=INTEGER},
-      realname_auth_state = #{realnameAuthState,jdbcType=INTEGER},
-      realname_auth_pass_time = #{realnameAuthPassTime,jdbcType=TIMESTAMP},
-      identitycard_id = #{identitycardId,jdbcType=VARCHAR},
-      real_name = #{realName,jdbcType=VARCHAR},
-      user_birth = #{userBirth,jdbcType=DATE},
-      identitycard_front_pic_code = #{identitycardFrontPicCode,jdbcType=VARCHAR},
-      identitycard_front = #{identitycardFront,jdbcType=INTEGER},
-      identitycard_back_pic_code = #{identitycardBackPicCode,jdbcType=VARCHAR},
-      identitycard_back = #{identitycardBack,jdbcType=INTEGER},
-      driver_auth_state = #{driverAuthState,jdbcType=INTEGER},
-      driver_auth_regist_time = #{driverAuthRegistTime,jdbcType=TIMESTAMP},
-      driver_auth_pass_time = #{driverAuthPassTime,jdbcType=TIMESTAMP},
-      driver_register_name = #{driverRegisterName,jdbcType=VARCHAR},
-      driver_license_id = #{driverLicenseId,jdbcType=VARCHAR},
-      driver_license_pic_code = #{driverLicensePicCode,jdbcType=VARCHAR},
-      driver_license_pic = #{driverLicensePic,jdbcType=INTEGER},
-      driver_license_initial_time = #{driverLicenseInitialTime,jdbcType=TIMESTAMP},
-      driver_license_issue_date = #{driverLicenseIssueDate,jdbcType=TIMESTAMP},
-      driver_license_type = #{driverLicenseType,jdbcType=VARCHAR},
-      special_line = #{specialLine,jdbcType=INTEGER},
-      start_region = #{startRegion,jdbcType=INTEGER},
-      end_region = #{endRegion,jdbcType=INTEGER},
-      is_show = #{isShow,jdbcType=INTEGER},
-      driver_state_update_time = #{driverStateUpdateTime,jdbcType=TIMESTAMP},
-      driver_state = #{driverState,jdbcType=INTEGER},
-      longitude = #{longitude,jdbcType=DECIMAL},
-      latitude = #{latitude,jdbcType=DECIMAL},
-      recommend = #{recommend,jdbcType=VARCHAR},
-      latest_use_time = #{latestUseTime,jdbcType=TIMESTAMP},
-      user_state = #{userState,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete_flag = #{deleteFlag,jdbcType=INTEGER},
-      message_push = #{messagePush,jdbcType=INTEGER},
-      remark = #{remark,jdbcType=VARCHAR},
-      user_qq = #{userQq,jdbcType=VARCHAR},
-      qq_credential = #{qqCredential,jdbcType=VARCHAR},
-      weibo = #{weibo,jdbcType=VARCHAR},
-      weibo_credential = #{weiboCredential,jdbcType=VARCHAR},
-      user_weChat = #{userWechat,jdbcType=VARCHAR},
-      wx_openid = #{wxOpenid,jdbcType=VARCHAR},
-      wx_nickname_kmb = #{wxNicknameKmb,jdbcType=VARCHAR},
-      wx_openid_lmb = #{wxOpenidLmb,jdbcType=VARCHAR},
-      weChat_credential = #{wechatCredential,jdbcType=VARCHAR},
-      user_email = #{userEmail,jdbcType=VARCHAR},
-      obtain_approach = #{obtainApproach,jdbcType=VARCHAR},
-      wechat_sync = #{wechatSync,jdbcType=INTEGER},
-      lmb_sync = #{lmbSync,jdbcType=INTEGER},
-      identity_flag = #{identityFlag,jdbcType=INTEGER},
-      data_source = #{dataSource,jdbcType=INTEGER}
+      region_code = #{regionCode,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  
-  <select id="getUserMobile" resultType="java.lang.String" parameterType="java.lang.Integer">
-	select user_mobile from user_info where user_id = #{userId,jdbcType=INTEGER}	
-  </select>
-  <select id="getCount" resultType="java.lang.Integer">
+  </update> <select id="getCount" resultType="java.lang.Integer">
     select count(*) from user_info
     <if test="where != null and where != ''" >
       where ${where}
@@ -889,7 +180,7 @@
   <select id="findPagerList" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from user_info
+    from user_info 
     <if test="where != null and where != ''" >
       where ${where}
     </if> 
@@ -898,6 +189,6 @@
     </if>
     <if test="length != null and length != -1" >
       limit ${start},${length}
-    </if>     
+    </if>
   </select>
 </mapper>

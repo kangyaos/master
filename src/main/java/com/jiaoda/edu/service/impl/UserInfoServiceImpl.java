@@ -17,32 +17,27 @@ public class UserInfoServiceImpl implements IUserInfoService {
 	
 	@Override
 	public Integer insertSelective(UserInfo record) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.insertSelective(record);
 	}
 
 	@Override
 	public Integer updateByPrimaryKeySelective(UserInfo record) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.deleteByPrimaryKey(Integer.parseInt(key.toString()));
 	}
 
 	@Override
 	public UserInfo selectByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectByPrimaryKey(Integer.parseInt(key.toString()));
 	}
 
 	@Override
 	public List<UserInfo> findWhereList(String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.findWhereList(where, order);
 	}
 
 	@Override
@@ -52,14 +47,13 @@ public class UserInfoServiceImpl implements IUserInfoService {
 
 	@Override
 	public List<UserInfo> findPagerList(Integer start, Integer length, String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.findPagerList(start, length, where, order);
 	}
 
 	@Override
 	public UserInfo findByWhere(String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+		List<UserInfo>  users=findWhereList(where,order);
+		return users==null||users.size()==0?null:users.get(0);
 	}
 
 	@Override

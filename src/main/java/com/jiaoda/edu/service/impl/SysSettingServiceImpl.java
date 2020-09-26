@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import com.jiaoda.edu.service.ISysSettingService;
+import com.jiaoda.edu.domain.SysSettings;
+import com.jiaoda.edu.mapper.SysSettingsMapper;
 import com.jiaoda.edu.service.ISysSettingService;
 
 
@@ -14,49 +14,50 @@ import com.jiaoda.edu.service.ISysSettingService;
 public class SysSettingServiceImpl implements ISysSettingService {
 
 	@Autowired
-	private SysSettingMapper selfDAO;
+	private SysSettingsMapper selfDAO;
+
 
 	@Override
-	public Integer insertSelective(SysSetting record) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer insertSelective(SysSettings record) {
+		return selfDAO.insertSelective(record);
 	}
 
 	@Override
-	public Integer updateByPrimaryKeySelective(SysSetting record) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer updateByPrimaryKeySelective(SysSettings record) {
+		return selfDAO.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.deleteByPrimaryKey(key.toString());
 	}
 
 	@Override
-	public SysSetting selectByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+	public SysSettings selectByPrimaryKey(Object key) {
+		return selfDAO.selectByPrimaryKey(key.toString());
 	}
 
 	@Override
-	public List<SysSetting> findWhereList(String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SysSettings> findWhereList(String where, String order) {
+		return selfDAO.findWhereList(where, order);
 	}
 
 	@Override
 	public Integer getCount(String where) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.getCount(where);
 	}
 
 	@Override
-	public List<SysSetting> findPagerList(Integer start, Integer length, String where,
+	public List<SysSettings> findPagerList(Integer start, Integer length, String where,
 			String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.findPagerList(start, length, where, order);
+	}
+
+	
+	@Override
+	public SysSettings findWhere(String where, String order) {
+		List<SysSettings> list = selfDAO.findWhereList(where, order);
+		return list.size() > 0 ? list.get(0) : null;
 	}
 
 

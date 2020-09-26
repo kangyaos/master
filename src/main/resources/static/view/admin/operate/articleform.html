@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <!-- BEGIN HEAD -->
 <head>
-<#include "/include/globalstyle.html" />
+<#include "/view/include/globalstyle.html" />
 <link rel="stylesheet" href="${base}/assets/admin/plugins/bootstrap-fileinput/bootstrap-fileinput.css" />
 </head>
 <!-- END HEAD -->
@@ -10,14 +10,14 @@
 <body
 	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
 	<!-- BEGIN HEADER -->
-	<#include "/include/header.html" />
+	<#include "/view/include/header.html" />
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
 		<div class="page-sidebar-wrapper"><#include
-			"/include/sidebar.html" /></div>
+			"/view/include/sidebar.html" /></div>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
@@ -120,70 +120,6 @@
 											</div>
 										</div>	
 										<div class="form-group">
-											<label class="control-label col-md-3">缩略图2</label>
-											<div class="col-md-4">
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-preview thumbnail" id="pics2"
-														data-trigger="fileinput"
-														style="width: 200px; height: 200px;">
-														<#if article.tumbPicCode2??> <img alt="" src="${picPath!}${article.tumbPicCode2!}">
-														</#if>														
-													</div>
-													<div>
-														<span class="btn default btn-file"> <span
-															class="fileinput-new"> 选择图片</span> <span
-															class="fileinput-exists"> 选择图片 </span> <input
-															type="file" name="file" id="file2"
-															onchange="ajaxFileUpload(2);">
-														</span>
-													</div>
-												</div>												
-												<input type="hidden" class="form-control"
-													name="tumbPicCode2" id="tumbPicCode2" value="${article.tumbPicCode2!}" />
-											</div>
-										</div>	
-										<div class="form-group">
-											<label class="control-label col-md-3">缩略图3</label>
-											<div class="col-md-4">
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-preview thumbnail" id="pics3"
-														data-trigger="fileinput"
-														style="width: 200px; height: 200px;">
-														<#if article.tumbPicCode3??> <img alt="" src="${picPath!}${article.tumbPicCode3!}">
-														</#if>														
-													</div>
-													<div>
-														<span class="btn default btn-file"> <span
-															class="fileinput-new"> 选择图片</span> <span
-															class="fileinput-exists"> 选择图片 </span> <input
-															type="file" name="file" id="file3"
-															onchange="ajaxFileUpload(3);">
-														</span>
-													</div>
-												</div>												
-												<input type="hidden" class="form-control"
-													name="tumbPicCode3" id="tumbPicCode3" value="${article.tumbPicCode3!}" />
-											</div>
-										</div>										
-										<div class="form-group">
-											<label class="control-label col-md-3">是否头条</label>
-											<div class="col-md-7">
-												<div class="radio-list">
-													<#if (article.isSpecial!0)==0 > <label class="radio-inline">
-														<input type="radio" name="isSpecial" value=1>是
-													</label> <label class="radio-inline" style="margin-left: 23px;">
-														<input type="radio" name="isSpecial" value=0 checked>否
-													</label> <#else> <label class="radio-inline"> <input
-														type="radio" name="isSpecial" value=1 checked>是
-													</label> <label class="radio-inline" style="margin-left: 23px;">
-														<input type="radio" name="isSpecial" value=0>否
-													</label> </#if>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
 											<label class="control-label col-md-3">是否图文</label>
 											<div class="col-md-7">
 										   	    <div class="radio-list">
@@ -224,7 +160,7 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="control-label col-md-3">供稿 <span
+											<label class="control-label col-md-3">作者<span
 												class="required"> * </span>
 											</label>
 											<div class="col-md-4">
@@ -269,11 +205,11 @@
 	</div>
 	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->
-	<#include "/include/footer.html" />
+	<#include "/view/include/footer.html" />
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
-	<#include "/include/globalscript.html" />
+	<#include "/view/include/globalscript.html" />
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script type="text/javascript"
@@ -327,7 +263,7 @@
 					success : function(data) {
 						if (data) {
 						    $("#tumbPicCode"+type).val(data.picCode);
-						    $("#pics"+type).html("<img src=${picPath}"+data.picCode+"/>");
+						    $("#pics"+type).html("<img src=${picPath!}"+data.picCode+"/>");
 						}
 					},
 					error : function(data) {

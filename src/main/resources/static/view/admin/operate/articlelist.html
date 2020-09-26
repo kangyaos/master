@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <!-- BEGIN HEAD -->
 <head>
-<#include "/include/globalstyle.html" />
+<#include "/view/include/globalstyle.html" />
 <link rel="stylesheet" href="${base}/assets/admin/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
 </head>
 <!-- END HEAD -->
@@ -10,14 +10,14 @@
 <body
 	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
 	<!-- BEGIN HEADER -->
-	<#include "/include/header.html" />
+	<#include "/view/include/header.html" />
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
 		<div class="page-sidebar-wrapper">
-		<#include "/include/sidebar.html" />
+		<#include "/view/include/sidebar.html" />
 		</div>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
@@ -59,8 +59,7 @@
 										<th>栏目</th>
 										<th style="width:12%">标题</th>
 										<th style="width:10%">缩略图</th>
-										<!-- <th style="width:10%">摘要</th>	 -->				
-										<th>是否头条</th>
+										<!-- <th style="width:10%">摘要</th>	 -->	
 										<th>发布时间</th>
 										<th>发布状态</th>
 										<th>点击量</th>
@@ -74,8 +73,7 @@
 							<input type="checkbox" class="group-checkable" data-set="#grids .checkboxes"/>全选
 							<button type="button" class="btn green" id="selectok" data-dismiss="modal" style="font-size: 12px;line-height: 1;" onclick="useStatus(1)">设置发布</button>
 							<button type="button" class="btn green" style="font-size: 12px;line-height: 1;" onclick="useStatus(0)">取消发布</button>
-							<button type="button" class="btn green" style="font-size: 12px;line-height: 1;" onclick="isSpecial(1)">设置头条</button>
-							<button type="button" class="btn green" style="font-size: 12px;line-height: 1;" onclick="isSpecial(0)">取消头条</button>
+
 							<button type="button" class="btn default" style="font-size: 12px;line-height: 1;" onclick="return delconfirm()">批量删除</button>
 						</div>
 					</div>
@@ -90,11 +88,11 @@
 	</div>
 	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->
-	<#include "/include/footer.html" />
+	<#include "/view/include/footer.html" />
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
-	<#include "/include/globalscript.html" />
+	<#include "/view/include/globalscript.html" />
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="${base}/assets/admin/plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -153,15 +151,7 @@
 				                	}
 				            	}, 
 				            	 "searchable":false
-							},						
-							
-							{"data" : "isSpecial", 
-							"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-				                	$(nTd).html("否");
-				                	if(sData==1)
-				                	$(nTd).html("是");
-				            },
-							"searchable" : false},
+							},	
 							{"data" : "publishTime"},
 							{"data" : "publishState", 
 							"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {

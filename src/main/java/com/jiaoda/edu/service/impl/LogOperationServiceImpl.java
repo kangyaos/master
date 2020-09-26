@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jiaoda.edu.domain.LogOperation;
-import com.jiaoda.edu.mapper.LogExceptionMapper;
+import com.jiaoda.edu.mapper.LogOperationMapper;
 import com.jiaoda.edu.service.ILogOperationService;
 
 
@@ -14,48 +14,41 @@ import com.jiaoda.edu.service.ILogOperationService;
 public class LogOperationServiceImpl implements ILogOperationService {
 
 	@Autowired
-	private LogExceptionMapper selfDAO;
+	private LogOperationMapper selfDAO;
 
 	@Override
 	public Integer insertSelective(LogOperation record) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.insertSelective(record);
 	}
 
 	@Override
 	public Integer updateByPrimaryKeySelective(LogOperation record) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.deleteByPrimaryKey(Long.parseLong(key.toString()));
 	}
 
 	@Override
 	public LogOperation selectByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.selectByPrimaryKey(Long.parseLong(key.toString()));
 	}
 
 	@Override
 	public List<LogOperation> findWhereList(String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.findWhereList(where, order);
 	}
 
 	@Override
 	public Integer getCount(String where) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.getCount(where);
 	}
 
 	@Override
 	public List<LogOperation> findPagerList(Integer start, Integer length, String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.findPagerList(start, length, where, order);
 	}
 
 	

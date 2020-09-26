@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jiaoda.edu.domain.OperateArticle;
 import com.jiaoda.edu.domain.OperateArticleCategory;
 import com.jiaoda.edu.mapper.OperateArticleCategoryMapper;
 import com.jiaoda.edu.service.IOperateArticleCategoryService;
@@ -18,26 +17,22 @@ public class OperateArticleCategoryServiceImpl implements IOperateArticleCategor
 	
 	@Override
 	public Integer insertSelective(OperateArticleCategory record) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.insertSelective(record);
 	}
 
 	@Override
 	public Integer updateByPrimaryKeySelective(OperateArticleCategory record) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.deleteByPrimaryKey(Integer.parseInt(key.toString()));
 	}
 
 	@Override
 	public OperateArticleCategory selectByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.selectByPrimaryKey(Integer.parseInt(key.toString()));
 	}
 
 	@Override

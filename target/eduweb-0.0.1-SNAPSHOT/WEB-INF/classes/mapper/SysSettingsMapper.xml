@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiaoda.edu.mapper.SysSettingsMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.SysSettings" >
+    <id column="keycode" property="keycode" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keycode, value, remark, create_time, update_time, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_settings
+    where keycode = #{keycode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_settings
+    where keycode = #{keycode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.SysSettings" >
+    insert into sys_settings (keycode, value, remark, 
+      create_time, update_time, delete_flag
+      )
+    values (#{keycode,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.SysSettings" >
+    insert into sys_settings
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keycode != null" >
+        keycode,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keycode != null" >
+        #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.SysSettings" >
+    update sys_settings
+    <set >
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where keycode = #{keycode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.SysSettings" >
+    update sys_settings
+    set value = #{value,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
+    where keycode = #{keycode,jdbcType=VARCHAR}
+  </update>
+   <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from sys_settings
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_settings
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_settings 
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>
+  </select>
+</mapper>

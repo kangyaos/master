@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <!-- BEGIN HEAD -->
 <head>
-<#include "/include/globalstyle.html" />
+<#include "/view/include/globalstyle.html" />
 <link rel="stylesheet" href="${base}/assets/admin/plugins/bootstrap-fileinput/bootstrap-fileinput.css" />
 <link rel="stylesheet" href="${base}/assets/admin/plugins/jstree/dist/themes/default/style.min.css"/>
 </head>
@@ -11,14 +11,14 @@
 <body
 	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
 	<!-- BEGIN HEADER -->
-	<#include "/include/header.html" />
+	<#include "/view/include/header.html" />
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
 		<div class="page-sidebar-wrapper"><#include
-			"/include/sidebar.html" /></div>
+			"/view/include/sidebar.html" /></div>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
@@ -31,8 +31,8 @@
 					<ul class="page-breadcrumb">
 						<li><i class="fa fa-home"></i> <a href="index.html">首页</a> <i
 							class="fa fa-angle-right"></i></li>
-						<li><a href="javascript:;">平台运营管理<i class="fa fa-angle-right"></i></li>	
-						<li><a href="categorylist.html">资讯栏目管理</a></li>
+					<li><a href="javascript:;">新闻中心</a><i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">栏目管理</a><i class="fa fa-angle-right"></i></li>
 					</ul>
 					<div class="page-toolbar"></div>
 				</div>
@@ -67,67 +67,7 @@
 												</div>
 											</div>
 										</div>	
-										<div class="form-group">
-											<label class="control-label col-md-3">父级栏目
-											</label>
-											<div class="col-md-4">
-											    <select class="form-control tree3" name="parentCategory" id="parentCategory">
-													<option value="0" data-pid="-1">父级名称</option>
-													<#list mlist as option>
-													<#if option.categoryId== category.parentCategory!0 >
-														<option value="${option.categoryId}" data-pid="${option.parentCategory}" selected="selected">${option.categoryName}</option>
-													<#else>
-														<option value="${option.categoryId}" data-pid="${option.parentCategory}">${option.categoryName}</option>
-													</#if>
-													</#list>
-												</select>
-											</div>
-										</div>									
-										<div class="form-group">
-											<label class="control-label col-md-3">缩略图</label>
-											<div class="col-md-4">
-												<div class="fileinput fileinput-new"
-													data-provides="fileinput">
-													<div class="fileinput-preview thumbnail" id="pics"
-														data-trigger="fileinput"
-														style="width: 300px; height: 200px;">
-														<#if category.categoryPicCode??> <img alt="" src="${picPath!}${category.categoryPicCode!}">
-														</#if>														
-													</div>
-													<div>
-														<span class="btn default btn-file"> <span
-															class="fileinput-new"> 选择图片</span> <span
-															class="fileinput-exists"> 选择图片 </span> <input
-															type="file" name="file" id="file"
-															onchange="ajaxFileUpload();">
-														</span>
-													</div>
-												</div>
-												<input type="hidden" class="form-control"
-													name="image" id="image" value="${category.image!}" />
-												<input type="hidden" class="form-control"
-													name="categoryPicCode" id="categoryPicCode" value="${category.categoryPicCode!}" />
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-md-3">栏目级别 </label>
-											<div class="col-md-4">
-												<div id="spinner2">
-													<div class="input-group">													  
-													      <input type="text" class="spinner-input form-control" maxlength="3" 
-														   name="categoryLevel" id="categoryLevel" value="${category.categoryLevel!}"/>														
-													      <div class="spinner-buttons input-group-btn btn-group-vertical">
-															<button type="button" class="btn spinner-up btn-xs blue">
-															<i class="fa fa-angle-up"></i>
-															</button>
-															<button type="button" class="btn spinner-down btn-xs blue">
-															<i class="fa fa-angle-down"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+										
 										<div class="form-group">
 											<label class="control-label col-md-3">排序 </label>
 											<div class="col-md-4">
@@ -144,22 +84,6 @@
 															</button>
 														</div>
 													</div>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="control-label col-md-3">是否显示头条</label>
-											<div class="col-md-7">
-												<div class="radio-list">
-													<#if (category.showSpecial!0)==0 > <label class="radio-inline">
-														<input type="radio" name="showSpecial" value=1>是
-													</label> <label class="radio-inline" style="margin-left: 23px;">
-														<input type="radio" name="showSpecial" value=0 checked>否
-													</label> <#else> <label class="radio-inline"> <input
-														type="radio" name="showSpecial" value=1 checked>是
-													</label> <label class="radio-inline" style="margin-left: 23px;">
-														<input type="radio" name="showSpecial" value=0>否
-													</label> </#if>
 												</div>
 											</div>
 										</div>
@@ -204,11 +128,11 @@
 	</div>
 	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->
-	<#include "/include/footer.html" />
+	<#include "/view/include/footer.html" />
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
-	<#include "/include/globalscript.html" />
+	<#include "/view/include/globalscript.html" />
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script type="text/javascript"

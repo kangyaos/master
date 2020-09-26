@@ -17,20 +17,17 @@ public class OperateArticleServiceImpl implements IOperateArticleService {
 	
 	@Override
 	public Integer insertSelective(OperateArticle record) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.insertSelective(record);
 	}
 
 	@Override
 	public Integer updateByPrimaryKeySelective(OperateArticle record) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.deleteByPrimaryKey(Integer.parseInt(key.toString()));
 	}
 
 	@Override

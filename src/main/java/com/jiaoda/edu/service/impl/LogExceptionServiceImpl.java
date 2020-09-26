@@ -18,45 +18,38 @@ public class LogExceptionServiceImpl implements ILogExceptionService {
 
 	@Override
 	public Integer insertSelective(LogException record) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.insertSelective(record);
 	}
 
 	@Override
 	public Integer updateByPrimaryKeySelective(LogException record) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public Integer deleteByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.deleteByPrimaryKey(Long.parseLong(key.toString()));
 	}
 
 	@Override
 	public LogException selectByPrimaryKey(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.selectByPrimaryKey(Long.parseLong(key.toString()));
 	}
 
 	@Override
 	public List<LogException> findWhereList(String where, String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.findWhereList(where, order);
 	}
 
 	@Override
 	public Integer getCount(String where) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.getCount(where);
 	}
 
 	@Override
 	public List<LogException> findPagerList(Integer start, Integer length, String where,
 			String order) {
-		// TODO Auto-generated method stub
-		return null;
+		return selfDAO.findPagerList(start, length, where, order);
 	}
 
 

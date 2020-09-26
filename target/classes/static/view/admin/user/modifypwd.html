@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<#include "/view/include/globalstyle.html" />
+<link href="${base}/assets/laydate/need/xcConfirm.css" type="text/css"/>
+<script src="${base}/assets/global/plugins/js/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="${base}/assets/global/plugins/js/xcConfirm.js" type="text/javascript"></script>	
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body
+	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+	<!-- BEGIN HEADER -->
+	<#include "/view/include/header.html" />
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar-wrapper"><#include
+			"/view/include/sidebar.html" /></div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					修改密码<small></small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html">首页</a> <i
+							class="fa fa-angle-right"></i></li>
+						<li><a href="index.html">修改密码</a></li>	
+					</ul>
+					<div class="page-toolbar"></div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN DASHBOARD STATS -->
+				<div class="row">
+					<div class="col-md-12">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box grey-gallery">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-edit"></i>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form id="form" class="form-horizontal form-row-sepe">
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label col-md-3">原密码 <span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="password"
+														class="form-control" name="oldPwd" id="oldPwd" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group edithid">
+											<label class="control-label col-md-3">新密码 <span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="password" onpaste="return false" onselectstart="return false"
+														class="form-control" name="newPwd" id="newPwd" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group edithid">
+											<label class="control-label col-md-3">确认密码 <span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="password" onpaste="return false" onselectstart="return false"
+														class="form-control" name="confirmPwd" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<button type="submit" class="btn blue">保存</button>
+												<button type="reset" class="btn default">取消</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!-- END FORM-->
+							</div>
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
+				<!-- END DASHBOARD STATS -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<#include "/view/include/footer.html" />
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->
+	<#include "/view/include/globalscript.html" />
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script type="text/javascript" src="${base}/assets/global/plugins/select2/select2.min.js"></script>
+	<script type="text/javascript" src="${base}/assets/global/plugins/select2/select2_locale_zh-CN.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/global/plugins/jquery-validation/js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/global/plugins/jquery-validation/js/additional-methods.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/global/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<script>
+		$(document).ready(function() {
+			Metronic.init(); // init metronic core componets
+			Layout.init(); // init layout
+			addValidation();
+			$(".btn.default").click(function(){
+				history.back();
+			});
+		});
+
+		var addValidation = function() {
+			var form1 = $('#form');
+			form1.validate({
+				errorElement : 'span', //default input error message container
+				errorClass : 'help-block help-block-error', // default input error message class
+				focusInvalid : false, // do not focus the last invalid input
+				ignore : "", // validate all fields including form hidden input
+				rules : {
+					oldPwd : {
+						minlength : 6,
+						maxlength : 20,
+						required : true,
+						remote : {
+							url : 'checkPass.json',
+							type : 'post',
+							data : {
+								'oldPwd' : function() {
+									return $("#oldPwd").val();
+								}
+							}
+						}
+					},
+					newPwd : {
+						minlength : 6,
+						maxlength : 20,
+						required : true,
+						notEqualTo : "#oldPwd"
+					},
+					confirmPwd : {
+						minlength : 6,
+						maxlength : 20,
+						required : true,
+						equalTo : "#newPwd"
+					}
+				},
+				messages : {
+					oldPwd : {
+						remote : "原密码不正确！"
+					},
+					newPwd : {
+						notEqualTo : "新密码和原密码相同！"
+					},
+					confirmPwd : {
+						equalTo : "确认密码不正确！"
+					}
+				},
+
+				invalidHandler : function(event, validator) { //display error alert on form submit              
+
+				},
+
+				highlight : function(element) { // hightlight error inputs
+					$(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+				},
+
+				unhighlight : function(element) { // revert the change done by hightlight
+					$(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+				},
+
+				success : function(label) {
+					label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+				},
+
+                submitHandler: function (form) {
+                	$.ajax({
+						type : 'post',
+						url : 'modifypwd.do',
+						data : form1.serialize(),
+						dataType : "json",
+						success : function(data) {
+							if(data){
+								$("input").val("");
+								var txt=  "密码修改成功！！";
+					            alert(txt);
+					            window.history.back(); 
+							}else{
+								var txt=  "密码修改失败！！";
+					            alert(txt);
+							}
+						}
+					});
+                    return false;
+                }
+			});
+
+		};
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

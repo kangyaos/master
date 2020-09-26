@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +19,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jiaoda.edu.controller.BaseController;
+import com.jiaoda.edu.domain.OperateArticle;
+import com.jiaoda.edu.service.IOperateArticleService;
 
 
 @Controller
 public class WebIndexController extends BaseController {
-
+	
+	@Autowired
+	private IOperateArticleService articleService;
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(HttpServletRequest request, HttpServletResponse response) {
 		return "redirect:/index.html";
@@ -58,7 +63,8 @@ public class WebIndexController extends BaseController {
 	// 网站首页
 	@RequestMapping(value = "/news.html", method = RequestMethod.GET)
 	public String news(HttpServletRequest request, ModelMap map) throws Exception {
-		
+		List<OperateArticle> articles= articleService.findPagerList(0, 99, "", "");
+		map.put("articles", articles);
 		return "view/web/news";
 	}
 	//证书
@@ -69,7 +75,11 @@ public class WebIndexController extends BaseController {
 	
 	//新闻详情
 	@RequestMapping(value = "/newsdetail.html", method = RequestMethod.GET)
-	public String newsdetail(Integer newsid,HttpServletRequest request, ModelMap map) throws Exception {
+	public String newsdetail(String newsid,HttpServletRequest request, ModelMap map) throws Exception {
+		OperateArticle article= articleService.selectByPrimaryKey(newsid.replaceAll(",", ""));
+		article.setClickNum(article.getClickNum()+1);
+		articleService.updateByPrimaryKeySelective(article);
+		map.put("article", article);
 		return "view/web/newsdetail";
 	}
 	//课程详情
@@ -77,11 +87,11 @@ public class WebIndexController extends BaseController {
 	public String coursedetail(Integer pid,HttpServletRequest request, ModelMap map) throws Exception {
 		return "view/web/coursedetail";
 	}
-	//课程详情
+	/*//课程详情
 	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, ModelMap map) throws Exception {
 		return "view/web/login";
-	}
+	}*/
 			
 
 

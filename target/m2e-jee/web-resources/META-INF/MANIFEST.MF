@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Built-By: Administrator
-Build-Jdk: 10.0.1
+Implementation-Vendor: Pivotal Software, Inc.
 Implementation-Title: eduweb
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: com.edu.lamei
-Implementation-Vendor: Pivotal Software, Inc.
-Implementation-URL: http://projects.spring.io/spring-boot/eduweb/
+Build-Jdk: 1.7.0_45
+Built-By: Administrator
 Created-By: Maven Integration for Eclipse
+Implementation-URL: http://projects.spring.io/spring-boot/eduweb/
 

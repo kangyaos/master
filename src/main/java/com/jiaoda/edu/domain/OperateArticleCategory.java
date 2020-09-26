@@ -7,17 +7,9 @@ public class OperateArticleCategory {
 
     private String categoryName;
 
-    private String categoryPicCode;
-
-    private Integer image;
-
+  
     private Integer sort;
-
-    private Integer categoryLevel;
-
-    private Integer parentCategory;
-
-    private Integer showSpecial;
+   
 
     private Integer useStatus;
 
@@ -41,21 +33,7 @@ public class OperateArticleCategory {
         this.categoryName = categoryName == null ? null : categoryName.trim();
     }
 
-    public String getCategoryPicCode() {
-        return categoryPicCode;
-    }
-
-    public void setCategoryPicCode(String categoryPicCode) {
-        this.categoryPicCode = categoryPicCode == null ? null : categoryPicCode.trim();
-    }
-
-    public Integer getImage() {
-        return image;
-    }
-
-    public void setImage(Integer image) {
-        this.image = image;
-    }
+  
 
     public Integer getSort() {
         return sort;
@@ -65,29 +43,7 @@ public class OperateArticleCategory {
         this.sort = sort;
     }
 
-    public Integer getCategoryLevel() {
-        return categoryLevel;
-    }
-
-    public void setCategoryLevel(Integer categoryLevel) {
-        this.categoryLevel = categoryLevel;
-    }
-
-    public Integer getParentCategory() {
-        return parentCategory;
-    }
-
-    public void setParentCategory(Integer parentCategory) {
-        this.parentCategory = parentCategory;
-    }
-
-    public Integer getShowSpecial() {
-        return showSpecial;
-    }
-
-    public void setShowSpecial(Integer showSpecial) {
-        this.showSpecial = showSpecial;
-    }
+   
 
     public Integer getUseStatus() {
         return useStatus;

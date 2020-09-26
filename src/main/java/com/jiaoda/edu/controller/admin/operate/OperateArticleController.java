@@ -40,8 +40,8 @@ public class OperateArticleController extends BaseController {
 	 煤炭资讯*/
 	@RequestMapping(value = "/articlelist.html", method = RequestMethod.GET)
 	public String mineMouthList(ModelMap model) {
-		model.put("mlist", categoryService.findPagerList(0, -1, "useStatus=0 and deleteFlag=0 and (categoryId!=1 and categoryId!=2)", "sort asc"));
-		return "admin/operate/articlelist";
+ 		model.put("mlist", categoryService.findPagerList(0, -1, "use_status=0 and delete_flag=0 and (category_id!=1 and category_id!=2)", "sort asc"));
+		return "view/admin/operate/articlelist";
 	}
 	
 	@ResponseBody
@@ -50,12 +50,12 @@ public class OperateArticleController extends BaseController {
 			Integer length, HttpServletRequest request) {
 		DataTablesParam param = DataTablesParamUtility.getParam(request);
 		String where = param.getDefaultFilter();
-		String order="publishTime desc";
+		String order="publish_time desc";
 		if("".equals(where)){
-			where = "deleteFlag=0";
+			where = "delete_flag=0";
 		}else if(!"".equals(where)){
-			where = "(" +where+") and deleteFlag=0";
-			order ="sort desc,publishTime desc";
+			where = "(" +where+") and delete_flag=0";
+			order ="sort desc,publish_time desc";
 		}
 		PageData<OperateArticle> pageData = new PageData<OperateArticle>();
 		Integer count = articleService.getCount(where);
@@ -72,11 +72,11 @@ public class OperateArticleController extends BaseController {
 		OperateArticle article = new OperateArticle();
 		//煤炭资讯1//货运资讯2数据从快煤宝读取
 		List<OperateArticleCategory> category = categoryService.findPagerList(0, -1, 
-				"useStatus=0 and deleteFlag=0 and (categoryId!=1 and categoryId!=2)", "sort");
+				"use_status=0 and delete_flag=0 and (category_id!=1 and category_id!=2)", "sort");
 		article.setClickNum((int)(Math.random()*(10000-100+1)+100));
 		model.put("category", category);
 		model.put("article", article);
-		return "admin/operate/articleform";
+		return "view/admin/operate/articleform";
 	}
 	
 	@RequestMapping(value = "/editarticle.html", method = RequestMethod.GET)
@@ -85,10 +85,10 @@ public class OperateArticleController extends BaseController {
 		article = article != null ? article : new OperateArticle();
 		//煤炭资讯1//货运资讯2数据从快煤宝读取
 		List<OperateArticleCategory> category = categoryService.findPagerList(0, -1, 
-				"useStatus=0 and deleteFlag=0 and (categoryId!=1 and categoryId!=2)", "sort");
+				"use_status=0 and delete_flag=0 and (category_id!=1 and category_id!=2)", "sort");
 		model.put("category", category);
 		model.put("article", article);		
-		return "admin/operate/articleform";
+		return "view/admin/operate/articleform";
 	}
 
 	
@@ -113,12 +113,8 @@ public class OperateArticleController extends BaseController {
 			OperateArticle entity = articleService.selectByPrimaryKey(article.getArticleId());
 			entity.setTitle(article.getTitle());
 			entity.setCategoryId(article.getCategoryId());
-			entity.setTumb(article.getTumb().equals("")?null:article.getTumb());
 			entity.setTumbPicCode(article.getTumbPicCode().equals("")?null:article.getTumbPicCode());
-			entity.setTumbPicCode2(article.getTumbPicCode2().equals("")?null:article.getTumbPicCode2());
-			entity.setTumbPicCode3(article.getTumbPicCode3().equals("")?null:article.getTumbPicCode3());
 			entity.setSummary(article.getSummary());
-			entity.setIsSpecial(article.getIsSpecial());
 			entity.setIsPicture(article.getIsPicture());
 			entity.setClickNum(article.getClickNum());
 			entity.setAuthor(article.getAuthor());
@@ -128,7 +124,7 @@ public class OperateArticleController extends BaseController {
 			articleService.updateByPrimaryKeySelective(entity);
 			getChangeSort(entity);
 		}
-		return "redirect:admin/articlelist.html";
+		return "redirect:/admin/articlelist.html";
 	}
 	
 	/**
@@ -137,25 +133,18 @@ public class OperateArticleController extends BaseController {
 	 */
 	private void getAddChangeSort(OperateArticle entity) {		
 		OperateArticle article =new OperateArticle();
-		if(entity.getCategoryId()==4 && entity.getSort()==null){
-			article = articleService.findWhere(" categoryId="+entity.getCategoryId(),"sort desc");
-			int num =0;
-			if(article !=null){
-				num = (article.getSort()==null || article.getSort().equals(""))?num:(article.getSort()+1);									
-			}
-			entity.setSort(num);
-		}else{
-			if(entity.getIsSpecial()==1 && entity.getSort()==null){
-				article = articleService.findWhere(" categoryId="+entity.getCategoryId()+" and isSpecial=1","sort desc");
+		
+ 			if(entity.getSort()==null){
+				article = articleService.findWhere(" category_id="+entity.getCategoryId(),"sort desc");
 				int num =0;
 				if(article !=null){
-					if(article.getSort()!=null || !article.getSort().equals("")){
+					if(article.getSort()!=null){
 						num = article.getSort()+1;
 					}					
 				}
 				entity.setSort(num);
 			}
-		}
+		
 		articleService.updateByPrimaryKeySelective(entity);
 	}
 	
@@ -166,7 +155,7 @@ public class OperateArticleController extends BaseController {
 	private void getChangeSort(OperateArticle entity) {		
 		OperateArticle article =new OperateArticle();
 		if(entity.getCategoryId()==4 && entity.getSort()==null){
-			article = articleService.findWhere(" categoryId="+entity.getCategoryId(),"sort desc");
+			article = articleService.findWhere(" category_id="+entity.getCategoryId(),"sort desc");
 			int num =0;
 			if(article !=null){
 				if(article.getSort()==null || article.getSort().equals("")){
@@ -179,7 +168,7 @@ public class OperateArticleController extends BaseController {
 			articleService.updateByPrimaryKeySelective(entity);
 		}else{
 			if(entity.getIsSpecial()==1 && entity.getSort()==null){
-				article = articleService.findWhere(" categoryId="+entity.getCategoryId()+" and isSpecial=1","sort desc");
+				article = articleService.findWhere(" category_id="+entity.getCategoryId()+" and is_special=1","sort desc");
 				int num =0;
 				if(article !=null){
 					if(article.getSort()!=null &&!"".equals(article.getSort())){
@@ -189,18 +178,18 @@ public class OperateArticleController extends BaseController {
 				entity.setSort(num);
 				articleService.updateByPrimaryKeySelective(entity);
 			}else if(entity.getIsSpecial()==1 && entity.getSort()!=null){
-				List<OperateArticle> list =  articleService.findWhereList(" categoryId="+entity.getCategoryId()+" and isSpecial=1","sort asc");
+				List<OperateArticle> list =  articleService.findWhereList(" category_id="+entity.getCategoryId()+" and is_special=1","sort asc");
 				for (int i = 0; i < list.size(); i++) {
-					article = articleService.findWhere("articleId="+ list.get(i).getArticleId(),"");
+					article = articleService.findWhere("category_id="+ list.get(i).getArticleId(),"");
 					article.setSort(i);
 					articleService.updateByPrimaryKeySelective(article);
 				}
 			}else if(entity.getIsSpecial()==0 && entity.getSort()!=null){
 				entity.setSort(null);
 				articleService.updateByPrimaryKeySelective(entity);
-				List<OperateArticle> list =  articleService.findWhereList(" categoryId="+entity.getCategoryId()+" and isSpecial=1","sort asc");
+				List<OperateArticle> list =  articleService.findWhereList(" category_id="+entity.getCategoryId()+" and is_special=1","sort asc");
 				for (int i = 0; i < list.size(); i++) {
-					article = articleService.findWhere("articleId="+list.get(i).getArticleId(),"");
+					article = articleService.findWhere("category_id="+list.get(i).getArticleId(),"");
 					article.setSort(i);
 					articleService.updateByPrimaryKeySelective(article);
 				}
@@ -215,8 +204,8 @@ public class OperateArticleController extends BaseController {
 	public String GetArticleUpAndDown(Integer articleId,Integer otherId,String typeId, ModelMap model) {
 		OperateArticleCategory category= categoryService.findWhere("categoryName="+typeId, "");
 		Integer type = category==null?0:category.getCategoryId();
-		OperateArticle sort = articleService.findWhere(" articleId="+articleId+" and categoryId="+type, "");
-		OperateArticle sort2 = articleService.findWhere(" articleId="+otherId+" and categoryId="+type, "");
+		OperateArticle sort = articleService.findWhere(" article_id="+articleId+" and category_id="+type, "");
+		OperateArticle sort2 = articleService.findWhere(" article_id="+otherId+" and category_id="+type, "");
 		Integer num = sort.getSort();
 		Integer num2 = sort2.getSort();	
 		sort.setSort(num2);
@@ -275,7 +264,7 @@ public class OperateArticleController extends BaseController {
 		for (Integer id : ids) {
 			OperateArticle a = articleService.selectByPrimaryKey(id);
 			if(value==1 ){
-				OperateArticle article = articleService.findWhere(" categoryId="+a.getCategoryId(), "sort desc");				
+				OperateArticle article = articleService.findWhere(" category_id="+a.getCategoryId(), "sort desc");				
 				int num =article.getSort()==null?0:article.getSort()+1;
 				a.setSort(num);
 				a.setIsSpecial(value);
@@ -284,7 +273,7 @@ public class OperateArticleController extends BaseController {
 				a.setSort(null);
 				a.setIsSpecial(value);
 				articleService.updateByPrimaryKeySelective(a);
-				List<OperateArticle> list =  articleService.findWhereList(" categoryId="+a.getCategoryId()+" and isSpecial=1","sort asc");
+				List<OperateArticle> list =  articleService.findWhereList(" category_id="+a.getCategoryId()+" and is_special=1","sort asc");
 				for (int i = 0; i < list.size(); i++) {
 					OperateArticle article = articleService.findWhere("article_id="+list.get(i).getArticleId(),"" );
 					article.setSort(i);

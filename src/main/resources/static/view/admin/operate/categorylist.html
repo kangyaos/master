@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <!-- BEGIN HEAD -->
 <head>
-<#include "/include/globalstyle.html" />
+<#include "/view/include/globalstyle.html" />
 <link rel="stylesheet"
 	href="${base}/assets/admin/plugins/jstree/dist/themes/default/style.min.css" />
 <link rel="stylesheet"
@@ -14,28 +14,28 @@
 <body
 	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
 	<!-- BEGIN HEADER -->
-	<#include "/include/header.html" />
+	<#include "/view/include/header.html" />
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
 		<div class="page-sidebar-wrapper"><#include
-			"/include/sidebar.html" /></div>
+			"/view/include/sidebar.html" /></div>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
 			<div class="page-content">
 				<!-- BEGIN PAGE HEADER-->
 				<h3 class="page-title">
-					资讯栏目<small></small>
+					新闻栏目<small></small>
 				</h3>
 				<div class="page-bar">
 					<ul class="page-breadcrumb">
 						<li><i class="fa fa-home"></i> <a href="index.html">首页</a> <i
 							class="fa fa-angle-right"></i></li>
-						<li><a href="javascript:;">平台运营管理</a><i class="fa fa-angle-right"></i></li>
-						<li><a href="javascript:;">资讯栏目</a><i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">新闻中心</a><i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">新闻栏目</a><i class="fa fa-angle-right"></i></li>
 					</ul>
 					<div class="page-toolbar"></div>
 				</div>
@@ -48,7 +48,7 @@
 						<div class="portlet box grey-gallery">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-cogs"></i>资讯栏目
+									<i class="fa fa-cogs"></i>新闻栏目
 								</div>
 							    <div class="actions">
 	                                <a href="addcategory.html" class="btn btn-default btn-sm">
@@ -58,20 +58,13 @@
 							<div class="portlet-body">
 								<div class="portlet-body">
 									<div class="row">
-										<div class="col-md-3">											
-											<div style="overflow-y:auto; overflow-x:auto;">
-												<div id="tree_2" class="tree-demo"></div>													
-											</div>
-											
-										</div>
-										<div class="col-md-9">
+										
+										<div class="col-md-12">
 										<table class="table table-striped table-bordered table-hover"
 											id="grid">
 											<thead>
 												<tr>
 												   <th style="width:10%">栏目名称</th>
-					                               <th style="width:10%">缩略图</th>  
-					                               <th style="width:10%">是否显示头条</th>
 					                               <th style="width:10%">排序</th>
 					                               <th style="width:10%">启用状态</th>                                                         
 					                               <th style="width:10%">更新时间</th>
@@ -98,11 +91,11 @@
 	</div>
 	<!-- END CONTAINER -->
 	<!-- BEGIN FOOTER -->
-	<#include "/include/footer.html" />
+	<#include "/view/include/footer.html" />
 	<!-- END FOOTER -->		
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
-	<#include "/include/globalscript.html" />
+	<#include "/view/include/globalscript.html" />
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script type="text/javascript" src="${base}/assets/admin/plugins/jquery-validation/js/jquery.validate.js"></script>
@@ -131,21 +124,7 @@
 	                }
 	            },
 	            "columns" : [{"data": "categoryName"},
-                        {"data" : null,
-                              "fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-                                  $(nTd).html("");
-                                  if(oData.categoryPicCode!=null){
-				                	  $(nTd).html("<image src='${picPath!}"+oData.categoryPicCode+"' style='width:50%;' onerror=this.src='${base}/upload/detail.png;this.onerror=null'/>");
-				                  }
-                              }, 
-                              "searchable":false
-                        },			            
-			            {"data" : "showSpecial",
-							"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-			                	$(nTd).html(sData==1?"是":"否");
-			            	},
-			            	"searchable":false
-			            },
+			           
 			            {"data" : "sort",
                             "fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {                                
                                 $(nTd).html("<input type='text' value='"+sData+"' onblur='buyMode(this.value,"+oData.categoryId+")'  style='width: 30px;text-align: center;'>");

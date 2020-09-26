@@ -1,13 +1,15 @@
 package com.jiaoda.edu.domain;
 
+import java.util.Date;
+
 public class UserInfo {
     private Integer userId;
 
     private Integer roleId;
 
     private String userName;
-
-    private String nickname;
+    
+    private String realName;
 
     private String signature;
 
@@ -22,8 +24,29 @@ public class UserInfo {
     private String machineCode;
 
     private Integer regionCode;
+    private Date createTime;
 
-    public Integer getUserId() {
+    private Date updateTime;
+    private Integer deleteFlag;
+    
+
+    public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public Integer getUserId() {
         return userId;
     }
 
@@ -47,13 +70,7 @@ public class UserInfo {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
-    }
+ 
 
     public String getSignature() {
         return signature;
@@ -99,7 +116,15 @@ public class UserInfo {
         return machineCode;
     }
 
-    public void setMachineCode(String machineCode) {
+    public Integer getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(Integer deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
+	public void setMachineCode(String machineCode) {
         this.machineCode = machineCode == null ? null : machineCode.trim();
     }
 
@@ -110,4 +135,14 @@ public class UserInfo {
     public void setRegionCode(Integer regionCode) {
         this.regionCode = regionCode;
     }
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+    
+    
 }
