@@ -263,7 +263,7 @@
 					success : function(data) {
 						if (data) {
 						    $("#tumbPicCode"+type).val(data.picCode);
-						    $("#pics"+type).html("<img src=${picPath}"+data.picCode+"/>");
+						    $("#pics"+type).html("<img src=${picPath!}"+data.picCode+"/>");
 						}
 					},
 					error : function(data) {

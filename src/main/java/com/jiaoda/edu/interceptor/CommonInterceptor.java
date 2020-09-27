@@ -66,8 +66,9 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		boolean boolen=false;
  		if (modelAndView != null ) {
  			request.setAttribute("base", request.getContextPath());
- 			System.out.println(request.getServletPath());
- 			request.setAttribute("pagepath", request.getServletPath());
+ 			System.out.println(request.getServletPath()  +(request.getQueryString()==null?"":( "?" + request.getQueryString())));
+ 			
+ 			request.setAttribute("pagepath", request.getServletPath()  +(request.getQueryString()==null?"":( "?" + request.getQueryString())));
  			modelAndView.addObject(CONTEXT_PATH, request.getContextPath());
 			modelAndView.addObject("localhost", request.getLocalAddr() + ":" + request.getLocalPort());
 			modelAndView.addObject("title", "西安交大附小");

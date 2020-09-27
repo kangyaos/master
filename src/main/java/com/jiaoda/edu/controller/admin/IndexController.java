@@ -45,9 +45,8 @@ public class IndexController extends BaseController {
 
 	
 	@RequestMapping(value="/login.do", method = RequestMethod.POST)  
-    public String login(HttpSession session,UserInfo userinfo,String remFlag,
-    		ModelMap map,HttpServletRequest request, HttpServletResponse response) throws Exception{        
-        
+    public String login(HttpSession session,UserInfo userinfo,String remFlag,Integer web,
+    		ModelMap map,HttpServletRequest request, HttpServletResponse response) throws Exception{     
 			try {
 				UserInfo user=userinfoService.findByWhere("user_name='"+userinfo.getUserName()+"'","" );
 				if(user!=null){
@@ -60,6 +59,9 @@ public class IndexController extends BaseController {
 				             userCookie.setMaxAge(30*24*60*60);   //存活期为一个月 30*24*60*60
 				             userCookie.setPath("/");
 				             response.addCookie(userCookie); 
+						 }
+						 if(web!=null){
+							 return "redirect:index.html";
 						 }
 						return "redirect:/admin/index.html";
 					}else{

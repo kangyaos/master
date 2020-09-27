@@ -1,10 +1,10 @@
 
-			<div id="comm_layout_header" class="layout  none scrollToTop_pc scrollToTop_pad scrollToTop_mobile" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" old_top_pc="0" old_left_pc="0" old_width_pc="1519" style="position: fixed; z-index: 9999999; top: 0px; width: 1519px; left: 0px;">
+			<div id="comm_layout_header" class="layout  none scrollToTop_pc scrollToTop_pad scrollToTop_mobile" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" old_top_pc="0" old_left_pc="0" old_width_pc="1519" style="position: fixed; z-index: 9999999; top: 0px; width: 100%; left: 0px;">
 				<div class="view_contents">
 								<div id="image_logo_1575606105555" class="view logo image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="image" class="view_contents">
 					<div class="logoStyle modSet">
-<a href="index.html" target="_self"><img class="imgSet" src="${base}/assets/web/images/logo.png" title="" alt="" style="width:auto; height:100%; margin-left:0px"></a>
+<a href="index.html" target="_self"><img class="imgSet" src="${base}/assets/web/images/logo.png" title="" alt="" style="width:100%; height:100%; margin-left:0px"></a>
 </div>				</div>
 			</div>
 					<div id="dh_style_28_1578629663716" class="view style_28 dh  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
@@ -14,7 +14,7 @@
 		<ul class="miniMenu columnSet showmobile">
 			<li class="leftBox">
 				<div class="nav"></div>
-				<div class="sidebar icoMenuSet"><i class="fa fa-navicon" onclick="setDhListen(&#39;style_01&#39;,this)"></i></div>
+				<div class="sidebar icoMenuSet"><i class="fa fa-bars" onclick="setDhListen(&#39;style_01&#39;,this)"></i></div>
 				<div class="menuScroll">
 					<ul class="menuUlCopy">
 								<li id="<#if pagepath=='/index.html'>hot</#if>" class="rflex" pageid="2801213" showmobile=""><a class="mainMenuSet" href="index.html">
@@ -82,14 +82,14 @@
 	</div>
 </div>
 
-	<div id="idBox" class="lightbox" style="z-index: 2147483647; max-width: 500px; margin-left: -250px; margin-top: -147.5px;    display: none;">	
+	<div id="idBox" style="z-index: 2147483647; max-width: 500px; margin-left: -250px; margin-top: -147.5px;    display: none;">	
 		<div id="boxMain">		
 			<div id="boxTopTitle">			
 				<span id="boxName">用户登录</span>			
 				<span id="boxClose" title="关闭" onclick="close();">×</span>		
 			</div>		
 			<div id="boxContent">			
-				<iframe id="showiframe" src="login.html" frameborder="0" style="width:100%;" name="bookConfirm" height="250px"></iframe>		
+				<iframe id="showiframe" src="web/login.html" frameborder="0" style="width:100%;" name="bookConfirm" style="height:260px"></iframe>		
 			</div>	</div></div>
 
 <!-- 导航栏目有下级时禁止跳转 -->
@@ -97,6 +97,7 @@
 <script>
 
 function showlogin(){
+	$("#showiframe").attr("src","web/login.html");
   $("#idBox").show();
 }
 function close(){
@@ -148,5 +149,5 @@ $(function(){
 </script>
 				</div>
 			</div>
-						</div><div style="    position: absolute;top: 38px;  right: 50px;"><a href="javascript:showlogin()">登录</a></div>
+						</div><div style="z-index: 9999; position: absolute;top: 15px;  right: 50px;"><a href="javascript:showlogin()">登录</a></div>
 			</div>

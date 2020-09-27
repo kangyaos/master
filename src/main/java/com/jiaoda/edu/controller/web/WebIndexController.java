@@ -87,11 +87,11 @@ public class WebIndexController extends BaseController {
 	public String coursedetail(Integer pid,HttpServletRequest request, ModelMap map) throws Exception {
 		return "view/web/coursedetail";
 	}
-	/*//课程详情
-	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
+	//课程详情
+	@RequestMapping(value = "/web/login.html", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, ModelMap map) throws Exception {
 		return "view/web/login";
-	}*/
+	}
 			
 
 
