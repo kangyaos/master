@@ -54,24 +54,11 @@
 											value="${edit!}" />
 									</div>
 									<div class="form-body">
-										<div class="form-group">
-											<label class="control-label col-md-3">角色编码 <span
-												class="required"> * </span>
-											</label>
-											<div class="col-md-4">
-												<#if edit??>
-												<div class="input-icon right">
-													<i class="fa"></i> <input type="number" class="form-control" readonly="readonly"
+										
+											<input type="hidden" class="form-control"
 														name="roleId" id="roleId" value="${role.roleId!}" />
-												</div>
-												<#else>
-												<div class="input-icon right">
-													<i class="fa"></i> <input type="number" class="form-control"
-														name="roleId" id="roleId" value="${role.roleId!}" />
-												</div>
-												</#if>	
-											</div>
-										</div>
+											
+										
 										<div class="form-group">
 											<label class="control-label col-md-3">角色名 <span
 												class="required"> * </span>
@@ -87,7 +74,7 @@
 											<label class="control-label col-md-3">角色描述 </label>
 											<div class="col-md-4">
 												<div class="input-icon right">
-													<textarea class="form-control" rows="3" name="roleDescription" id="roleDescription">${role.roleDescription!""}</textarea>
+													<textarea class="form-control" rows="3" name="remark" id="remark">${role.remark!""}</textarea>
 												</div>
 											</div>
 										</div>
@@ -96,29 +83,19 @@
 										<label class="control-label col-md-3">禁用</label>
 										<div class="col-md-7">
 											<div class="radio-list">
-												<#if (role.roleIsdisable!0)==1 > <label class="radio-inline">
-													<input type="radio" name="roleIsdisable" value=1 checked>是
+												<#if (role.status!'0')=='1' > <label class="radio-inline">
+													<input type="radio" name="status" value=1 checked>是
 												</label> <label class="radio-inline" style="margin-left: 23px;">
-													<input type="radio" name="roleIsdisable" value=0>否
+													<input type="radio" name="status" value=0>否
 												</label> <#else> <label class="radio-inline"> <input
-													type="radio" name="roleIsdisable" value=1>是
+													type="radio" name="status" value=1>是
 												</label> <label class="radio-inline" style="margin-left: 23px;">
-													<input type="radio" name="roleIsdisable" value=0 checked>否
+													<input type="radio" name="status" value=0 checked>否
 												</label> </#if>
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3">级别 <span
-											class="required"> * </span>
-										</label>
-										<div class="col-md-4">
-											<div class="input-icon right">
-												<i class="fa"></i> <input type="number" class="form-control" min="0"
-													name="roleLevel" id="roleLevel" value="${role.roleLevel!}" />
-											</div>
-										</div>
-									</div>
+									
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-offset-3 col-md-9">
@@ -174,23 +151,7 @@
 				focusInvalid : false, // do not focus the last invalid input
 				ignore : "", // validate all fields including form hidden input
 				rules : {
-					roleId : {
-							minlength :1,
-							maxlength : 3,
-							required : true,
-							remote : {
-								url : 'validRoleName.json',
-								type : 'post',
-								data : {
-									'roleId' : function() {
-										return $("#roleId").val();
-									},
-									'edit' : function() {
-										return $("#edit").val();
-									}
-								}
-							}
-						},					
+								
 					roleName : {
 						minlength :2,
 						maxlength : 50,
@@ -211,14 +172,12 @@
 							}
 						}
 					},
-					roleDescription : {
+					remark : {
 						maxlength : 150
 					}
 				},
 				messages : {
-					roleId : {
-						remote : "角色编码已存在，请重新输入！"
-					},	
+				
 					roleName : {
 						remote : "角色名已存在，请重新输入！"
 					}				

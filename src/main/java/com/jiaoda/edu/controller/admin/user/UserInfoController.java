@@ -11,20 +11,38 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.jiaoda.edu.domain.SysRole;
 import com.jiaoda.edu.domain.UserInfo;
+import com.jiaoda.edu.log.LogDesc;
+import com.jiaoda.edu.service.ISysRolesService;
 import com.jiaoda.edu.service.IUserInfoService;
 import com.jiaoda.edu.util.DataTablesParam;
 import com.jiaoda.edu.util.DataTablesParamUtility;
 import com.jiaoda.edu.util.PageData;
 import com.jiaoda.edu.util.PasswordEncoder;
+import com.jiaoda.edu.util.ExcelUtils;
 
 @Controller
 @RequestMapping("/admin")
 public class UserInfoController {
-	/**
-     * 角色管理
-     */
+
+    @RequestMapping(value="/importExcel.do",method=RequestMethod.POST)
+    public String importExcel(MultipartFile file) {
+      
+        try {
+            Integer num = userinfosService.importExcel(file);
+        } catch (Exception e) {
+       
+           System.out.println(e);
+        }
+      
+ 
+        return "index";
+    }
+	
+    
 	@RequestMapping(value = "/userlist.html", method = RequestMethod.GET)
 	public String userinfoList(ModelMap model,HttpServletRequest request) {
 		return "view/admin/user/userinfolist";
@@ -32,9 +50,9 @@ public class UserInfoController {
 
 	@RequestMapping(value = "/adduser.html", method = RequestMethod.GET)
 	public String adduserinfo(ModelMap model,HttpServletRequest request) {
-	
+		List<SysRole> roles=rolesService.findWhereList("", " role_sort asc");
 		
-        model.put("roles", null);
+        model.put("roles", roles);
 		model.put("user", new UserInfo());
 		return "view/admin/user/userinfoform";
 	}
@@ -43,8 +61,8 @@ public class UserInfoController {
 	public String edituserinfo(Integer userId, ModelMap model,HttpServletRequest request) {
 		UserInfo user = userinfosService.selectByPrimaryKey(userId);
 		user = user != null ? user : new UserInfo();
-		
-        model.put("roles", null);
+		List<SysRole> roles=rolesService.findWhereList("", " role_sort asc");
+        model.put("roles", roles);
 		model.put("user", user);	
 		return "view/admin/user/userinfoform";
 	}
@@ -140,6 +158,7 @@ public class UserInfoController {
 	 * 修改密码
 	 */
 	@ResponseBody
+	@LogDesc(desc="修改用户密码")
 	@RequestMapping(value = "/modifypwd.do", method = RequestMethod.POST)
 	public Boolean modifyPwd(String oldPwd, String newPwd, HttpServletRequest request) {
 		String userName=request.getSession().getAttribute("userName").toString();
@@ -147,7 +166,7 @@ public class UserInfoController {
 		if (user != null) {
 			if (user.getUserPwd().equals(PasswordEncoder.MD5(oldPwd))) {
 				user.setUserPwd(PasswordEncoder.MD5(newPwd));
-				userinfosService.updateByPrimaryKeySelective(user);
+				userinfosService.updateSelective(user);
 				return true;
 			} else {
 				return false;
@@ -161,11 +180,12 @@ public class UserInfoController {
 	 * 重置密码
 	 */
 	@ResponseBody
+	@LogDesc(desc="重置密码")
 	@RequestMapping(value = "/passwordreset.do", method = RequestMethod.POST)
 	public Boolean passwordreset(Integer userid){
 		UserInfo user = userinfosService.selectByPrimaryKey(userid);
 		user.setUserPwd(PasswordEncoder.MD5("111111"));
-		userinfosService.updateByPrimaryKeySelective(user);
+		userinfosService.updateSelective(user);
 		return true;
 	}
 
@@ -173,11 +193,12 @@ public class UserInfoController {
 	 * 删除
 	 */
 	@ResponseBody
+	@LogDesc(desc="删除用户")
 	@RequestMapping(value = "/deluser.do", method = RequestMethod.POST)
 	public Boolean deluser(Integer userId){
 		UserInfo field=userinfosService.selectByPrimaryKey(userId);
 		field.setDeleteFlag(1);
-		userinfosService.updateByPrimaryKeySelective(field);
+		userinfosService.updateSelective(field);
 		return true;		
 	}
 	
@@ -194,5 +215,8 @@ public class UserInfoController {
 	
 	@Autowired
 	private IUserInfoService userinfosService;
+	@Autowired
+	private ISysRolesService rolesService;
+	
 	
 }

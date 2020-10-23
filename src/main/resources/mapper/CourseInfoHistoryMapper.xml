@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiaoda.edu.mapper.CourseInfoHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.CourseInfoHistory" >
+    <id column="course_release_num" property="courseReleaseNum" jdbcType="VARCHAR" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
+    <result column="course_type" property="courseType" jdbcType="INTEGER" />
+    <result column="courseware_type" property="coursewareType" jdbcType="INTEGER" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="source_new" property="sourceNew" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="fujian_new" property="fujianNew" jdbcType="VARCHAR" />
+    <result column="fujian" property="fujian" jdbcType="VARCHAR" />
+    <result column="lecturer_id" property="lecturerId" jdbcType="INTEGER" />
+    <result column="lecturer" property="lecturer" jdbcType="VARCHAR" />
+    <result column="publish_state" property="publishState" jdbcType="INTEGER" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="verifier" property="verifier" jdbcType="INTEGER" />
+    <result column="verify_memo" property="verifyMemo" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="VARCHAR" />
+    <result column="video_time" property="videoTime" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.jiaoda.edu.domain.CourseInfoHistory" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    course_release_num, course_id, course_name, course_type, courseware_type, summary, 
+    pic, source_new, source, fujian_new, fujian, lecturer_id, lecturer, publish_state, 
+    publish_time, verifier, verify_memo, sort, create_time, delete_flag, video_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from course_info_history
+    where course_release_num = #{courseReleaseNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from course_info_history
+    where course_release_num = #{courseReleaseNum,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.CourseInfoHistory" >
+    insert into course_info_history (course_release_num, course_id, course_name, 
+      course_type, courseware_type, summary, 
+      pic, source_new, source, 
+      fujian_new, fujian, lecturer_id, 
+      lecturer, publish_state, publish_time, 
+      verifier, verify_memo, sort, 
+      create_time, delete_flag, video_time, 
+      content)
+    values (#{courseReleaseNum,jdbcType=VARCHAR}, #{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, 
+      #{courseType,jdbcType=INTEGER}, #{coursewareType,jdbcType=INTEGER}, #{summary,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{sourceNew,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{fujianNew,jdbcType=VARCHAR}, #{fujian,jdbcType=VARCHAR}, #{lecturerId,jdbcType=INTEGER}, 
+      #{lecturer,jdbcType=VARCHAR}, #{publishState,jdbcType=INTEGER}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{verifier,jdbcType=INTEGER}, #{verifyMemo,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=VARCHAR}, #{videoTime,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.CourseInfoHistory" >
+    insert into course_info_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseReleaseNum != null" >
+        course_release_num,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="courseType != null" >
+        course_type,
+      </if>
+      <if test="coursewareType != null" >
+        courseware_type,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="sourceNew != null" >
+        source_new,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="fujianNew != null" >
+        fujian_new,
+      </if>
+      <if test="fujian != null" >
+        fujian,
+      </if>
+      <if test="lecturerId != null" >
+        lecturer_id,
+      </if>
+      <if test="lecturer != null" >
+        lecturer,
+      </if>
+      <if test="publishState != null" >
+        publish_state,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="verifier != null" >
+        verifier,
+      </if>
+      <if test="verifyMemo != null" >
+        verify_memo,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="videoTime != null" >
+        video_time,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseReleaseNum != null" >
+        #{courseReleaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseType != null" >
+        #{courseType,jdbcType=INTEGER},
+      </if>
+      <if test="coursewareType != null" >
+        #{coursewareType,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNew != null" >
+        #{sourceNew,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="fujianNew != null" >
+        #{fujianNew,jdbcType=VARCHAR},
+      </if>
+      <if test="fujian != null" >
+        #{fujian,jdbcType=VARCHAR},
+      </if>
+      <if test="lecturerId != null" >
+        #{lecturerId,jdbcType=INTEGER},
+      </if>
+      <if test="lecturer != null" >
+        #{lecturer,jdbcType=VARCHAR},
+      </if>
+      <if test="publishState != null" >
+        #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifier != null" >
+        #{verifier,jdbcType=INTEGER},
+      </if>
+      <if test="verifyMemo != null" >
+        #{verifyMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTime != null" >
+        #{videoTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <insert id="insertSelectivec" parameterType="com.jiaoda.edu.domain.CourseInfo" >
+    insert into course_info_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseReleaseNum != null" >
+        course_release_num,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="courseName != null" >
+        course_name,
+      </if>
+      <if test="courseType != null" >
+        course_type,
+      </if>
+      <if test="coursewareType != null" >
+        courseware_type,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="sourceNew != null" >
+        source_new,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="fujianNew != null" >
+        fujian_new,
+      </if>
+      <if test="fujian != null" >
+        fujian,
+      </if>
+      <if test="lecturerId != null" >
+        lecturer_id,
+      </if>
+      <if test="lecturer != null" >
+        lecturer,
+      </if>
+      <if test="publishState != null" >
+        publish_state,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="verifier != null" >
+        verifier,
+      </if>
+      <if test="verifyMemo != null" >
+        verify_memo,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="videoTime != null" >
+        video_time,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseReleaseNum != null" >
+        #{courseReleaseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseType != null" >
+        #{courseType,jdbcType=INTEGER},
+      </if>
+      <if test="coursewareType != null" >
+        #{coursewareType,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNew != null" >
+        #{sourceNew,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="fujianNew != null" >
+        #{fujianNew,jdbcType=VARCHAR},
+      </if>
+      <if test="fujian != null" >
+        #{fujian,jdbcType=VARCHAR},
+      </if>
+      <if test="lecturerId != null" >
+        #{lecturerId,jdbcType=INTEGER},
+      </if>
+      <if test="lecturer != null" >
+        #{lecturer,jdbcType=VARCHAR},
+      </if>
+      <if test="publishState != null" >
+        #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifier != null" >
+        #{verifier,jdbcType=INTEGER},
+      </if>
+      <if test="verifyMemo != null" >
+        #{verifyMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTime != null" >
+        #{videoTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.CourseInfoHistory" >
+    update course_info_history
+    <set >
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseType != null" >
+        course_type = #{courseType,jdbcType=INTEGER},
+      </if>
+      <if test="coursewareType != null" >
+        courseware_type = #{coursewareType,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNew != null" >
+        source_new = #{sourceNew,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="fujianNew != null" >
+        fujian_new = #{fujianNew,jdbcType=VARCHAR},
+      </if>
+      <if test="fujian != null" >
+        fujian = #{fujian,jdbcType=VARCHAR},
+      </if>
+      <if test="lecturerId != null" >
+        lecturer_id = #{lecturerId,jdbcType=INTEGER},
+      </if>
+      <if test="lecturer != null" >
+        lecturer = #{lecturer,jdbcType=VARCHAR},
+      </if>
+      <if test="publishState != null" >
+        publish_state = #{publishState,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="verifier != null" >
+        verifier = #{verifier,jdbcType=INTEGER},
+      </if>
+      <if test="verifyMemo != null" >
+        verify_memo = #{verifyMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="videoTime != null" >
+        video_time = #{videoTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where course_release_num = #{courseReleaseNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jiaoda.edu.domain.CourseInfoHistory" >
+    update course_info_history
+    set course_id = #{courseId,jdbcType=INTEGER},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      course_type = #{courseType,jdbcType=INTEGER},
+      courseware_type = #{coursewareType,jdbcType=INTEGER},
+      summary = #{summary,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      source_new = #{sourceNew,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      fujian_new = #{fujianNew,jdbcType=VARCHAR},
+      fujian = #{fujian,jdbcType=VARCHAR},
+      lecturer_id = #{lecturerId,jdbcType=INTEGER},
+      lecturer = #{lecturer,jdbcType=VARCHAR},
+      publish_state = #{publishState,jdbcType=INTEGER},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      verifier = #{verifier,jdbcType=INTEGER},
+      verify_memo = #{verifyMemo,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      video_time = #{videoTime,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where course_release_num = #{courseReleaseNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.CourseInfoHistory" >
+    update course_info_history
+    set course_id = #{courseId,jdbcType=INTEGER},
+      course_name = #{courseName,jdbcType=VARCHAR},
+      course_type = #{courseType,jdbcType=INTEGER},
+      courseware_type = #{coursewareType,jdbcType=INTEGER},
+      summary = #{summary,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      source_new = #{sourceNew,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      fujian_new = #{fujianNew,jdbcType=VARCHAR},
+      fujian = #{fujian,jdbcType=VARCHAR},
+      lecturer_id = #{lecturerId,jdbcType=INTEGER},
+      lecturer = #{lecturer,jdbcType=VARCHAR},
+      publish_state = #{publishState,jdbcType=INTEGER},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      verifier = #{verifier,jdbcType=INTEGER},
+      verify_memo = #{verifyMemo,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      video_time = #{videoTime,jdbcType=INTEGER}
+    where course_release_num = #{courseReleaseNum,jdbcType=VARCHAR}
+  </update>
+   
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from course_info_history
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course_info_history
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select  * from course_info_history  
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>
+  </select>
+</mapper>

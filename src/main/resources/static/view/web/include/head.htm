@@ -1,17 +1,34 @@
 
-			<div id="comm_layout_header" class="layout  none scrollToTop_pc scrollToTop_pad scrollToTop_mobile" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" old_top_pc="0" old_left_pc="0"  style="position: fixed; z-index: 9999999; top: 0px; width: 100%; left: 0px;">
-				<div class="view_contents">
-								<div id="image_logo_1575606105555" class="view logo image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="image" class="view_contents">
-					<div class="logoStyle modSet">
-<a href="index.html" target="_self"><img class="imgSet" src="${base}/assets/web/images/logo.png" title="" alt="" style="width:100%; height:100%; margin-left:0px"></a>
-</div>				</div>
-			</div>
-					<div id="dh_style_28_1578629663716" class="view style_28 dh  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+			<div id="comm_layout_header" class="layout  none scrollToTop_pc scrollToTop_pad scrollToTop_mobile" >
+			
+			
+			<div >
+			<div id="image_logo_1575606105555" class=" logo image  none" >
+						<div names="image" class="view_contents">
+							<div class="logoStyle modSet">
+								<a href="index.html" target="_self"><img class="imgSet" src="${base}/assets/web/images/logo.png" title="" alt="" style=" height:100%; margin-left:0px"></a>
+					       <div class="logintext"><#if userName?? &&userName!=""><div class="dropdown">
+								<div  class=" dropdown-toggle" id="dropdownMenu1" 
+										data-toggle="dropdown">
+									您好，${userName!}
+									<span class="caret"></span>
+								</div>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+									<li role="presentation">
+										<a role="menuitem" tabindex="-1" href="logout.do">注销</a>
+									</li>
+									
+								</ul>
+							</div><#else><a href="web/login.html?url=${pagepath!}">登录</a></#if></div>
+					        </div>
+					       
+						</div>
+					</div>
+				<div id="dh_style_28_1578629663716" class=" style_28 dh  none lockHeightView" >
 				<div names="dh" class="view_contents">
 <div id="menu" class="menu menuStyle_28">
 	<div class="menuLayout">
-		<ul class="miniMenu columnSet showmobile">
+	<!-- 	<ul class="miniMenu columnSet showmobile">
 			<li class="leftBox">
 				<div class="nav"></div>
 				<div class="sidebar icoMenuSet"><i class="fa fa-bars" onclick="setDhListen(&#39;style_01&#39;,this)"></i></div>
@@ -20,16 +37,16 @@
 								<li id="<#if pagepath=='/index.html'>hot</#if>" class="rflex" pageid="2801213" showmobile=""><a class="mainMenuSet" href="index.html">
 								首页</a>
 								</li>
-								<li id="<#if pagepath=='/trainingcourse.html' || pagepath=='/coursedetail.html' >hot</#if>" class="rflex" pageid="2801217" showmobile=""><a class="mainMenuSet" href="trainingcourse.html">
+								<li id="<#if pagepath?contains('course') >hot</#if>" class="rflex" pageid="2801217" showmobile=""><a class="mainMenuSet" href="trainingcourse.html">
 								课程</a>
 								</li>
-								<li  id="<#if pagepath=='/teacher.html'>hot</#if>" class="rflex" pageid="2801223" showmobile=""><a class="mainMenuSet" href="teacher.html">
+								<li  id="<#if pagepath?contains('teacher') >hot</#if>" class="rflex" pageid="2801223" showmobile=""><a class="mainMenuSet" href="teacher.html">
 								教师</a>
 								</li>
 								<li  id="<#if pagepath=='/certificate.html'>hot</#if>" class="rflex" pageid="2801225" showmobile=""><a class="mainMenuSet" href="certificate.html">
 								证书</a>
 								</li>
-								<li   id="<#if pagepath=='/news.html' || pagepath=='/newsdetail.html'>hot</#if>" class="rflex" pageid="2801219" showmobile=""><a class="mainMenuSet" href="news.html">
+								<li   id="<#if pagepath?contains('news')>hot</#if>" class="rflex" pageid="2801219" showmobile=""><a class="mainMenuSet" href="news.html">
 								新闻</a>
 								</li>
 								<li  id="<#if pagepath=='/contact.html'>hot</#if>"  class="rflex" pageid="2801221" showmobile=""><a class="mainMenuSet" href="contact.html">
@@ -38,20 +55,20 @@
 					</ul>
 				</div>
 			</li>
-		</ul>
-		<div class="menuUl_box columnSet dhAreaSet showpc">
+		</ul> -->
+		<div class="menuUl_box columnSet dhAreaSet ">
 			<ul class="menuUl dflex maxWidth ">
 						<li id="<#if pagepath =='/index.html'>hot</#if>" class="rflex isLi" pageid="2801213" showpc="">
 							<a class="mainMenuSet Nosub" href="index.html">
 								首页
 							</a>
 						</li>
-						<li id="<#if pagepath =='/trainingcourse.html'  || pagepath=='/coursedetail.html'>hot</#if>" class="rflex isLi" pageid="2801217" showpc="">
+						<li id="<#if pagepath?contains('course')>hot</#if>" class="rflex isLi" pageid="2801217" showpc="">
 							<a class="mainMenuSet Nosub" href="trainingcourse.html">
 								课程
 							</a>
 						</li>
-						<li  id="<#if pagepath =='/teacher.html'>hot</#if>" class="rflex isLi" pageid="2801223" showpc="">
+						<li  id="<#if pagepath?contains('teacher') >hot</#if>" class="rflex isLi" pageid="2801223" showpc="">
 							<a class="mainMenuSet Nosub" href="teacher.html">
 								教师
 							</a>
@@ -61,7 +78,7 @@
 								证书
 							</a>
 						</li>
-						<li  id="<#if pagepath =='/news.html'  || pagepath=='/newsdetail.html'>hot</#if>"  class="rflex isLi" pageid="2801219" showpc="">
+						<li  id="<#if pagepath?contains('news')>hot</#if>"  class="rflex isLi" pageid="2801219" showpc="">
 							<a class="mainMenuSet Nosub" href="news.html">
 								新闻
 							</a>
@@ -73,35 +90,22 @@
 							</a>
 						</li>
 			</ul>
-			<div class="subBox" style="top: 44px; height: 607.6px;">
+			<!-- <div class="subBox" style="top: 44px; height: 607.6px;">
 				<div class="subBoxContent maxWidth">
 				</div>
-			</div>
+			</div> -->
 		</div>
 		
 	</div>
 </div>
 
-	<div id="idBox" style="z-index: 2147483647; max-width: 500px; margin-left: -250px; margin-top: -147.5px;    display: none;">	
-		<div id="boxMain">		
-			<div id="boxTopTitle">			
-				<span id="boxName">用户登录</span>			
-				<span id="boxClose" title="关闭" onclick="close();">×</span>		
-			</div>		
-			<div id="boxContent">			
-				<iframe id="showiframe" src="login.html" frameborder="0" style="width:100%;" name="bookConfirm" style="height:260px"></iframe>		
-			</div>	</div></div>
 
 <!-- 导航栏目有下级时禁止跳转 -->
 <!-- 二级菜单宽度自适应 -->
 <script>
 
 function showlogin(){
-	$("#showiframe").attr("src","view/web/login.html");
-	$("#idBox").attr("style","    width: 30%; left: 35%;top:30%");
 	
-	$("#showiframe").height("260");
-    $("#idBox").show();
 }
 function close(){
   $("#idBox").hide();
@@ -151,23 +155,33 @@ $(function(){
 })
 </script>
 <style type="text/css">
+.logintext a {
+    color: #333;
+}
 .logintext{
-	z-index: 9999; position: absolute;top:38px;  right: 50px;
+
 }
 /*----------------------平板板式样式----------------------*/
 @media screen and (min-width:641px) and (max-width:1200px) {
 	.logintext{
-		    top: 10px;
+		    top: 35px;
+		     right: 0;
 	}
 }
 /*----------------------手机板式样式----------------------*/
-@media screen and (max-width:640px) {
-	.logintext{
-		top: 14px;  right: 50px;
+ 	.logintext{
+		top: 15px;
+        right: 0px;
 	}
 }
 </style>
+
+<link href="${base}/assets/admin/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<script	src="${base}/assets/admin/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 				</div>
 			</div>
-						</div><div class="logintext"><#if userName?? &&userName!="">您好，${userName!}<#else><a href="javascript:showlogin()">登录</a></#if></div>
+						</div>
+						
+						
 			</div>
+		

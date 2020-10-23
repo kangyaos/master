@@ -40,7 +40,7 @@ public class OperateArticleController extends BaseController {
 	 煤炭资讯*/
 	@RequestMapping(value = "/articlelist.html", method = RequestMethod.GET)
 	public String mineMouthList(ModelMap model) {
- 		model.put("mlist", categoryService.findPagerList(0, -1, "use_status=0 and delete_flag=0 and (category_id!=1 and category_id!=2)", "sort asc"));
+ 		model.put("mlist", categoryService.findPagerList(0, -1, " delete_flag=0 ", "sort asc"));
 		return "view/admin/operate/articlelist";
 	}
 	
@@ -50,12 +50,12 @@ public class OperateArticleController extends BaseController {
 			Integer length, HttpServletRequest request) {
 		DataTablesParam param = DataTablesParamUtility.getParam(request);
 		String where = param.getDefaultFilter();
-		String order="publish_time desc";
+		String order="a.publish_time desc";
 		if("".equals(where)){
-			where = "delete_flag=0";
+			where = "a.delete_flag=0";
 		}else if(!"".equals(where)){
-			where = "(" +where+") and delete_flag=0";
-			order ="sort desc,publish_time desc";
+			where = "(" +where+") and a.delete_flag=0";
+			order ="a.sort desc,a.publish_time desc";
 		}
 		PageData<OperateArticle> pageData = new PageData<OperateArticle>();
 		Integer count = articleService.getCount(where);
@@ -167,7 +167,7 @@ public class OperateArticleController extends BaseController {
 			entity.setSort(num);
 			articleService.updateByPrimaryKeySelective(entity);
 		}else{
-			if(entity.getIsSpecial()==1 && entity.getSort()==null){
+			if(entity.getIndexShow()==1 && entity.getSort()==null){
 				article = articleService.findWhere(" category_id="+entity.getCategoryId()+" and is_special=1","sort desc");
 				int num =0;
 				if(article !=null){
@@ -177,14 +177,14 @@ public class OperateArticleController extends BaseController {
 				}
 				entity.setSort(num);
 				articleService.updateByPrimaryKeySelective(entity);
-			}else if(entity.getIsSpecial()==1 && entity.getSort()!=null){
+			}else if(entity.getIndexShow()==1 && entity.getSort()!=null){
 				List<OperateArticle> list =  articleService.findWhereList(" category_id="+entity.getCategoryId()+" and is_special=1","sort asc");
 				for (int i = 0; i < list.size(); i++) {
 					article = articleService.findWhere("category_id="+ list.get(i).getArticleId(),"");
 					article.setSort(i);
 					articleService.updateByPrimaryKeySelective(article);
 				}
-			}else if(entity.getIsSpecial()==0 && entity.getSort()!=null){
+			}else if(entity.getIndexShow()==0 && entity.getSort()!=null){
 				entity.setSort(null);
 				articleService.updateByPrimaryKeySelective(entity);
 				List<OperateArticle> list =  articleService.findWhereList(" category_id="+entity.getCategoryId()+" and is_special=1","sort asc");
@@ -267,11 +267,11 @@ public class OperateArticleController extends BaseController {
 				OperateArticle article = articleService.findWhere(" category_id="+a.getCategoryId(), "sort desc");				
 				int num =article.getSort()==null?0:article.getSort()+1;
 				a.setSort(num);
-				a.setIsSpecial(value);
+				a.setIndexShow(value);
 				articleService.updateByPrimaryKeySelective(a);
 			}else if(value==0){
 				a.setSort(null);
-				a.setIsSpecial(value);
+				a.setIndexShow(value);
 				articleService.updateByPrimaryKeySelective(a);
 				List<OperateArticle> list =  articleService.findWhereList(" category_id="+a.getCategoryId()+" and is_special=1","sort asc");
 				for (int i = 0; i < list.size(); i++) {

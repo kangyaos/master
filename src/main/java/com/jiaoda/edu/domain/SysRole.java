@@ -3,7 +3,7 @@ package com.jiaoda.edu.domain;
 import java.util.Date;
 
 public class SysRole {
-    private Long roleId;
+    private Integer roleId;
 
     private String roleName;
 
@@ -27,11 +27,11 @@ public class SysRole {
 
     private String remark;
 
-    public Long getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 

@@ -47,8 +47,7 @@
 									class="form-horizontal form-row-sepe">
 									<div class="form-body">
 										<div style="display: none">
-											<input type="hidden" name="appId" value="${appId!}" />
-											<input type="hidden" name="roleId" value="${roleId!}" />
+											<input type="hidden" name="roleId" value="${rolesId!}" />
 											<input type="hidden" name="modules" id="modules">
 										</div>
 										<div class="form-body">
@@ -98,7 +97,6 @@
 		$(document).ready(function() {
 			Metronic.init(); // init metronic core componets
 			Layout.init(); // init layout
-			
 			//init tree
 			$('#tree_2').jstree({
 	            'plugins': ["checkbox", "types"],
@@ -107,8 +105,7 @@
 						'url' : 'rolemodules.json',
 						'data' : function(node) {
 							return {
-								'roleId':${roleId!},
-								'appId':${appId!}
+								'roleId':"${rolesId!}",
 							};
 						}
 					}

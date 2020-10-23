@@ -2,12 +2,12 @@ spring:
   http:
     multipart:
       enabled: true
-      max-file-size: 100MB
-      max-request-size: 100MB
+      max-file-size: 1000MB
+      max-request-size: 1000MB
   datasource:
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:mysql://172.16.99.199:3306/test?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false
     username: root
-    password: root
+    password: 123.com
     driver-class-name: com.mysql.jdbc.Driver
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
@@ -71,10 +71,20 @@ spring:
     prefix:
     suffix: .html
     request-context-attribute: request
-
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+  aop:
+    auto: true
+    proxy-target-class: false
 mybatis:
-  type-aliases-package: com.sxhalo.mon.domain
+  type-aliases-package: com.jiaoda.edu.domain
   mapper-locations: classpath:mapper/*.xml
+
+
+
 
 #logging:
 #  level:

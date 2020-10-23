@@ -3,6 +3,8 @@ package com.jiaoda.edu.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DataTablesParam {
 	private Integer draw;
@@ -90,12 +92,12 @@ public class DataTablesParam {
 					if(col.getSearchValue().contains("between")) {
 						String value = col.getSearchValue().replace("between", "");
 						value = value.split("and")[0].trim() + "' and '" + value.split("and")[1].trim();
-						filterColumn += " and " + col.getData() + " between '" + value + "'";
+						filterColumn += " and " + humpToLine2(col.getData()) + " between '" + value + "'";
 					}else {
-						filterColumn += " and " + col.getData() + " = '" + col.getSearchValue() + "'";
+						filterColumn += " and " + humpToLine2(col.getData()) + " = '" + col.getSearchValue() + "'";
 					}
 				}else{
-					filterColumn += " and " + col.getData() + " like '%" + col.getSearchValue() + "%'";
+					filterColumn += " and " + humpToLine2(col.getData()) + " like '%" + col.getSearchValue() + "%'";
 				}
 			}
 		}
@@ -111,10 +113,10 @@ public class DataTablesParam {
 						||colName.toLowerCase().contains("date")
 						||colName.toLowerCase().contains("birthday")){
 						if(isValidDate(searchValue)){
-							filterGlobal += " or " + col.getData() + " like '%" + searchValue + "%'";
+							filterGlobal += " or " + humpToLine2(col.getData()) + " like '%" + searchValue + "%'";
 						}
 					}else{
-						filterGlobal += " or " + col.getData() + " like '%" + searchValue + "%'";
+						filterGlobal += " or " + humpToLine2(col.getData()) + " like '%" + searchValue + "%'";
 					}
 				}
 			}
@@ -129,7 +131,17 @@ public class DataTablesParam {
 		}
 		return filter;
 	}
-	
+	private static Pattern humpPattern = Pattern.compile("[A-Z]");
+	/** 驼峰转下划线 */
+	public static String humpToLine2(String str) {
+		Matcher matcher = humpPattern.matcher(str);
+		StringBuffer sb = new StringBuffer();
+		while (matcher.find()) {
+			matcher.appendReplacement(sb, "_" + matcher.group(0).toLowerCase());
+		}
+		matcher.appendTail(sb);
+		return sb.toString();
+	}
 	private boolean isValidDate(String str) {
 		boolean convertSuccess=true;
 		// 指定日期格式为四位年/两位月份/两位日期，注意yyyy/MM/dd区分大小写；

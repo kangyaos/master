@@ -98,13 +98,9 @@
 											</label>
 											<div class="col-md-7">
 												<select class="form-control" name="roleId" id="role" >
-													<#if 1== user.roleId!0>
-														<option value="1" selected="selected">系统管理员</option>
-														<option value="2" >普通管理员</option>
-													<#else>
-														<option value="1">系统管理员</option>
-														<option value="2"  selected="selected" >普通管理员</option>
-													</#if> 
+												<#list roles as item>
+												 <option value="${item.roleId}" selected="<#if (user.roleId!0)== item.roleId>selected</#if>">${item.roleName}</option>
+												</#list>
 													
 												</select>												
 											</div>
@@ -130,6 +126,41 @@
 												</div>
 											</div>
 										</div>
+											<div class="form-group">
+											<label class="control-label col-md-3">上传头像</label>
+											<div class="col-md-4">
+												<div class="fileinput fileinput-new"
+													data-provides="fileinput">
+													<div class="fileinput-preview thumbnail" id="pics1"
+														data-trigger="fileinput"
+														style="width: 200px; height: 200px;">
+														<#if user.headPicCode??> <img alt="" src="${base!}/upload/user/${user.headPicCode!}">
+														</#if>														
+													</div>
+													<div>
+														<span class="btn default btn-file"> <span
+															class="fileinput-new"> 选择图片</span> <span
+															class="fileinput-exists"> 选择图片 </span> <input
+															type="file" name="file" id="file"
+															onchange="ajaxFileUpload(1);">
+														</span>
+													</div>
+												</div>
+										
+												<input type="hidden" class="form-control"
+													name="headPicCode" id="headPicCode" value="${user.headPicCode!}" />
+											</div>
+										</div>	
+										   <div class="form-group">
+                                                <label class="control-label col-sm-3">简介 
+                                                </label>
+                                                <div class="col-md-7">
+                                                    <div class="input-icon right">
+                                                        <i class="fa"></i>
+                                                        <textarea class="form-control" rows="3" name="remark" id="remark">${user.remark!}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>  		
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-offset-3 col-md-9">
@@ -240,7 +271,6 @@
 						required : true
 					},
 					userMobile:{
-						required : true,
 						isMobile : true,
 					}
 					
@@ -273,6 +303,42 @@
 			});
 
 		};
+		function ajaxFileUpload() {			
+			var file = jQuery("input[id='file']").val();
+			var filename = file.replace(/.*(\/|\\)/, "");
+			var fileExt = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename
+					.toLowerCase()) : '';			
+			if (fileExt == "jpg" || fileExt == "png"|| fileExt == "jpeg") {
+				$.ajaxFileUpload({
+					url : "imageUpload.do",
+					secureuri : false,
+					fileElementId:"file",
+					data: {"fieldName":"user"},//需要传输的数据  
+					dataType : "json",
+					success : function(data) {
+					console.log(data);
+						console.log(data.responseXML)
+						if (data) {
+						    $("#headPicCode").val(data.newname);
+						    $("#pics1").html("<img src="+data.url+"/>");
+						}
+					},
+					error : function(data) {
+					console.log(data.responseXML)
+					  var  data1={'newname':data.responseXML.all[1].textContent,'name':data.responseXML.all[2].textContent,url:data.responseXML.all[3].textContent};
+					  if(data1.name!=null&&data1.url!=null){
+					    $("#headPicCode").val(data1.newname);
+						$("#pics1").html("<img src="+data1.url+"/>");
+					  }
+					}
+				});
+			} else {
+				alert("图片格式不正确，请重新选择！(暂时支持jpg格式)");
+				var div1 = document.getElementById('pics');
+				div1.style.color = "white";
+			}
+			
+		}
 		
 		var editValidation = function() {
 
@@ -308,7 +374,6 @@
 						required : true
 					},
 					userMobile:{
-						required : true,
 						isMobile : true,
 					},
 					
@@ -341,30 +406,7 @@
 
 		};
 		
-		function ajaxFileUpload() {			
-			var file = $("#file").val();
-			var filename = file.replace(/.*(\/|\\)/, "");
-			var fileExt = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename.toLowerCase()) : '';
-			if (fileExt == "jpg" || fileExt == "png" || fileExt == "gif") {
-				$.ajaxFileUpload({
-					url : "imageUpload.do",
-					secureuri : false,
-					fileElementId : "file",
-					dataType : "json",
-					success : function(data) {					   			   
-						if (data) {
-							$("#identitycardFront").val(data.picId);
-							$("#piclib").attr("src",data.picPath);
-						}
-					},
-					error : function(data) {
-						console.log(data);
-					}
-				});
-			} else {
-				alert("图片格式不正确，请重新选择！");
-			}
-		}
+		
 	</script>
 	<!-- END JAVASCRIPTS -->
 </body>

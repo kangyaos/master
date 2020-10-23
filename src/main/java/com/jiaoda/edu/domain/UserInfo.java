@@ -6,9 +6,19 @@ public class UserInfo {
     private Integer userId;
 
     private Integer roleId;
-
-    private String userName;
     
+    private String roleName;
+
+    public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	private String userName;
+
     private String realName;
 
     private String signature;
@@ -23,30 +33,23 @@ public class UserInfo {
 
     private String machineCode;
 
-    private Integer regionCode;
-    private Date createTime;
+    private String remark;
 
     private Date updateTime;
+
+    private Date createTime;
+
     private Integer deleteFlag;
+    private Integer indexShow;
     
-
-    public Date getCreateTime() {
-		return createTime;
+    public Integer getIndexShow() {
+		return indexShow;
 	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
+	public void setIndexShow(Integer indexShow) {
+		this.indexShow = indexShow;
 	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public Integer getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
@@ -70,7 +73,13 @@ public class UserInfo {
         this.userName = userName == null ? null : userName.trim();
     }
 
- 
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
+    }
 
     public String getSignature() {
         return signature;
@@ -116,33 +125,41 @@ public class UserInfo {
         return machineCode;
     }
 
-    public Integer getDeleteFlag() {
-		return deleteFlag;
-	}
-
-	public void setDeleteFlag(Integer deleteFlag) {
-		this.deleteFlag = deleteFlag;
-	}
-
-	public void setMachineCode(String machineCode) {
+    public void setMachineCode(String machineCode) {
         this.machineCode = machineCode == null ? null : machineCode.trim();
     }
 
-    public Integer getRegionCode() {
-        return regionCode;
-    }
+  
 
-    public void setRegionCode(Integer regionCode) {
-        this.regionCode = regionCode;
-    }
-
-	public String getRealName() {
-		return realName;
+    public String getRemark() {
+		return remark;
 	}
 
-	public void setRealName(String realName) {
-		this.realName = realName;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
-    
-    
+
+	public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
+    }
 }

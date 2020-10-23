@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<#include "/view/include/globalstyle.html" />
+<link rel="stylesheet" href="${base}/assets/admin/plugins/bootstrap-fileinput/bootstrap-fileinput.css" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body
+	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+	<!-- BEGIN HEADER -->
+	<#include "/view/include/header.html" />
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar-wrapper"><#include
+			"/view/include/sidebar.html" /></div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					课程中心<small></small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+							<li><i class="fa fa-home"></i> <a href="index.html">首页</a>
+							<i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">课程中心<i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">课程管理</a></li>
+					</ul>
+					<div class="page-toolbar"></div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN DASHBOARD STATS -->
+				<div class="row">
+					<div class="col-md-12">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box grey-gallery"  id="form_wizard_1">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-edit"></i>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form action="savecourse.do" method="post" id="roleform"
+									class="form-horizontal">
+									<div style="display: none">
+										<input type="hidden" name="courseId" id="courseId"
+											value="${course.courseId!}" />
+									</div>
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label col-md-3">课程分类<span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<select class="form-control" name="courseType" id="courseType">
+													
+													<#if  course.courseType??&&course.courseType==0>
+													    <option value="0" selected="selected">扶智</option>
+														<option value="1">微课</option>
+													<#else>
+												 		<option value="0" >扶智</option>
+														<option value="1" selected="selected">微课</option>
+													</#if> 
+													
+												</select>												
+											</div>
+										</div>	
+										<div class="form-group">
+											<label class="control-label col-md-3">标题 <span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="text" class="form-control"
+														name="courseName" id="courseName" value="${course.courseName!}" />
+												</div>
+											</div>
+										 </div>	
+                                        <div class="form-group">
+                                                <label class="control-label col-sm-3">简介 
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <div class="input-icon right">
+                                                        <i class="fa"></i>
+                                                        <textarea class="form-control" rows="3" name="summary" id="summary">${course.summary!}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>  								
+										<div class="form-group">
+											<label class="control-label col-md-3">缩略图</label>
+											<div class="col-md-4">
+												<div class="fileinput fileinput-new"
+													data-provides="fileinput">
+													<div class="fileinput-preview thumbnail" id="pics1"
+														data-trigger="fileinput"
+														style="width: 200px; height: 200px;">
+														<#if course.pic??> <img alt="" src="${course.pic!}">
+														</#if>														
+													</div>
+													<div>
+														<span class="btn default btn-file"> <span
+															class="fileinput-new"> 选择图片</span> <span
+															class="fileinput-exists"> 选择图片 </span> <input
+															type="file" name="file" id="file1"
+															onchange="ajaxFileUpload(1);">
+														</span>
+													</div>
+												</div>
+											
+												<input type="hidden" class="form-control"
+													name="pic" id="pic1" value="${course.pic!}" />
+											</div>
+										</div>	
+										
+										<div class="form-group">
+											<label class="control-label col-md-3">上传课件</label>
+											<div class="col-md-4">
+												<div class="fileinput fileinput-new"
+													data-provides="fileinput" >
+														<div  id="sourcename2"
+														data-trigger="fileinput"
+													>
+															${course.source!}
+																				
+													</div>
+														
+													<div>
+														<span class="btn default btn-file"> <span
+															class="fileinput-new"> 选择课件</span> <span
+															class="fileinput-exists"> 选择课件 </span> <input
+															type="file" name="file" id="file2"
+															multiple="multiple"
+															onchange="ajaxFileUpload(2);">
+														</span>
+													</div>
+												</div>
+											
+												<input type="hidden" class="form-control"
+													name="source" id="pic2" value="${course.source!}" />
+												 <input type="hidden" class="form-control"
+													name="sourceNew" id="pic12" value="${course.sourceNew!}" />
+											</div>
+										</div>	
+											<div class="form-group">
+											<label class="control-label col-md-3">上传附件</label>
+											<div class="col-md-4">
+												<div class="fileinput fileinput-new"
+													data-provides="fileinput" >
+														<div  id="sourcename3"
+														data-trigger="fileinput"
+													>
+															${course.fujian!}
+																				
+													</div>
+														
+													<div>
+													<span class="btn default btn-file"> <span
+														class="fileinput-new"> 选择附件</span> <span
+														class="fileinput-exists"> 选择附件</span> <input
+														type="file" name="file" id="file3"
+														multiple="multiple"
+														onchange="ajaxFileUpload(3);">
+													</span>
+													</div>
+												</div>
+											
+												<input type="hidden" class="form-control"
+													name="fujian" id="pic3" value="${course.fujian!}" />
+											 <input type="hidden" class="form-control"
+													name="fujianNew" id="pic13" value="${course.fujianNew!}" />
+											</div>
+										</div>	
+									
+									<div class="form-group">
+											<label class="control-label col-md-3">讲师<span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-7">
+												<select class="form-control" name="lecturerId" id="author" onchange="changejiangshi()" >
+												 <option value=""   selected="<#if !course.lecturerId??>selected</#if>" >请选择讲师</option>
+												<#list infos as item>
+												<#if course.lecturerId!0== item.userId>
+												 <option value="${item.userId}" selected="selected">${item.realName}</option>
+												 <#else>
+												  <option value="${item.userId}">${item.realName}</option>
+												 </#if>
+												</#list>
+													
+												</select>	
+													<input type="hidden" name="lecturer" id="lecturer"
+											value="${course.lecturer!}" />											
+											</div>
+										</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">详情介绍</label>
+										<div class="col-md-7">
+											<div class="input-icon right">
+												<i class="fa"></i> 													
+												<textarea id="content" name="content" 
+													style="width: 800px; height:300px;">${course.content!}
+												</textarea>
+											</div>
+										</div>
+									</div>										   
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<button type="submit" class="btn blue button-submit">保存</button>
+												<button type="button" class="btn default1">取消</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!-- END FORM-->
+							</div>
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
+				<!-- END DASHBOARD STATS -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<#include "/view/include/footer.html" />
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->
+	<#include "/view/include/globalscript.html" />
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/ajaxfileupload.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/additional-methods.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+	<script type="text/javascript"  src="${base}/assets/admin/kindeditor/kindeditor.js"></script>
+	<script type="text/javascript"  src="${base}/assets/admin/kindeditor/lang/zh_CN.js"></script>	
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<script>	  
+		KindEditor.ready(function(K) {		
+			K.create('textarea[name="content"]', {	
+			height:"500px",		
+			uploadJson : '${base}/kindeditor/jsp/upload_json.jsp',			
+			                fileManagerJson : '${base}/kindeditor/jsp/file_manager_json.jsp',			
+			                allowFileManager : true,			
+			                allowImageUpload : true, 			
+			autoHeightMode : false,			
+			afterCreate : function() {this.loadPlugin('autoheight');},			
+			afterBlur : function(){ this.sync(); }  //Kindeditor下获取文本框信息			
+			});			
+		});	
+		
+		function changejiangshi(){
+		if($("#author").val()!=""){
+		  $("#lecturer").val($("select[name='lecturerId'] option:selected").html());
+		}else{
+		  $("#lecturer").val("");
+		}
+		 
+		}		
+	</script>
+	<script>
+		$(document).ready(function() {
+			Metronic.init(); // init metronic core componets
+			Layout.init(); // init layout
+			addValidation();
+			$(".btn.default1").click(function(){
+				history.back();
+			});
+		});		
+		function ajaxFileUpload(type) {			
+			var file = jQuery("input[id='file"+type+"']").val();
+			var filename = file.replace(/.*(\/|\\)/, "");
+			var fileExt = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename
+					.toLowerCase()) : '';
+			if (fileExt == "jpg" || fileExt == "png"|| fileExt == "jpeg"||type>1) {
+				$.ajaxFileUpload({
+					url : "imageUpload.do",
+					secureuri : false,
+					fileElementId:"file"+type,
+					data: {"fieldName":"course"},//需要传输的数据  
+					dataType : "json",
+					success : function(data) {
+						if (data) {
+						    $("#pic"+type).val(data.name);
+							 if(type==1){
+							    $("#pics1").html("<img src='"+data.url+"'/>");
+							 }else{
+							   $("#sourcename"+type).html(data.name);
+							 
+							 }
+						 
+						}
+					},
+					error : function(data) {
+					console.log(data.responseXML)
+					  var  data1={'serialName':data.responseXML.all[2].textContent,'suoluetu':data.responseXML.all[3].textContent,'newname':data.responseXML.all[4].textContent,'name':data.responseXML.all[1].textContent,url:data.responseXML.all[5].textContent};
+					  if(data1.name!=null&&data1.url!=null){
+					     $("#pic"+type).val(data1.name);
+							 if(type==1){
+							    $("#pics1").html("<img src='"+data1.url+"'/>");
+							 }else{
+							   $("#pic1"+type).val(data1.newname);
+							   $("#sourcename"+type).html(data1.name);
+							 
+							 }
+							 
+							 if(type==2&&   $("#pic1").val()==""){
+							   $("#pics1").html("<img src='"+data1.suoluetu+"'/>");
+							   $("#pic1").val(data1.serialName);
+							 }
+					  }
+					}
+				});
+			 }else {
+				alert("图片格式不正确，请重新选择！(暂时支持jpg格式)");
+				var div1 = document.getElementById('pics');
+				div1.style.color = "white";
+			}
+			
+		}
+		var addValidation = function() {
+			var form1 = $('#roleform');
+
+			form1.validate({
+				errorElement : 'span', //default input error message container
+				errorClass : 'help-block help-block-error', // default input error message class
+				focusInvalid : false, // do not focus the last invalid input
+				ignore : "", // validate all fields including form hidden input
+				rules : {
+					courseName : {
+						minlength : 2,
+						maxlength : 50,
+						required : true
+					},
+					author:{
+						required : true
+					},
+					lecturerId:{
+						required : true
+					}
+					/* source:{
+					    required : true
+					}, */
+									
+				},
+
+				invalidHandler : function(event, validator) { //display error alert on form submit              
+
+				},
+
+				highlight : function(element) { // hightlight error inputs
+					$(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+				},
+
+				unhighlight : function(element) { // revert the change done by hightlight
+					$(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+				},
+
+				success : function(label) {
+					label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+				}
+			});
+			$('#form_wizard_1 .button-submit').click(function() {
+			console.log(form1.serialize())
+				/* if (form1.valid() == true) {				     	
+					form1.get(0).submit();
+					$(this).attr('disabled','disabled').off('click');
+				} */
+			});
+
+		};
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

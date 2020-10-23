@@ -66,9 +66,9 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		boolean boolen=false;
  		if (modelAndView != null ) {
  			request.setAttribute("base", request.getContextPath());
- 			System.out.println(request.getServletPath()  +(request.getQueryString()==null?"":( "?" + request.getQueryString())));
+ 			System.out.println(request.getServletPath());
  			
- 			request.setAttribute("pagepath", request.getServletPath()  +(request.getQueryString()==null?"":( "?" + request.getQueryString())));
+ 			request.setAttribute("pagepath", request.getServletPath());
  			modelAndView.addObject(CONTEXT_PATH, request.getContextPath());
 			modelAndView.addObject("localhost", request.getLocalAddr() + ":" + request.getLocalPort());
 			modelAndView.addObject("title", "西安交大附小");
@@ -138,7 +138,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	
 	public List<SysModules> getUserModules(String username) {
 		List<SysModules> data = new ArrayList<SysModules>();
-	    data = mService.findWhereList("delete_flag=0", "");
+	    data = mService.findWhereList("delete_flag=0 and app_id=1", "");
 		return data;
 	}
 
@@ -181,7 +181,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	private List<SysModules> getChildren(Integer parentId, List<SysModules> list) {
 		List<SysModules> data = new ArrayList<SysModules>();
 		for (SysModules modules : list) {
-			if (parentId == modules.getModuleParent()) {
+			if (parentId==modules.getModuleParent()|| parentId .equals(modules.getModuleParent())) {
 				data.add(modules);
 			}
 		}

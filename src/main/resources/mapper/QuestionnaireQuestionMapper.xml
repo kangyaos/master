@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiaoda.edu.mapper.QuestionnaireQuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.QuestionnaireQuestionKey" >
+    <id column="naire_id" property="naireId" jdbcType="INTEGER" />
+    <id column="question_id" property="questionId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.jiaoda.edu.domain.QuestionnaireQuestionKey" >
+    delete from questionnaire_question
+    where naire_id = #{naireId,jdbcType=INTEGER}
+      and question_id = #{questionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.QuestionnaireQuestionKey" >
+    insert into questionnaire_question (naire_id, question_id)
+    values (#{naireId,jdbcType=INTEGER}, #{questionId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.QuestionnaireQuestionKey" >
+    insert into questionnaire_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="naireId != null" >
+        naire_id,
+      </if>
+      <if test="questionId != null" >
+        question_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="naireId != null" >
+        #{naireId,jdbcType=INTEGER},
+      </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+   <insert id="batchinsert" parameterType="java.util.List">
+  
+  INSERT INTO `questionnaire_question` (`naire_id`, `question_id`, `score`) VALUES 
+   <foreach  collection="list" item="quest" separator=",">
+       ( #{quest.naireId,jdbcType=INTEGER},
+        #{quest.questionId,jdbcType=INTEGER},
+        #{quest.score,jdbcType=INTEGER})
+	</foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiaoda.edu.mapper.QuestionInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.QuestionInfo" >
+    <id column="question_id" property="questionId" jdbcType="INTEGER" />
+    <result column="question_type" property="questionType" jdbcType="INTEGER" />
+    <result column="question" property="question" jdbcType="VARCHAR" />
+    <result column="option_num" property="optionNum" jdbcType="INTEGER" />
+    <result column="option_a" property="optionA" jdbcType="VARCHAR" />
+    <result column="option_b" property="optionB" jdbcType="VARCHAR" />
+    <result column="option_c" property="optionC" jdbcType="VARCHAR" />
+    <result column="option_d" property="optionD" jdbcType="VARCHAR" />
+    <result column="option_e" property="optionE" jdbcType="VARCHAR" />
+    <result column="answer" property="answer" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+    <result column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    question_id, question_type, question, option_num, option_a, option_b, option_c, option_d, 
+    option_e, answer, create_time, update_time, delete_flag,chapter_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from question_info
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from question_info
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.QuestionInfo" >
+    insert into question_info (question_id, question_type, question, 
+      option_num, option_a, option_b, 
+      option_c, option_d, option_e, 
+      answer, create_time, update_time, 
+      delete_flag)
+    values (#{questionId,jdbcType=INTEGER}, #{questionType,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR}, 
+      #{optionNum,jdbcType=INTEGER}, #{optionA,jdbcType=VARCHAR}, #{optionB,jdbcType=VARCHAR}, 
+      #{optionC,jdbcType=VARCHAR}, #{optionD,jdbcType=VARCHAR}, #{optionE,jdbcType=VARCHAR}, 
+      #{answer,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{deleteFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.QuestionInfo" >
+    insert into question_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="questionId != null" >
+        question_id,
+      </if>
+      <if test="questionType != null" >
+        question_type,
+      </if>
+      <if test="question != null" >
+        question,
+      </if>
+      <if test="optionNum != null" >
+        option_num,
+      </if>
+      <if test="optionA != null" >
+        option_a,
+      </if>
+      <if test="optionB != null" >
+        option_b,
+      </if>
+      <if test="optionC != null" >
+        option_c,
+      </if>
+      <if test="optionD != null" >
+        option_d,
+      </if>
+      <if test="optionE != null" >
+        option_e,
+      </if>
+      <if test="answer != null" >
+        answer,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="chapterId != null" >
+        chapter_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="questionId != null" >
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="questionType != null" >
+        #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="question != null" >
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="optionNum != null" >
+        #{optionNum,jdbcType=INTEGER},
+      </if>
+      <if test="optionA != null" >
+        #{optionA,jdbcType=VARCHAR},
+      </if>
+      <if test="optionB != null" >
+        #{optionB,jdbcType=VARCHAR},
+      </if>
+      <if test="optionC != null" >
+        #{optionC,jdbcType=VARCHAR},
+      </if>
+      <if test="optionD != null" >
+        #{optionD,jdbcType=VARCHAR},
+      </if>
+      <if test="optionE != null" >
+        #{optionE,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null" >
+           #{chapterId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.QuestionInfo" >
+    update question_info
+    <set >
+      <if test="questionType != null" >
+        question_type = #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="question != null" >
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="optionNum != null" >
+        option_num = #{optionNum,jdbcType=INTEGER},
+      </if>
+      <if test="optionA != null" >
+        option_a = #{optionA,jdbcType=VARCHAR},
+      </if>
+      <if test="optionB != null" >
+        option_b = #{optionB,jdbcType=VARCHAR},
+      </if>
+      <if test="optionC != null" >
+        option_c = #{optionC,jdbcType=VARCHAR},
+      </if>
+      <if test="optionD != null" >
+        option_d = #{optionD,jdbcType=VARCHAR},
+      </if>
+      <if test="optionE != null" >
+        option_e = #{optionE,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+        <if test="chapterId != null" >
+        chapter_id= #{chapterId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.QuestionInfo" >
+    update question_info
+    set question_type = #{questionType,jdbcType=INTEGER},
+      question = #{question,jdbcType=VARCHAR},
+      option_num = #{optionNum,jdbcType=INTEGER},
+      option_a = #{optionA,jdbcType=VARCHAR},
+      option_b = #{optionB,jdbcType=VARCHAR},
+      option_c = #{optionC,jdbcType=VARCHAR},
+      option_d = #{optionD,jdbcType=VARCHAR},
+      option_e = #{optionE,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
+    where question_id = #{questionId,jdbcType=INTEGER}
+  </update>
+    <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from question_info a
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from question_info
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+        a.*
+    from question_info  a 
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>
+  </select>
+  
+  <insert id="batchinsert" useGeneratedKeys="true" keyProperty="questionId" parameterType="java.util.List">
+  
+  INSERT INTO `question_info` (`question_type`, `question`, `option_num`, `option_a`, `option_b`, `option_c`, `option_d`, `option_e`, `answer`, `create_time`, `update_time`, `delete_flag`, `chapter_id`) VALUES 
+   <foreach  collection="list" item="quest" separator=",">
+       ( #{quest.questionType,jdbcType=INTEGER},
+        #{quest.question,jdbcType=VARCHAR},
+        #{quest.optionNum,jdbcType=INTEGER},
+        #{quest.optionA,jdbcType=VARCHAR},
+        #{quest.optionB,jdbcType=VARCHAR},
+        #{quest.optionC,jdbcType=VARCHAR},
+        #{quest.optionD,jdbcType=VARCHAR},
+        #{quest.optionE,jdbcType=VARCHAR},
+        #{quest.answer,jdbcType=VARCHAR},
+       now(),now(),0,
+        #{quest.chapterId,jdbcType=INTEGER})
+	</foreach>
+  </insert>
+</mapper>

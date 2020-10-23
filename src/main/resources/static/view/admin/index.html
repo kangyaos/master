@@ -1,17 +1,351 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>index.html</title>
-	
-    <meta name="keywords" content="keyword1,keyword2,keyword3">
-    <meta name="description" content="this is my page">
-    <meta name="content-type" content="text/html; charset=UTF-8">
-    
-    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<#include "/view/include/globalstyle.html" />
+<style>
+.new_tal{color: #f7a35c;}
+.new_span{font-size: 13px;}
+.span_right{float: right;}
+.nowtime{width:80px;color:white;cursor:default}
+#onesel,#oneday,#oneyear,#oneweek,#onemonth{background-color:#578ebe;outline-color:#578ebe;border:none;}
+#towsel,#towday,#towyear,#towweek,#towmonth{background-color:#e35b5a;outline-color:#e35b5a;border:none;}
+#thrsel,#thrday,#thryear,#thrweek,#thrmonth{background-color:#44b6ae;outline-color:#44b6ae;border:none;}
+#fousel,#fouday,#fouyear,#fouweek,#foumonth{background-color:#8775a7;outline-color:#8775a7;border:none;}
+</style>
 
-  </head>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+	<!-- BEGIN HEADER -->
+
+    <#include "/view/include/header.html" />
+
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar-wrapper">
+		<#include "/view/include/sidebar.html" />
+		</div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html">首页</a>
+							<i class="fa fa-angle-right"></i></li>
+					</ul>
+					<div class="page-toolbar">
+					   <div class="actions">
+							<select id="timetype" class="form-control">
+								<option value="7">一周内</option>
+								<option value="10">十天内</option>
+								<option value="30">一个月内</option>
+								<option value="90">一季度内</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="clearfix"></div>
+				<!-- BEGIN DASHBOARD STATS -->
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat blue-madison">
+						<div class="visual">
+							<i class="fa fa-comments"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 ${data.all_user_count!}
+							</div>
+							<div class="desc">
+								总用户
+							</div>
+						</div>
+						<a class="more" href="#">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat red-intense">
+						<div class="visual">
+							<i class="fa fa-bar-chart-o"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 ${data.course_count!}
+							</div>
+							<div class="desc">
+								 总课程数
+							</div>
+						</div>
+						<a class="more" href="#">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat green-haze">
+						<div class="visual">
+							<i class="fa fa-shopping-cart"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 ${data.t_user_count!}
+							</div>
+							<div class="desc">
+								 总教师数
+							</div>
+						</div>
+						<a class="more" href="#">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat purple-plum">
+						<div class="visual">
+							<i class="fa fa-globe"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								 +89%
+							</div>
+							<div class="desc">
+								 总浏览量
+							</div>
+						</div>
+						<a class="more" href="#">
+						View more <i class="m-icon-swapright m-icon-white"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- END DASHBOARD STATS -->
+				<!-- BEGIN DASHBOARD STATS -->
+				<div class="row">
+				
+					<div class="col-md-12 col-sm-12">	
+				        <!-- BEGIN PORTLET-->
+                        <div class="portlet solid grey-cararra">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-bar-chart-o"></i>课程发布量
+                                </div>
+                            </div>
+                            <div id="container4" style="min-width:400px;height:400px"></div>
+                        </div>  
+                        <!-- END PORTLET--> 
+					</div>	
+				</div>				
+				<!-- END DASHBOARD STATS -->
+				
+			
+			
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<#include "/view/include/footer.html" />
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->
+	<#include "/view/include/globalscript.html" />
+	<script src="${base}/assets/admin/plugins/highcharts/highstock.js"></script>
+	<!-- END CORE PLUGINS -->
+    <script>
+   
+	$(document).ready(function() {
+   		Metronic.init(); // init metronic core componets
+   		Layout.init(); // init layout
+   		$(".onetype").change(function(){
+   			var idpre = $(this).attr("id").substr(0,3);
+   			if($(this).val()=="day"){
+   				$("#"+idpre+"day").show();
+   				$("#"+idpre+"year,#"+idpre+"week,#"+idpre+"month").hide();
+   			}
+   			if($(this).val()=="week"){
+   				$("#"+idpre+"day,#"+idpre+"month").hide();
+   				$("#"+idpre+"year,#"+idpre+"week").show();
+   			}
+   			if($(this).val()=="month"){
+   				$("#"+idpre+"day,#"+idpre+"week").hide();
+   				$("#"+idpre+"year,#"+idpre+"month").show();
+   			}
+   			
+   		});
+   		$(".nowyear,.nowmonth,.nowweek").change(function(){
+   			var idpre = $(this).attr("id").substr(0,3);
+   			
+   		});
+   		//初始化图表数据
+   		initinterfacecharts(7, 0);
+   		//右上角时间切换
+   		$("#timetype").change(function(){
+	   		initinterfacecharts($(this).val(),0);
+			initinterfacecharts($(this).val(),1);
+			initinterfacecharts($(this).val(),2);
+			initUserinfoCharts($(this).val(),1);
+   		});
+   		//导出文件
+   		$(".export").click(function(){
+   			var idpre = $(this).attr("id").substr(0,3);
+   			exportclick(idpre);
+   		});
+   	});
+	
+	
+	function exportclick(idpre){
+    	var param = new Object();
+		param.tab=idpre;
+		param.type=$("#"+idpre+"sel").val();
+		param.day=$("#"+idpre+"day").val();
+		param.year=$("#"+idpre+"year").val();
+		param.week=$("#"+idpre+"week").val();
+		param.month=$("#"+idpre+"month").val();
+    	var form = document.createElement('form');
+    	document.body.appendChild(form);
+	    for (var obj in param) {
+	        var input = document.createElement('input');
+	        input.tpye='hidden';
+	        input.name = obj;
+	        input.value = param[obj];
+	        form.appendChild(input);
+	    }
+	    form.method = "GET";
+	    form.action = 'tabledownload.do';
+	    form.submit();
+	}
+
+	
+    function initinterfacecharts(day,type){
+		  var container= $('#container4');
+		  var title = "课程发布量";
+		  var sourse = "";
+		  var name1 ="发布数";
+		  $.ajax({
+				type : "get",
+				url : "${base!}/interfacecharts.json",
+				data : {"day":day,"type":type},
+				success : function(data) {
+				console.log(data)
+				var maxnum=data.dateMonth.length-1;
+				         $(function () {
+						    container.highcharts({
+						        chart: {
+						            type: 'line'
+						        },
+						        title: {
+						            text: title
+						        },
+						        subtitle: {
+						            text: ''
+						        },
+						        xAxis: {
+						            categories: data.dateMonth,
+						            min:0, //别忘了这里
+						            max:maxnum
+						        },
+						        yAxis: {
+						            title: {
+						                text: '统计次数 (次)'
+						            }
+						        },
+						        plotOptions: {
+						            line: {
+						                dataLabels: {
+						                    enabled: true          // 开启数据标签
+						                },
+						                enableMouseTracking: true // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+						            }
+						        },
+						        series: [{
+						            name: name1,
+						            data:  data.total1,
+						        }]
+						    });
+						});
+				    
+				}				 
+		  });		
+    }
   
-  <body>
-    This is my HTML page. <br>
-  </body>
+    function initUserinfoCharts(day,type){ 
+	   $.ajax({
+			type : "get",
+			url : "userInfoCharts.json",
+			data : {"day":day,"type":type},
+			success : function(data) {
+			    $(function () {
+				    $('#container2').highcharts({
+				        chart: {
+				            type: 'column'
+				        },
+				        title: {
+				            text: '新增用户统计'
+				        },
+				        subtitle: {
+				            text: '数据来源: 光环煤炭交易平台'
+				        },
+				        xAxis: {
+				            categories: data.data,
+				            crosshair: true,
+				            min:0,
+				        },
+				        yAxis: {
+				            min: 0,
+				            title: {
+				                text: '人数 (位)'
+				            }
+				        },
+				        tooltip: {
+                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y:.0f} 人</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true
+                        },
+				        plotOptions: {
+				            column: {
+				                pointPadding: 0.2,
+				                borderWidth: 0
+				            }
+				        },
+					   
+				        series: [{
+                            name: '实名认证用户',//v实名认证用户
+                            data: data.count1
+                        }, {
+                            name: '信息部用户',
+                            data: data.count2 //信息部用户
+                        }, {
+                            name: '司机用户',
+                            data: data.count3
+                        }, {
+                            name: '注册用户',//未认证
+                            data: data.count
+                        }, {
+                            name: 'APP访客',//访客
+                            data: data.count4
+                        }]
+				    });
+				});
+			}		
+	   })
+    }
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
 </html>

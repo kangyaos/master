@@ -8,7 +8,7 @@ import com.jiaoda.edu.domain.LogOperation;
 
 public interface LogOperationMapper {
     int deleteByPrimaryKey(Long logId);
-
+    public void delLog(@Param("delId")Integer delId);
     int insert(LogOperation record);
 
     int insertSelective(LogOperation record);

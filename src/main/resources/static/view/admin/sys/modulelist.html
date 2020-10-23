@@ -48,7 +48,7 @@
 					    <div class="portlet box grey-gallery" style="margin-left: 3px">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-bar-chart-o"></i>后台模块管理
+									<i class="fa fa-bar-chart-o"></i>模块管理
 								</div>
 								<div class="actions">
 									<a href="addmodule.html?parentId=1" id="addmodule" class="btn btn-default btn-sm"> <i
@@ -58,7 +58,7 @@
 								<ul class="nav nav-tabs" style="margin-right: 10px">
 									<li>
 										<a href="#portlet_tab2" data-toggle="tab" id="statistics_amounts_tab">
-										对账系统模块管理 </a>
+										网站栏目管理 </a>
 									</li>
 									<li class="active">
 										<a href="#portlet_tab1" data-toggle="tab">
@@ -77,7 +77,6 @@
 														<div class="col-md-3">
 															<div style="overflow-y:auto; overflow-x:auto; height:650px">
 																<div id="tree_2" class="tree-demo" style="margin-top:20px"></div>
-																<div id="tree_3" class="tree-demo" ></div>
 															</div>												
 														</div>
 														<div class="col-md-9">
@@ -193,7 +192,7 @@
 							{	
 								"data" : "moduleId",
 								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-				                	$(nTd).html("<a href='editmodule.html?moduleId="+sData+"&appId=1' class='btn default btn-xs blue'><i class='fa fa-edit'></i>编辑</a>");
+				                	$(nTd).html("<a href='editmodule.html?moduleId="+sData+"' class='btn default btn-xs blue'><i class='fa fa-edit'></i>编辑</a>");
 				            	},
 				            	"searchable":false
 				            }]
@@ -201,13 +200,13 @@
 	        
  		};
  		
- 		var table2;
+ 	var table2;
 		var initTableFee = function (){
 			table2 = $('#gridFee');	
 	        table2.dataTable({
 	    		"ajax": {
 	                "type": "post",
-	                "url": "modulelist.json?appId=4",
+	                "url": "modulelist.json?appId=0",
 	                "error":function(ex){
 	                	console.log(ex);
 	                }
@@ -237,11 +236,12 @@
  		$('.nav-tabs li').click(function(){
  		    var id =$(this).find("a").attr("id");
  		    if(id=="statistics_amounts_tab"){
- 		        $("#addmodule").attr("href","addmodule.html?parentId=4");
+ 		        $("#addmodule").attr("href","addmodule.html?parentId=0");
  		    }else{
  		        $("#addmodule").attr("href","addmodule.html?parentId=1");
  		    }
 		});
+ 	
  		
  		$("#tree_2").on('move_node.jstree', function(e, data) {
 			$.post("modulelistcha.do", {
@@ -259,7 +259,7 @@
 				}
 			}
 		}).bind("select_node.jstree", function(e, data) {			
-			table.fnReloadAjax("modulelist.json?mId=" + data.node.id);
+			table.fnReloadAjax("modulelist.json?appId=1&mId=" + data.node.id);
 		});	
 		
 		$("#tree_4").on('move_node.jstree', function(e, data) {
@@ -274,13 +274,12 @@
 			'core' : {
 				"check_callback" : true,
 				'data' : {
-					'url' : 'modules.json?appId=4'
+					'url' : 'modules.json?appId=0'
 				}
 			}
 		}).bind("select_node.jstree", function(e, data) {			
-			table2.fnReloadAjax("modulelist.json?appId=4&mId=" + data.node.id);
+			table2.fnReloadAjax("modulelist.json?appId=0&mId=" + data.node.id);
 		});		
-		
 		
 	</script>
 	<!-- END JAVASCRIPTS -->

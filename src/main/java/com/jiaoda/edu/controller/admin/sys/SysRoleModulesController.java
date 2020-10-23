@@ -20,6 +20,7 @@ import com.jiaoda.edu.service.ISysRoleModulesService;
 
 
 @Controller
+@RequestMapping("/admin")
 public class SysRoleModulesController {
 
 	@Autowired
@@ -29,38 +30,33 @@ public class SysRoleModulesController {
 
 	/** 角色分配平台模块 **/
 	@RequestMapping(value = "/roleseto.html", method = RequestMethod.GET)
-	public String roleSetModules(Integer roleId, Integer appId, ModelMap model) {
-		model.put("roleId", roleId);
-		model.put("appId", appId);
-		return "sys/roleseto";
+	public String roleSetModules(Integer roleId,  ModelMap model) {
+		model.put("rolesId", roleId);
+		return "view/admin/sys/roleseto";
 	}
 	
 	/** 角色分配App模块 **/
 	@RequestMapping(value = "/rolesetm.html", method = RequestMethod.GET)
-	public String roleSetAppModules(Integer roleId, Integer appId, ModelMap model) {
+	public String roleSetAppModules(Integer roleId,  ModelMap model) {
 		model.put("roleId", roleId);
-		model.put("appId", appId);
-		List<SysModules> left = modulesService.findPagerList(0, -1, "appId="+appId, "moduleSort asc");
-		List<SysRoleModules> roleModule = roleModuleService.findPagerList(0, -1, "id.roleId="+roleId, "moduleSort asc");
+		List<SysModules> left = modulesService.findPagerList(0, -1, "app_id=1 ", "module_sort asc");
+		List<SysRoleModules> roleModule = roleModuleService.findPagerList(0, -1, "role_id="+roleId, "module_sort asc");
 		List<SysModules> right = new ArrayList<SysModules>();
-		for (SysRoleModules sysRole : roleModule) {
-			SysModules o = modulesService.selectByPrimaryKey(sysRole.getModuleId());
-			if(o!=null && o.getAppId()==appId){
-				right.add(o);
-			}
-			if(left.contains(o)){
-				left.remove(o);
-			}
-		}
+		/*
+		 * for (SysRoleModules sysRole : roleModule) { SysModules o =
+		 * modulesService.selectByPrimaryKey(sysRole.getModuleId()); if(o!=null &&
+		 * o.getAppId()==appId){ right.add(o); } if(left.contains(o)){ left.remove(o); }
+		 * }
+		 */
 		model.put("left", left);
 		model.put("right", right);
-		return "sys/rolesetm";
+		return "view/admin/sys/rolesetm";
 	}
 	
 	@RequestMapping(value = "/saveroleseto.do", method = RequestMethod.POST)
-	public String saveRoleModules(Integer appId, Integer roleId, String modules, ModelMap model) {
+	public String saveRoleModules(Integer roleId, String modules, ModelMap model) {
 		//删除角色已分配权限
-		deleteRoleModule(appId, roleId);
+		deleteRoleModule( roleId);
 		//插入已分配权限
 		if (modules.length() > 0) {
 			String[] lidt = modules.split(",");
@@ -72,14 +68,14 @@ public class SysRoleModulesController {
 				roleModuleService.insertSelective(rolemodule);
 			}
 		}
-		return "redirect:/rolelist.html";
+		return "redirect:/admin/rolelist.html";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/rolemodules.json")
-	public List<Map<String, Object>> getRoleModules(Integer roleId, Integer appId) {
-		List<SysModules> all = modulesService.findPagerList(0, -1, "appId="+appId, "moduleSort asc");
-		List<SysRoleModules> roleModule = roleModuleService.findWhereList("id.roleId="+roleId, "");
+	public List<Map<String, Object>> getRoleModules(Integer roleId) {
+		List<SysModules> all = modulesService.findPagerList(0, -1, "app_id=1", "module_sort asc");
+		List<SysRoleModules> roleModule = roleModuleService.findWhereList("role_id="+roleId, "");
 		List<Map<String, Object>> list = getTreeData(0, all);
 		setSelected(list, roleModule);
 		return list;
@@ -123,13 +119,15 @@ public class SysRoleModulesController {
 		return tree;
 	}
 	
-	private void deleteRoleModule(Integer appId, Integer roleId) {
-		List<SysRoleModules> list = roleModuleService.findWhereList("id.roleId="+roleId, "");
+	private void deleteRoleModule( Integer roleId) {
+		List<SysRoleModules> list = roleModuleService.findWhereList("role_id="+roleId, "");
 		for (SysRoleModules roleModules : list) {
 			SysModules mod = modulesService.selectByPrimaryKey(roleModules.getModuleId());
-			if(mod.getAppId()==appId){
-				//roleModuleService.delete(roleModules);
-			}
+			SysRoleModulesKey key =new  SysRoleModules();
+			key.setModuleId(roleModules.getModuleId());
+			key.setRoleId(roleModules.getRoleId());
+			roleModuleService.deleteByPrimaryKey(key);
+			
 		}
 	}
 	

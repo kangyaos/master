@@ -190,8 +190,10 @@ jQuery.extend({
         }
     },
     uploadHttpData: function( r, type ) {
+    	console.log(type)
         var data = !type;
         data = type == "xml" || data ? r.responseXML : r.responseText;
+        data={'name':r.responseXML.all[1].textContent,url:r.responseXML.all[2].textContent};
         // If the type is "script", eval it in global context
         if ( type == "script" )
             jQuery.globalEval( data );

@@ -51,6 +51,11 @@ public class LogOperationServiceImpl implements ILogOperationService {
 		return selfDAO.findPagerList(start, length, where, order);
 	}
 
+	@Override
+	public void delLog(Integer delId) {
+		selfDAO.delLog(delId);
+	}
+
 	
 }	
 	

@@ -6,7 +6,7 @@ public class OperateArticle {
     private Integer articleId;
 
     private Integer categoryId;
-
+    private String categoryName;
     private String title;
 
     private String summary;
@@ -37,7 +37,7 @@ public class OperateArticle {
 
     private Integer sort;
 
-    private Integer isSpecial;
+
 
     private Integer isSend;
 
@@ -52,8 +52,24 @@ public class OperateArticle {
     private Integer deleteFlag;
 
     private String content;
+   private Integer indexShow;
+    
+    public Integer getIndexShow() {
+		return indexShow;
+	}
 
-    public Integer getArticleId() {
+	public void setIndexShow(Integer indexShow) {
+		this.indexShow = indexShow;
+	}
+    public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public Integer getArticleId() {
         return articleId;
     }
 
@@ -189,13 +205,7 @@ public class OperateArticle {
         this.sort = sort;
     }
 
-    public Integer getIsSpecial() {
-        return isSpecial;
-    }
-
-    public void setIsSpecial(Integer isSpecial) {
-        this.isSpecial = isSpecial;
-    }
+   
 
     public Integer getIsSend() {
         return isSend;

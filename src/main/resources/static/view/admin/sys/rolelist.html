@@ -59,11 +59,8 @@
 								<th style="width: 10%;">角色名</th>
 								<th style="width: 15%;">角色描述</th>
 								<th style="width: 10%;">禁用</th>
-								<th style="width: 10%;">管理权限</th>
-								<th style="width: 10%;">网站权限</th>
-								<th style="width: 10%;">App权限</th>
-								<th style="width: 10%;">资讯费对账权限</th>
-								<th style="width: 10%;">级别</th>
+								<th style="width: 10%;">管理权限</th> 
+								
 								<th style="width: 10%;">操作</th>
 							</tr>
 							</thead>
@@ -109,9 +106,9 @@
 	            },
 	            "columns" : [{"data" : "roleId"},
 	            			{"data" : "roleName"}, 
-							{"data" : "roleDescription"}, 
+							{"data" : "remark"}, 
 							{
-								"data" : "roleIsdisable", 
+								"data" : "status", 
 								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
 					                	$(nTd).html("否");
 					                	if(sData==1)
@@ -126,37 +123,10 @@
 				            	},
 				            	"searchable":false
 				            },
-							{	
-								"data" : "roleId",
-								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-				                	$(nTd).html("<a href='roleseto.html?appId=2&roleId="+sData+"' class='btn default btn-xs purple'><i class='icon-present'></i>网站权限</a>");
-				            	},
-				            	"searchable":false
-				            },
-							{	
-								"data" : "roleId",
-								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-				                	$(nTd).html("<a href='rolesetm.html?appId=3&roleId="+sData+"' class='btn default btn-xs yellow'><i class='icon-settings'></i>App权限</a>");
-				            	},
-				            	"searchable":false
-				            },
-				            {	
-								"data" : "roleId",
-								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-				                	$(nTd).html("<a href='roleseto.html?appId=4&roleId="+sData+"' class='btn default btn-xs' style='color:white;background-color:#a94442'><i class='icon-settings'></i>资讯费对账权限</a>");
-				            	},
-				            	"searchable":false
-				            },
-				            {	
-								"data" : "roleId",
-								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {								    
-									$(nTd).html("<input onblur='chkvalue(this,"+sData+")' type='number' id='"+iRow+"up' value='"+oData.roleLevel+"' style='width:40px;text-align: center;'/>");
-				            	    if(oData.roleName =='系统管理员'){
-				            	        $(nTd).html("<input type='number' disabled='disabled' value='"+oData.roleLevel+"' style='width: 40px;text-align: center;'/>")
-				            	    }
-				            	},
-				            	"searchable":false
-				            },
+						
+							
+				           
+				       
 							{	
 								"data" : "roleId",
 								"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {

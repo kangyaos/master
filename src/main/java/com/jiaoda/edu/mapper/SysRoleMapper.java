@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Param;
 import com.jiaoda.edu.domain.SysRole;
 
 public interface SysRoleMapper {
-    int deleteByPrimaryKey(Long roleId);
+    int deleteByPrimaryKey(Integer roleId);
 
     int insert(SysRole record);
 
     int insertSelective(SysRole record);
 
-    SysRole selectByPrimaryKey(Long roleId);
+    SysRole selectByPrimaryKey(Integer roleId);
 
     int updateByPrimaryKeySelective(SysRole record);
 

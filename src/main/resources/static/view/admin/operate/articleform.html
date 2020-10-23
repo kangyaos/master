@@ -24,14 +24,14 @@
 			<div class="page-content">
 				<!-- BEGIN PAGE HEADER-->
 				<h3 class="page-title">
-					煤炭资讯<small></small>
+					新闻编辑<small></small>
 				</h3>
 				<div class="page-bar">
 					<ul class="page-breadcrumb">
 						<li><i class="fa fa-home"></i> <a href="index.html">首页</a> <i
 							class="fa fa-angle-right"></i></li>
-						<li><a href="javascript:;">平台运营管理<i class="fa fa-angle-right"></i></li>
-						<li><a href="articlelist.html">煤炭资讯</a></li>
+						<li><a href="javascript:;">新闻中心<i class="fa fa-angle-right"></i></li>
+						<li><a href="articlelist.html">新闻编辑</a></li>
 					</ul>
 					<div class="page-toolbar"></div>
 				</div>
@@ -113,8 +113,7 @@
 														</span>
 													</div>
 												</div>
-												<input type="hidden" class="form-control"
-													name="tumb" id="tumb" value="${article.tumb!}" />
+											
 												<input type="hidden" class="form-control"
 													name="tumbPicCode" id="tumbPicCode1" value="${article.tumbPicCode!}" />
 											</div>
@@ -253,12 +252,12 @@
 			var filename = file.replace(/.*(\/|\\)/, "");
 			var fileExt = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename
 					.toLowerCase()) : '';			
-			if (fileExt == "jpg" || fileExt == "png") {
+			if (fileExt == "jpg" || fileExt == "png"|| fileExt == "jpeg") {
 				$.ajaxFileUpload({
 					url : "imageUpload.do",
 					secureuri : false,
 					fileElementId:"file"+type,
-					data: {"fieldName":"newsAndActivity"},//需要传输的数据  
+					data: {"fieldName":"article"},//需要传输的数据  
 					dataType : "json",
 					success : function(data) {
 						if (data) {
@@ -267,6 +266,10 @@
 						}
 					},
 					error : function(data) {
+						console.log(data.responseXML)
+					  var  data1={'newname':data.responseXML.all[2].textContent,'name':data.responseXML.all[1].textContent,url:data.responseXML.all[3].textContent};
+					      $("#tumbPicCode"+type).val(data1.newname);
+						   $("#pics"+type).html("<img src='"+data1.url+"'/>");
 						console.log(data);
 					}
 				});

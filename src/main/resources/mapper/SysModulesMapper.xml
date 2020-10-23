@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jiaoda.edu.mapper.SysModulesMapper" >
   <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.SysModules" >
-    <id column="module_id" property="moduleId" jdbcType="INTEGER" />
-    <result column="app_id" property="appId" jdbcType="INTEGER" />
+    <id column="module_id" property="moduleId" jdbcType="INTEGER" />  
+     <result column="app_id" property="appId" jdbcType="INTEGER" />
     <result column="module_name" property="moduleName" jdbcType="VARCHAR" />
     <result column="module_code" property="moduleCode" jdbcType="VARCHAR" />
     <result column="module_class" property="moduleClass" jdbcType="VARCHAR" />
@@ -17,7 +17,7 @@
     <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    module_id, app_id, module_name, module_code, module_class, module_path, module_description, 
+    module_id, app_id,module_name, module_code, module_class, module_path, module_description, 
     module_parent, module_sort, module_isdisable, create_time, update_time, delete_flag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -31,12 +31,12 @@
     where module_id = #{moduleId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.jiaoda.edu.domain.SysModules" >
-    insert into sys_modules (module_id, app_id, module_name, 
+    insert into sys_modules (module_id,module_name, 
       module_code, module_class, module_path, 
       module_description, module_parent, module_sort, 
       module_isdisable, create_time, update_time, 
       delete_flag)
-    values (#{moduleId,jdbcType=INTEGER}, #{appId,jdbcType=INTEGER}, #{moduleName,jdbcType=VARCHAR}, 
+    values (#{moduleId,jdbcType=INTEGER}, #{moduleName,jdbcType=VARCHAR}, 
       #{moduleCode,jdbcType=VARCHAR}, #{moduleClass,jdbcType=VARCHAR}, #{modulePath,jdbcType=VARCHAR}, 
       #{moduleDescription,jdbcType=VARCHAR}, #{moduleParent,jdbcType=INTEGER}, #{moduleSort,jdbcType=INTEGER}, 
       #{moduleIsdisable,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
@@ -51,6 +51,7 @@
       <if test="appId != null" >
         app_id,
       </if>
+    
       <if test="moduleName != null" >
         module_name,
       </if>
@@ -90,8 +91,9 @@
         #{moduleId,jdbcType=INTEGER},
       </if>
       <if test="appId != null" >
-        #{appId,jdbcType=INTEGER},
+          #{appId,jdbcType=INTEGER},
       </if>
+    
       <if test="moduleName != null" >
         #{moduleName,jdbcType=VARCHAR},
       </if>
@@ -130,8 +132,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.SysModules" >
     update sys_modules
     <set >
-      <if test="appId != null" >
-        app_id = #{appId,jdbcType=INTEGER},
+       <if test="appId != null" >
+         app_id= #{appId,jdbcType=INTEGER},
       </if>
       <if test="moduleName != null" >
         module_name = #{moduleName,jdbcType=VARCHAR},
@@ -171,7 +173,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.SysModules" >
     update sys_modules
-    set app_id = #{appId,jdbcType=INTEGER},
+    set 
       module_name = #{moduleName,jdbcType=VARCHAR},
       module_code = #{moduleCode,jdbcType=VARCHAR},
       module_class = #{moduleClass,jdbcType=VARCHAR},

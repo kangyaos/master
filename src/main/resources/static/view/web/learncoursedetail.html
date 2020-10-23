@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 启用极速模式(webkit) -->
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+<meta name="KeyWords" content="${info.courseName!}">
+<meta name="description" content="${info.summary!}">
+<title>${info.courseName!}</title>
+<#include "/view/web/include/headerFile.htm" />
+<style >
+body{
+    background-color: #eee!important;
+}
+.contents{
+   background-color: #ffffff;
+    margin: 30px auto 110px!important;
+    text-align: center;
+    padding: 60px 0!important;
+}
+
+#kejian{
+  padding: 0 50px!important;
+}
+@media screen and (max-width:640px) {
+.contents img{
+ width:80%;
+}
+
+#kejian{
+  padding: 0 30px!important;
+}
+
+.contents{
+ 
+    padding: 30px 0!important;
+}
+}
+.img_box{
+    padding: 80px 0 80px;
+    text-align: center;
+}
+
+
+.prodetail p{ 
+    font-size: 16px;
+    font: 16px/2 tahoma,arial,"Microsoft YaHei";
+    color: #333;
+
+}
+
+.bgareaSet{
+ padding: 50px 120px;
+}
+</style>
+
+<#include "/view/web/include/head.htm" />
+<link rel="stylesheet" type="text/css" href="${base}/assets/web/css/28012172801230.css">
+					<div id="layout_1589421417715" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div class="view_contents">
+								<div id="image_style_01_1589421417719" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+				<div names="image" class="view_contents">
+					<div class="imgStyle CompatibleImg picSet">
+		<a href="javascript:;" target="">
+			<img class="link-type-" src="${base}/assets/web/images/1589370832696d5cb83384e54fcee.png" title="" alt="描述" id="imageModeShow">
+		</a>
+</div>
+<!-- 新加的js  -->
+				</div>
+			</div>
+						</div>
+			</div>
+					<div id="layout_1496303516196" class="layout  " data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" >
+				<div class="view_contents  contents">
+					
+				<div    id="kejian" >
+				<#if  info.sourceNew?? &&info.sourceNew?index_of('.mp4')==-1>
+				
+				<iframe
+				     src='https://view.officeapps.live.com/op/view.aspx?src=http://edu.gz2vip.idcfengye.com/eduweb/upload/course/${info.sourceNew!}'
+				   
+				     height=600
+				       text-align: center;
+				   style="width:100%"
+				     frameborder='0'>
+				</iframe>
+				<#else>
+				
+				<video id="Video1" controls  style="width:100%">
+				     <source src="${base}/upload/course/${info.sourceNew!}" type="video/mp4" />
+				</video>
+				</#if>
+				</div>
+									
+			
+						</div>
+			</div>
+			
+		
+
+<script type="text/javascript">
+
+	if(is_mobile()){
+		$(".mobileAbout").css("display","block");
+		$(".pcAbout").remove();
+		//$("#layout_1496303516196").attr('style',"min-height:"+$(window).height()+"px");
+	}else{
+	   //$("#layout_1496303516196").attr('style',"min-height:"+$(window).height()+"px");
+		$(".mobileAbout").remove();
+		$(".pcAbout").css("display","block");
+	}
+
+	function is_mobile(){
+		return window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767);
+	}
+	
+ 	 var sym;
+        var video=document.querySelector("#Video1")
+        setInterval(function () {
+            var time=video.currentTime
+            if(time-sym>1){
+                video.currentTime=sym
+                
+            }
+            sym=video.currentTime
+        },500); 
+     	var videotime;
+	  var vid = document.getElementById("Video1");
+        vid.onloadedmetadata = function() {
+            videotime=vid.duration; //打印时长
+            
+	
+        }; 
+    var time=0;
+	function getNowTime(){
+	 time++;
+	 // if(time>=videotime){
+	 clearInterval(dingshiqi);
+	  $.ajax({
+            type : "POST",
+            contentType: "application/json;charset=UTF-8",
+            url : "createlearnrecod.do?cid=${info.courseId!}&keshi=${keshi!}&time="+time,
+             async:false, 
+            success : function(result) {
+            }, error : function(result) {
+            }
+})
+	// }
+    }
+// 每过一秒打印出当前时间
+var dingshiqi=setInterval(getNowTime, 1000); 
+	
+
+	  
+</script>		
+					
+				<#include "/view/web/include/footer.htm"/>	</body></html>

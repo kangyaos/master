@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiaoda.edu.mapper.QuestionChapterMapper" >
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.QuestionChapter" >
+    <id column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
+    <result column="chapter_remark" property="chapterRemark" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER" />
+    <result column="bank_id" property="bankId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    chapter_id, chapter_name, chapter_remark, update_time, delete_flag, bank_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from question_chapter
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from question_chapter
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.QuestionChapter" >
+    insert into question_chapter (chapter_id, chapter_name, chapter_remark, 
+      update_time, delete_flag, bank_id
+      )
+    values (#{chapterId,jdbcType=INTEGER}, #{chapterName,jdbcType=VARCHAR}, #{chapterRemark,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, #{bankId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.QuestionChapter" >
+    insert into question_chapter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        chapter_id,
+      </if>
+      <if test="chapterName != null" >
+        chapter_name,
+      </if>
+      <if test="chapterRemark != null" >
+        chapter_remark,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag,
+      </if>
+      <if test="bankId != null" >
+        bank_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterName != null" >
+        #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterRemark != null" >
+        #{chapterRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bankId != null" >
+        #{bankId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.QuestionChapter" >
+    update question_chapter
+    <set >
+      <if test="chapterName != null" >
+        chapter_name = #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterRemark != null" >
+        chapter_remark = #{chapterRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null" >
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="bankId != null" >
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.QuestionChapter" >
+    update question_chapter
+    set chapter_name = #{chapterName,jdbcType=VARCHAR},
+      chapter_remark = #{chapterRemark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      bank_id = #{bankId,jdbcType=INTEGER}
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </update>
+  
+      <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from question_chapter a
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from question_chapter
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+        a.*
+    from question_chapter  a 
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>
+  </select>
+</mapper>

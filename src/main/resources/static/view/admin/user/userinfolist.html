@@ -5,6 +5,7 @@
 <#include "/view/include/globalstyle.html" />
 <link rel="stylesheet" href="${base}/assets/admin/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="${base}/assets/admin/laydate/need/xcConfirm.css"/>
+<link rel="stylesheet" href="${base}/assets/admin/plugins/bootstrap-fileinput/bootstrap-fileinput.css" />
 <script src="${base}/assets/admin/plugins/js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
 <script src="${base}/assets/admin/plugins/js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
 </head>
@@ -49,8 +50,14 @@
 								</div>
 								<div class="actions">
 									<a href="adduser.html" class="btn btn-default btn-sm"> <i
-										class="fa fa-plus"></i>新增
+										class="fa fa-plus"></i>新增1
 									</a>
+									
+										<span class="btn default btn-file"> <span
+															class="fileinput-new"> 导入</span>  <input
+															type="file" name="file" id="file1"
+															onchange="ajaxFileUpload();">
+														</span>
 								</div>
 							</div>
 							<div class="portlet-body" id="grids">
@@ -87,6 +94,7 @@
 	<#include "/view/include/globalscript.html" />
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script 		src="${base}/assets/admin/plugins/ajaxfileupload.js"></script>
 	<script src="${base}/assets/admin/plugins/sxhaloJQfn.js" type="text/javascript" ></script>
 	<script src="${base}/assets/admin/plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 	<script src="${base}/assets/admin/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js" type="text/javascript"></script>
@@ -206,7 +214,36 @@
 			
 		};	
 		
-		
+		function ajaxFileUpload() {			
+			var file = jQuery("input[id='file1']").val();
+			var filename = file.replace(/.*(\/|\\)/, "");
+			var fileExt = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename
+					.toLowerCase()) : '';			
+			if (fileExt == "xls" || fileExt == "xlsx") {
+				$.ajaxFileUpload({
+					url : "importExcel.do",
+					secureuri : false,
+					fileElementId:"file1",
+					dataType : "json",
+					success : function(data) {
+						console.log(data)
+						if (data) {
+						    $("#tumbPicCode"+type).val(data.picCode);
+						    $("#pics"+type).html("<img src=${picPath!}"+data.picCode+"/>");
+						}
+					},
+					error : function(data) {
+						console.log(data.responseXML)
+					
+					}
+				});
+			} else {
+				alert("Excel格式不正确，请重新选择！");
+				var div1 = document.getElementById('pics');
+				div1.style.color = "white";
+			}
+			
+		}
 	</script>
 	<!-- END JAVASCRIPTS -->
 </body>

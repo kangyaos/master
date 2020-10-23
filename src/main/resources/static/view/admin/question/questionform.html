@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- BEGIN HEAD -->
+<head>
+<#include "/view/include/globalstyle.html" />
+<link rel="stylesheet" href="${base}/assets/admin/plugins/bootstrap-fileinput/bootstrap-fileinput.css" />
+<link rel="stylesheet" href="${base}/assets/admin/plugins/jstree/dist/themes/default/style.min.css"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body
+	class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+	<!-- BEGIN HEADER -->
+	<#include "/view/include/header.html" />
+	<!-- END HEADER -->
+	<div class="clearfix"></div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar-wrapper"><#include
+			"/view/include/sidebar.html" /></div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN PAGE HEADER-->
+				<h3 class="page-title">
+					问题编辑<small></small>
+				</h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li><i class="fa fa-home"></i> <a href="index.html">首页</a> <i
+							class="fa fa-angle-right"></i></li>
+					<li><a href="javascript:;">问卷管理</a><i class="fa fa-angle-right"></i></li>
+						<li><a href="javascript:;">问题列表</a><i class="fa fa-angle-right"></i></li>
+					</ul>
+					<div class="page-toolbar"></div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN DASHBOARD STATS -->
+				<div class="row">
+					<div class="col-md-12">
+						<!-- BEGIN VALIDATION STATES-->
+						<div class="portlet box grey-gallery">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-edit"></i>
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form action="savequestion.do" method="post" id="roleform"
+									class="form-horizontal">
+									<div style="display: none">
+										<input type="hidden" name="questionId" id="questionId"
+											value="${question.questionId!}" />
+									</div>
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label col-md-3">题干 <span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> <input type="text" class="form-control"
+														name="question" id="question" value="${question.question!}" />
+												</div>
+											</div>
+										</div>	
+									    <div class="form-group">
+											<label class="control-label col-md-3">所在章节<span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<select class="form-control" name="chapterId" id="chapterId" >
+												<#list chapter as cc>
+												  <option value="${cc.chapterId}" selected="<#if (question.chapterId!0)== cc.chapterId>selected</#if>">${cc.chapterName}</option>
+												</#list>
+												 
+												</select>												
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3">问题类型<span
+												class="required"> * </span>
+											</label>
+											<div class="col-md-4">
+												<select class="form-control" name="questionType" id="questionType" onchange="changeshow(this.value)" >
+												 <option value="0" <#if (question.questionType!0)== 0>selected="selected"</#if>>单选</option>
+												 <option value="1" <#if (question.questionType!0)== 1>selected="selected"</#if>>多选</option>
+												 <option value="2" <#if (question.questionType!0)== 2>selected="selected"</#if>>简答题</option>
+												</select>												
+											</div>
+										</div>
+										<div id="redioquestion"  style="<#if (question.questionType!0)== 2>display:none</#if>">
+											<div class="form-group">
+												<label class="control-label col-md-3" id=>选项数 <span
+													class="required"> * </span>
+												</label>
+												<div class="col-md-4">
+													<div class="input-icon right">
+														<i class="fa"></i> <input type="number" class="form-control"
+															name="optionNum" id="optionNum" value="${question.optionNum!4}"    min="2" max="5"/>
+													</div>
+												</div>
+											</div>	
+											
+											<div class="form-group">
+												<label class="control-label col-md-3">选项A <span
+													class="required"> * </span>
+												</label>
+												<div class="col-md-4">
+													<div class="input-icon right">
+														<i class="fa"></i> <input type="input" class="form-control"
+															name="optionA" id="optionA" value="${question.optionA!}" />
+													</div>
+												</div>
+											</div>	
+											<div class="form-group">
+												<label class="control-label col-md-3">选项B <span
+													class="required"> * </span>
+												</label>
+												<div class="col-md-4">
+													<div class="input-icon right">
+														<i class="fa"></i> <input type="input" class="form-control"
+															name="optionB" id="optionB" value="${question.optionB!}" />
+													</div>
+												</div>
+											</div>	
+											<div class="form-group">
+												<label class="control-label col-md-3">选项C <span
+													class="required"> * </span>
+												</label>
+												<div class="col-md-4">
+													<div class="input-icon right">
+														<i class="fa"></i> <input type="input" class="form-control"
+															name="optionC" id="optionC" value="${question.optionC!}" />
+													</div>
+												</div>
+											</div>	
+												<div class="form-group">
+												<label class="control-label col-md-3">选项D <span
+													class="required"> * </span>
+												</label>
+												<div class="col-md-4">
+													<div class="input-icon right">
+														<i class="fa"></i> <input type="input" class="form-control"
+															name="optionD" id="optionD" value="${question.optionD!}" />
+													</div>
+												</div>
+											</div>	
+											<div class="form-group">
+												<label class="control-label col-md-3">选项E
+												</label>
+												<div class="col-md-4">
+													<div class="input-icon right">
+														<i class="fa"></i> <input type="input" class="form-control"
+															name="optionE" id="optionE" value="${question.optionE!}" />
+													</div>
+												</div>
+											</div>	
+											<div class="form-group">
+												<label class="control-label col-md-3">答案
+												</label>
+												<div class="col-md-4">
+													<div class="input-icon right">
+														<i class="fa"></i> <input type="input" class="form-control"
+															name="answer" id="answer" value="${question.answer!}" />
+													</div>
+													<div class="help-block">
+														多选时多个答案","分割开例：A,B,C
+													</div>
+												</div>
+											</div>	
+									
+										 </div>
+										<div id="textquestion" style="<#if (question.questionType!0)!= 2>display:none</#if>">
+										
+										<div class="form-group">
+												<label class="control-label col-md-3">文章数 <span
+													class="required"> * </span>
+												</label>
+												<div class="col-md-4">
+													<div class="input-group input-icon right">
+														<i class="fa"></i> <input type="number" class="form-control"
+															name="optionNum" id="optionNum" value="${question.optionNum!1}"  onchange="changetextshow(this.value)"   min="1" max="3"/>
+													    <span class="input-group-addon">篇</span>
+													</div>
+												</div>
+											</div>	
+											<div class="form-group">
+													<label class="control-label col-md-3">简答字数不小于 <span
+														class="required"> * </span>
+													</label>
+													<div class="col-md-4">
+														<div class="input-group  input-icon right">
+															<i class="fa"></i> <input type="number" class="form-control"
+																name="answer"  value="${question.answer!200}"  />
+																	<span class="input-group-addon">字</span>
+														</div>
+													</div>
+												</div>	
+										<div class="form-group" id="article1">
+											<label class="control-label col-md-3">文章1</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> 													
+													<textarea  name="article1" 
+														style="width: 800px; height:300px;">${question.article1!}
+													</textarea>
+												</div>
+											</div>
+										</div>				
+											<div class="form-group" id="article2" style="display: none">
+											<label class="control-label col-md-3">文章2</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> 													
+													<textarea  name="article2" 
+														style="width: 800px; height:300px;">${question.article2!}
+													</textarea>
+												</div>
+											</div>
+										</div>	
+											<div class="form-group" id="article3" style="display: none">
+											<label class="control-label col-md-3">文章3</label>
+											<div class="col-md-4">
+												<div class="input-icon right">
+													<i class="fa"></i> 													
+													<textarea  name="article3" 
+														style="width: 100%; height:300px;">${question.article3!}
+													</textarea>
+												</div>
+											</div>
+										</div>				
+										</div>											
+									</div>									   
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<button type="submit" class="btn blue">保存</button>
+												<button type="button" class="btn default1">取消</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!-- END FORM-->
+							</div>
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
+				<!-- END DASHBOARD STATS -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<#include "/view/include/footer.html" />
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->
+	<#include "/view/include/globalscript.html" />
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="${base}/assets/admin/plugins/fuelux/js/spinner.min.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/additional-methods.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/jquery-validation/js/localization/messages_zh.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+	<script type="text/javascript"
+		src="${base}/assets/admin/plugins/bootstrap-fileinput/bootstrap-fileinput.js"></script>	
+	<script type="text/javascript" src="${base}/assets/admin/plugins/jstree/dist/jstree.js"></script>	
+	<script type="text/javascript" src="${base}/assets/admin/plugins/sxhaloJQfn.js"></script>	
+	<script type="text/javascript"  src="${base}/assets/admin/kindeditor/kindeditor.js"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
+	
+		<script>	  
+		KindEditor.ready(function(K) {		
+			K.create('textarea', {	
+			height:"500px",		
+			uploadJson : '${base}/kindeditor/jsp/upload_json.jsp',			
+			                fileManagerJson : '${base}/kindeditor/jsp/file_manager_json.jsp',			
+			                allowFileManager : true,			
+			                allowImageUpload : true, 			
+			autoHeightMode : false,			
+			afterCreate : function() {this.loadPlugin('autoheight');},			
+			afterBlur : function(){ this.sync(); }  //Kindeditor下获取文本框信息			
+			});			
+		});			
+	</script>
+	<script>
+		$(document).ready(function() {
+			Metronic.init(); // init metronic core componets
+			Layout.init(); // init layout
+			addValidation();
+			$(".tree3").treeSelect("pid",-1);
+			$(".btn.default1").click(function(){
+				history.back();
+			});
+			$('#spinner1').spinner({min: 0, max: 99});
+			$('#spinner2').spinner({min: 0, max: 10});
+		});		
+	
+		var addValidation = function() {
+			var form1 = $('#roleform');
+
+			form1.validate({
+				errorElement : 'span', //default input error message container
+				errorClass : 'help-block help-block-error', // default input error message class
+				focusInvalid : false, // do not focus the last invalid input
+				ignore : "", // validate all fields including form hidden input
+				rules : {
+					question : {
+						minlength : 2,
+						maxlength : 50,
+						required : true
+					},
+					categoryLevel : {
+						required : true,
+						digits : true
+					},
+					sort : {
+						required : true,
+						digits : true
+					}					
+				},
+
+				invalidHandler : function(event, validator) { //display error alert on form submit              
+
+				},
+
+				highlight : function(element) { // hightlight error inputs
+					$(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+				},
+
+				unhighlight : function(element) { // revert the change done by hightlight
+					$(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
+				},
+
+				success : function(label) {
+					label.closest('.form-group').removeClass('has-error'); // set success class to the control group
+				}
+			});
+
+		};
+		function changeshow(value){
+			if(value==2){
+			  $("#textquestion").show();
+			  $("#redioquestion").hide();
+			  
+			}else{
+			  $("#textquestion").hide();
+			  $("#redioquestion").show();
+			}
+		
+		}
+		
+		function changetextshow(value){
+			if(value==3){
+			  $("#article3").show();
+			  $("#article2").show();
+			  $("#article1").show();
+			}else if(value==2){
+			  $("#article3").hide();
+			  $("#article2").show();
+			  $("#article1").show();
+			}else{
+			  $("#article3").hide();
+			  $("#article2").hide();
+			  $("#article1").show();
+			}
+	
+		}
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

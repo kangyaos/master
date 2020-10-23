@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jiaoda.edu.domain.SysSettings;
+import com.jiaoda.edu.log.LogDesc;
 import com.jiaoda.edu.mapper.SysSettingsMapper;
 import com.jiaoda.edu.service.ISysSettingService;
 
@@ -18,16 +19,19 @@ public class SysSettingServiceImpl implements ISysSettingService {
 
 
 	@Override
+	@LogDesc(desc="添加系统设置项")
 	public Integer insertSelective(SysSettings record) {
 		return selfDAO.insertSelective(record);
 	}
 
 	@Override
+	@LogDesc(desc="更新系统设置")
 	public Integer updateByPrimaryKeySelective(SysSettings record) {
 		return selfDAO.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
+	@LogDesc(desc="删除系统设置")
 	public Integer deleteByPrimaryKey(Object key) {
 		return selfDAO.deleteByPrimaryKey(key.toString());
 	}

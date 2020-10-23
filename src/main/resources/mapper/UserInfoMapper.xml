@@ -1,166 +1,245 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jiaoda.edu.mapper.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.UserInfo" >
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="role_id" property="roleId" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="signature" property="signature" jdbcType="VARCHAR" />
-    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
-    <result column="head_pic_code" property="headPicCode" jdbcType="VARCHAR" />
-    <result column="head_portrait" property="headPortrait" jdbcType="INTEGER" />
-    <result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
-    <result column="machine_code" property="machineCode" jdbcType="VARCHAR" />
-    <result column="region_code" property="regionCode" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiaoda.edu.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.UserInfo">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="head_pic_code" jdbcType="VARCHAR" property="headPicCode" />
+    <result column="user_mobile" jdbcType="VARCHAR" property="userMobile" />
+    <result column="machine_code" jdbcType="VARCHAR" property="machineCode" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="index_show" property="indexShow" jdbcType="INTEGER" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    user_id, role_id, user_name, real_name, signature, user_pwd, head_pic_code, head_portrait, 
-    user_mobile, machine_code, region_code
+
+  <sql id="Base_Column_List">
+    user_id, role_id, user_name, real_name, user_pwd, head_pic_code,
+    user_mobile, machine_code, remark, update_time, create_time, index_show,delete_flag
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
-    from user_info
+    a.*,b.role_name
+    from user_info a left join  sys_role b on a.role_id=b.role_id
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_info
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jiaoda.edu.domain.UserInfo" >
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.UserInfo">
     insert into user_info (user_id, role_id, user_name, 
-      real_name, signature, user_pwd, 
-      head_pic_code, head_portrait, user_mobile, 
-      machine_code, region_code)
+      real_name, user_pwd, 
+      head_pic_code, user_mobile, 
+      machine_code, remark, update_time, 
+      create_time, delete_flag)
     values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
-      #{realName,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
-      #{headPicCode,jdbcType=VARCHAR}, #{headPortrait,jdbcType=INTEGER}, #{userMobile,jdbcType=VARCHAR}, 
-      #{machineCode,jdbcType=VARCHAR}, #{regionCode,jdbcType=INTEGER})
+      #{realName,jdbcType=VARCHAR},  #{userPwd,jdbcType=VARCHAR}, 
+      #{headPicCode,jdbcType=VARCHAR},  #{userMobile,jdbcType=VARCHAR}, 
+      #{machineCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR} , #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.UserInfo" >
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.UserInfo">
     insert into user_info
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
         user_id,
       </if>
-      <if test="roleId != null" >
+      <if test="roleId != null">
         role_id,
       </if>
-      <if test="userName != null" >
+      <if test="userName != null">
         user_name,
       </if>
-      <if test="realName != null" >
+      <if test="realName != null">
         real_name,
       </if>
-      <if test="signature != null" >
-        signature,
-      </if>
-      <if test="userPwd != null" >
+      <if test="userPwd != null">
         user_pwd,
       </if>
-      <if test="headPicCode != null" >
+      <if test="headPicCode != null">
         head_pic_code,
       </if>
-      <if test="headPortrait != null" >
-        head_portrait,
-      </if>
-      <if test="userMobile != null" >
+      <if test="userMobile != null">
         user_mobile,
       </if>
-      <if test="machineCode != null" >
+      <if test="machineCode != null">
         machine_code,
       </if>
-      <if test="regionCode != null" >
-        region_code,
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+       <if test="indexShow != null" >
+        index_show,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="roleId != null" >
+      <if test="roleId != null">
         #{roleId,jdbcType=INTEGER},
       </if>
-      <if test="userName != null" >
+      <if test="userName != null">
         #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="realName != null" >
+      <if test="realName != null">
         #{realName,jdbcType=VARCHAR},
       </if>
-      <if test="signature != null" >
-        #{signature,jdbcType=VARCHAR},
-      </if>
-      <if test="userPwd != null" >
+      <if test="userPwd != null">
         #{userPwd,jdbcType=VARCHAR},
       </if>
-      <if test="headPicCode != null" >
+      <if test="headPicCode != null">
         #{headPicCode,jdbcType=VARCHAR},
       </if>
-      <if test="headPortrait != null" >
-        #{headPortrait,jdbcType=INTEGER},
-      </if>
-      <if test="userMobile != null" >
+      <if test="userMobile != null">
         #{userMobile,jdbcType=VARCHAR},
       </if>
-      <if test="machineCode != null" >
+      <if test="machineCode != null">
         #{machineCode,jdbcType=VARCHAR},
       </if>
-      <if test="regionCode != null" >
-        #{regionCode,jdbcType=INTEGER},
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR} ,
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indexShow != null" >
+        #{indexShow,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.UserInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.UserInfo">
     update user_info
-    <set >
-      <if test="roleId != null" >
+    <set>
+      <if test="roleId != null">
         role_id = #{roleId,jdbcType=INTEGER},
       </if>
-      <if test="userName != null" >
+      <if test="userName != null">
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="realName != null" >
+      <if test="realName != null">
         real_name = #{realName,jdbcType=VARCHAR},
       </if>
-      <if test="signature != null" >
-        signature = #{signature,jdbcType=VARCHAR},
-      </if>
-      <if test="userPwd != null" >
+      <if test="userPwd != null">
         user_pwd = #{userPwd,jdbcType=VARCHAR},
       </if>
-      <if test="headPicCode != null" >
+      <if test="headPicCode != null">
         head_pic_code = #{headPicCode,jdbcType=VARCHAR},
       </if>
-      <if test="headPortrait != null" >
-        head_portrait = #{headPortrait,jdbcType=INTEGER},
-      </if>
-      <if test="userMobile != null" >
+      <if test="userMobile != null">
         user_mobile = #{userMobile,jdbcType=VARCHAR},
       </if>
-      <if test="machineCode != null" >
+      <if test="machineCode != null">
         machine_code = #{machineCode,jdbcType=VARCHAR},
       </if>
-      <if test="regionCode != null" >
-        region_code = #{regionCode,jdbcType=INTEGER},
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR} ,
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indexShow != null" >
+        index_show = #{indexShow,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
       </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.UserInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.UserInfo">
     update user_info
     set role_id = #{roleId,jdbcType=INTEGER},
       user_name = #{userName,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},
-      signature = #{signature,jdbcType=VARCHAR},
       user_pwd = #{userPwd,jdbcType=VARCHAR},
       head_pic_code = #{headPicCode,jdbcType=VARCHAR},
-      head_portrait = #{headPortrait,jdbcType=INTEGER},
       user_mobile = #{userMobile,jdbcType=VARCHAR},
       machine_code = #{machineCode,jdbcType=VARCHAR},
-      region_code = #{regionCode,jdbcType=INTEGER}
+      remark = #{remark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=INTEGER}
-  </update> <select id="getCount" resultType="java.lang.Integer">
+  </update>
+    <insert id="batchinsert" parameterType="java.util.List">
+  
+  
+	<foreach collection="users" item="user" separator=";">
+	  insert into user_info
+	  <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user.roleId != null">
+        role_id,
+      </if>
+      <if test="user.userName != null">
+        user_name,
+      </if>
+      <if test="user.realName != null">
+        real_name,
+      </if>
+      <if test="user.userPwd != null">
+        user_pwd,
+      </if>
+      <if test="user.userMobile != null">
+        user_mobile,
+      </if>
+      <if test="user.remark != null">
+        remark,
+      </if>
+    
+        update_time,
+        create_time,
+        delete_flag
+    </trim>
+	 <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user.roleId != null">
+        #{user.roleId,jdbcType=INTEGER},
+      </if>
+      <if test="user.userName != null">
+        #{user.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="user.realName != null">
+        #{user.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="user.userPwd != null">
+        #{user.userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="user.userMobile != null">
+        #{user.userMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="user.remark != null">
+        #{user.remark,jdbcType=VARCHAR} ,
+      </if>
+       now(),now(),0
+   
+    </trim>
+	</foreach>
+  </insert>
+   <select id="getCount" resultType="java.lang.Integer">
     select count(*) from user_info
     <if test="where != null and where != ''" >
       where ${where}
@@ -191,4 +270,10 @@
       limit ${start},${length}
     </if>
   </select>
+   <select id="getindexCount" resultType="java.util.Map">
+		select count(*) all_user_count,  count(role_id=2 or null) t_user_count,
+		(select count(*) from course_info where publish_state=1 and delete_flag=0) course_count
+		from user_info where  delete_flag=0 
+   </select>
+  
 </mapper>

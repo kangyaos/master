@@ -168,7 +168,7 @@
 			var filename = file.replace(/.*(\/|\\)/, "");
 			var fileExt = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename
 					.toLowerCase()) : '';			
-			if (fileExt == "jpg" || fileExt == "png") {
+			if (fileExt == "jpg" || fileExt == "png"|| fileExt == "jpeg") {
 				$.ajaxFileUpload({
 					url : "imageUpload.do",
 					secureuri : false,

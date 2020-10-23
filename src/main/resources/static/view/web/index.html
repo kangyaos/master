@@ -9,8 +9,45 @@
 <#include "/view/web/include/headerFile.htm" />
 <#include "/view/web/include/head.htm" />
 
-
-					<div id="layout_1578626271523" class="layout  none" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="margin-top: 110px;">
+<style>
+.overhide,.overhide1,.overhide2{
+     overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    font-size: 13px;
+    line-height: 20px;
+    color: #666666;
+      margin-top: 8px;
+    -webkit-box-orient: vertical;
+}
+ .overhide1{
+      margin-top: 0px;
+     -webkit-line-clamp: 1;
+    }
+     .overhide2{
+      margin-top: 0px;
+    }
+@media screen and (max-width:640px) {
+	.overhide{
+      margin-top: 0px;
+      -webkit-line-clamp: 3;
+    }
+    .overhide1{
+      margin-top: -5px;
+   
+    }
+     .overhide2{
+      margin-top: -6px;
+     -webkit-line-clamp: 2;
+    }
+} 
+.newName p{
+    padding-left: 10px;
+    color: #ccc;
+}
+</style>
+					<div id="layout_1578626271523" class="layout  none"  >
 				<div class="view_contents">
 								<div id="banner_style_01_1578626271528" class="view style_01 banner  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="banner" class="view_contents">
@@ -20,7 +57,7 @@
 		<div class="flicking_con">
 				<a href="index.html#" class=""></a>
 				<a href="index.html#" class=""></a>
-				<!-- <a href="index.html#" class="on"></a> -->
+				<a href="index.html#" class="on"></a> 
 		</div>
 		<div class="ground_glass"></div>
 		<div class="main_image">
@@ -28,14 +65,14 @@
 			<div class="img-list">
 					<div class="img-item" style="left: -100%;"><a href="javascript:;" class="picSet"><span class="img_0"></span></a></div>
 					<div class="img-item" style="left: -100%;"><a href="javascript:;" class="picSet"><span class="img_1"></span></a></div>
-					<!-- <div class="img-item" style="left: 0%;"><a href="javascript:;" class="picSet"><span class="img_2"></span></a></div> -->
+					 <div class="img-item" style="left: 0%;"><a href="javascript:;" class="picSet"><span class="img_2"></span></a></div> 
 			</div>
-			<a href="javascript:;" class="btn_prev" style="display: inline; opacity: 0.00744534;"></a>
-			<a href="javascript:;" class="btn_next" style="display: inline; opacity: 0.00744534;"></a>
+			<a href="javascript:;" class="btn_prev" style="display: inline; "></a>
+			<a href="javascript:;" class="btn_next" style="display: inline;"></a>
 		</div>
 	</div>
 </div>
- <script type="application/javascript">
+  <script type="application/javascript">
     /*
      * Banner 轮播图类
      */
@@ -241,7 +278,10 @@
      */
     // 图片数据
     var list_banner_style_01_1578626271528 = [];
-    list_banner_style_01_1578626271528.push('${base}/assets/web/images/mmexport1601018912249.jpg?version=0');list_banner_style_01_1578626271528.push('${base}/assets/web/images/mmexport1601018916904.jpg?version=0');
+     list_banner_style_01_1578626271528.push('${base}/assets/web/images/lunbo33.jpg?version=0');
+    list_banner_style_01_1578626271528.push('${base}/assets/web/images/lunbo11.jpg?version=0');
+    list_banner_style_01_1578626271528.push('${base}/assets/web/images/lunbo22.jpg?version=0');
+    
     var banner_banner_style_01_1578626271528;        // 轮播图对象
     $(function(){
         // 创建轮播图
@@ -330,272 +370,215 @@
         }, false);
         // 运行
         banner_banner_style_01_1578626271528.config.timer = setTimeout(function(){
-            banner_banner_style_01_1578626271528.startAnimateRight();
+           banner_banner_style_01_1578626271528.startAnimateRight();
         }, banner_banner_style_01_1578626271528.config.duration);
-    });
-</script> 
+   });
+ </script> 
 				</div>
 			</div>
-					<div id="div_a_includeBlock_1578626271548" class="view a_includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="div" class="view_contents">
-								<div id="text_style_01_1578626272579" class="view style_01 text  none wow fadeInLeftBig lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInLeftBig;">
-				<div names="text" class="view_contents">
-					知识从兴趣开始
-				</div>
-			</div>
-					<div id="text_style_01_1578626272586" class="view style_01 text  none wow fadeInLeftBig lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInLeftBig;">
-				<div names="text" class="view_contents">
-					多元教育,智在成长每一步<div>作为教育体系中至关重要的起点,也是奠定人生方向的幼儿教育
-				</div>
-				</div>
-			</div>
-					<div id="button_style_04_1578626272593" class="view style_04 button  none wow fadeInLeftBig lockHeightView animated" data-wow-duration="2s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 2s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInLeftBig;">
-				<div names="button" class="view_contents">
-					<script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default04  btnaSet" onclick="location.href=&#39;about.html&#39;">了解我们</button>
-<script type="text/javascript">
-if(typeof showcart !== 'function'){
-	function showcart(){
-		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
-		location.href = "//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		}else{
-		document.getElementById("boxName").innerHTML="";
-		if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-		document.getElementById("showiframe").src="//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		box.Show({width:'1000px', height:'600px'});
-		}
-	}
-}
-</script>				</div>
-			</div>
-					<div id="button_style_04_1589063783984" class="view style_04 button  none wow fadeInLeftBig lockHeightView animated" data-wow-duration="2s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 2s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInLeftBig;">
-				<div names="button" class="view_contents">
-					<script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default04  btnaSet" onclick="location.href=&#39;contact.html&#39;">立即报名</button>
-<script type="text/javascript">
-if(typeof showcart !== 'function'){
-	function showcart(){
-		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
-		location.href = "//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		}else{
-		document.getElementById("boxName").innerHTML="";
-		if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-		document.getElementById("showiframe").src="//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		box.Show({width:'1000px', height:'600px'});
-		}
-	}
-}
-</script>				</div>
+					
 			</div>
 						</div>
 			</div>
+					<div id="layout_1579162373618" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" style="height: 70px;">
+						<div class="view_contents">
+							<div id="div_a_includeBlock_1579162373622" class="view a_includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+								<div names="div" class="view_contents">
+											
+									<div id="text_style_01_1579162373891" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
+										<div names="text" class="view_contents">教师团队</div>
+										
+									</div>
+								</div>
+							</div>
 						</div>
-			</div>
-					<div id="layout_1579162373618" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1" style="height: 140px;">
-				<div class="view_contents">
-								<div id="div_a_includeBlock_1579162373622" class="view a_includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="div" class="view_contents">
-								<div id="text_style_01_1579162373875" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
-				<div names="text" class="view_contents">
-					国内门类齐全，规模较大的公开课课程供应商之一
-				</div>
-			</div>
-					<div id="text_style_01_1579162373891" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
-				<div names="text" class="view_contents">
-					教师团队
-				</div>
-			</div>
-						</div>
-			</div>
-						</div>
-			</div>
+					</div>
+				
+					
 					<div id="layout_1579162417284" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div class="view_contents">
-								<div id="div_a_includeBlock_1579162433581" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
-				<div names="div" class="view_contents">
-								<div id="text_style_01_1579249582632" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="text" class="view_contents">
-					小学课程
-				</div>
-			</div>
-					<div id="image_style_01_1579249776265" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="image" class="view_contents">
-					<div class="imgStyle CompatibleImg picSet">
-		<a href="trainingcourse.html" target="">
-			<img class="link-type-" src="${base}/assets/web/images/1589361300249af7e0e5dae196d93.png" title="" alt="描述" id="imageModeShow">
-		</a>
-</div>
-<!-- 新加的js  -->
-				</div>
-			</div>
-					<div id="button_style_04_1589064709591" class="view style_04 button  none lockHeightView" data-wow-duration="2s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="button" class="view_contents">
-					<script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default04  btnaSet" onclick="location.href=&#39;trainingcourse.html&#39;">了解详情</button>
-<script type="text/javascript">
-if(typeof showcart !== 'function'){
-	function showcart(){
-		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
-		location.href = "//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		}else{
-		document.getElementById("boxName").innerHTML="";
-		if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-		document.getElementById("showiframe").src="//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		box.Show({width:'1000px', height:'600px'});
-		}
-	}
-}
-</script>				</div>
-			</div>
-						</div>
-			</div>
-					<div id="div_a_includeBlock_1589360878482" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
+					<#list users as user>
+		    			<#if user_index == 0>		
+							<div id="div_a_includeBlock_1579162433581" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
+								<div names="div" class="view_contents">
+									<div id="text_style_01_1589360878661" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="text" class="view_contents">${user.realName!}</div>
+										<div class="overhide">${user.remark!}</div>
+							        </div>
+									<div id="image_style_01_1579249776265" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="image" class="view_contents">
+											<div class="imgStyle CompatibleImg picSet">
+												<a href="teacherdetail.html?pid=${user.userId!}" target="">
+													<img class="link-type-" src="${base}/upload/user/${user.headPicCode!}" title="" alt="描述" id="imageModeShow">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</#if>
+						<#if user_index == 1>	
+							<div id="div_a_includeBlock_1589360878482" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
+								<div names="div" class="view_contents">
+									<div id="text_style_01_1579249582632" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="text" class="view_contents">${user.realName!}</div>
+										<div class="overhide">${user.remark!}</div>
+							        </div>
+									<div id="image_style_01_1589360878683" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="image" class="view_contents">
+											<div class="imgStyle CompatibleImg picSet">
+												<a href="teacherdetail.html?pid=${user.userId!}" target="">
+													<img class="link-type-" src="${base}/upload/user/${user.headPicCode!}" title="" alt="描述" id="imageModeShow">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</#if>
+						<#if user_index ==2>	
+							<div id="div_a_includeBlock_1589360930825" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
+								<div names="div" class="view_contents">
+									<div id="text_style_01_1589360930952" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="text" class="view_contents">${user.realName!}</div>
+										<div class="overhide">${user.remark!}</div>
+							        </div>
+									<div id="image_style_01_1589360930960" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="image" class="view_contents">
+											<div class="imgStyle CompatibleImg picSet">
+												<a href="teacherdetail.html?pid=${user.userId!}" target="">
+													<img class="link-type-" src="${base}/upload/user/${user.headPicCode!}" title="" alt="描述" id="imageModeShow">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</#if>
+						<#if user_index == 3>	
+							<div id="div_a_includeBlock_1589360992576" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
+								<div names="div" class="view_contents">
+									<div id="text_style_01_1589360992751" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="text" class="view_contents">${user.realName!}</div>
+										<div class="overhide">${user.remark!}</div>
+							        </div>
+									<div id="image_style_01_1589360992759" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="image" class="view_contents">
+											<div class="imgStyle CompatibleImg picSet">
+												<a href="teacherdetail.html?pid=${user.userId!}" target="">
+													<img class="link-type-" src="${base}/upload/user/${user.headPicCode!}" title="" alt="描述" id="imageModeShow">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</#if>
+						<#if user_index == 4>	
+							<div id="div_a_includeBlock_1589361016186" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
+								<div names="div" class="view_contents">
+									<div id="text_style_01_1589361016367" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="text" class="view_contents">${user.realName!}</div>
+										<div class="overhide">${user.remark!}</div>
+							        </div>
+									<div id="image_style_01_1589361016378" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+										<div names="image" class="view_contents">
+											<div class="imgStyle CompatibleImg picSet">
+												<a href="teacherdetail.html?pid=${user.userId!}" target="">
+													<img class="link-type-" src="${base}/upload/user/${user.headPicCode!}" title="" alt="描述" id="imageModeShow">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</#if>
+					</#list>
+	<!-- 				<div id="div_a_includeBlock_1589360878482" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
 				<div names="div" class="view_contents">
 								<div id="text_style_01_1589360878661" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="text" class="view_contents">
-					初中课程
+					赵文安
+				</div>
+				<div class="overhide">赵文安，信息技术专业，大学本科学历，工程硕士学位，中学高级教师，从事小学信息技术教学30多年。目前从事人工智能教育的研究和教学工作。从教30多年来，辅导的学生多次在全国小学生电脑大赛上获奖。
 				</div>
 			</div>
 					<div id="image_style_01_1589360878683" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="image" class="view_contents">
 					<div class="imgStyle CompatibleImg picSet">
 		<a href="trainingcourse.html" target="">
-			<img class="link-type-" src="${base}/assets/web/images/158936130025235c5931538d28520.png" title="" alt="描述" id="imageModeShow">
+			<img class="link-type-" src="${base}/assets/web/images/zhaowenan.png" title="" alt="描述" id="imageModeShow">
 		</a>
 </div>
-<!-- 新加的js  -->
+
 				</div>
 			</div>
-					<div id="button_style_04_1589360878692" class="view style_04 button  none lockHeightView" data-wow-duration="2s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="button" class="view_contents">
-					<script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default04  btnaSet" onclick="location.href=&#39;trainingcourse.html&#39;">了解详情</button>
-<script type="text/javascript">
-if(typeof showcart !== 'function'){
-	function showcart(){
-		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
-		location.href = "//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		}else{
-		document.getElementById("boxName").innerHTML="";
-		if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-		document.getElementById("showiframe").src="//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		box.Show({width:'1000px', height:'600px'});
-		}
-	}
-}
-</script>				</div>
-			</div>
+				
 						</div>
 			</div>
 					<div id="div_a_includeBlock_1589360930825" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
-				<div names="div" class="view_contents">
-								<div id="text_style_01_1589360930952" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="text" class="view_contents">
-					高中课程
-				</div>
-			</div>
+						<div names="div" class="view_contents">
+							<div id="text_style_01_1589360930952" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+								<div names="text" class="view_contents">
+									肖珂
+								</div>
+								<div class="overhide">肖珂，西安交通大学附属小学音乐教师，陕西省教学能手，陕西省第六批学科带头人培养对象组建肖珂工作坊，立项陕西省专项课题“基于人工智能技术的小学音乐教学实践的研究”正在研究中。</div>
+							</div>
 					<div id="image_style_01_1589360930960" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="image" class="view_contents">
-					<div class="imgStyle CompatibleImg picSet">
-		<a href="trainingcourse.html" target="">
-			<img class="link-type-" src="${base}/assets/web/images/158936130025336c5b3248e21d01e.png" title="" alt="描述" id="imageModeShow">
-		</a>
-</div>
-<!-- 新加的js  -->
-				</div>
-			</div>
-					<div id="button_style_04_1589360930970" class="view style_04 button  none lockHeightView" data-wow-duration="2s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="button" class="view_contents">
-					<script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default04  btnaSet" onclick="location.href=&#39;trainingcourse.html&#39;">了解详情</button>
-<script type="text/javascript">
-if(typeof showcart !== 'function'){
-	function showcart(){
-		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
-		location.href = "//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		}else{
-		document.getElementById("boxName").innerHTML="";
-		if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-		document.getElementById("showiframe").src="//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		box.Show({width:'1000px', height:'600px'});
-		}
-	}
-}
-</script>				</div>
-			</div>
+						<div names="image" class="view_contents">
+							<div class="imgStyle CompatibleImg picSet">
+								<a href="trainingcourse.html" target="">
+									<img class="link-type-" src="${base}/assets/web/images/xiaoke.png" title="" alt="描述" id="imageModeShow">
+								</a>
+						   </div>
+		
+						</div>
+					</div>
+				
 						</div>
 			</div>
 					<div id="div_a_includeBlock_1589360992576" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
-				<div names="div" class="view_contents">
-								<div id="text_style_01_1589360992751" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="text" class="view_contents">
-					艺术课程
-				</div>
-			</div>
-					<div id="image_style_01_1589360992759" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="image" class="view_contents">
-					<div class="imgStyle CompatibleImg picSet">
-		<a href="trainingcourse.html" target="">
-			<img class="link-type-" src="${base}/assets/web/images/1589361300254237423829e50f1fc.png" title="" alt="描述" id="imageModeShow">
-		</a>
-</div>
-<!-- 新加的js  -->
-				</div>
-			</div>
-					<div id="button_style_04_1589360992763" class="view style_04 button  none lockHeightView" data-wow-duration="2s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="button" class="view_contents">
-					<script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default04  btnaSet" onclick="location.href=&#39;trainingcourse.html&#39;">了解详情</button>
-<script type="text/javascript">
-if(typeof showcart !== 'function'){
-	function showcart(){
-		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
-		location.href = "//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		}else{
-		document.getElementById("boxName").innerHTML="";
-		if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-		document.getElementById("showiframe").src="//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		box.Show({width:'1000px', height:'600px'});
-		}
-	}
-}
-</script>				</div>
-			</div>
+						<div names="div" class="view_contents">
+							<div id="text_style_01_1589360992751" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+								<div names="text" class="view_contents">
+									邸娟
+								</div>
+								<div class="overhide">邸娟，科学教师，交大附小综合组教研组长，中小学一级教师，碑林区“阳光教师”、碑林区“优秀教科研先进个人”、2018年获得“西安市教学能手”称号、2016年获得“碑林区教学能手”称号，校级“优秀教科研先进个人”，所带领的教研组多次评为校级“先进教科研教研组”、“优秀教研组”。多年致力于科学教学工作，撰写的教学设计和论文多次荣获市级、省级、国家级一、二等奖；2014年完成国家级课题《课堂结构可视化的研究》、2017年完成西安市小课题《借助“思维导图”提升小学科学课堂教学质量的实践研究》。2018年申报陕西省课题《小学STEAM创新教育与学科融合初探》已立项，在省、市级科技创新大赛、环球自然日、DI创新思维大赛、宋庆龄少年儿童创新发明活动中多次被评为“优秀辅导教师”、“优秀领队”、“优秀裁判”、“优秀园丁奖”、“优秀指导教师”、“优秀辅导员”等荣誉称号，2019年获得陕西省教学能手称号。</div>
+							</div>
+							<div id="image_style_01_1589360992759" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+								<div names="image" class="view_contents">
+									<div class="imgStyle CompatibleImg picSet">
+											<a href="trainingcourse.html" target="">
+												<img class="link-type-" src="${base}/assets/web/images/dijuan.png" title="" alt="描述" id="imageModeShow">
+											</a>
+									</div>
+				
+								</div>
+							</div>
 						</div>
-			</div>
+			        </div>
 					<div id="div_a_includeBlock_1589361016186" class="view a_includeBlock div  none wow rollIn includeView animated" data-wow-duration="1.5s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1.5s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: rollIn;">
-				<div names="div" class="view_contents">
-								<div id="text_style_01_1589361016367" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="text" class="view_contents">
-					IT课程
-				</div>
-			</div>
-					<div id="image_style_01_1589361016378" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="image" class="view_contents">
-					<div class="imgStyle CompatibleImg picSet">
-		<a href="trainingcourse.html" target="">
-			<img class="link-type-" src="${base}/assets/web/images/15893613002663166cb0b432c8017.png" title="" alt="描述" id="imageModeShow">
-		</a>
-</div>
-<!-- 新加的js  -->
-				</div>
-			</div>
-					<div id="button_style_04_1589361016382" class="view style_04 button  none lockHeightView" data-wow-duration="2s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
-				<div names="button" class="view_contents">
-					<script>function btnTop(){$("html,body").animate({scrollTop:"0px"},1000);}function btnBottom(){var bodyH = $("html,body").height();$("html,body").animate({scrollTop:bodyH},1000);}</script><button type="button" class="button_default04  btnaSet" onclick="location.href=&#39;trainingcourse.html&#39;">了解详情</button>
-<script type="text/javascript">
-if(typeof showcart !== 'function'){
-	function showcart(){
-		if(window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767)){
-		location.href = "//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		}else{
-		document.getElementById("boxName").innerHTML="";
-		if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-		document.getElementById("showiframe").src="//box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&act=show&lang=0&v=9";
-		box.Show({width:'1000px', height:'600px'});
-		}
-	}
-}
-</script>				</div>
-			</div>
+						<div names="div" class="view_contents">
+							<div id="text_style_01_1589361016367" class="view style_01 text  none lockHeightView" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1">
+								<div names="text" class="view_contents">
+									高珊珊
+								</div>
+								<div class="overhide">高珊珊，女，本科学历，现任职于西安交通大学附属小学，任教数学学科，为陕西省教学能手，陕西省第四批学科带头人。一直从事小学数学教学与研究，执教的现场课和课堂实录，及多篇设计论文在省市教学成果评选中获奖，主持过2项省级课题，多次担任国培或省培的主讲教师和指导教师。</div>
+							</div>
+							<div id="image_style_01_1589361016378" class="view style_01 image  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
+								<div names="image" class="view_contents">
+									<div class="imgStyle CompatibleImg picSet">
+											<a href="trainingcourse.html" target="">
+												<img class="link-type-" src="${base}/assets/web/images/gaoshanshan.png" title="" alt="描述" id="imageModeShow">
+											</a>
+									</div>
+								</div>
+							</div>
+				
 						</div>
+			     </div> -->
 			</div>
-						</div>
-			</div>
+		</div>
 	<div id="layout_1589064221457" class="layout  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div class="view_contents">
 								<div id="div_a_includeBlock_1589064221458" class="view a_includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
@@ -640,12 +623,7 @@ if(typeof showcart !== 'function'){
 			</div>
 					<div id="video_style_02_1589112357438" class="view style_02 video  none" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="video" class="view_contents">
-					<script>$(document).ready(function(){
-});</script>
-<video style="width:100%;height:100%;" controls="controls" poster="https://cdn.yun.sooce.cn/2/125373/png/158927263981168520342a1d2ed94.png?version=0">
-    <source src="https://cdn.yun.sooce.cn/2/125373/mp4/1589361583386774c8a05e8fc2ae7.mp4" type="video/mp4">
-    请升级您的浏览器或更换主流浏览器打开。
-</video>
+				<img  src="${base}/assets/web/images/jieshao.png" title="" alt="描述" style="width:100%" >
 				</div>
 			</div>
 						</div>
@@ -669,7 +647,7 @@ if(typeof showcart !== 'function'){
 				</a>
 				<div class="cont">
 					<div class="name titProSet">丰富的教学课程</div>
-						<div class="subName defProSet">中心提供丰富的早教课程，为您和孩子提供多样的选择</div>
+						<div class="subName defProSet">平台提供丰富的教学示范课程，为帮扶对象提供多样的选择</div>
 				</div>
 			</li>
 			<li class="imgTextLi modSet">
@@ -685,7 +663,7 @@ if(typeof showcart !== 'function'){
 				</a>
 				<div class="cont">
 					<div class="name titProSet">寓教于乐的文化氛围</div>
-						<div class="subName defProSet">定期总结学生学习情况报告，并反馈给家长，根据预期进一步优化目标</div>
+						<div class="subName defProSet">定期总结课程学习情况报告，并反馈给帮扶教师，根据预期进一步优化目标</div>
 				</div>
 			</li>
 			<li class="imgTextLi modSet">
@@ -717,7 +695,7 @@ if(typeof showcart !== 'function'){
 				</a>
 				<div class="cont">
 					<div class="name titProSet">严选资格认证教师</div>
-						<div class="subName defProSet">根据学生个性特点、学习现状，对症下药，量身定制专属辅导方案</div>
+						<div class="subName defProSet">根据帮扶学科特点、教育现状，对症下药，量身定制专属帮扶方案</div>
 				</div>
 			</li>
 		<li></li>
@@ -740,11 +718,7 @@ if(typeof showcart !== 'function'){
 				<div class="view_contents">
 								<div id="div_a_includeBlock_1589113028734" class="view a_includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="div" class="view_contents">
-								<div id="text_style_01_1589113028959" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
-				<div names="text" class="view_contents">
-					国内门类齐全，规模较大的公开课课程供应商之一
-				</div>
-			</div>
+								
 					<div id="text_style_01_1589113028969" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
 				<div names="text" class="view_contents">
 					课程中心
@@ -761,7 +735,7 @@ if(typeof showcart !== 'function'){
 <!-- protypeSet pageSet pagecurSet-->
 <div class="prod_default3">
 	<ul id="prod_Ulist">
-		
+		<#list  infos as info>
 			<li class="prod_Item modSet">
 				<div class="relative">
 
@@ -769,7 +743,7 @@ if(typeof showcart !== 'function'){
 					
 						<div class="prodImg_box imgSet">
 							
-							<div class="prod_img"><a href="coursedetail.html?pid=2957967&amp;_t=1590129423" target="_blank"><img class="pro_img horizontal" src="${base}/assets/web/images/1589162352646ad533e70861672db.jpg" alt="编程课程同步提升精讲班（1V3）"></a></div>
+							<div class="prod_img"><a href="coursedetail.html?pid=${info.courseId!}&amp;_t=1590129423" target="_blank"><img class="pro_img horizontal" src="${base}/upload/course/${info.pic!}" alt="编程课程同步提升精讲班（1V3）"></a></div>
 							<div class="dummy" style="margin-top:67%"></div>
 							
 						</div>
@@ -778,264 +752,22 @@ if(typeof showcart !== 'function'){
 					<div class="prod_info">
 						
 							
-								<div class="titleSet p_name pc" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957967&amp;_t=1590129423" target="_blank">编程课程同步提升精讲班（1V3）</a></div>
-								<div class="titleSet p_name pad" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957967&amp;_t=1590129423" target="_blank">编程课程同步提升精讲班（1V3）</a></div>
-								<div class="titleSet p_name mobile" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957967&amp;_t=1590129423" target="_blank">编程课程同步提升精讲班（...</a></div>
+								<div class="titleSet p_name pc" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=${info.courseId!}&amp;_t=1590129423" target="_blank">${info.courseName!}</a></div>
+								<div class="titleSet p_name pad" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=${info.courseId!}&amp;_t=1590129423" target="_blank">${info.courseName!}</a></div>
+								<div class="titleSet p_name mobile" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=${info.courseId!}&amp;_t=1590129423" target="_blank">${info.courseName!}</a></div>
 							
 							
 							<div class="p_line">
 								
-								
-									
-									
-
-									
-									
-								
 								<div class="p_line2">
-									
-									
 								</div>
 							</div>
-						
-						
-							
-						
-
-						
-
 					</div>
 				</div>
 			</li>
+		</#list>
 		
-			<li class="prod_Item modSet">
-				<div class="relative">
-
-					<!-- 产品图片  -->
-					
-						<div class="prodImg_box imgSet">
-							
-							<div class="prod_img"><a href="coursedetail.html?pid=2957965&amp;_t=1590129423" target="_blank"><img class="pro_img horizontal" src="${base}/assets/web/images/15891623526493691e4a8730269bb.jpg" alt="图形课程同步提升精讲班（1V2）"></a></div>
-							<div class="dummy" style="margin-top:67%"></div>
-							
-						</div>
-					
-					<!-- 内容 -->
-					<div class="prod_info">
-						
-							
-								<div class="titleSet p_name pc" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957965&amp;_t=1590129423" target="_blank">图形课程同步提升精讲班（1V2）</a></div>
-								<div class="titleSet p_name pad" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957965&amp;_t=1590129423" target="_blank">图形课程同步提升精讲班（1V2）</a></div>
-								<div class="titleSet p_name mobile" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957965&amp;_t=1590129423" target="_blank">图形课程同步提升精讲班（...</a></div>
-							
-							
-							<div class="p_line">
-								
-								
-									
-									
-
-									
-									
-								
-								<div class="p_line2">
-									
-									
-								</div>
-							</div>
-						
-						
-							
-						
-
-						
-
-					</div>
-				</div>
-			</li>
 		
-			<li class="prod_Item modSet">
-				<div class="relative">
-
-					<!-- 产品图片  -->
-					
-						<div class="prodImg_box imgSet">
-							
-							<div class="prod_img"><a href="coursedetail.html?pid=2957963&amp;_t=1590129423" target="_blank"><img class="pro_img horizontal" src="${base}/assets/web/images/158916235265084316e1b0e1d3c94.jpg" alt="IT课程同步提升精讲班（1V1）"></a></div>
-							<div class="dummy" style="margin-top:67%"></div>
-							
-						</div>
-					
-					<!-- 内容 -->
-					<div class="prod_info">
-						
-							
-								<div class="titleSet p_name pc" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957963&amp;_t=1590129423" target="_blank">IT课程同步提升精讲班（1V1）</a></div>
-								<div class="titleSet p_name pad" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957963&amp;_t=1590129423" target="_blank">IT课程同步提升精讲班（1V1）</a></div>
-								<div class="titleSet p_name mobile" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957963&amp;_t=1590129423" target="_blank">IT课程同步提升精讲班（...</a></div>
-							
-							
-							<div class="p_line">
-								
-								
-									
-									
-
-									
-									
-								
-								<div class="p_line2">
-									
-									
-								</div>
-							</div>
-						
-						
-							
-						
-
-						
-
-					</div>
-				</div>
-			</li>
-		
-			<li class="prod_Item modSet">
-				<div class="relative">
-
-					<!-- 产品图片  -->
-					
-						<div class="prodImg_box imgSet">
-							
-							<div class="prod_img"><a href="coursedetail.html?pid=2957961&amp;_t=1590129423" target="_blank"><img class="pro_img horizontal" src="${base}/assets/web/images/15891623526522e301739274ef6e0.jpg" alt="美术课程同步提升精讲班（1V2）"></a></div>
-							<div class="dummy" style="margin-top:67%"></div>
-							
-						</div>
-					
-					<!-- 内容 -->
-					<div class="prod_info">
-						
-							
-								<div class="titleSet p_name pc" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957961&amp;_t=1590129423" target="_blank">美术课程同步提升精讲班（1V2）</a></div>
-								<div class="titleSet p_name pad" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957961&amp;_t=1590129423" target="_blank">美术课程同步提升精讲班（1V2）</a></div>
-								<div class="titleSet p_name mobile" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957961&amp;_t=1590129423" target="_blank">美术课程同步提升精讲班（...</a></div>
-							
-							
-							<div class="p_line">
-								
-								
-									
-									
-
-									
-									
-								
-								<div class="p_line2">
-									
-									
-								</div>
-							</div>
-						
-						
-							
-						
-
-						
-
-					</div>
-				</div>
-			</li>
-		
-			<li class="prod_Item modSet">
-				<div class="relative">
-
-					<!-- 产品图片  -->
-					
-						<div class="prodImg_box imgSet">
-							
-							<div class="prod_img"><a href="coursedetail.html?pid=2957959&amp;_t=1590129423" target="_blank"><img class="pro_img horizontal" src="${base}/assets/web/images/1589162352653706f9f81b94bbf5e.jpg" alt="音乐课程同步提升精讲班（1V3）"></a></div>
-							<div class="dummy" style="margin-top:67%"></div>
-							
-						</div>
-					
-					<!-- 内容 -->
-					<div class="prod_info">
-						
-							
-								<div class="titleSet p_name pc" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957959&amp;_t=1590129423" target="_blank">音乐课程同步提升精讲班（1V3）</a></div>
-								<div class="titleSet p_name pad" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957959&amp;_t=1590129423" target="_blank">音乐课程同步提升精讲班（1V3）</a></div>
-								<div class="titleSet p_name mobile" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957959&amp;_t=1590129423" target="_blank">音乐课程同步提升精讲班（...</a></div>
-							
-							
-							<div class="p_line">
-								
-								
-									
-									
-
-									
-									
-								
-								<div class="p_line2">
-									
-									
-								</div>
-							</div>
-						
-						
-							
-						
-
-						
-
-					</div>
-				</div>
-			</li>
-		
-			<li class="prod_Item modSet">
-				<div class="relative">
-
-					<!-- 产品图片  -->
-					
-						<div class="prodImg_box imgSet">
-							
-							<div class="prod_img"><a href="coursedetail.html?pid=2957957&amp;_t=1590129423" target="_blank"><img class="pro_img horizontal" src="${base}/assets/web/images/1589162352654c2f0edcbc74d9553.jpg" alt="艺术课程同步提升精讲班（1V1）"></a></div>
-							<div class="dummy" style="margin-top:67%"></div>
-							
-						</div>
-					
-					<!-- 内容 -->
-					<div class="prod_info">
-						
-							
-								<div class="titleSet p_name pc" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957957&amp;_t=1590129423" target="_blank">艺术课程同步提升精讲班（1V1）</a></div>
-								<div class="titleSet p_name pad" style="-webkit-line-clamp:;"><a class="overhide" href="coursedetail.html?pid=2957957&amp;_t=1590129423" target="_blank">艺术课程同步提升精讲班（1V1）</a></div>
-							
-							
-							<div class="p_line">
-								
-								
-									
-									
-
-									
-									
-								
-								<div class="p_line2">
-									
-									
-								</div>
-							</div>
-						
-						
-							
-						
-
-						
-
-					</div>
-				</div>
-			</li>
 		
 		<li></li>
 		<li></li>
@@ -1052,89 +784,7 @@ if(typeof showcart !== 'function'){
 				diyAutoHeight($('#productList_style_03_1589115606771'));
 				window.resizeTimeoutproductList_style_03_1589115606771=null;
 			},350);</script>
-<script type="text/javascript">
-if(typeof addcart !== 'function'){
-	function addcart(pid,is_virtual,idspecprice,idpackage){
-        var lang=0;
-        if(lang == '0'){
-            lang = Default_isFT;
-            if(BodyIsFt == '0'){
-                lang = BodyIsFt;
-            }else if(BodyIsFt == '1'){
-                lang = BodyIsFt;
-            }
-        }
-        var packStr = '';
-        if(typeof (idpackage) != 'undefined'){
-            packStr = "&idpackage="+idpackage;
-        }
-		if(is_mobile()){
-			var locationUrl = "http://box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&lang="+lang+"&pid="+pid+"&act=add&ismobile=1" + packStr;
-			if (idspecprice) locationUrl += "&IDSpecPrice["+pid+"]="+idspecprice;
-			if (isNaN(pid)) {//如果不是数字，表示批量加入购物车
-				locationUrl = "http://box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&lang="+lang+"&act=add&ismobile=1" + pid + (idspecprice ? idspecprice : "");
-			}
-			var res = "0";
-			if(res == '1' && is_virtual == 0){
-				locationUrl+= "&use_ajax=1&callback=?";
-				$.getJSON(locationUrl,function(ret){
-				if(ret.i_AddFlag){
-					$.alerts.dialogClass  = 'success';
-					alert(ret.message);
-				}
-				});
-			}else{
-			    window.location = locationUrl;
-			}
 
-		}else{
-			var locationUrl = "http://box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&pid="+pid+"&act=add&lang="+lang+"&ispc=1" + packStr;
-			if (idspecprice) locationUrl += "&IDSpecPrice["+pid+"]="+idspecprice;
-			if (isNaN(pid)) {//如果不是数字，表示批量加入购物车
-				locationUrl = "http://box6js.nicebox.cn/exusers/u_cart.php?idweb=125587&lang="+lang+"&act=add&ispc=1" + pid + (idspecprice ? idspecprice : "");
-			}
-			document.getElementById("boxName").innerHTML="加入购物车";
-			if(document.getElementById("boxClose")) document.getElementById("boxClose").innerHTML="×";
-			document.getElementById("showiframe").src=locationUrl;
-			box.Show({width:"840px",height:"420px"});
-		}
-	}
-}
-
-function is_mobile(){
-	return window.screen.width<767 || ($('body').width() > 0 && $('body').width() < 767);
-}
-$(function(){
-	$('#productList_style_03_1589115606771 .prod_infos .end_time').each(function(){
-		purchase_clock(this);//开启倒计时
-	});
-});
-
-//拼购倒计时
-function purchase_clock(obj) {
-	var time = parseInt($(obj).attr('data-time'));
-	if (time > 0) {
-		var str = '';
-		var num = 0;
-		num = parseInt(time/86400);
-		if(num > 0)str += num.toString() + '天';
-		time -= num * 86400;
-		num = parseInt(time/3600);
-		if(num > 0)str += num.toString() + '时';
-		time -= num * 3600;
-		num = parseInt(time/60);
-		if(num > 0)str += num.toString() + '分';
-		time -= num * 60;
-		if(num > 0)str += time.toString() + '秒';
-		$(obj).text(str).attr('data-time', parseInt($(obj).attr('data-time')) - 1);
-		setTimeout(function(){
-			purchase_clock(obj);
-		}, 1000);
-	} else {
-		$(obj).text('0天0时0分0秒');
-	}
-}
-</script>
 
 <style>
 	.p_detail{white-space: pre-wrap;}
@@ -1177,40 +827,7 @@ var showSub = '0';
 
 </script>
 
-<!-- 新分页 -->
-	<style>
-	#productList_style_03_1589115606771 .page_btn{ font-size:14px; text-align: center;}
-	#productList_style_03_1589115606771 .page_btn .all_page{ display:inline-block; margin:0 10px; }
-	#productList_style_03_1589115606771 .page:hover{ background:red; color:white; cursor:pointer;}
-	#productList_style_03_1589115606771 .page_btn .cur{ background:red; color:white; cursor:pointer;}
-	#productList_style_03_1589115606771 .submit_div{ display: inline-block; }
 
-	#productList_style_03_1589115606771 .page_btn input{ width:50px; margin:0 5px;}
-	#productList_style_03_1589115606771 .page_btn input:hover{ cursor:default; background:white; color:#333;}
-	#productList_style_03_1589115606771 .page_submit{margin-left:5px;}
-	#productList_style_03_1589115606771 .page{display:inline-block; border:none; background:white; text-align: center; width:auto; padding:0 15px; margin:0 .5px; height:auto; line-height:35px; box-sizing: border-box; -webkit-box-sizing: border-box; border:1px solid #e5e5e5;}
-	@media screen and (max-width:640px) {
-			#productList_style_03_1589115606771 .page_btn{ font-size:12px; }
-			#productList_style_03_1589115606771 .submit_div{ display:none; }
-		}
-
-			#productList_style_03_1589115606771 .page{width:auto; margin:0 5px 10px 5px; border-radius:5px;  }
-		@media screen and (max-width:640px) {
-			#productList_style_03_1589115606771 .page{line-height:30px; padding:0 13px;}
-		}
-	                        .prod_default .v_value {color: #333; font-size: 12px;}
-            
-     #productList_style_03_1589115606771  .showActivity {display: none !important;}
-            #productList_style_03_1589115606771  .btnaSet ,#productList_style_03_1589115606771  .btnaSet a{
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-	</style>
-<script>
-    	
-	
-</script>
 </div>
 			</div>
 						</div>
@@ -1219,11 +836,7 @@ var showSub = '0';
 				<div class="view_contents">
 								<div id="div_a_includeBlock_1589274686270" class="view a_includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="div" class="view_contents">
-								<div id="text_style_01_1589274686470" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
-				<div names="text" class="view_contents">
-					国内门类齐全，规模较大的公开课课程供应商之一
-				</div>
-			</div>
+							
 					<div id="text_style_01_1589274686487" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
 				<div names="text" class="view_contents">
 					证书颁发
@@ -1234,55 +847,21 @@ var showSub = '0';
 					<div id="image_style_12_1_1589276301297" class="view style_12_1 image  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="image" class="view_contents">
 					<div class="imgStyle_12">
-	<ul class="imgTextUl">
-			<li class="imgTextLi modSet">
-				<a href="javascript:;" style="display: block;">
-					<div class="imgTBoxArea">
-						<div class="image-box">
-							<div class="imgTBox">
-								<img class="picSet picFit" src="${base}/assets/web/images/1589276622918a000bd322417b22d.png">
+				<ul class="imgTextUl">
+				<#list  certs as cert>
+				<li class="imgTextLi modSet">
+								<div  style="text-align:center">
+											<img class="picSet " src="${base}/upload/zhengshu/${cert.url!}" style="width:80%">
+										</div>
+							<div class="cont">
+								<div class="name titProSet"><#if cert.type==1>交大附小<#else>平利老县镇中小学</#if> －${cert.userName!}</div>
+								
 							</div>
-						</div>
-						<div class="ratio" style="margin-top:100%;"></div>
-					</div>
-				</a>
-				<div class="cont">
-					<div class="name titProSet">这里的老师很好,孩子在这里学习很愉快，生动的讲课，丰富的教学道具，每天放学回家的时候孩子都很开心，还说明天还要继续，选了教育中心真的很棒</div>
-						<div class="subName defProSet">--赵女士</div>
-				</div>
-			</li>
-			<li class="imgTextLi modSet">
-				<a href="javascript:;" style="display: block;">
-					<div class="imgTBoxArea">
-						<div class="image-box">
-							<div class="imgTBox">
-								<img class="picSet picFit" src="${base}/assets/web/images/15892766229157bde4a4a3038fd38.png">
-							</div>
-						</div>
-						<div class="ratio" style="margin-top:100%;"></div>
-					</div>
-				</a>
-				<div class="cont">
-					<div class="name titProSet">这里的老师很好,孩子在这里学习很愉快，生动的讲课，丰富的教学道具，每天放学回家的时候孩子都很开心，还说明天还要继续，选了教育中心真的很棒</div>
-						<div class="subName defProSet">--赵女士</div>
-				</div>
-			</li>
-			<li class="imgTextLi modSet">
-				<a href="javascript:;" style="display: block;">
-					<div class="imgTBoxArea">
-						<div class="image-box">
-							<div class="imgTBox">
-								<img class="picSet picFit" src="${base}/assets/web/images/1589276622918a000bd322417b22d(1).png">
-							</div>
-						</div>
-						<div class="ratio" style="margin-top:100%;"></div>
-					</div>
-				</a>
-				<div class="cont">
-					<div class="name titProSet">这里的老师很好,孩子在这里学习很愉快，生动的讲课，丰富的教学道具，每天放学回家的时候孩子都很开心，还说明天还要继续，选了教育中心真的很棒</div>
-						<div class="subName defProSet">--赵女士</div>
-				</div>
-			</li>
+						</li>
+				</#list>
+						
+			
+		
 		<li></li>
 		<li></li>
 		<li></li>
@@ -1303,11 +882,7 @@ var showSub = '0';
 				<div class="view_contents">
 								<div id="div_a_includeBlock_1589116197378" class="view a_includeBlock div  none includeView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="div" class="view_contents">
-								<div id="text_style_01_1589116197572" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
-				<div names="text" class="view_contents">
-					国内门类齐全，规模较大的公开课课程供应商之一
-				</div>
-			</div>
+								
 					<div id="text_style_01_1589116197594" class="view style_01 text  none wow fadeInUp lockHeightView animated" data-wow-duration="1s" data-wow-delay="0.25s" data-wow-offset="0" data-wow-iteration="1" style="visibility: visible; animation-duration: 1s; animation-delay: 0.25s; animation-iteration-count: 1; animation-name: fadeInUp;">
 				<div names="text" class="view_contents">
 					新闻动态
@@ -1326,13 +901,13 @@ var showSub = '0';
 	<ul class="newscate swiper-wrapper">
 			
 			<li class="sidebar1 swiper-slide swiper-slide-active ">
-				<a class="oneSet" idnewsg="310733" href="news.html?gid=310733&amp;" target="" id="currentSet">学校新闻</a>
+				<a class="oneSet" idnewsg="310733" href="news.html?gid=1&amp;" target="" id="currentSet">学校新闻</a>
 			</li>
 			<li class="sidebar1 swiper-slide swiper-slide-next">
-				<a class="oneSet" idnewsg="310731" href="news.html?gid=310731&amp;" target="">通知公告</a>
+				<a class="oneSet" idnewsg="310731" href="news.html?gid=2&amp;" target="">通知公告</a>
 			</li>
 			<li class="sidebar1 swiper-slide ">
-				<a class="oneSet" idnewsg="310737" href="news.html?gid=310737&amp;" target="" >媒体报道</a>
+				<a class="oneSet" idnewsg="310737" href="news.html?gid=3&amp;" target="" >媒体报道</a>
 			</li>
 	</ul>
 </div>
@@ -1342,24 +917,7 @@ var mySwiper4 = new Swiper ('#newsKind_style_04_1589277110188 .swiper-container'
     slidesPerView: 'auto',
     slidesOffsetAfter : 40,
   })
-</script>	<script type="text/javascript">
-		$(function () {
-			var newgid = getQueryString('gid');
-            newgid = newgid ? newgid : 310737;
-            $("#newsKind_style_04_1589277110188 .sidebar1 .oneSet").each(function () {
-				var IDNewsg = $(this).attr('IDNewsg');
-				if (IDNewsg == newgid) {
-				    $(this).attr('id','currentSet');
-				}
-            })
-        })
-        function getQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return decodeURI(r[2]);
-            return null;
-        }
-	</script>
+</script>	
 				</div>
 			</div>
 						</div>
@@ -1369,14 +927,14 @@ var mySwiper4 = new Swiper ('#newsKind_style_04_1589277110188 .swiper-container'
 								<div id="newsList_style_28_1589116272555" class="view style_28 newsList  none lockHeightView" data-wow-duration="0s" data-wow-delay="0s" data-wow-offset="0" data-wow-iteration="1">
 				<div names="newsList" class="view_contents diyCurTab"><!--新闻列表区域-->
 <div class="boxNewsListStyle_28">
-	<div class="bcon" style="height: 411px;">
-		<div class="list_lh" style="position: absolute; top: -250px;">
+	<div class="bcon" >
+		<div class="list_lh" >
 			<ul id="boxNewsList">
-				
+				   <#list  articles as article>
 				<li class="sumary_list modSet">
 					
 						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/1589357416170babf63a774ad443c.jpg"></a>
+							<a href="newsdetail.html?newsid=${article.articleId!}&amp;_t=1590129422" target="_blank"><img class="News_img" src="<#if article.tumbPicCode??>${base}/upload/article/${article.tumbPicCode!}<#else>${base}/assets/web/images/1589357416170babf63a774ad443c.jpg</#if>"></a>
 							<div class="zTm" style="margin-top:67%"></div>
 						</div>
 					
@@ -1384,247 +942,31 @@ var mySwiper4 = new Swiper ('#newsKind_style_04_1589277110188 .swiper-container'
 						<div class="newTitle">
 							
 							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构合法性</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构合法性</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构合法性</div></a>
+									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=${article.articleId!}&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide1">${article.title!}</div></a>
+									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=${article.articleId!}&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide1">${article.title!}</div></a>
+									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=${article.articleId!}&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide1">${article.title!}</div></a>
+							         <p>发布时间:${article.publishTime?string('yyyy-MM-dd')!}</p>
 							</div>
 							
 							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
+								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide2">${article.summary!}</div></div>
+								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide2">${article.summary!}</div></div>
+								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide2">${article.summary!}</div></div>
 							
 							
 						</div>
 						
 						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank">查看全文</a>
+							<a class="btnaSet" href="newsdetail.html?newsid=${article.articleId!}&amp;_t=1590129422" target="_blank">查看全文</a>
 						</div>
 						
 					</div>
 				</li>
+				</#list>
 				
-				<li class="sumary_list modSet">
-					
-						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/158935741616985d1b45d4cd930db.jpg"></a>
-							<div class="zTm" style="margin-top:67%"></div>
-						</div>
-					
-					<div class="newCont">
-						<div class="newTitle">
-							
-							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">世卫组织总干事：儿童未来教育</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">世卫组织总干事：儿童未来教育</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">世卫组织总干事：儿童未来教育</div></a>
-							</div>
-							
-							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
-							
-							
-						</div>
-						
-						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank">查看全文</a>
-						</div>
-						
-					</div>
-				</li>
-				
-				<li class="sumary_list modSet">
-					
-						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/15893574161682a14d4a7206b873b.jpg"></a>
-							<div class="zTm" style="margin-top:67%"></div>
-						</div>
-					
-					<div class="newCont">
-						<div class="newTitle">
-							
-							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">经济参考报：央地酝酿政策升级支持民...</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">经济参考报：央地酝酿政策升级支持民间投资</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">经济参考报：央地酝酿政策升级支持...</div></a>
-							</div>
-							
-							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
-							
-							
-						</div>
-						
-						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank">查看全文</a>
-						</div>
-						
-					</div>
-				</li>
-				
-				<li class="sumary_list modSet">
-					
-						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/158935741616985d1b45d4cd930db.jpg"></a>
-							<div class="zTm" style="margin-top:67%"></div>
-						</div>
-					
-					<div class="newCont">
-						<div class="newTitle">
-							
-							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构不得违规提前...</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构不得违规提前预收培...</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构不得违规提...</div></a>
-							</div>
-							
-							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
-							
-							
-						</div>
-						
-						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank">查看全文</a>
-						</div>
-						
-					</div>
-				</li>
 				
 			</ul>
-			<ul id="boxNewsList2" class="boxNewsList2">
-				
-				<li class="sumary_list modSet">
-					
-						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/1589357416170babf63a774ad443c.jpg"></a>
-							<div class="zTm" style="margin-top:67%"></div>
-						</div>
-					
-					<div class="newCont">
-						<div class="newTitle">
-							
-							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构合法性</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构合法性</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构合法性</div></a>
-							</div>
-							
-							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
-							
-							
-						</div>
-						
-						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405577&amp;_t=1590129422" target="_blank">查看全文</a>
-						</div>
-						
-					</div>
-				</li>
-				
-				<li class="sumary_list modSet">
-					
-						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/158935741616985d1b45d4cd930db.jpg"></a>
-							<div class="zTm" style="margin-top:67%"></div>
-						</div>
-					
-					<div class="newCont">
-						<div class="newTitle">
-							
-							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">世卫组织总干事：儿童未来教育</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">世卫组织总干事：儿童未来教育</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">世卫组织总干事：儿童未来教育</div></a>
-							</div>
-							
-							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
-							
-							
-						</div>
-						
-						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405575&amp;_t=1590129422" target="_blank">查看全文</a>
-						</div>
-						
-					</div>
-				</li>
-				
-				<li class="sumary_list modSet">
-					
-						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/15893574161682a14d4a7206b873b.jpg"></a>
-							<div class="zTm" style="margin-top:67%"></div>
-						</div>
-					
-					<div class="newCont">
-						<div class="newTitle">
-							
-							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">经济参考报：央地酝酿政策升级支持民...</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">经济参考报：央地酝酿政策升级支持民间投资</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">经济参考报：央地酝酿政策升级支持...</div></a>
-							</div>
-							
-							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
-							
-							
-						</div>
-						
-						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405565&amp;_t=1590129422" target="_blank">查看全文</a>
-						</div>
-						
-					</div>
-				</li>
-				
-				<li class="sumary_list modSet">
-					
-						<div class="newPic imgSet">
-							<a href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank"><img class="News_img" src="${base}/assets/web/images/158935741616985d1b45d4cd930db.jpg"></a>
-							<div class="zTm" style="margin-top:67%"></div>
-						</div>
-					
-					<div class="newCont">
-						<div class="newTitle">
-							
-							<div class="newName">
-									<a class="titleSet newTitle pc" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构不得违规提前...</div></a>
-									<a class="titleSet newTitle pad" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构不得违规提前预收培...</div></a>
-									<a class="titleSet newTitle mobile" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank" style="-webkit-line-clamp: ;"><div class="overhide">教育部 ：校外培训机构不得违规提...</div></a>
-							</div>
-							
-							
-								<div class="newDetail detailSet pc" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战、水源地保护攻坚战等标志性战役，全力以赴打好污染防治攻坚战，取...</div></div>
-								<div class="newDetail detailSet pad" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、长江保护修复攻坚战...</div></div>
-								<div class="newDetail detailSet mobile" style="-webkit-line-clamp: ;"><div class="overhide">刚刚过去的2019年，各地区各部门各领域聚焦打赢蓝天保卫战、...</div></div>
-							
-							
-						</div>
-						
-						<div class="show_all">
-							<a class="btnaSet" href="newsdetail.html?newsid=2405549&amp;_t=1590129422" target="_blank">查看全文</a>
-						</div>
-						
-					</div>
-				</li>
-				
-			</ul>
+			
 		</div>
 	</div>
 	
@@ -1708,14 +1050,14 @@ var mySwiper4 = new Swiper ('#newsKind_style_04_1589277110188 .swiper-container'
 
 		//编辑状态不滚动
 
-			var timer = setInterval(scrollFunc,speed);
+		/* 	var timer = setInterval(scrollFunc,speed);
 
 			//鼠标事件停止定时器
 			box1.mouseover(function(){
 				clearInterval(timer);
 			}).mouseout(function(){
 				timer = setInterval(scrollFunc,speed);
-			});
+			});  */
 		}
 	})
 </script><script>
@@ -1762,45 +1104,7 @@ var mySwiper4 = new Swiper ('#newsKind_style_04_1589277110188 .swiper-container'
 
 
 
-<style>
-@media screen and (min-width: 1025px) {
-	#newsList_style_28_1589116272555 .sumary_list .newPic{width: 240px;}
-	#newsList_style_28_1589116272555 .sumary_list .newCont{width: calc(100% - 240px);}
-	#newsList_style_28_1589116272555 li{margin-bottom: px;}
-}
-@media screen and (min-width: 640px) and (max-width: 1024px) {
-	#newsList_style_28_1589116272555 .sumary_list .newPic{width: 240px;}
-	#newsList_style_28_1589116272555 .sumary_list .newCont{width: calc(100% - 240px);}
-	#newsList_style_28_1589116272555 li{margin-bottom: px;}
-}
-@media screen and (max-width: 640px) {
-	#newsList_style_28_1589116272555 .sumary_list .newPic{width: 240px;}
-	#newsList_style_28_1589116272555 .sumary_list .newCont{width: calc(100% - 240px);}
-	#newsList_style_28_1589116272555 li{margin-bottom: px;}
-}
-
-/* 新分页 */
-#newsList_style_28_1589116272555 .page_btn{ font-size:14px; text-align: center;}
-#newsList_style_28_1589116272555 .page_btn .all_page{ display:inline-block; margin:0 10px; }
-#newsList_style_28_1589116272555 .page:hover{ background:red; color:white; cursor:pointer;}
-#newsList_style_28_1589116272555 .page_btn .cur{ background:red; color:white; cursor:pointer;}
-#newsList_style_28_1589116272555 .submit_div{ display: inline-block; }
-
-#newsList_style_28_1589116272555 .page_btn input{ width:50px; margin:0 5px;}
-#newsList_style_28_1589116272555 .page_btn input:hover{ cursor:default; background:white; color:#333;}
-#newsList_style_28_1589116272555 .page_submit{margin-left:5px;}
-#newsList_style_28_1589116272555 .page{display:inline-block; border:none; background:white; text-align: center; width:auto; padding:0 15px; margin:0 .5px; height:auto; line-height:35px; box-sizing: border-box; -webkit-box-sizing: border-box; border:1px solid #e5e5e5;}
-@media screen and (max-width:640px) {
-		#newsList_style_28_1589116272555 .page_btn{ font-size:12px; }
-		#newsList_style_28_1589116272555 .submit_div{ display:none; }
-	}
-
-	#newsList_style_28_1589116272555 .page{width:auto; margin:0 5px 10px 5px; border-radius:5px;  }
-	@media screen and (max-width:640px) {
-		#newsList_style_28_1589116272555 .page{line-height:30px; padding:0 13px;}
-	}
-
-</style></div>
+</div>
 			</div>
 						</div>
 			</div>

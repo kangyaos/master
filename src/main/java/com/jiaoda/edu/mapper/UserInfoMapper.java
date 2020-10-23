@@ -1,9 +1,11 @@
 package com.jiaoda.edu.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.jiaoda.edu.domain.SysSettings;
 import com.jiaoda.edu.domain.UserInfo;
 
 public interface UserInfoMapper {
@@ -18,7 +20,12 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+    
+	public Integer  batchinsert(@Param("users")List<UserInfo> users);
+	
     int getCount(@Param("where")String where);
+    
+    Map<String,Integer> getindexCount(@Param("where")String where);
     
     List<UserInfo> findWhereList(@Param("where")String where, @Param("order")String order);
     

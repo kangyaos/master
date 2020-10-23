@@ -32,6 +32,20 @@
     delete from log_operation
     where log_id = #{logId,jdbcType=BIGINT}
   </delete>
+  
+    <delete id="delLog" parameterType="java.lang.Integer" >
+     <if test="delId != null" >
+        <if test="delId == 1" >
+          delete from log_operation where create_time &lt;(select DATE_ADD(now(),INTERVAL -1 MONTH));
+        </if>
+        <if test="delId == 2" >
+        	 delete from log_operation where log_id not in (select log_id from (select log_id from log_operation order by create_time DESC limit 0,100) as a );
+        </if>
+         <if test="delId == 3" >
+        	 TRUNCATE log_operation;
+        </if>
+     </if>
+  </delete>
   <insert id="insert" parameterType="com.jiaoda.edu.domain.LogOperation" >
     insert into log_operation (log_id, app_id, create_time, 
       user_id, user_name, machine_ip, 

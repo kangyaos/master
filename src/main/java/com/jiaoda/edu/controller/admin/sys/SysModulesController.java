@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jiaoda.edu.domain.SysModules;
+import com.jiaoda.edu.log.LogDesc;
 import com.jiaoda.edu.service.ISysModulesService;
 import com.jiaoda.edu.util.DataTablesParam;
 import com.jiaoda.edu.util.DataTablesParamUtility;
@@ -26,6 +27,7 @@ import com.jiaoda.edu.util.PageData;
 
 
 @Controller
+@RequestMapping("/admin")
 public class SysModulesController {
 	
 	@Autowired
@@ -36,26 +38,26 @@ public class SysModulesController {
 	 */
 	@RequestMapping(value = "/modulelist.html", method = RequestMethod.GET)
 	public String moduleList(ModelMap model) {
-		return "sys/modulelist";
+		return "view/admin/sys/modulelist";
 	}
 	
 	@RequestMapping(value = "/appmodulelist.html", method = RequestMethod.GET)
 	public String appmodulelist(ModelMap model) {
-		return "sys/appmodulelist";
+		return "view/admin/sys/appmodulelist";
 	}
 	
 	@RequestMapping(value = "/addmodule.html", method = RequestMethod.GET)
 	public String addModule(ModelMap model,Integer parentId) {
 		model.put("module", new SysModules());
 		model.put("appId", parentId);
-		model.put("mlist", modulesService.findPagerList(0, -1, "appId="+parentId, "moduleSort asc"));
-		return "sys/moduleform";
+		model.put("mlist", modulesService.findPagerList(0, -1, "", "module_sort asc"));
+		return "view/admin/sys/moduleform";
 	}
 	
 	@RequestMapping(value = "/addappmodule.html", method = RequestMethod.GET)
 	public String addappmodule(ModelMap model,Integer parentId) {
 		model.put("module", new SysModules());
-		return "sys/appmoduleform";
+		return "view/admin/sys/appmoduleform";
 	}
 
 	@RequestMapping(value = "/editmodule.html", method = RequestMethod.GET)
@@ -64,8 +66,8 @@ public class SysModulesController {
 		module = module != null ? module : new SysModules();
 		model.put("module", module);
 		model.put("appId", appId);
-		model.put("mlist", modulesService.findPagerList(0, -1, "appId="+appId, "moduleSort asc"));
-		return "sys/moduleform";
+		model.put("mlist", modulesService.findPagerList(0, -1, "", "module_sort asc"));
+		return "view/admin/sys/moduleform";
 	}
 	
 	@RequestMapping(value = "/editappmodule.html", method = RequestMethod.GET)
@@ -73,7 +75,7 @@ public class SysModulesController {
 		SysModules module = modulesService.selectByPrimaryKey(moduleId);
 		module = module != null ? module : new SysModules();
 		model.put("module", module);
-		return "sys/appmoduleform";
+		return "view/admin/sys/appmoduleform";
 	}
 
 	@RequestMapping(value = "/savemodule.do", method = RequestMethod.POST)
@@ -98,30 +100,28 @@ public class SysModulesController {
 			entity.setModuleIsdisable(module.getModuleIsdisable());
 			modulesService.updateByPrimaryKeySelective(entity);
 		}
-		if(module.getAppId()==1||module.getAppId()==4){
-			return "redirect:/modulelist.html";
-		}else{
-			return "redirect:/appmodulelist.html";
-		}
+		
+		return "redirect:/admin/modulelist.html";
+		
 		
 	}
 
 	
 	@ResponseBody
 	@RequestMapping(value = "/modulelist.json", method = RequestMethod.POST)
-	public PageData<SysModules> getModuleList(Integer appId, Integer draw,Integer mId,
+	public PageData<SysModules> getModuleList( Integer draw,Integer mId,Integer appId,
 			Integer start, Integer length, HttpServletRequest request) {
 		DataTablesParam param = DataTablesParamUtility.getParam(request);
 		PageData<SysModules> pageData = new PageData<SysModules>();
 		String where = param.getDefaultFilter();
-		String parent = mId==null?"":" and ( moduleId=" + mId +" or moduleParent ="+mId+" )";
-		if ("".equals(where)) {
-			where = "appId=" + (appId == null ? 1 : appId)+parent;
-		} else {
-			where = "(" + where + ") and appId=" + (appId == null ? 1 : appId)+parent;
+		String parent = mId==null?" app_id ="+appId:"  ( app_id ="+appId+" and module_id=" + mId +" or module_parent ="+mId+" )";
+		if(where.equals("")) {
+			where=parent;
+		}else {
+ 			where ="("+where+") and "+parent;
 		}
 		int count = modulesService.getCount(where);
-		List<SysModules> data = modulesService.findPagerList(start, length, where, "moduleSort asc");
+		List<SysModules> data = modulesService.findPagerList(start, length, where, "module_sort asc");
 		pageData.setDraw(draw);
 		pageData.setRecordsTotal(count);
 		pageData.setRecordsFiltered(count);
@@ -133,7 +133,7 @@ public class SysModulesController {
 	@RequestMapping(value = "/modules.json")
 	public List<Map<String, Object>> getModules(Integer appId) {
 		appId = (appId == null ? 1 : appId);
-		return getTreeData(modulesService.findPagerList(0, -1, "appId="+appId+" and moduleParent=0", ""));
+		return getTreeData(modulesService.findPagerList(0, -1, " app_id ="+appId+"  and module_parent=0", ""));
 	}
 
 	private List<Map<String, Object>> getTreeData(List<SysModules> list) {
@@ -151,7 +151,7 @@ public class SysModulesController {
 			node.put("id", mod.getModuleId());
 			node.put("text", mod.getModuleName().replace("<br/>", "").trim());
 			node.put("state", state);
-			List<Map<String, Object>> child = getTreeData(modulesService.findWhereList("moduleParent="+mod.getModuleId(),""));
+			List<Map<String, Object>> child = getTreeData(modulesService.findWhereList("module_parent="+mod.getModuleId(),""));
 			if (child.size() > 0) {
 				state.put("opened", true);
 				node.put("children", child);
@@ -161,6 +161,7 @@ public class SysModulesController {
 		return tree;
 	}
 	
+	@LogDesc(desc="模块排序")
 	@RequestMapping(value = "/modulelistcha.do", method = RequestMethod.POST)
 	public String getmodulelistcha(Integer id, Integer parent, Integer position,
 			HttpServletRequest request) {
@@ -168,7 +169,7 @@ public class SysModulesController {
 		int i=0;
 		int j=position+1;
 		if(module.getModuleParent()==parent) {
-	    	List<SysModules> l=modulesService.findWhereList("moduleParent="+parent,"" );
+	    	List<SysModules> l=modulesService.findWhereList("module_parent="+parent,"" );
 	    	for(SysModules m:l){
 	    		if(m.getModuleId()!=id)i++;
 	    		if(position>=module.getModuleSort()&&m.getModuleSort()>module.getModuleSort()&&
@@ -185,8 +186,8 @@ public class SysModulesController {
 	    		}
 	    	}
 	     } else{
-	    	List<SysModules> o=modulesService.findWhereList("moduleParent="+ module.getModuleParent(),"" );
-	    	List<SysModules> n=modulesService.findWhereList("moduleParent="+parent,"" );
+	    	List<SysModules> o=modulesService.findWhereList("module_parent="+ module.getModuleParent(),"" );
+	    	List<SysModules> n=modulesService.findWhereList("module_parent="+parent,"" );
 	        for(SysModules m:o){
 	        	if(m.getModuleId()!=id)i++;
 	        	if(m.getModuleSort()>module.getModuleSort()){
@@ -205,6 +206,6 @@ public class SysModulesController {
 		module.setModuleParent(parent);
 		module.setModuleSort(position+1);
 	    modulesService.updateByPrimaryKeySelective(module);
-		return "redirect:/modules.json";
+		return "redirect:/admin/modules.json";
 	}
 }

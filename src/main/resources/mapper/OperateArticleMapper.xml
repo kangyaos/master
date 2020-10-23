@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.OperateArticle" >
     <id column="article_id" property="articleId" jdbcType="INTEGER" />
     <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="summary" property="summary" jdbcType="VARCHAR" />
     <result column="source" property="source" jdbcType="VARCHAR" />
@@ -19,7 +20,7 @@
     <result column="video_address" property="videoAddress" jdbcType="VARCHAR" />
     <result column="click_num" property="clickNum" jdbcType="INTEGER" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
-    <result column="is_special" property="isSpecial" jdbcType="INTEGER" />
+    <result column="index_show" property="indexShow" jdbcType="INTEGER" />
     <result column="is_send" property="isSend" jdbcType="INTEGER" />
     <result column="is_picture" property="isPicture" jdbcType="INTEGER" />
     <result column="enclosure" property="enclosure" jdbcType="VARCHAR" />
@@ -33,7 +34,7 @@
   <sql id="Base_Column_List" >
     article_id, category_id, title, summary, source, author, editor, publish_url, publish_time, 
     publish_state, tumb_pic_code, tumb_pic_code2, tumb_pic_code3, tumb, video_address, 
-    click_num, sort, is_special, is_send, is_picture, enclosure, create_time, update_time, 
+    click_num, sort, index_show, is_send, is_picture, enclosure, create_time, update_time, 
     delete_flag
   </sql>
   <sql id="Blob_Column_List" >
@@ -57,7 +58,7 @@
       editor, publish_url, publish_time, 
       publish_state, tumb_pic_code, tumb_pic_code2, 
       tumb_pic_code3, tumb, video_address, 
-      click_num, sort, is_special, 
+      click_num, sort, index_show, 
       is_send, is_picture, enclosure, 
       create_time, update_time, delete_flag, 
       content)
@@ -66,7 +67,7 @@
       #{editor,jdbcType=VARCHAR}, #{publishUrl,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
       #{publishState,jdbcType=INTEGER}, #{tumbPicCode,jdbcType=VARCHAR}, #{tumbPicCode2,jdbcType=VARCHAR}, 
       #{tumbPicCode3,jdbcType=VARCHAR}, #{tumb,jdbcType=VARCHAR}, #{videoAddress,jdbcType=VARCHAR}, 
-      #{clickNum,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{isSpecial,jdbcType=INTEGER}, 
+      #{clickNum,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{indexShow,jdbcType=INTEGER}, 
       #{isSend,jdbcType=INTEGER}, #{isPicture,jdbcType=INTEGER}, #{enclosure,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=INTEGER}, 
       #{content,jdbcType=LONGVARCHAR})
@@ -125,8 +126,8 @@
       <if test="sort != null" >
         sort,
       </if>
-      <if test="isSpecial != null" >
-        is_special,
+      <if test="indexShow != null" >
+        index_show,
       </if>
       <if test="isSend != null" >
         is_send,
@@ -202,8 +203,8 @@
       <if test="sort != null" >
         #{sort,jdbcType=INTEGER},
       </if>
-      <if test="isSpecial != null" >
-        #{isSpecial,jdbcType=INTEGER},
+      <if test="indexShow != null" >
+        #{indexShow,jdbcType=INTEGER},
       </if>
       <if test="isSend != null" >
         #{isSend,jdbcType=INTEGER},
@@ -279,8 +280,8 @@
       <if test="sort != null" >
         sort = #{sort,jdbcType=INTEGER},
       </if>
-      <if test="isSpecial != null" >
-        is_special = #{isSpecial,jdbcType=INTEGER},
+      <if test="indexShow != null" >
+        index_show = #{indexShow,jdbcType=INTEGER},
       </if>
       <if test="isSend != null" >
         is_send = #{isSend,jdbcType=INTEGER},
@@ -324,7 +325,7 @@
       video_address = #{videoAddress,jdbcType=VARCHAR},
       click_num = #{clickNum,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER},
-      is_special = #{isSpecial,jdbcType=INTEGER},
+      index_show = #{indexShow,jdbcType=INTEGER},
       is_send = #{isSend,jdbcType=INTEGER},
       is_picture = #{isPicture,jdbcType=INTEGER},
       enclosure = #{enclosure,jdbcType=VARCHAR},
@@ -352,7 +353,7 @@
       video_address = #{videoAddress,jdbcType=VARCHAR},
       click_num = #{clickNum,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER},
-      is_special = #{isSpecial,jdbcType=INTEGER},
+      index_show = #{indexShow,jdbcType=INTEGER},
       is_send = #{isSend,jdbcType=INTEGER},
       is_picture = #{isPicture,jdbcType=INTEGER},
       enclosure = #{enclosure,jdbcType=VARCHAR},
@@ -380,8 +381,8 @@
   </select>
   <select id="findPagerList" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
-    from operate_article 
+   a.*,b.category_name
+    from operate_article a left join operate_article_category b on a.category_id=b.category_id
     <if test="where != null and where != ''" >
       where ${where}
     </if> 

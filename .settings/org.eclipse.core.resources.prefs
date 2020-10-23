@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/resources/static/assets/web/css/02801217.css=UTF-8
+encoding//src/main/resources/static/view/admin/operate/courseform.html=UTF-8
+encoding//src/main/resources/static/view/admin/operate/courselist.html=UTF-8
+encoding//src/main/resources/static/view/admin/sys/settingform.html=UTF-8
+encoding//src/main/resources/static/view/include/header.html=UTF-8
+encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8

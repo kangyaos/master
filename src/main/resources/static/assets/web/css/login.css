@@ -2,11 +2,12 @@
 *{padding: 0; margin:0; border: 0; }
 .fl_l{float: left;}
 .fl_r{float: right;}
-.pos_r{position: relative; margin-bottom: 10px;}
+.pos_r{position: relative; margin-bottom: 20px;}
 .msg{font-size: 12px; line-height: 1; margin-top: 30px;}
 .msg a{color: #333;}
 .warnBorder{border-color:#fc4343 !important;}
 .icon{position: absolute; z-index: 2; left: 13px; top: 14px;}
+
 input{-webkit-appearance: none;
 -moz-appearance: none;
 appearance: none;}
@@ -18,7 +19,7 @@ input[type="submit"]{border-radius: 2px; cursor: pointer;}
 #sendSMSCodeBtn{height:34px; background:#aaa; color:#fff; padding:0 1em;}
 /********* 会员登录 *********/
 .clearInput{display: none; position: absolute; right: 0; top: 0; color: #666; font-size: 16px; font-family: 黑体; cursor: pointer; width: 40px; height: 40px; text-align: center; line-height: 40px;}
-.loginContent{width: 100%; max-width: 425px; /*height: 465px;要有高度才不会因为CSS3的定位导致内容的模糊*/ box-sizing: border-box; padding: 20px 0; margin:auto;text-align: center;
+.loginContent{width: 100%; box-sizing: border-box; padding: 20px 0; margin:auto;text-align: center;
 }
 body::-webkit-scrollbar {width: 6px; height: 6px; background: rgba(0,0,0,.05);}
 body::-webkit-scrollbar-button{background: #f7f7f7; height: 0;}
@@ -33,7 +34,8 @@ body::-webkit-scrollbar-thumb{background: rgba(0,0,0,.3);  border-radius: 3px;}
 .warnTips{color: #fc4343; font-size: 12px; text-align: left; height: 24px; line-height: 24px; padding: 0 30px;}
 .loginTips{text-align: right; font-size: 12px; margin-bottom: 20px;}
 .loginTips a{color: #3585ff; text-decoration: none;}
-.loginTabCont{position: relative; list-style-type: none; overflow: hidden; height: 150px;} 
+.loginTabCont{position: relative; list-style-type: none; overflow: hidden; height: 300px;    width: 80%;
+    margin: 100px auto;} 
 .loginTabCont>li{position: absolute; width: 100%; top: 0; left: 100%; opacity: 0; padding: 0 30px; -webkit-transition: all ease-in-out .5s; -moz-transition: all ease-in-out .5s; -o-transition: all ease-in-out .5s; transition: all ease-in-out .5s;}
 .loginTabCont>li.current{left: 0; opacity: 1;}
 /*输入框图标*/
@@ -68,7 +70,9 @@ body::-webkit-scrollbar-thumb{background: rgba(0,0,0,.3);  border-radius: 3px;}
 .yzBox p{margin-top: 20px; font-size: 16px; color: #666; }
 .yzBox p font{color:#f00;padding-right: 3px;}
 
-
+.left_log img{
+	width:60%
+}
 .register{display: none;}
 /********* 会员注册 *********/
 
@@ -87,7 +91,11 @@ input[type="submit"]{border-radius: 4px;}
 .forgetPwd{ display: block; color: #3585ff; width: 100%; height: 40px; line-height: 40px; font-size: 18px; margin-top: 20px; font-size: 14px; text-align: center; text-decoration: none;}
 .loginTabCont{height: auto;}
 .loginTabCont>li{position: relative;}
-.loginTabCont>li:last-child{display: none;}
+ .loginTabCont>li:last-child{padding: 0;} 
+ .leftimg{    display: none;}
+ .left_log img{
+    width: 100%;
+}
 .otherLogin{margin-top: 40px; width: 100%; text-align: center; font-size: 14px;}
 .otherlink_mobi{display: block; margin-top: 20px;}
 .otherlink_mobi a{display: inline-block; width: 50px; height: 50px; margin: 0 8px;}

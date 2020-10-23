@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jiaoda.edu.domain.SysModules;
+import com.jiaoda.edu.log.LogDesc;
 import com.jiaoda.edu.mapper.SysModulesMapper;
 import com.jiaoda.edu.service.ISysModulesService;
 
@@ -17,6 +18,7 @@ public class SysModulesServiceImpl implements ISysModulesService {
 	private SysModulesMapper selfDAO;
 
 	@Override
+	@LogDesc(desc="新增模块信息")
 	public Integer insertSelective(SysModules record) {
 		return selfDAO.insertSelective(record);
 	}
@@ -27,6 +29,7 @@ public class SysModulesServiceImpl implements ISysModulesService {
 	}
 
 	@Override
+	
 	public Integer deleteByPrimaryKey(Object key) {
 		return selfDAO.deleteByPrimaryKey(Integer.parseInt(key.toString()));
 	}

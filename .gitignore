@@ -1,8 +1,11 @@
 /target
-
+/src/main/resources/static/upload
 ### STS ###
 .classpath
 .project
 .settings
 .springBeans
 .factorypath
+.settings
+.myeclipse
+.externalToolBuilders

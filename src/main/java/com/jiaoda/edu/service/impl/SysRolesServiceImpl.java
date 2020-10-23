@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jiaoda.edu.domain.SysRole;
+import com.jiaoda.edu.log.LogDesc;
 import com.jiaoda.edu.mapper.SysRoleMapper;
 import com.jiaoda.edu.service.ISysRolesService;
 
@@ -17,23 +18,26 @@ public class SysRolesServiceImpl implements ISysRolesService {
 	private SysRoleMapper selfDAO;
 
 	@Override
+	@LogDesc(desc="添加角色信息")
 	public Integer insertSelective(SysRole record) {
 		return selfDAO.insertSelective(record);
 	}
 
 	@Override
+	@LogDesc(desc="更新角色信息")
 	public Integer updateByPrimaryKeySelective(SysRole record) {
 		return selfDAO.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
+	@LogDesc(desc="删除角色信息")
 	public Integer deleteByPrimaryKey(Object key) {
-		return selfDAO.deleteByPrimaryKey(Long.parseLong(key.toString()));
+		return selfDAO.deleteByPrimaryKey(Integer.parseInt(key.toString()));
 	}
 
 	@Override
 	public SysRole selectByPrimaryKey(Object key) {
-		return selfDAO.selectByPrimaryKey(Long.parseLong(key.toString()));
+		return selfDAO.selectByPrimaryKey(Integer.parseInt(key.toString()));
 	}
 
 	@Override

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiaoda.edu.mapper.UserLearnRecordMapper">
+  <resultMap id="BaseResultMap" type="com.jiaoda.edu.domain.UserLearnRecord">
+    <id column="course_id" jdbcType="INTEGER" property="courseId" />
+    <id column="keshi" jdbcType="INTEGER" property="keshi" />
+    
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="learn_time" jdbcType="INTEGER" property="learnTime" />
+    <result column="complete_state" jdbcType="INTEGER" property="completeState" />
+   <association property="user" column="user_id" javaType="com.jiaoda.edu.domain.UserInfo">
+     <result column="user_name" jdbcType="VARCHAR" property="userName" />
+     <result column="real_name" jdbcType="VARCHAR" property="realName" />
+   </association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    course_id, keshi,user_id, create_time, learn_time, complete_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.jiaoda.edu.domain.UserLearnRecordKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_learn_record
+    where course_id = #{courseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+      and keshi= #{keshi,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.jiaoda.edu.domain.UserLearnRecordKey">
+    delete from user_learn_record
+    where course_id = #{courseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+       and keshi= #{keshi,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jiaoda.edu.domain.UserLearnRecord">
+    insert into user_learn_record (course_id, user_id, create_time, 
+      learn_time, complete_state)
+    values (#{courseId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{learnTime,jdbcType=INTEGER}, #{completeState,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiaoda.edu.domain.UserLearnRecord">
+    insert into user_learn_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        course_id,
+      </if>
+       <if test="keshi != null">
+        keshi,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="learnTime != null">
+        learn_time,
+      </if>
+      <if test="completeState != null">
+        complete_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+       <if test="keshi != null">
+         #{keshi,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="learnTime != null">
+        #{learnTime,jdbcType=INTEGER},
+      </if>
+      <if test="completeState != null">
+        #{completeState,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiaoda.edu.domain.UserLearnRecord">
+    update user_learn_record
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="keshi != null">
+        keshi= #{keshi,jdbcType=INTEGER},
+      </if>
+      <if test="learnTime != null">
+        learn_time = #{learnTime,jdbcType=INTEGER},
+      </if>
+      <if test="completeState != null">
+        complete_state = #{completeState,jdbcType=INTEGER},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+       and keshi= #{keshi,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiaoda.edu.domain.UserLearnRecord">
+    update user_learn_record
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      learn_time = #{learnTime,jdbcType=INTEGER},
+      complete_state = #{completeState,jdbcType=INTEGER}
+    where course_id = #{courseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+  </update>
+ 
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(*) from user_learn_record a
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if>      
+  </select>
+  <select id="findWhereList" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_learn_record
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>     
+  </select>
+  <select id="findPagerList" resultMap="BaseResultMap">
+    select 
+   a.*,b.user_name,b.real_name
+    from user_learn_record  a LEFT JOIN user_info b on a.user_id=b.user_id 
+    <if test="where != null and where != ''" >
+      where ${where}
+    </if> 
+    <if test="order != null and order != ''" >
+      order by ${order}
+    </if>
+    <if test="length != null and length != -1" >
+      limit ${start},${length}
+    </if>
+  </select>
+</mapper>
