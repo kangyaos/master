@@ -10,6 +10,7 @@ public class UserAnswerRecord extends UserAnswerRecordKey {
     private Date updateTime;
 
     private Integer deleteFlag;
+    private Integer score;
 
     public Integer getDeleteFlag() {
 		return deleteFlag;
@@ -54,4 +55,13 @@ public class UserAnswerRecord extends UserAnswerRecordKey {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+    
 }

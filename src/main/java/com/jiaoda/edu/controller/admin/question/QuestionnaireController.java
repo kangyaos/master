@@ -33,15 +33,15 @@ public class QuestionnaireController {
 	
 	@ResponseBody
     @RequestMapping(value="/importQuestionnaire.do",method=RequestMethod.POST)
-    public Boolean importExcel(MultipartFile file,Integer id) {
+    public Integer importExcel(MultipartFile file,Integer id) {
 		Boolean flag=false; 
 		try {
 			Integer num = naireService.importExcel(file,id);
-			flag=true;
+			 return num;
 		} catch (Exception e) {
 			System.out.println(e);
 		}finally {
-			return flag;
+			return 0;
 		}
       
     }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-10-21 14:30:22
+Date: 2020-10-23 18:15:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -203,7 +203,7 @@ CREATE TABLE `log_operation` (
   `operation_name` varchar(50) DEFAULT NULL COMMENT '操作',
   `message` text COMMENT '日志信息',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='操作日志';
 
 -- ----------------------------
 -- Records of log_operation
@@ -221,6 +221,19 @@ INSERT INTO `log_operation` VALUES ('10', '1', '2020-10-19 17:21:49', '1', 'admi
 INSERT INTO `log_operation` VALUES ('11', '1', '2020-10-19 17:27:55', '1', 'admin', '172.16.99.198', '生成证书', '更新', '1;2;[15,14,13];');
 INSERT INTO `log_operation` VALUES ('12', '1', '2020-10-19 17:39:18', '1', 'admin', '172.16.99.198', '生成证书', '更新', '7;[15,14,13];');
 INSERT INTO `log_operation` VALUES ('13', '1', '2020-10-20 14:35:53', '1', 'admin', '0:0:0:0:0:0:0:1', '移除老师', '删除', '8;');
+INSERT INTO `log_operation` VALUES ('14', '1', '2020-10-22 09:15:37', '1', 'admin', '0:0:0:0:0:0:0:1', '新增模块信息', '更新', '{\"moduleId\":null,\"appId\":1,\"moduleName\":\"问卷管理\",\"moduleCode\":\"\",\"moduleClass\":\"\",\"modulePath\":\"\",\"moduleDescription\":\"\",\"moduleParent\":0,\"moduleSort\":4,\"moduleIsdisable\":0,\"createTime\":1603329337881,\"updateTime\":1603329337881,\"deleteFlag\":0};');
+INSERT INTO `log_operation` VALUES ('15', '1', '2020-10-22 09:16:02', '1', 'admin', '0:0:0:0:0:0:0:1', '新增模块信息', '更新', '{\"moduleId\":null,\"appId\":1,\"moduleName\":\"问卷中心\",\"moduleCode\":\"\",\"moduleClass\":\"\",\"modulePath\":\"\",\"moduleDescription\":\"\",\"moduleParent\":209,\"moduleSort\":1,\"moduleIsdisable\":0,\"createTime\":1603329362341,\"updateTime\":1603329362341,\"deleteFlag\":0};');
+INSERT INTO `log_operation` VALUES ('16', '1', '2020-10-22 09:16:22', '1', 'admin', '0:0:0:0:0:0:0:1', '新增模块信息', '更新', '{\"moduleId\":null,\"appId\":1,\"moduleName\":\"问题列表\",\"moduleCode\":\"\",\"moduleClass\":\"\",\"modulePath\":\"\",\"moduleDescription\":\"\",\"moduleParent\":209,\"moduleSort\":2,\"moduleIsdisable\":0,\"createTime\":1603329382423,\"updateTime\":1603329382423,\"deleteFlag\":0};');
+INSERT INTO `log_operation` VALUES ('17', '1', '2020-10-22 09:17:29', '1', 'admin', '0:0:0:0:0:0:0:1', '新增模块信息', '更新', '{\"moduleId\":null,\"appId\":1,\"moduleName\":\"用户答卷列表\",\"moduleCode\":\"\",\"moduleClass\":\"\",\"modulePath\":\"answerrecordlist.html\",\"moduleDescription\":\"\",\"moduleParent\":209,\"moduleSort\":1,\"moduleIsdisable\":0,\"createTime\":1603329449333,\"updateTime\":1603329449333,\"deleteFlag\":0};');
+INSERT INTO `log_operation` VALUES ('18', '1', '2020-10-22 09:17:38', '1', 'admin', '0:0:0:0:0:0:0:1', '模块排序', '更新', '212;209;2;');
+INSERT INTO `log_operation` VALUES ('19', '1', '2020-10-22 17:07:47', '1', 'admin', '0:0:0:0:0:0:0:1', 'Excel导入用户信息', '更新', '');
+INSERT INTO `log_operation` VALUES ('20', '1', '2020-10-22 17:09:52', '1', 'admin', '0:0:0:0:0:0:0:1', 'Excel导入用户信息', '更新', '');
+INSERT INTO `log_operation` VALUES ('21', '1', '2020-10-22 17:10:28', '1', 'admin', '0:0:0:0:0:0:0:1', 'Excel导入用户信息', '更新', '');
+INSERT INTO `log_operation` VALUES ('22', '1', '2020-10-22 17:11:21', '1', 'admin', '0:0:0:0:0:0:0:1', 'Excel导入用户信息', '更新', '');
+INSERT INTO `log_operation` VALUES ('23', '1', '2020-10-22 17:12:28', '1', 'admin', '0:0:0:0:0:0:0:1', 'Excel导入用户信息', '更新', '');
+INSERT INTO `log_operation` VALUES ('24', '1', '2020-10-22 17:13:45', '1', 'admin', '0:0:0:0:0:0:0:1', 'Excel导入用户信息', '更新', '');
+INSERT INTO `log_operation` VALUES ('25', '1', '2020-10-22 17:14:55', '1', 'admin', '0:0:0:0:0:0:0:1', 'Excel导入用户信息', '更新', '');
+INSERT INTO `log_operation` VALUES ('26', '1', '2020-10-23 09:51:25', '1', 'admin', '0:0:0:0:0:0:0:1', '新增模块信息', '更新', '{\"moduleId\":null,\"appId\":1,\"moduleName\":\"题库管理\",\"moduleCode\":\"\",\"moduleClass\":\"\",\"modulePath\":\"\",\"moduleDescription\":\"\",\"moduleParent\":209,\"moduleSort\":1,\"moduleIsdisable\":0,\"createTime\":1603417885801,\"updateTime\":1603417885801,\"deleteFlag\":0};');
 
 -- ----------------------------
 -- Table structure for operate_article
@@ -282,7 +295,7 @@ CREATE TABLE `operate_article_category` (
   `update_time` datetime NOT NULL COMMENT '更新时间',
   `delete_flag` int(11) NOT NULL DEFAULT '0' COMMENT '删除标记',
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='新闻栏目表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='新闻栏目表';
 
 -- ----------------------------
 -- Records of operate_article_category
@@ -290,6 +303,8 @@ CREATE TABLE `operate_article_category` (
 INSERT INTO `operate_article_category` VALUES ('1', '学校新闻', null, null, '1', '0', null, '0', '0', '2020-09-26 11:00:31', '0');
 INSERT INTO `operate_article_category` VALUES ('2', '通知公告', null, null, '3', '0', null, '0', '0', '2020-09-26 11:01:18', '0');
 INSERT INTO `operate_article_category` VALUES ('3', '媒体报道', null, null, '3', '0', null, '0', '0', '2020-09-26 11:04:23', '0');
+INSERT INTO `operate_article_category` VALUES ('4', '', null, null, '10000', '0', null, '0', '0', '2020-10-22 09:46:50', '0');
+INSERT INTO `operate_article_category` VALUES ('5', '', null, null, '10000', '0', null, '0', '0', '2020-10-22 18:03:10', '0');
 
 -- ----------------------------
 -- Table structure for questionnaire
@@ -298,19 +313,21 @@ DROP TABLE IF EXISTS `questionnaire`;
 CREATE TABLE `questionnaire` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `reamrk` varchar(1000) DEFAULT NULL,
+  `remark` varchar(1000) DEFAULT NULL,
+  `question_num` int(11) DEFAULT NULL COMMENT '问题',
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `delete_flag` int(1) DEFAULT '0',
+  `score` int(3) DEFAULT NULL COMMENT '足够多少分发证书',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='调查卷';
 
 -- ----------------------------
 -- Records of questionnaire
 -- ----------------------------
-INSERT INTO `questionnaire` VALUES ('1', '大学生压力来源及解压方式调查', '为了了解大学生压力来源及解压方法，我们正在做一份有关调查，希望您在百忙之中抽出一点点时间为我们填一下，诚挚的感谢！', '2020-10-21 13:46:06', '2020-10-21 13:46:09', '2020-10-20 13:46:10', '2020-11-05 13:46:13', '0');
+INSERT INTO `questionnaire` VALUES ('1', '附小支部2020年9月党纪法规知识测试题', null, null, '2020-10-23 16:37:05', '2020-10-23 16:37:05', '2020-10-12 16:45:35', '2020-11-06 16:45:38', '0', null);
 
 -- ----------------------------
 -- Table structure for questionnaire_question
@@ -319,47 +336,329 @@ DROP TABLE IF EXISTS `questionnaire_question`;
 CREATE TABLE `questionnaire_question` (
   `naire_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
+  `score` int(2) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`naire_id`,`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of questionnaire_question
 -- ----------------------------
-INSERT INTO `questionnaire_question` VALUES ('1', '0');
-INSERT INTO `questionnaire_question` VALUES ('1', '2');
-INSERT INTO `questionnaire_question` VALUES ('1', '3');
-INSERT INTO `questionnaire_question` VALUES ('1', '4');
-INSERT INTO `questionnaire_question` VALUES ('1', '5');
+INSERT INTO `questionnaire_question` VALUES ('1', '1', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '2', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '3', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '4', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '5', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '6', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '7', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '8', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '9', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '10', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '11', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '12', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '13', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '14', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '15', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '16', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '17', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '18', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '19', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '20', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '21', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '22', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '23', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '24', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '25', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '26', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '27', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '28', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '29', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '30', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '31', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '32', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '33', '1', null);
+INSERT INTO `questionnaire_question` VALUES ('1', '34', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '35', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '36', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '37', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '38', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '39', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '40', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '41', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '42', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '43', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '44', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '45', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '46', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '47', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '48', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '49', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '50', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '51', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '52', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '53', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '54', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '55', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '56', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '57', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '58', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '59', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '60', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '61', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '62', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '63', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '64', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '65', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '66', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '67', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '68', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '69', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '70', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '71', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '72', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '73', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '74', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '75', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '76', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '77', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '78', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '79', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '80', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '81', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '82', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '83', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '84', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '85', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '86', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '87', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '88', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '89', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '90', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '91', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '92', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '93', null, null);
+INSERT INTO `questionnaire_question` VALUES ('1', '94', null, null);
+
+-- ----------------------------
+-- Table structure for question_bank
+-- ----------------------------
+DROP TABLE IF EXISTS `question_bank`;
+CREATE TABLE `question_bank` (
+  `bank_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bank_name` varchar(255) DEFAULT NULL,
+  `bank_remark` varchar(1000) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `delete_flag` int(1) DEFAULT NULL,
+  PRIMARY KEY (`bank_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of question_bank
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for question_chapter
+-- ----------------------------
+DROP TABLE IF EXISTS `question_chapter`;
+CREATE TABLE `question_chapter` (
+  `chapter_id` int(11) NOT NULL AUTO_INCREMENT,
+  `chapter_name` varchar(255) DEFAULT NULL,
+  `chapter_remark` varchar(1000) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `delete_flag` int(1) unsigned zerofill DEFAULT '0',
+  `bank_id` int(11) DEFAULT NULL COMMENT '题库id',
+  PRIMARY KEY (`chapter_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of question_chapter
+-- ----------------------------
+INSERT INTO `question_chapter` VALUES ('1', '中国共产党党章知识', null, '2020-10-22 16:43:07', '0', null);
+INSERT INTO `question_chapter` VALUES ('2', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('3', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('4', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('5', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('6', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('7', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('8', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('9', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('10', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('11', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('12', '《中国共产党纪律处分条例》知识', null, '2020-10-23 16:37:12', '0', null);
+INSERT INTO `question_chapter` VALUES ('13', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('14', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('15', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('16', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('17', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('18', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('19', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('20', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('21', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('22', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('23', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('24', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('25', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('26', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('27', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('28', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('29', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('30', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('31', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('32', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('33', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('34', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('35', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('36', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('37', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('38', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('39', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('40', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('41', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('42', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('43', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('44', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('45', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('46', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('47', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('48', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('49', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('50', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('51', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('52', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('53', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('54', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('55', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('56', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('57', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('58', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('59', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('60', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('61', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
+INSERT INTO `question_chapter` VALUES ('62', '《中华人民共和国监察法》知识', null, '2020-10-23 16:37:15', '0', null);
 
 -- ----------------------------
 -- Table structure for question_info
 -- ----------------------------
 DROP TABLE IF EXISTS `question_info`;
 CREATE TABLE `question_info` (
-  `question_id` int(255) NOT NULL AUTO_INCREMENT,
-  `question_type` int(255) DEFAULT '0' COMMENT '试题类型  0单选 1多选',
-  `question` varchar(255) DEFAULT NULL COMMENT '题干',
-  `option_num` int(11) DEFAULT NULL COMMENT '选项数',
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_type` int(1) DEFAULT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `option_num` int(1) DEFAULT NULL,
   `option_a` varchar(255) DEFAULT NULL,
   `option_b` varchar(255) DEFAULT NULL,
   `option_c` varchar(255) DEFAULT NULL,
   `option_d` varchar(255) DEFAULT NULL,
   `option_e` varchar(255) DEFAULT NULL,
-  `answer` varchar(255) DEFAULT NULL COMMENT '答案   多选时,号隔开',
+  `article_1` text,
+  `article_2` text,
+  `article_3` text,
+  `answer` varchar(255) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
-  `delete_flag` int(1) unsigned zerofill DEFAULT '0',
+  `delete_flag` int(1) DEFAULT NULL,
+  `chapter_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`question_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of question_info
 -- ----------------------------
-INSERT INTO `question_info` VALUES ('1', '0', '请问你的性别是?', '2', '男', '女', null, null, null, null, '2020-10-21 13:41:31', '2020-10-21 13:41:31', '0');
-INSERT INTO `question_info` VALUES ('2', '0', '请问你的年级是?', '4', '大一', '大二', '大三', '大四', null, null, '2020-10-21 13:41:31', '2020-10-21 13:41:31', '0');
-INSERT INTO `question_info` VALUES ('3', '0', '你觉得上大学后，所承受的压力跟以前相比有何变化?', '3', '一点点', '有', '没有', null, null, null, '2020-10-21 13:41:31', '2020-10-21 13:41:31', '0');
-INSERT INTO `question_info` VALUES ('4', '1', '总的来说，你认为给你带来最大压力的是哪个方面? [多选题]', '4', '学习', '生活', '情感', '其他', null, null, '2020-10-21 13:41:31', '2020-10-21 13:41:31', '0');
-INSERT INTO `question_info` VALUES ('5', '1', '家庭方面：你认为以下给你带来较大压力的有? [多选题]', '4', '学习', '其他1', '其他2', '其他', null, null, '2020-10-21 13:41:31', '2020-10-21 13:41:31', '0');
+INSERT INTO `question_info` VALUES ('1', '0', '《党章》规定，中国共产党的宗旨是__。', '4', 'A.实现社会主义现代化', 'B.全心全意为人民服务', 'C.坚持党的基本路线和基本纲领不动摇', 'D.坚持群众路线', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('2', '0', '《党章》规定，党的中央委员会每届任期__年。', '4', 'A.三', 'B.四', 'C.五', 'D.六', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('3', '0', '《党章》规定,党员如果没有正当理由，连续_ _不参加党的组织生活，或不交纳党费，或不做党所分配的工作，就被认为是自行脱党。', '4', 'A.3个月', 'B.6个月', 'C.12个月', 'D.24个月', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('4', '0', '《党章》规定，党员个人服从党的组织，少数服从多数，下级组织服从上级组织，全党各个组织和全体党员服从党的全国代表大会和__。', '4', 'A.中央政治局', 'B.人民代表大会', 'C.党代会', 'D.中央委员会', null, null, null, null, '4', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('5', '0', '《党章》规定，党组织对违犯党的纪律的党员，应当本着__的精神，按照错误性质和情节轻重，给以批评教育直至纪律处分。', '4', 'A.从严治党', 'B.批评与自我批评', 'C.惩前毖后，治病救人', 'D.严肃纪律', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('6', '0', '《党章》第二十九条规定，企业、农村、机关、学校、科研院所、街道社区、社会组织、人民解放军连队和其他基层单位,凡是有_ _以上的，都应当成立党基层组织。', '4', 'A.预备和正式党员三人', 'B.正式党员三人', 'C.预备或正式党员三人', 'D.预备党员三人', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('7', '0', '中共江西省委《关于加强作风建设营造良好从政环境的意见》规定，任何个人不得违反组织程序、议事决策规则直接决定应由__讨论决定的事项，不得超越权限办事，不得以推进工作为名授意、指使、强令有关部门和人员违规违法办事。', '3', 'A.上级机关', 'B.党委(党组)或集体', 'C.集体', '', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('8', '0', '中共江西省委《关于加强作风建设营造良好从政环境的意见》规定，党委(党组)书记要切实履行选人用人__的责任，带头遵守组织人事制度，该坚持的标准决不降低，该有的步骤、环节决不能少，该按规矩办的决不能搞例外。', '4', 'A.主要领导人', 'B.第一责任人', 'C.重要领导人', 'D.以上都不是', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('9', '0', '中共江西省委《关于加强作风建设营造良好从政环境的意见》规定，坚持有腐必反、有贪必肃。始终保持惩治腐败高压态势，用最坚决的态度减少腐败存量，用最果断的措施遏制腐败__。', '4', 'A.增量', 'B.数量', 'C.总量', 'D.总数', null, null, null, null, '1', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('10', '0', '中共江西省委《关于加强作风建设营造良好从政环境的意见》规定，带头尊法、学法、守法、用法，提高运用__和_ _推动工作的能力。', '4', 'A.法治思维 法治方式', 'B.法律思维 法律方式', 'C.法制思维 法制方式', 'D.纪律思维 纪律方式', null, null, null, null, '1', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('11', '0', '中共江西省委《关于加强作风建设营造良好从政环境的意见》规定，不得允许、纵容配偶、子女及其配偶、特定关系人在本人__个人从事可能与公共利益发生冲突的经商、办企业、社会中介服务等活动，坚决杜绝各类违反廉洁从政规定的行为发生。', '4', 'A.任职范围内', 'B.管辖的地区', 'C.业务范围内', 'D.管辖的地区和业务范围内', null, null, null, null, '4', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('12', '0', '中共江西省委《关于加强作风建设营造良好从政环境的意见》规定，坚持__事项集体研究决定，不得以议事协调机构或其他形式的组织代替党委常委会(党组会)或政府常务会(部门行政会)等进行决策。', '4', 'A.人事任免', 'B.三重一大', 'C.重要决策', 'D.以上都不是', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('13', '0', '《习近平关于严明党的纪律和规矩论述摘编》指出，我们党是靠革命理想和铁的纪律组织起来的马克思主义政党，组织严密、__是党的光荣传统和政治优势。', '4', 'A.纪律严明', 'B.遵纪守法', 'C.作风严谨', 'D.民主集中', null, null, null, null, '1', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('14', '0', '《习近平关于严明党的纪律和规矩论述摘编》指出，维护中央权威，贯彻落实党的理论和路线方针政策，是__。', '4', 'A.政治纪律', 'B.工作纪律', 'C.群众纪律', 'D.以上都是', null, null, null, null, '1', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('15', '0', '《习近平关于严明党的纪律和规矩论述摘编》指出，严肃党内生活，最根本的是认真执行党的__，着力解决发扬民主不够，正确集中不够、开展批评不够、严肃纪律不够等问题。', '4', 'A.民主集中制', 'B.少数服从多数', 'C.批评与自我批评', 'D.下级服从上级', null, null, null, null, '1', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('16', '0', '《习近平关于严明党的纪律和规矩论述摘编》提出，党纪就是红线，处分就是__。', '4', 'A.惩戒', 'B.处罚', 'C.提醒', 'D.防线', null, null, null, null, '1', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('17', '0', '《习近平关于严明党的纪律和规矩论述摘编》指出，各级领导干部要带头依法办事，带头遵守法律，始终对宪法和法律保持敬畏之心，牢固确立__不能触碰，法律底线不能逾越的观念，不要去行使依法不该由自己行使的权利，更不能以言代法、以权压法、徇私枉法。', '4', 'A.纪律高线', 'B.规矩高线', 'C.规矩规定', 'D法律红线', null, null, null, null, '4', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('18', '0', '《中国共产党廉洁自律准则》，第五条廉洁从政，__，', '4', 'A.自觉保持人民公仆本色', 'B.自觉维护人民根本利益', 'C.自觉提升思想道德境界', 'D.自觉带头树立良好家风', null, null, null, null, '1', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('19', '0', '《中国共产党廉洁自律准则》第七条廉洁修身，__。', '4', 'A.自觉保持人民公仆本色', 'B.自觉维护人民根本利益', 'C.自觉提升思想道德境界', 'D.自觉带头树立良好家风', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('20', '0', '2015年10月18日，中共中央印发了《中国共产党纪律处分条例》，并发出通知要求，各级纪委(纪检组)要认真履行监督执纪_ _职责，加大查处违反《条例》行为的力度，进一步探索建立不敢腐、不能腐、不想腐的有效机制。', '4', 'A.追责', 'B.处分', 'C.审查', 'D.问责', null, null, null, null, '4', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('21', '0', '2015年10月18日，中共中央印发了《中国共产党纪律处分条例》，并发出通知要求，广大党员要牢固_ _党章党规党纪意识，严格遵守国家法律法规，守住纪律“底线”，自觉做守纪律、讲规矩的模范。', '4', 'A.坚持', 'B.树立', 'C.做到', 'D.促进', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('22', '0', '遇到国家财产和群众生命财产受到_ _时，能救而不救，情节较重的，给予警告、严重警告或者撤销党内职务处分;情节严重的，给予留党察看或者开除党籍处分。', '4', 'A.危害', 'B.严重威胁', 'C.危险', 'D.损失', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('23', '0', '违背社会_ _，在公共场所有不当行为，造成不良影响的，给予警告或者严重警告处分;情节较重的，给予撤销党内职务或者留党察看处分;情节严重的，给予开除党籍处分。', '4', 'A.诚实信用', 'B.职业道德', 'C.公序良俗', 'D.家庭美德', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('24', '0', '实事求是。对党组织和党员违犯党纪的行为，应当以_ _为依据，以党章、其他党内法规和国家法律法规为准绳，准确认定违纪性质，区别不同情况，恰当予以处理。', '4', 'A.证据', 'B.纪律', 'C.事实', 'D.交代', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('25', '0', '党组织和党员违反党章和其他党内法规，违反国家法律法规，违反党和国家政策，违反_ _道德，危害党、国家和人民利益的行为，依照规定应当给予纪律处理或者处分的，都必须受到追究。', '4', 'A.国家', 'B.家庭', 'C.职业', 'D.社会主义', null, null, null, null, '4', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('26', '0', '党员受到严重警告处分_ _内，不得在党内提升职务和向党外组织推荐担任高于其原任职务的党外职务。', '4', 'A.一年', 'B.一年半', 'C.二年', 'D.三年', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('27', '0', '党员受到留党察看处分，其党内职务_ _撤销。', '4', 'A.应当', 'B.必须', 'C.自然', 'D.可以', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('28', '0', '受到改组处理的党组织领导机构成员，除应当受到撤销党内职务以上(含撤销党内职务)处分的外，均_ _免职。', '4', 'A.应当', 'B.必须', 'C.自然', 'D.可以', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('29', '0', '党组织在纪律审查中发现党员有_ _，虽不涉及犯罪但须追究党纪责任的，应当视具体情节给予警告直至开除党籍处分。', '4', 'A.法律规定的行为', 'B.其他违法行为', 'C.刑法规定的行为', 'D.刑法规定的行为涉嫌犯罪的', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('30', '0', '党组织作出党纪处分或者组织处理决定后，司法机关、行政机关等依法改变原生效判决、裁定、决定等，对原党纪处分或者组织处理决定产生影响的，党组织应当根据改变后的生效判决、裁定、决定等_ _作出相应处理。', '4', 'A.另行', 'B.重新', 'C.不再', 'D.需要', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('31', '0', '通过信息网络、广播、电视、报刊、书籍、讲座、论坛、报告会、座谈会等方式，公开发表坚持资产阶级自由化立场、反对四项基本原则、反对党的改革开放决策的文章、演说、宣言、声明等的，给予__处分。', '4', 'A.警告', 'B.严重警告', 'C.留党察看', 'D.开除党籍', null, null, null, null, '4', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('32', '0', '组织、参加反对党的基本理论、基本路线、基本纲领、基本经验、基本要求或者重大方针政策的集会、游行、示威等活动的，或者以组织讲座、论坛、报告会、座谈会等方式，反对党的基本理论、基本路线、基本纲领、基本经验、基本要求或者重大方针政策，造成_ _的，对策划者、组织者和骨干分子，给予开除党籍处分。', '4', 'A.不好影响', 'B.很坏影响', 'C.严重不良影响', 'D.一定影响', null, null, null, null, '3', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('33', '0', '在干部选拔任用工作中，违反干部选拔任用规定，对直接责任者和领导责任者，情节较轻的，给予警告或者_ _处分;情节较重的，给予撤销党内职务或者留党察看处分;情节严重的，给予开除党籍处分。', '4', 'A.警告', 'B.严重警告', 'C.撤销党内职务', 'D.留党察看', null, null, null, null, '2', '2020-10-23 16:37:26', '2020-10-23 16:37:26', '0', '1');
+INSERT INTO `question_info` VALUES ('34', '0', '1.党员受到警告处分的，(  )内不得在党内提升职务。', '4', 'A、1年', 'B、2年', 'C、3年', 'D、4年', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('35', '0', '2.受到留党察看处分的党员，在恢复党员权利后(  )内,不得在党内担任和向党外组织推荐担任与其原任职务相当或者高于其原任职务的职务。', '4', 'A.六个月', 'B.一年', 'C.两年', 'D.三年', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('36', '0', '3.在干部选拔任用工作中，有任人唯亲、排斥异己、封官许愿、说情干预、跑官要官、突击提拔或者调整干部等违反干部选拔任用规定行为，情节严重的，给予(  )处分。', '4', 'A.严重警告', 'B.撤销党内职务', 'C.留党察看', 'D.开除党籍', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('37', '0', '4.利用职务.上的便利,占用公物归个人使用，时间超过(  )，情节较重的,给予警告或者严重警告处分;情节严重的，给予撤销党内职务处分。', '4', 'A.一个月', 'B.三个月', 'C.六个月', 'D.一年', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('38', '0', '5.在考试、录取工作中，有泄露试题、考场舞弊、涂改考卷、违规录取等违反有关规定行为的，给予警告或者严重警告处分;情节较重的，(  );情节严重的，给予开除党籍处分。', '4', 'A.给予警告或者严重警告处分', 'B.给予撤销党内职务或者留党察看处分', 'C.给予留党察看或者开除党籍处分', 'D.不追究其责任', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('39', '0', '6.临时出国(境)团(组)或者人员中的党员，擅自延长在国(境)外期限，或者擅自变更路线的，对直接责任者和领导责任者，给予(  )。', '4', 'A.警告或者严重警告处分', 'B.行政处分', 'C.撤销党内职务或留党察看', 'D.开除党籍', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('40', '0', '7.在民主推荐、民主测评、组织考察和党内选举中搞拉票、助选等非组织活动的，给予(  )。', '4', 'A.通报批评', 'B.警告或者严重警告', 'C.撤销党内职务或者留党察看', 'D.开除党籍', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('41', '0', '8.在特殊时期或者紧急状况下，拒不执行党组织决定的，给予(  )。', '4', 'A.通报批评', 'B.警告或者严重警告', 'C.撤销党内职务或者留党察看', 'D.留党察看或者开除党籍', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('42', '0', '9.违反公务接待管理规定，超标准、超范围接待或者借机大吃大喝，对直接责任者和领导责任者，情节较重的，给予警告或者严重警告处分;情节严重的，给予(  )处分。', '4', 'A.撤销党内职务', 'B.留党察看', 'C.撤销党内职务', 'D.留党察看或者开除党籍', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('43', '0', '10.收受可能影响公正执行公务的礼品、礼金、消费卡和有价证券、股权、其他金融产品等财物，情节较重的，给予(  )处分。', '4', 'A.严重警告', 'B.留党察看', 'C.开除党籍', 'D.撤销党内职务或者留党察看', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('44', '0', '11.党的各级代表大会的代表受到(  )以上(含留党察看)处分的，党组织应当终止其代表资格。', '4', 'A.警告', 'B.严重警告', 'C.撤销党内职务', 'D.留党察看', null, null, null, null, '1', '2020-10-23 16:37:29', '2020-10-23 16:37:29', '0', null);
+INSERT INTO `question_info` VALUES ('45', '0', '1.《中华人民共和国监察法》自_________起施行。', '4', 'A.2018年3月3日', 'B.2018年3月15日', 'C.2018年3月20日', 'D.2018年3月25日', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('46', '0', '2.为了深化国家监察体制改革，加强对所有行使_____的____的监督，实现国家监察全面覆盖。', '4', 'A.权力    公职人员', 'B.公权力    公职人员', 'C.公权力    公务员', 'D.职权    公务员', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('47', '0', '3.监察机关办理职务违法和职务犯罪案件，应当与审判机关、检察机关、______相互配合，互相制约。', '4', 'A.执法机关', 'B.公安机关', 'C.行政机关', 'D.执法部门', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('48', '0', '4.国家监察委员会主任由_____选举，副主任、委员由国家监察委员会主任提请_______任免。', '4', 'A.全国人民代表大会常委委员   全国人民代表大会常委委员会', 'B.全国人民代表大会   全国人民代表大会', 'C.全国人民代表大会常务委员会    全国人民代表大会', 'D.全国人民代表大会   全国人民代表大会常务委员会', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('49', '0', '5.中华人民共和国国家监察委员会是最高______机关。', '4', 'A.监督', 'B.调查', 'C.监察', 'D.督查', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('50', '0', '6.地方各级监察委员会对本级___和___负责，并接受其监督。', '4', 'A.党委    上一级监察委员会', 'B.人民政府     上一级监察委员会主任', 'C.人民代表大会及其常务委员会   上一级监察委员会', 'D.监察委员会主任    上一级监察委员会主任', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('51', '0', '7.上级监察委员会____下级监察委员会的工作。', '4', 'A.指导', 'B.领导', 'C.监督', 'D.指导监督', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('52', '0', '8.监察委员会依照____和有关法律规定履行相关职责。', '4', 'A.宪法', 'B.党章', 'C.刑法', 'D.监察法', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('53', '0', '9.各级监察委员会派驻或者派出的监察机构、监察专员，根据授权，按照管理权限依法对公职人员进行监督，提出监察建议，依法对公职人员进行_______________。', '4', 'A.调查、处置', 'B.监督、调查、处置', 'C.监督、处置', 'D.监督、调查', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('54', '0', '10.下列哪类人员不是监察对象？', '4', 'A.公立中学教务处主任', 'B.民营医院院长', 'C.协助乡政府办理贫困户就业贷款的村民兵营长', 'D.受交警支队委托从事交通事故勘验的协警', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('55', '0', '11.监察机关行使监督、调查职权，_____依法向有关单位和个人了解情况，收集、调取证据。', '4', 'A.经授权', 'B.经审批', 'C.有权', 'D.经请示', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('56', '0', '12.对可能发生职务违法的监察对象，监察机关按照____，可以直接或者委托有关机关、人员进行谈话或者要求说明情况。', '4', 'A.管理权限', 'B.法律规定', 'C.领导指示', 'D.会议研究决定', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('57', '0', '13.在调查过程中，对涉嫌职务违法的被调查人，监察机关可以要求其就涉嫌违法行为作出陈述,必要时向被调查人出具___。', '4', 'A.函询通知', 'B.书面通知', 'C.谈话通知', 'D.书面说明', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('58', '0', '14.对涉嫌贪污贿赂、失职渎职等职务犯罪的被调查人，监察机关可以进行_____，要求其如实供述涉嫌犯罪的情况。', '4', 'A.询问', 'B.质问', 'C.讯问', 'D.训问', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('59', '0', '15.在调查过程中，监察机关可以_____证人等人员。', '4', 'A.询问', 'B.质问', 'C.讯问', 'D.训问', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('60', '0', '16.对涉嫌行贿犯罪或者共同职务犯罪的涉案人员，监察机关可以依照规定采取_____措施。', '4', 'A.留置', 'B.拘留', 'C.逮捕', 'D.监视居住', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('61', '0', '17.监察机关调查涉嫌贪污贿赂、失职渎职等严重职务违法或者职务犯罪，根据工作需要，可以依照规定_____涉案单位和个人的存款、汇款、债券、股票、基金份额等财产。', '4', 'A.查封、划拨', 'B.冻结、扣押', 'C.查封、扣押', 'D.查询、冻结', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('62', '0', '18.冻结的财产经查明与案件无关的，应当在查明后____内解除冻结，予以退还。', '4', 'A.7日', 'B.3日', 'C.5日', 'D.15日', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('63', '0', '19.监察机关可以对涉嫌职务犯罪的被调查人以及可能隐藏被调查人或者犯罪证据的人的身体、物品、____和其他有关地方进行搜查。', '4', 'A.单位', 'B.住处', 'C.房间', 'D.档案局', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('64', '0', '20.采取调取、查封、扣押措施，应当收集原物原件，会同持有人或者保管人_____，当面逐一拍照、登记、编号，开列清单，由在场人员当场核对、签名，并将清单副本交财物、文件的持有人或者保管人。', '4', 'A.证人', 'B.使用人', 'C.见证人', 'D.律师', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('65', '0', '21.查封、扣押的财物、文件经查明与案件无关的，应当在查明后____内解除查封、扣押，予以退还。', '4', 'A.10日', 'B.7日', 'C.5日', 'D.3日', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('66', '0', '22.监察机关在调查过程中，可以直接或者指派、聘请具有专门知识、资格的人员_____进行勘验检查。', '4', 'A.直接', 'B.经审批后', 'C.在司法机关安排下', 'D.在调查人员主持下', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('67', '0', '23.监察机关对于案件中的___问题，可以采取鉴定措施。', '4', 'A.一般性', 'B.专门性', 'C.特殊性', 'D.普遍性', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('68', '0', '24.留置时间不得超过三个月。在特殊情况下，可以延长一次，延长时间不得超过___。', '4', 'A.一个月', 'B.二个月', 'C.三个月', 'D.六个月', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('69', '0', '25.对被调查人采取留置措施后，应当在___以内，通知被留置人员所在单位和家属，但有可能毁灭、伪造证据，干扰证人作证或者串供等有碍调查情形的除外。有碍调查的情形消失后，应当立即通知被留置人员所在单位和家属。', '4', 'A.12小时', 'B.24小时', 'C.36小时', 'D.48小时', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('70', '0', '26.职务违法犯罪的涉案人员揭发有关被调查人职务违法犯罪行为，查证属实的，或者提供重要线索，有助于调查其他案件的，监察机关经领导人员集体研究，并报上一级监察机关批准，可以在移送人民检察院时提出___处罚的建议。', '4', 'A.从轻', 'B.减轻', 'C.从宽', 'D.免除', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('71', '0', '27.监察机关在收集、固定、审查、运用证据时，应当与____关于证据的要求和标准相一致。', '4', 'A.刑事审判', 'B.民事审判', 'C.行政审判', 'D.刑事诉讼', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('72', '0', '28.监察机关对于报案或者举报，应当接受并按照有关规定处理。对于不属于本机关管辖的，应当移送____处理。', '4', 'A.有关机关', 'B.主管机关', 'C.相关机关', 'D.有关部门', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('73', '0', '29.经过初步____，对监察对象涉嫌职务违法犯罪，需要追究法律责任的，监察机关应当按照规定的权限和程序办理立案手续。', '4', 'A.核查', 'B.核实', 'C.调查', 'D.审查', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('74', '0', '30.人民检察院经审查，认为需要补充核实的，应当退回监察机关补充调查，必要时可以自行补充侦查。对于补充调查的案件，应当在___个月内补充调查完毕。补充调查以___次为限。', '4', 'A.一,二', 'B.一,一', 'C.二,一', 'D.二,二', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('75', '0', '31.人民检察院对于有《中华人民共和国刑事诉讼法》规定的不起诉的情形的，经_____批准，依法作出不起诉的决定。', '4', 'A.上一级人民检察院', 'B.省级人民检察院', 'C.上级人民检察院', 'D.同级监察机关', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('76', '0', '32.被调查人逃匿，在通缉___后不能到案，或者死亡的，由监察机关提请人民检察院依照法定程序，向人民法院提出没收违法所得的申请。', '4', 'A.一年', 'B.半年', 'C.两年', 'D.一年半', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('77', '0', '33.监察对象对监察机关作出的涉及本人的处理决定不服的，可以在收到处理决定之日起___个月内，向作出决定的监察机关申请复审，复审机关应当在___个月内作出复审决定。', '4', 'A.一,二', 'B.一,一', 'C.二,一', 'D.二,二', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('78', '0', '34.监察委员会依照法律规定独立行使监察权，不受_____、社会团体和个人的干涉。', '4', 'A.国家机关', 'B.行政机关', 'C.政府机关', 'D.党群机关', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('79', '0', '35.监察机关依照本法规定收集的物证、书证、证人证言、____供述和辩解、视听资料、电子数据等证据材料，在刑事诉讼中可以作为证据使用。', '4', 'A.犯罪嫌疑人', 'B.被调查人', 'C.被核查人', 'D.违法嫌疑人', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('80', '0', '36.被调查人既涉嫌严重职务违法或者职务犯罪，又涉嫌其他违法犯罪的，一般应当由____为主调查，其他机关予以协助。', '4', 'A.监察机关', 'B.检察机关', 'C.公安机关', 'D.国家安全机关', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('81', '0', '37.监察机关应当严格按照程序开展工作，建立问题线索处置、调查、审理各部门相互____、相互制约的工作机制。', '4', 'A.配合', 'B.协调', 'C.合作', 'D.协作', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('82', '0', '38.需要采取初步核实方式处置问题线索的，监察机关应当依法履行审批程序，成立____。', '4', 'A.核查组', 'B.调查组', 'C.初查组', 'D.审查组', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('83', '0', '39.被留置人员涉嫌犯罪移送司法机关后，被依法判处管制、拘役和有期徒刑的，留置一日折抵管制____日，折抵拘役、有期徒刑____日。', '4', 'A.一,二', 'B.一,一', 'C.二,一', 'D.二,二', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('84', '0', '40.监察人员辞职、退休___年内，不得从事与监察和司法工作相关联且可能发生利益冲突的职业。', '4', 'A.一', 'B.二', 'C.三', 'D.四', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('85', '0', '41.受理申诉的监察机关应当在受理申诉之日起___个月内作出处理决定。', '4', 'A.一', 'B.二', 'C.三', 'D.四', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('86', '0', '42.对调查工作结束后发现立案依据不充分或者失实，案件处置出现重大失误，监察人员严重违法的，应当追究负有责任的____的责任。', '4', 'A.领导人员', 'B.直接责任人员', 'C.领导人员和直接责任人员', 'D.部门负责人', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('87', '0', '43.监察机关之间对监察事项的管辖有争议的，由________ 确定。', '4', 'A.省级监察机关', 'B.上级监察机关', 'C.市级监察机关', 'D.共同的上级监察机关', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('88', '0', '44.监察机关____依法批准立案后，应当主持召开专题会议，研究确定调查方案，决定需要采取的调查措施。', '4', 'A.主要负责人', 'B.相关负责人', 'C.主要领导', 'D.分管领导', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('89', '0', '45.留置场所的设置、管理和监督依照国家有关____执行。', '4', 'A.法律', 'B.法规', 'C.规定', 'D.规章', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('90', '0', '46.搜查女性身体，应当由____进行。', '4', 'A.医师', 'B.女医师', 'C.调查人员', 'D.女性工作人员', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('91', '0', '47.监察机关进行搜查时，可以根据工作需要提请____配合。', '4', 'A.公安机关', 'B.检察机关', 'C.法院', 'D.司法机关', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('92', '0', '48.监察机关调查涉嫌重大贪污贿赂等职务犯罪，根据需要，经过严格的批准手续，可以采取技术调查措施，按照规定交有关机关执行。批准决定应当明确采取技术调查措施的种类和____，自签发之日起三个月以内有效。', '4', 'A.适用条件', 'B.适用情形', 'C.适用对象', 'D.适用方式', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('93', '0', '49.依法应当留置的被调查人如果在逃，监察机关可以决定在本行政区域内通缉，由____发布通缉令，追捕归案。通缉范围超出本行政区域的，应当报请有权决定的上级监察机关决定。', '4', 'A.公安机关', 'B.检察机关', 'C.法院', 'D.司法机关', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
+INSERT INTO `question_info` VALUES ('94', '0', '50.中国人民解放军和中国人民武装警察部队开展监察工作，由____根据本法制定具体规定。', '4', 'A.中央纪律检查委员会', 'B.国家监察委员会', 'C.全国人大常委会', 'D.中央军事委员会', null, null, null, null, '1', '2020-10-23 16:37:32', '2020-10-23 16:37:32', '0', null);
 
 -- ----------------------------
 -- Table structure for sys_modules
@@ -380,7 +679,7 @@ CREATE TABLE `sys_modules` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `delete_flag` int(11) DEFAULT '0' COMMENT '删除标记：0，未删除；1、已删除',
   PRIMARY KEY (`module_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8 COMMENT='系统模块表';
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=utf8 COMMENT='系统模块表';
 
 -- ----------------------------
 -- Records of sys_modules
@@ -402,6 +701,11 @@ INSERT INTO `sys_modules` VALUES ('205', '1', '课程管理', '', '', '', '', '0
 INSERT INTO `sys_modules` VALUES ('206', '1', '操作日志', '', '', 'logbilloperationlist.html', '', '192', '4', '0', '2020-10-16 16:13:11', '2020-10-16 16:13:11', '0');
 INSERT INTO `sys_modules` VALUES ('207', '1', '教师管理', '', '', 'teacherlist.html', '', '193', '2', '0', '2020-10-19 11:49:11', '2020-10-19 11:49:11', '0');
 INSERT INTO `sys_modules` VALUES ('208', '1', '用户管理', '', '', 'userlist.html', '', '193', '1', '0', '2020-10-19 11:50:25', '2020-10-19 11:50:25', '0');
+INSERT INTO `sys_modules` VALUES ('209', '1', '问卷管理', '', '', '', '', '0', '4', '0', '2020-10-22 09:15:37', '2020-10-22 09:15:37', '0');
+INSERT INTO `sys_modules` VALUES ('210', '1', '问卷中心', '', '', 'nairelist.html', '', '209', '1', '0', '2020-10-22 09:16:02', '2020-10-22 09:16:02', '0');
+INSERT INTO `sys_modules` VALUES ('211', '1', '题库列表', '', '', 'questionlist.html', '', '209', '2', '0', '2020-10-22 09:16:22', '2020-10-22 09:16:22', '0');
+INSERT INTO `sys_modules` VALUES ('212', '1', '用户答卷列表', '', '', 'answerrecordlist.html', '', '209', '3', '0', '2020-10-22 09:17:29', '2020-10-22 09:17:29', '0');
+INSERT INTO `sys_modules` VALUES ('213', '1', '题库管理', '', '', '', '', '209', '1', '0', '2020-10-23 09:51:25', '2020-10-23 09:51:25', '0');
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -498,12 +802,15 @@ CREATE TABLE `user_answer_record` (
   `update_time` datetime DEFAULT NULL,
   `content` text,
   `delete_flag` int(1) DEFAULT '0',
+  `score` int(3) DEFAULT NULL,
+  `certificate_state` int(1) DEFAULT NULL COMMENT '是否获得证书',
   PRIMARY KEY (`naire_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_answer_record
 -- ----------------------------
+INSERT INTO `user_answer_record` VALUES ('1', '1', '2020-10-23 18:00:33', '2020-10-23 18:00:33', '2020-10-23 18:00:33', '[\"{\\\"questionNumber\\\":\\\"1\\\", \\\"userAnswer\\\":\\\"2\\\"}\",\"{\\\"questionNumber\\\":\\\"2\\\", \\\"userAnswer\\\":\\\"4\\\"}\",\"{\\\"questionNumber\\\":\\\"3\\\", \\\"userAnswer\\\":\\\"2\\\"}\",\"{\\\"questionNumber\\\":\\\"4\\\", \\\"userAnswer\\\":\\\"2\\\"}\",\"{\\\"questionNumber\\\":\\\"5\\\", \\\"userAnswer\\\":\\\"2\\\"}\",\"{\\\"questionNumber\\\":\\\"6\\\", \\\"userAnswer\\\":\\\"3\\\"}\",\"{\\\"questionNumber\\\":\\\"7\\\", \\\"userAnswer\\\":\\\"2\\\"}\",\"{\\\"questionNumber\\\":\\\"8\\\", \\\"userAnswer\\\":\\\"2\\\"}\"]', '0', '50', null);
 
 -- ----------------------------
 -- Table structure for user_info

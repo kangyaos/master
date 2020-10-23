@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,7 @@ import com.jiaoda.edu.controller.admin.operate.CourseInfoController;
 import com.jiaoda.edu.domain.Certificate;
 import com.jiaoda.edu.domain.CourseInfo;
 import com.jiaoda.edu.domain.OperateArticle;
+import com.jiaoda.edu.domain.QuestionInfo;
 import com.jiaoda.edu.domain.Questionnaire;
 import com.jiaoda.edu.domain.UserAnswerRecord;
 import com.jiaoda.edu.domain.UserAnswerRecordKey;
@@ -290,20 +292,41 @@ public class WebIndexController extends BaseController {
 		
 		Object userId=session.getAttribute("userId");
 		if(userId==null) {
-			return "redirect:/web/login.html";
+			return "redirect:/web/login.html?url=questionnaire.html";
 		}else {
 			Questionnaire naire=naireService.selectDetailByWhere(null);
 			Integer uId=Integer.parseInt(session.getAttribute("userId").toString());
-			UserAnswerRecordKey key=new UserAnswerRecordKey();
-			key.setNaireId(naire.getId());
-			key.setUserId(uId);
-			UserAnswerRecord record=answerService.selectByPrimaryKey(key);
-			map.put("naire", naire);
-			if(record!=null) {
-				Map m=new HashMap();
-				m= oMapper.readValue(record.getContent(), Map.class);
-				map.put("answer", m);
+			List<QuestionInfo> qis=naire.getQuestions();
+		
+			List<Map<String,Object>> questlist=new ArrayList();
+			for(int i=0;i<qis.size();i++) {
+				Map quest=new HashMap();
+				QuestionInfo qs=qis.get(i);
+				quest.put("question", qs.getQuestion());
+				String[] option=new String[qs.getOptionNum()];
+				option[0]=qs.getOptionA();
+				option[1]=qs.getOptionB();
+				if(qs.getOptionNum()==3) {
+					option[2]=qs.getOptionC();
+				}
+				if(qs.getOptionNum()==4) {
+					option[2]=qs.getOptionC();
+					option[3]=qs.getOptionD();
+				}
+				if(qs.getOptionNum()==5) {
+					option[2]=qs.getOptionC();
+					option[3]=qs.getOptionD();
+					option[4]=qs.getOptionE();
+				}
+				quest.put("answers", option);
+				quest.put("correctAnswer", qs.getAnswer());
+				questlist.add(quest);
 			}
+			
+			map.put("naire", naire);
+			map.put("id", naire.getId());
+			map.put("name", naire.getName());
+			map.put("data", new ObjectMapper().writeValueAsString(questlist) );
 		}
 	
 		
@@ -314,16 +337,17 @@ public class WebIndexController extends BaseController {
 	//提交问卷
 	@ResponseBody
 	@RequestMapping(value = "/submitAnswerRecord.do", method = RequestMethod.POST)
-	public Boolean submitAnswerRecord(Integer id,String questions,HttpSession session,HttpServletRequest request, ModelMap map) throws Exception {
+	public Boolean submitAnswerRecord(Integer id,String answers,Integer score,HttpSession session,HttpServletRequest request, ModelMap map) throws Exception {
 	   Date now=new Date();
 	   Integer userId=Integer.parseInt(session.getAttribute("userId").toString());
 	   UserAnswerRecord record=new UserAnswerRecord();
 	   record.setUserId(userId);
+	   record.setScore(score);
 	   record.setNaireId(id);
 	   record.setCreateTime(now);
 	   record.setSubmitTime(now);
 	   record.setUpdateTime(now);
-	   record.setContent(questions);
+	   record.setContent(answers);
 	   answerService.insertSelective(record);
 		return true;
 	}

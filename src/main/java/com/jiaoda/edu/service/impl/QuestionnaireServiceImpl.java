@@ -108,8 +108,9 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
         }else{
             throw new Exception("文件不是Excel文件");
         }
-     
-       for(Integer jj=0;jj<10;jj++) {
+        List<QuestionChapter> chapters =  chapterfDAO.findPagerList(0, 999, " delete_flag=0 ", "");
+        Integer sheetnum=workbook.getNumberOfSheets();
+        for(Integer jj=0;jj<sheetnum;jj++) {
     	   
    
         Sheet sheet = workbook.getSheetAt(jj);
@@ -121,12 +122,12 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
         if(rows==0){
             throw new Exception("请填写数据");
         }
-        List<QuestionChapter> chapters =  chapterfDAO.findPagerList(0, 999, " delete_flag=0 ", "");
+       
         Date now=new Date();
         List<QuestionInfo> quests=new ArrayList();
         List<QuestionnaireQuestion> qquests=new ArrayList();
         String  title=fileName.substring(0,fileName.indexOf("."));
-        for (int i = 0; i <= rows+1; i++) {
+        for (int i = 0; i <= rows; i++) {
             // 读取左上端单元格
             Row row = sheet.getRow(i);
         
@@ -146,7 +147,7 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
                
                 //循环给章节赋值
                 if(chapterName!=null&&!chapterName.equals("")) {
-            	  for (int j = 0; j <= chapters.size(); j++) {
+            	  for (int j = 0; j < chapters.size(); j++) {
             		if(chapters.get(j).getChapterName().equals(chapterName.trim())) {
             			quest.setChapterId(chapters.get(j).getChapterId());
             		    break;
@@ -195,8 +196,8 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
         	selfDAO.insertSelective(naire);
         	id=naire.getId();
         }
-        infoDAO.batchinsert(quests);
-	      for (int i = 0; i <= quests.size(); i++) {
+          infoDAO.batchinsert(quests);
+	      for (int i = 0; i < quests.size(); i++) {
 	      	QuestionnaireQuestion qq=new QuestionnaireQuestion();
 	      	qq.setQuestionId(quests.get(i).getQuestionId());
 	        qq.setNaireId(id);

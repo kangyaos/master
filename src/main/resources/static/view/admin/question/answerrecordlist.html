@@ -64,10 +64,10 @@
 											id="grid">
 											<thead>
 												<tr>
-												   <th style="width:10%">栏目名称</th>
-					                               <th style="width:10%">排序</th>
-					                               <th style="width:10%">启用状态</th>                                                         
-					                               <th style="width:10%">更新时间</th>
+												   <th style="width:10%">试卷名称</th>
+					                               <th style="width:10%">答题时间</th>
+					                               <th style="width:10%">分数</th>                                                         
+					                               <th style="width:10%">是否获奖</th>
 					                               <th style="width:10%"></th>
 												</tr>
 											</thead>
@@ -123,22 +123,17 @@
 	                	console.log(ex);
 	                }
 	            },
-	            "columns" : [{"data": "categoryName"},
+	            "columns" : [{"data": "naireName"},
 			           
-			            {"data" : "sort",
-                            "fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {                                
-                                $(nTd).html("<input type='text' value='"+sData+"' onblur='buyMode(this.value,"+oData.categoryId+")'  style='width: 30px;text-align: center;'>");
-                             },
-                            "searchable":false                          
-                        },  
-			            {"data" : "useStatus",
+			            {"data" : "createTime" }, 
+			            {"data" : "score" }, 
+			            {"data" : "certificateState",
 							"fnCreatedCell" : function (nTd, sData, oData, iRow, iCol) {
-			                	$(nTd).html(sData==0?"启用":"禁用");
+			                	$(nTd).html(sData==1?"已颁发":"未获得");
 			            	},
 			            	"searchable":false
 			            },
-			            {"data": "updateTime"},
-			            {"data":"categoryId",
+			            {"data":"naireId",
 			            	"fnCreatedCell" : function(nTd, sData,oData, iRow, iCol) {
 								$(nTd).html("<a href='editcategory.html?categoryId="+sData+"' class='edit btn btn-xs blue'><i class='fa fa-edit'></i>编辑</a>");
 							},

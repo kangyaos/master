@@ -5,7 +5,7 @@
             startImg: 'assets/web/images/start.gif',
             endText: '已结束!',
             shortURL: null,
-            sendResultsURL: null,
+            sendResultsURL: "submitAnswerRecord.do",
             resultComments: {
                 perfect: '你是爱因斯坦么?',
                 excellent: '非常优秀!',
@@ -137,20 +137,7 @@
             superContainer.find('li.selected').each(function(index) {
                 userAnswers.push($(this).parents('.answers').children('li').index($(this).parents('.answers').find('li.selected')) + 1);
             });
-            if (config.sendResultsURL !== null) {
-                var collate = [];
-                for (r = 0; r < userAnswers.length; r++) {
-                    collate.push('{"questionNumber":"' + parseInt(r + 1, 10) + '", "userAnswer":"' + userAnswers[r] + '"}');
-                }
-                $.ajax({
-                    type: 'POST',
-                    url: config.sendResultsURL,
-                    data: '{"answers": [' + collate.join(",") + ']}',
-                    complete: function() {
-                        console.log("OH HAI");
-                    }
-                });
-            }
+            
             progressKeeper.hide();
             var results = checkAnswers(),
             resultSet = '',
@@ -183,7 +170,21 @@
                 resultSet += '</ul></div></div>';
             }
             score = roundReloaded(trueCount / questionLength * 100, 2);
-            
+            if (config.sendResultsURL !== null) {
+                var collate = [];
+                for (r = 0; r < userAnswers.length; r++) {
+                    collate.push('{"questionNumber":"' + parseInt(r + 1, 10) + '", "userAnswer":"' + userAnswers[r] + '"}');
+                }
+                console.log(collate)
+                $.ajax({
+                    type: 'POST',
+                    url: config.sendResultsURL,
+                    data: {"answers":JSON.stringify(collate),"id":settings.id,"score":score},
+                    complete: function() {
+                        console.log("OH HAI");
+                    }
+                });
+            }
             resultSet = '<h2 class="qTitle">' + judgeSkills(score) + '<br/> 您的分数： ' + score + '</h2>' + shareButton + '<div class="jquizzy-clear"></div>' + resultSet + '<div class="jquizzy-clear"></div>';
             superContainer.find('.result-keeper').html(resultSet).show(500);
             superContainer.find('.resultsview-qhover').hide();
